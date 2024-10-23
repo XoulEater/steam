@@ -1,0 +1,44 @@
+<article class="rounded-md bg-bgMain">
+  <div class="flex flex-col items-start justify-center gap-3 p-2 pb-3">
+    <img
+      class="object-cover w-full rounded-sm"
+      [src]="game.images[0].url"
+      alt=""
+    />
+    <h2 class="text-xl font-bold">{{ game.title }}</h2>
+    <footer class="flex items-center justify-end w-full gap-3">
+      <span class="text-sm text-dim">Until Nov 2</span>
+      <span
+        class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+        >-20%</span
+      >
+      <div class="relative flex flex-col justify-end gap-0">
+        <span class="absolute font-semibold line-through top-2 text-dim/50"
+          >$24.99</span
+        >
+        <span class="absolute font-semibold bottom-2 text-success">$19.99</span>
+        <span class="text-transparent">$00.00</span>
+      </div>
+
+      <button
+        class="flex items-center justify-center gap-2 px-2 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-bgHighlight hover:bg-bgHover"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          />
+        </svg>
+      </button>
+    </footer>
+  </div>
+</article>

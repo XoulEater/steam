@@ -6,11 +6,21 @@
     src="/home_header.webp"
     alt=""
   />
-  <main class="w-[1280px] px-[5%] mt-96 pb-48">
+  <main class="w-[1280px] px-[5%] mt-96 pb-48 gap-20 flex flex-col">
     <article>
       <h2 class="mb-5 -ml-10 text-xl font-medium">FEATURED</h2>
       <div class="relative">
-        <app-carousel></app-carousel>
+        <app-main-carousel [games]="games.slice(0, 5)"></app-main-carousel>
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-[110%] h-full px-10 bg-bgMain/20 backdrop-blur-sm z-10 rounded-lg"
+        ></div>
+      </div>
+    </article>
+
+    <article class="mt-10">
+      <h2 class="mb-5 -ml-10 text-xl font-medium">Special Offers</h2>
+      <div class="relative">
+        <app-offers-carousel [games]="games"></app-offers-carousel>
         <div
           class="absolute top-0 left-1/2 -translate-x-1/2 w-[110%] h-full px-10 bg-bgMain/20 backdrop-blur-sm z-10 rounded-lg"
         ></div>

@@ -11,3 +11,7 @@
 .transparent-gradient {
     mask-image: linear-gradient(black 70%, transparent);
 }
+
+.active {
+    @apply bg-secondary;
+}

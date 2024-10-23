@@ -1,11 +1,24 @@
+import { Game } from './../../interfaces/games.interfaces';
 import { Component } from '@angular/core';
-import { CarouselComponent } from '../../component/carousel/carousel.component';
+import { GamesService } from '../../services/games.service';
+import { MainCarouselComponent } from '../../component/main-carousel/main-carousel.component';
+import { OffersCarouselComponent } from '../../component/offers-carousel/offers-carousel.component';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CarouselComponent],
+  imports: [MainCarouselComponent, OffersCarouselComponent],
   templateUrl: './home-page.component.html',
   styles: ``,
 })
-export class HomePageComponent {}
+export class HomePageComponent {
+  public games: Game[] = [];
+
+  constructor(private gamesService: GamesService) {}
+
+  ngOnInit(): void {
+    this.gamesService.getGames().subscribe((games) => {
+      this.games = games;
+    });
+  }
+}

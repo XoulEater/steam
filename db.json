@@ -1,0 +1,459 @@
+{
+  "games": [
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://assets.xboxservices.com/assets/1d/5b/1d5bc84f-2135-4e2f-8ca6-bb000d97db7f.jpg?n=Elden-Ring_GLP-Poster-Image-1084_1920x1080.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://sm.ign.com/t/ign_latam/preview/e/elden-ring/elden-ring-shadow-of-the-erdtree-first-impressions-of-the-bi_ehm3.1200.jpg"
+        }
+      ],
+      "title": "Elder Ring",
+      "description": "Elden Ring is an action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment. The game is a collaborative effort between game director Hidetaka Miyazaki and fantasy novelist George R. R. Martin.",
+      "price": 59.99,
+      "rating": 4.5,
+      "developer": "FromSoftware",
+      "categories": ["Action", "RPG", "Open World", "Fantasy"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "comment": "Great game, I love it!",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Jane Doe",
+          "comment": "I don't like it",
+          "rating": 2
+        }
+      ],
+      "popularity": 5,
+      "systemRequirements": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-2500K / AMD FX-6300",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 770 2GB / AMD Radeon R9 280",
+        "DirectX": "Version 11",
+        "Storage": "60 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://image.api.playstation.com/vulcan/ap/rnd/202311/2812/ae84720b553c4ce943e9c342621b60f198beda0dbf533e21.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/12/cyber-recortada-2159617.jpg"
+        }
+      ],
+      "title": "Cyberpunk 2077",
+      "description": "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour, and body modification.",
+      "price": 49.99,
+      "rating": 3.8,
+      "developer": "CD Projekt Red",
+      "categories": ["Action", "RPG", "Open World", "Sci-Fi"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Alice Smith",
+          "comment": "Immersive world, but buggy.",
+          "rating": 3
+        },
+        {
+          "id": 2,
+          "name": "Bob Johnson",
+          "comment": "Fantastic game after patches.",
+          "rating": 4
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-3570K / AMD FX-8310",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 780 / AMD Radeon RX 470",
+        "DirectX": "Version 12",
+        "Storage": "70 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://image.api.playstation.com/vulcan/ap/rnd/202211/0914/TvcIHkYqqln1RGbaFqBeuFp6.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://i.ytimg.com/vi/xx8kQ4s5hCY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBxrLxUXsICGUEE-47vV0TKtl0FiA"
+        },
+        {
+          "id": 3,
+          "url": "https://static1.thegamerimages.com/wordpress/wp-content/uploads/2019/12/10-101358_the-witcher-3-wild-hunt-wallpaper-games-wild.jpg"
+        }
+      ],
+      "title": "The Witcher 3: Wild Hunt",
+      "description": "The Witcher 3: Wild Hunt is a story-driven, open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences.",
+      "price": 39.99,
+      "rating": 4.9,
+      "developer": "CD Projekt Red",
+      "categories": ["Action", "RPG", "Open World", "Fantasy"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Charlie Brown",
+          "comment": "Best RPG ever!",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Daisy Miller",
+          "comment": "Amazing story and graphics.",
+          "rating": 5
+        }
+      ],
+      "popularity": 5,
+      "systemRequirements": {
+        "OS": "Windows 7/8/10",
+        "Processor": "Intel Core i5-2500K / AMD Phenom II X4 940",
+        "Memory": "6 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 660 / AMD Radeon HD 7870",
+        "DirectX": "Version 11",
+        "Storage": "35 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://i.blogs.es/41c79d/rdr2_officialart2_desktop/1366_2000.jpeg"
+        },
+        {
+          "id": 2,
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSwFdQ8zr0R7Z4KzWl6Fe7sPl6BioRrGSLiQ&s"
+        }
+      ],
+      "title": "Red Dead Redemption 2",
+      "description": "Red Dead Redemption 2 is an epic tale of life in America’s unforgiving heartland. The game’s vast and atmospheric world will also provide the foundation for a brand new online multiplayer experience.",
+      "price": 59.99,
+      "rating": 4.7,
+      "developer": "Rockstar Games",
+      "categories": ["Action", "Adventure", "Open World", "Western"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Eve Adams",
+          "comment": "Incredible story and graphics.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Frank White",
+          "comment": "A bit slow-paced, but worth it.",
+          "rating": 4
+        }
+      ],
+      "popularity": 5,
+      "systemRequirements": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-2500K / AMD FX-6300",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 770 2GB / AMD Radeon R9 280",
+        "DirectX": "Version 11",
+        "Storage": "150 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://i0.wp.com/fromtheintercom.com/wp-content/uploads/hades-artwork.jpg?fit=1280%2C720&ssl=1"
+        },
+        {
+          "id": 2,
+          "url": "https://images.ctfassets.net/5owu3y35gz1g/1StZVnaATlNYl4oaNNftOb/2853b2a421cfb09ab3b654f5d0b1c3ea/hades_09-dec-2019_03.jpg?w=1920&q=80"
+        }
+      ],
+      "title": "Hades",
+      "description": "Hades is a god-like rogue-like dungeon crawler that combines the best aspects of Supergiant's critically acclaimed titles.",
+      "price": 24.99,
+      "rating": 4.8,
+      "developer": "Supergiant Games",
+      "categories": ["Action", "Rogue-like", "Indie"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Grace Lee",
+          "comment": "Addictive and challenging.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Henry Kim",
+          "comment": "Great gameplay and story.",
+          "rating": 5
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 7 SP1",
+        "Processor": "Dual Core 2.4 GHz",
+        "Memory": "4 GB RAM",
+        "Graphics": "1GB VRAM / DirectX 10+ support",
+        "DirectX": "Version 10",
+        "Storage": "15 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70070000011025/09fde58766118f7aec9f6ff30f3a8d6e7ba37ace336e79097643431c911d99c1"
+        },
+        {
+          "id": 2,
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVg0sZkNJ6cIuaMGx4aapJIyUIiWb1fdedIw&s"
+        }
+      ],
+      "title": "Doom Eternal",
+      "description": "Doom Eternal is a first-person shooter video game developed by id Software and published by Bethesda Softworks.",
+      "price": 59.99,
+      "rating": 4.6,
+      "developer": "id Software",
+      "categories": ["Action", "Shooter", "FPS"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Ivy Green",
+          "comment": "Fast-paced and thrilling.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Jack Black",
+          "comment": "Intense and satisfying.",
+          "rating": 4
+        }
+      ],
+      "popularity": 5,
+      "systemRequirements": {
+        "OS": "Windows 10",
+        "Processor": "Intel Core i5-2500K / AMD Ryzen 5 1400",
+        "Memory": "8 GB RAM",
+        "Graphics": "NVIDIA GeForce GTX 970 / AMD Radeon R9 290",
+        "DirectX": "Version 11",
+        "Storage": "50 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/413150/capsule_616x353.jpg?t=1711128146"
+        },
+        {
+          "id": 2,
+          "url": "https://www.stardewvalley.net/wp-content/uploads/2018/12/1_1screenshot15.png"
+        }
+      ],
+      "title": "Stardew Valley",
+      "description": "Stardew Valley is an open-ended country-life RPG! You've inherited your grandfather's old farm plot in Stardew Valley.",
+      "price": 14.99,
+      "rating": 4.9,
+      "developer": "ConcernedApe",
+      "categories": ["Simulation", "RPG", "Indie"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Karen White",
+          "comment": "Relaxing and fun.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Leo Brown",
+          "comment": "Great farming game.",
+          "rating": 5
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 7/8/10",
+        "Processor": "2 GHz",
+        "Memory": "2 GB RAM",
+        "Graphics": "256 MB video memory, shader model 3.0+",
+        "DirectX": "Version 10",
+        "Storage": "500 MB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000036098/758ab0b61205081da2466386940752c70e0e5ea43bd39e8b9b13eaa455c69b7e"
+        },
+        {
+          "id": 2,
+          "url": "https://e.rpp-noticias.io/xlarge/2020/12/22/335233_1038096.png"
+        }
+      ],
+      "title": "Among Us",
+      "description": "Among Us is an online multiplayer social deduction game developed and published by American game studio Innersloth.",
+      "price": 4.99,
+      "rating": 4.3,
+      "developer": "Innersloth",
+      "categories": ["Multiplayer", "Party", "Indie"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Mia Davis",
+          "comment": "Fun with friends.",
+          "rating": 4
+        },
+        {
+          "id": 2,
+          "name": "Noah Wilson",
+          "comment": "Great party game.",
+          "rating": 4
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 7 SP1",
+        "Processor": "SSE2 instruction set support",
+        "Memory": "1 GB RAM",
+        "Graphics": "DirectX 10 compatible",
+        "DirectX": "Version 10",
+        "Storage": "250 MB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://i.ytimg.com/vi_webp/ztNoBI0m_P0/maxresdefault.webp"
+        },
+        {
+          "id": 2,
+          "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/a28a81253e919298beab2295e39a56b7a5140ef15abdb56135655e5c221b2a3a"
+        }
+      ],
+      "title": "Minecraft",
+      "description": "Minecraft is a sandbox video game developed by Mojang. The game was created by Markus 'Notch' Persson in the Java programming language.",
+      "price": 26.95,
+      "rating": 4.8,
+      "developer": "Mojang",
+      "categories": ["Sandbox", "Survival", "Adventure"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Olivia Martinez",
+          "comment": "Endless creativity.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Paul Anderson",
+          "comment": "Great for all ages.",
+          "rating": 5
+        }
+      ],
+      "popularity": 5,
+      "systemRequirements": {
+        "OS": "Windows 7/8/10",
+        "Processor": "Intel Core i3-3210 / AMD A8-7600 APU",
+        "Memory": "4 GB RAM",
+        "Graphics": "Intel HD Graphics 4000 / AMD Radeon R5",
+        "DirectX": "Version 9.0c",
+        "Storage": "1 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://images.squarespace-cdn.com/content/v1/606d159a953867291018f801/1619987265163-9XILMVT3TK4HZ5X6538M/VH_01_1080pjpg.jpg"
+        },
+        {
+          "id": 2,
+          "url": "https://images.squarespace-cdn.com/content/v1/606d4bb793879d12d807d4c8/1619984695272-X5ZWEPXBSOXKPT26QCT7/Silksong_Promo_02small.jpg"
+        }
+      ],
+      "title": "Hollow Knight",
+      "description": "Hollow Knight is a 2D Metroidvania action-adventure game developed and published by Team Cherry.",
+      "price": 14.99,
+      "rating": 4.7,
+      "developer": "Team Cherry",
+      "categories": ["Action", "Adventure", "Indie"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Quinn Harris",
+          "comment": "Beautiful and challenging.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Riley Clark",
+          "comment": "Great atmosphere.",
+          "rating": 4
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 7",
+        "Processor": "Intel Core 2 Duo E5200",
+        "Memory": "4 GB RAM",
+        "Graphics": "GeForce 9800GTX+ (1GB)",
+        "DirectX": "Version 10",
+        "Storage": "9 GB available space"
+      }
+    },
+    {
+      "images": [
+        {
+          "id": 1,
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZMgVYZQv7bMSqPAS1i9IUfHzVcqydEWuCnw&s"
+        },
+        {
+          "id": 2,
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbu8gN50t2aeU0Tl3M9cO9vb1JbZn36ro0Vg&s"
+        }
+      ],
+      "title": "Celeste",
+      "description": "Celeste is a platforming video game by Canadian video game developers Maddy Makes Games.",
+      "price": 19.99,
+      "rating": 4.9,
+      "developer": "Maddy Makes Games",
+      "categories": ["Platformer", "Indie", "Adventure"],
+      "reviews": [
+        {
+          "id": 1,
+          "name": "Sam Lee",
+          "comment": "Challenging and rewarding.",
+          "rating": 5
+        },
+        {
+          "id": 2,
+          "name": "Taylor Morgan",
+          "comment": "Beautiful story.",
+          "rating": 5
+        }
+      ],
+      "popularity": 4,
+      "systemRequirements": {
+        "OS": "Windows 7/8/10",
+        "Processor": "Intel Core i3 M380",
+        "Memory": "2 GB RAM",
+        "Graphics": "Intel HD 4000",
+        "DirectX": "Version 10",
+        "Storage": "1200 MB available space"
+      }
+    }
+  ]
+}

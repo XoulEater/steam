@@ -1,66 +1,34 @@
 <div id="indicators-carousel" class="relative w-full" data-carousel="static">
   <!-- Carousel wrapper -->
-  <div class="relative overflow-hidden h-[488px]">
-    <!-- Item 1 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-      <app-carousel-item></app-carousel-item>
-    </div>
-    <!-- Item 2 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <app-carousel-item></app-carousel-item>
-    </div>
-    <!-- Item 3 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <app-carousel-item></app-carousel-item>
-    </div>
-    <!-- Item 4 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <app-carousel-item></app-carousel-item>
-    </div>
-    <!-- Item 5 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <app-carousel-item></app-carousel-item>
-    </div>
+  <div class="relative overflow-hidden h-[1050px] md:h-[358px]">
+    <ng-container *ngFor="let group of groupedGames; let i = index">
+      <div
+        class="hidden duration-700 ease-in-out"
+        [attr.data-carousel-item]="i === 0 ? 'active' : ''"
+      >
+        <div
+          class="absolute grid gap-4 -translate-y-1/2 md:grid-cols-3 top-1/2"
+        >
+          <ng-container *ngFor="let game of group">
+            <app-offers-carousel-item [game]="game"></app-offers-carousel-item>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
   </div>
   <!-- Slider indicators -->
   <div
     class="absolute z-30 flex space-x-3 -translate-x-1/2 rtl:space-x-reverse -bottom-10 left-1/2"
   >
+    @for (_ of groupedGames; track $index) {
     <button
       type="button"
       class="h-2 rounded-full w-9"
-      aria-current="true"
-      aria-label="Slide 1"
-      data-carousel-slide-to="0"
+      [attr.aria-current]="$index === 0 ? 'true' : 'false'"
+      [attr.aria-label]="'Slide ' + ($index + 1)"
+      [attr.data-carousel-slide-to]="$index"
     ></button>
-    <button
-      type="button"
-      class="h-2 rounded-full w-9"
-      aria-current="false"
-      aria-label="Slide 2"
-      data-carousel-slide-to="1"
-    ></button>
-    <button
-      type="button"
-      class="h-2 rounded-full w-9"
-      aria-current="false"
-      aria-label="Slide 3"
-      data-carousel-slide-to="2"
-    ></button>
-    <button
-      type="button"
-      class="h-2 rounded-full w-9"
-      aria-current="false"
-      aria-label="Slide 4"
-      data-carousel-slide-to="3"
-    ></button>
-    <button
-      type="button"
-      class="h-2 rounded-full w-9"
-      aria-current="false"
-      aria-label="Slide 5"
-      data-carousel-slide-to="4"
-    ></button>
+    }
   </div>
   <!-- Slider controls -->
   <button
