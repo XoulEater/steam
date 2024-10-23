@@ -1,5 +1,5 @@
 <div
-  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-bgMain to-bgSecondary"
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-bgMain to-bgTertiary"
 >
   <img
     class="absolute top-0 left-0 w-full h-[70svh] transparent-gradient opacity-10 blur-sm"
@@ -21,6 +21,18 @@
       <h2 class="mb-5 -ml-10 text-xl font-medium">Special Offers</h2>
       <div class="relative">
         <app-offers-carousel [games]="games"></app-offers-carousel>
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-[110%] h-full px-10 bg-bgMain/20 backdrop-blur-sm z-10 rounded-lg"
+        ></div>
+      </div>
+    </article>
+
+    <article class="mt-10">
+      <h2 class="mb-5 -ml-10 text-xl font-medium">Popular Categories</h2>
+      <div class="relative">
+        <app-categories-carousel
+          [categories]="categories"
+        ></app-categories-carousel>
         <div
           class="absolute top-0 left-1/2 -translate-x-1/2 w-[110%] h-full px-10 bg-bgMain/20 backdrop-blur-sm z-10 rounded-lg"
         ></div>

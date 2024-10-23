@@ -5,7 +5,7 @@ export interface Game {
   price: number;
   rating: number;
   developer: string;
-  categories: string[];
+  categories: Category[];
   reviews: Review[];
   popularity: number;
   systemRequirements: SystemRequirements;
@@ -31,4 +31,9 @@ export interface SystemRequirements {
   Graphics: string;
   DirectX: string;
   Storage: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
 }
