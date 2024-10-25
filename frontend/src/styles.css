@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-dark-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer tailwind-base, primeng, tailwind-utilities;
+        
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
+
 
 :root {
     color-scheme: dark;
@@ -30,4 +45,33 @@
 }
 .cat5 {
     background-image: url('/cat5.png');
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-bgHighlight;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-bgHover rounded-sm hover:bg-bgHover/70
+}
+
+.p-carousel-indicator {
+    @apply z-10 flex justify-center h-2 mx-1 mt-10 transition-all duration-200 ease-in rounded-full cursor-pointer hover:bg-secondary w-9 bg-bgMain ; 
+}
+
+.p-carousel-indicator.p-highlight {
+    @apply bg-secondary scale-110
+}
+
+.p-carousel-next, .p-carousel-prev {
+    @apply z-10 mx-3
+}
+
+.carousel-prev-icon, .carousel-next-icon {
+    @apply w-6 h-6 hover:scale-125 transition-all ease-in duration-300 hover:opacity-60
 }

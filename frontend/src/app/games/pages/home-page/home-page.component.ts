@@ -26,6 +26,7 @@ export class HomePageComponent {
     this.gamesService.getGames().subscribe((games) => {
       this.games = games;
     });
+
     this.gamesService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });

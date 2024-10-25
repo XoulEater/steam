@@ -1,89 +1,16 @@
-<div id="indicators-carousel" class="relative w-full" data-carousel="static">
-  <!-- Carousel wrapper -->
-  <div class="relative overflow-hidden h-[1050px] md:h-[308px]">
-    <ng-container *ngFor="let group of groupedCategories; let i = index">
-      <div
-        class="hidden duration-700 ease-in-out"
-        [attr.data-carousel-item]="i === 0 ? 'active' : ''"
-      >
-        <div
-          class="absolute grid w-full gap-3 px-2 -translate-y-1/2 md:grid-cols-5 top-1/2"
-        >
-          <ng-container *ngFor="let category of group; let j = index">
-            <app-categories-carousel-item
-              [category]="category"
-              [index]="j + 1"
-            ></app-categories-carousel-item>
-          </ng-container>
-        </div>
-      </div>
-    </ng-container>
-  </div>
-  <!-- Slider indicators -->
-  <div
-    class="absolute z-30 flex space-x-3 -translate-x-1/2 rtl:space-x-reverse -bottom-10 left-1/2"
+<div>
+  <p-carousel
+    [value]="categories"
+    [numVisible]="5"
+    [numScroll]="5"
+    [circular]="true"
+    autoplayInterval="3000"
   >
-    @for (_ of groupedCategories; track $index) {
-    <button
-      type="button"
-      class="h-2 rounded-full"
-      [attr.aria-current]="$index === 0 ? 'true' : 'false'"
-      [attr.aria-label]="'Slide ' + ($index + 1)"
-      [attr.data-carousel-slide-to]="$index"
-    ></button>
-    }
-  </div>
-  <!-- Slider controls -->
-  <button
-    type="button"
-    class="absolute top-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer -start-16 group focus:outline-none"
-    data-carousel-prev
-  >
-    <span
-      class="inline-flex items-center justify-center w-10 h-10 transition-transform duration-300 hover:scale-125"
-    >
-      <svg
-        class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 6 10"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 1 1 5l4 4"
-        />
-      </svg>
-      <span class="sr-only">Previous</span>
-    </span>
-  </button>
-  <button
-    type="button"
-    class="absolute top-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer -end-16 group focus:outline-none"
-    data-carousel-next
-  >
-    <span
-      class="inline-flex items-center justify-center w-10 h-10 transition-transform duration-300 hover:scale-125"
-    >
-      <svg
-        class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 6 10"
-      >
-        <path
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="m1 9 4-4-4-4"
-        />
-      </svg>
-      <span class="sr-only">Next</span>
-    </span>
-  </button>
+    <ng-template pTemplate="header"> <br /> </ng-template>
+    <ng-template let-category pTemplate="item">
+      <app-categories-carousel-item
+        [category]="category"
+      ></app-categories-carousel-item>
+    </ng-template>
+  </p-carousel>
 </div>

@@ -1,6 +1,7 @@
 <article
-  class="flex items-center justify-center h-56 transition-all duration-300 ease-in-out rounded-md shadow-inner cursor-pointer shadow-white/10 hover:scale-105 hover:brightness-125"
-  [ngClass]="'cat' + index"
+  class="relative flex items-center justify-center m-2 transition-all duration-300 ease-in-out rounded-md shadow-inner cursor-pointer aspect-square shadow-white/10 hover:scale-105 hover:brightness-125"
+  [ngClass]="'cat' + ((category.id % 5) + 1)"
 >
   <h2 class="text-xl font-bold pointer-events-none">{{ category.name }}</h2>
+  <!-- TODO: Implement Pipe for categories -->
 </article>

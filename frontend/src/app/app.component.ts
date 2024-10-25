@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -10,7 +9,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   standalone: true,
   imports: [RouterOutlet, NavigationBarComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'], // Corrige el nombre de la propiedad a styleUrls
 })
 export class AppComponent {
   title = 'steam';
