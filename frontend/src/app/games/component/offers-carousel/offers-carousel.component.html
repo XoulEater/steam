@@ -1,5 +1,12 @@
 <div>
   <p-carousel
+    [responsiveOptions]="[
+      {
+        breakpoint: '1024px',
+        numVisible: 1,
+        numScroll: 1
+      }
+    ]"
     [value]="games"
     [numVisible]="3"
     [numScroll]="3"

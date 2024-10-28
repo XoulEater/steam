@@ -75,3 +75,11 @@
 .carousel-prev-icon, .carousel-next-icon {
     @apply w-6 h-6 hover:scale-125 transition-all ease-in duration-300 hover:opacity-60
 }
+
+.fade {
+    @apply transition-all brightness-100 duration-300 ease-in-out
+  }
+  
+  .fade-out {
+    @apply brightness-0 
+  }

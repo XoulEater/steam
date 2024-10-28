@@ -17,6 +17,12 @@ export class GamesService {
     return this.http.get<Game[]>(url).pipe(catchError((err) => of([])));
   }
 
+  public getGameById(id: string): Observable<Game | undefined> {
+    const url = this.apiURL + '/games/' + id;
+
+    return this.http.get<Game>(url).pipe(catchError((err) => of(undefined)));
+  }
+
   public getCategories(): Observable<Category[]> {
     const url = this.apiURL + '/categories';
 

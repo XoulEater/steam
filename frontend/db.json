@@ -1,6 +1,7 @@
 {
   "games": [
     {
+      "id": 1,
       "images": [
         {
           "id": 1,
@@ -23,6 +24,7 @@
           "url": "https://res.cloudinary.com/cook-becker/image/fetch/q_auto:best,f_auto,w_1920,g_north/https://candb.com/site/candb/images/article/EldenRing01.jpg"
         }
       ],
+
       "title": "Elder Ring",
       "description": "Elden Ring is an action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment. The game is a collaborative effort between game director Hidetaka Miyazaki and fantasy novelist George R. R. Martin.",
       "price": 59.99,
@@ -58,6 +60,7 @@
       }
     },
     {
+      "id": 2,
       "images": [
         {
           "id": 1,
@@ -80,6 +83,7 @@
           "url": "https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e751531-e24d-4fd8-8fb0-88cc547c2b53_1920x1080.jpeg"
         }
       ],
+
       "title": "Cyberpunk 2077",
       "description": "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour, and body modification.",
       "price": 49.99,
@@ -115,6 +119,7 @@
       }
     },
     {
+      "id": 3,
       "images": [
         {
           "id": 1,
@@ -133,6 +138,7 @@
           "url": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/5/13/1431520130189/8bfad8ae-5a24-4617-988e-ccafee83324f-1020x612.jpeg?width=700&quality=85&auto=format&fit=max&s=8a7d3e78ea1329d9442f2b175bc7eb14"
         }
       ],
+
       "title": "The Witcher 3: Wild Hunt",
       "description": "The Witcher 3: Wild Hunt is a story-driven, open world RPG set in a visually stunning fantasy universe full of meaningful choices and impactful consequences.",
       "price": 39.99,
@@ -168,6 +174,7 @@
       }
     },
     {
+      "id": 4,
       "images": [
         {
           "id": 1,
@@ -182,6 +189,7 @@
           "url": "https://gamersrd.com/wp-content/uploads/2023/03/Red-Dead-Redemption-2-se-ve-mejor-que-el-99-de-los-juegos-actuales-segun-fans.jpg"
         }
       ],
+
       "title": "Red Dead Redemption 2",
       "description": "Red Dead Redemption 2 is an epic tale of life in America’s unforgiving heartland. The game’s vast and atmospheric world will also provide the foundation for a brand new online multiplayer experience.",
       "price": 59.99,
@@ -217,6 +225,7 @@
       }
     },
     {
+      "id": 5,
       "images": [
         {
           "id": 1,
@@ -227,6 +236,7 @@
           "url": "https://images.ctfassets.net/5owu3y35gz1g/1StZVnaATlNYl4oaNNftOb/2853b2a421cfb09ab3b654f5d0b1c3ea/hades_09-dec-2019_03.jpg?w=1920&q=80"
         }
       ],
+
       "title": "Hades",
       "description": "Hades is a god-like rogue-like dungeon crawler that combines the best aspects of Supergiant's critically acclaimed titles.",
       "price": 24.99,
@@ -262,6 +272,7 @@
       }
     },
     {
+      "id": 6,
       "images": [
         {
           "id": 1,
@@ -272,6 +283,7 @@
           "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVg0sZkNJ6cIuaMGx4aapJIyUIiWb1fdedIw&s"
         }
       ],
+
       "title": "Doom Eternal",
       "description": "Doom Eternal is a first-person shooter video game developed by id Software and published by Bethesda Softworks.",
       "price": 59.99,
@@ -307,6 +319,7 @@
       }
     },
     {
+      "id": 7,
       "images": [
         {
           "id": 1,
@@ -317,6 +330,7 @@
           "url": "https://www.stardewvalley.net/wp-content/uploads/2018/12/1_1screenshot15.png"
         }
       ],
+
       "title": "Stardew Valley",
       "description": "Stardew Valley is an open-ended country-life RPG! You've inherited your grandfather's old farm plot in Stardew Valley.",
       "price": 14.99,
@@ -351,6 +365,7 @@
       }
     },
     {
+      "id": 8,
       "images": [
         {
           "id": 1,
@@ -361,6 +376,7 @@
           "url": "https://e.rpp-noticias.io/xlarge/2020/12/22/335233_1038096.png"
         }
       ],
+
       "title": "Among Us",
       "description": "Among Us is an online multiplayer social deduction game developed and published by American game studio Innersloth.",
       "price": 4.99,
@@ -395,6 +411,7 @@
       }
     },
     {
+      "id": 9,
       "images": [
         {
           "id": 1,
@@ -405,6 +422,7 @@
           "url": "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/a28a81253e919298beab2295e39a56b7a5140ef15abdb56135655e5c221b2a3a"
         }
       ],
+
       "title": "Minecraft",
       "description": "Minecraft is a sandbox video game developed by Mojang. The game was created by Markus 'Notch' Persson in the Java programming language.",
       "price": 26.95,
@@ -439,6 +457,7 @@
       }
     },
     {
+      "id": 10,
       "images": [
         {
           "id": 1,
@@ -449,6 +468,7 @@
           "url": "https://images.squarespace-cdn.com/content/v1/606d4bb793879d12d807d4c8/1619984695272-X5ZWEPXBSOXKPT26QCT7/Silksong_Promo_02small.jpg"
         }
       ],
+
       "title": "Hollow Knight",
       "description": "Hollow Knight is a 2D Metroidvania action-adventure game developed and published by Team Cherry.",
       "price": 14.99,
@@ -483,6 +503,7 @@
       }
     },
     {
+      "id": 11,
       "images": [
         {
           "id": 1,
@@ -493,6 +514,7 @@
           "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbu8gN50t2aeU0Tl3M9cO9vb1JbZn36ro0Vg&s"
         }
       ],
+
       "title": "Celeste",
       "description": "Celeste is a platforming video game by Canadian video game developers Maddy Makes Games.",
       "price": 19.99,

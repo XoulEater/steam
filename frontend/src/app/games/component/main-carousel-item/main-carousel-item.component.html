@@ -1,33 +1,45 @@
 <article
-  class="grid items-center w-full grid-cols-8 gap-3 p-4 rounded-md bg-bgMain"
+  class="flex flex-col items-center w-full gap-3 p-4 rounded-md lg:flex-row bg-bgMain"
 >
-  <img
-    class="object-cover w-full col-span-5"
-    [src]="game.images[0].url"
-    alt=""
-  />
-  <aside class="flex flex-col w-full col-span-3 gap-3 pt-1">
-    <h2 class="text-2xl font-bold">{{ game.title }}</h2>
+  <div class="w-8/12 overflow-hidden aspect-video">
+    <img
+      class="object-contain w-full h-full fade"
+      [src]="mainImage"
+      alt=""
+      [class.fade-out]="isChangingImage"
+      (load)="onImageLoad()"
+    />
+  </div>
+  <aside
+    class="flex flex-col items-center flex-grow w-4/12 gap-3 pt-1 lg:items-start"
+  >
+    <h2 class="justify-center text-2xl font-bold">{{ game.title }}</h2>
     <p class="leading-tight line-clamp-3">
       {{ game.description }}
     </p>
-    <div class="grid grid-cols-2 grid-rows-2 gap-1 w-fit">
+    <div
+      class="grid grid-cols-2 grid-rows-2 gap-1 w-fit"
+      (mouseleave)="changeImage(game.images[0].url)"
+    >
       <ng-container *ngFor="let image of game.images | slice : 1">
         <img
-          class="object-cover w-56 h-24 rounded-sm"
+          class="object-cover w-56 h-24 transition-all duration-300 ease-in cursor-pointer brightness-50 rounded-s hover:brightness-100"
           [src]="image.url"
           alt=""
+          (mouseenter)="changeImage(image.url)"
         />
       </ng-container>
     </div>
-    <div class="flex flex-wrap w-full gap-2 text-dim">
+    <div
+      class="flex justify-center w-full gap-2 lg:flex-wrap lg:justify-start text-dim"
+    >
       @for (category of game.categories; track $index) {
       <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
         category.name
       }}</span>
       }
     </div>
-    <footer class="flex items-center justify-between">
+    <footer class="flex flex-wrap items-center justify-between gap-3">
       <button
         class="flex items-center justify-center gap-2 px-5 py-2 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
         (click)="toggleWishlist()"
@@ -69,11 +81,12 @@
       </button>
       <div class="flex items-center gap-3">
         <span class="text-lg font-semibold">{{ game.price }}</span>
-        <button
+        <a
           class="px-5 py-2 transition-colors duration-300 ease-in rounded-sm bg-secondary hover:bg-primary"
+          [routerLink]="['/browse', game.id]"
         >
           Buy Now
-        </button>
+        </a>
       </div>
     </footer>
   </aside>

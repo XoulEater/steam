@@ -8,6 +8,7 @@ export interface Game {
   categories: Category[];
   reviews: Review[];
   popularity: number;
+  releaseDate: string;
   systemRequirements: SystemRequirements;
   id: string;
 }

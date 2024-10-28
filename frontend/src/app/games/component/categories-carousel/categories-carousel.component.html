@@ -1,5 +1,12 @@
 <div>
   <p-carousel
+    [responsiveOptions]="[
+      {
+        breakpoint: '1024px',
+        numVisible: 2,
+        numScroll: 2,
+      }
+    ]"
     [value]="categories"
     [numVisible]="5"
     [numScroll]="5"
