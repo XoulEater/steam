@@ -1,8 +1,10 @@
 import { initFlowbite } from 'flowbite';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { Router, NavigationEnd } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +13,17 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'], // Corrige el nombre de la propiedad a styleUrls
 })
-export class AppComponent {
-  title = 'steam';
+export class AppComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {}
 
-  ngOnInit(): void {
-    initFlowbite();
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.viewportScroller.scrollToPosition([0, 0]);
+      }
+    });
   }
 }

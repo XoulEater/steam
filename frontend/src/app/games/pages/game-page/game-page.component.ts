@@ -1,28 +1,42 @@
 import { GamesService } from './../../services/games.service';
 import { Component } from '@angular/core';
-import { Game } from '../../interfaces/games.interfaces';
+import { Game, Review } from '../../interfaces/games.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import { OffersCarouselItemComponent } from '../../component/offers-carousel-item/offers-carousel-item.component';
+import { ReviewSectionComponent } from '../../component/review-section/review-section.component';
+import { RatingBarComponent } from '../../component/rating-bar/rating-bar.component';
 
 @Component({
   selector: 'app-game-page',
   standalone: true,
-  imports: [CommonModule, CarouselModule],
+  imports: [
+    CommonModule,
+    CarouselModule,
+    OffersCarouselItemComponent,
+    ReviewSectionComponent,
+    RatingBarComponent,
+  ],
   templateUrl: './game-page.component.html',
   styles: ``,
 })
 export class GamePageComponent {
   public game!: Game;
   public mainImage!: string;
-
+  public similarGames: Game[] = [];
+  public discount: boolean = true;
   public inWishlist = false;
-  public toggleWishlist(): void {
-    this.inWishlist = !this.inWishlist;
-  }
 
   public isChangingImage: boolean = false;
 
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private route: Router,
+    private gamesService: GamesService
+  ) {}
+
+  // Método para cambiar la imagen principal con una transición
   changeImage(newImageUrl: string) {
     if (newImageUrl === this.mainImage) return;
     this.isChangingImage = true;
@@ -31,23 +45,21 @@ export class GamePageComponent {
     }, 150); // Tiempo para la transición de salida
   }
 
+  public toggleWishlist(): void {
+    this.inWishlist = !this.inWishlist;
+  }
+
   onImageLoad() {
     this.isChangingImage = false;
   }
 
-  constructor(
-    private activeRoute: ActivatedRoute,
-    private route: Router,
-    private gamesService: GamesService
-  ) {}
-
-  get positiveRatio(): number {
-    const positive = this.game.reviews.filter(
-      (review) => review.rating >= 3
-    ).length;
-    const total = this.game.reviews.length;
-
-    return (positive / total) * 100;
+  onReviewAdded(review: Review) {
+    this.gamesService.addReview(this.game.id, review).subscribe((response) => {
+      if (response) {
+        console.log('Review added successfully');
+        this.game.reviews.push(review);
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -58,8 +70,19 @@ export class GamePageComponent {
           return;
         }
         this.game = game;
-        this.mainImage = game.images[0].url;
+        if (game.images && game.images.length > 0) {
+          this.mainImage = game.images[0].url;
+        } else {
+          // TODO: Manejar el caso en que no haya imágenes
+          this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
+        }
       });
+      // TODO: Implementar el servicio para obtener juegos similares
+      this.gamesService.getGames().subscribe((games) => {
+        this.similarGames = games.slice(0, 3);
+      });
+      // FIXME: Implementar la lógica para saber si el juego está en la lista de deseos
+      this.inWishlist = false;
     });
   }
 }

@@ -14,7 +14,7 @@
     class="flex flex-col items-center flex-grow w-4/12 gap-3 pt-1 lg:items-start"
   >
     <h2 class="justify-center text-2xl font-bold">{{ game.title }}</h2>
-    <p class="leading-tight line-clamp-3">
+    <p class="leading-tight text-justify line-clamp-3">
       {{ game.description }}
     </p>
     <div
@@ -39,7 +39,7 @@
       }}</span>
       }
     </div>
-    <footer class="flex flex-wrap items-center justify-between gap-3">
+    <footer class="flex flex-wrap items-center justify-between w-full gap-3">
       <button
         class="flex items-center justify-center gap-2 px-5 py-2 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
         (click)="toggleWishlist()"

@@ -23,9 +23,14 @@ export class GamesService {
     return this.http.get<Game>(url).pipe(catchError((err) => of(undefined)));
   }
 
+  public addReview(gameId: string, review: any): Observable<any> {
+    // const url = this.apiURL + '/games/' + gameId + '/reviews';
+    // return this.http.post(url, review).pipe(catchError((err) => of(undefined)));
+    return of(true);
+  }
+
   public getCategories(): Observable<Category[]> {
     const url = this.apiURL + '/categories';
-
     return this.http.get<Category[]>(url).pipe(catchError((err) => of([])));
   }
 }

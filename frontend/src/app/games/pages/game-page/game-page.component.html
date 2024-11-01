@@ -1,12 +1,14 @@
 <div
-  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-bgMain to-bgTertiary"
+  *ngIf="game"
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-[#0E141B] to-[#202B3B]"
 >
   <img
-    class="absolute top-0 left-0 pointer-events-none opacity-20 aspect-video transparent-gradient blur-sm"
+    class="absolute top-0 left-0 w-full pointer-events-none opacity-20 aspect-video transparent-gradient blur-sm"
     [src]="game.images[1].url"
     alt=""
   />
-  <main class="w-10/12 px-[5%] mt-36 pb-48 gap-6 flex flex-col z-10">
+  <main class="w-11/12 px-[5%] mt-36 pb-48 gap-6 flex flex-col z-10">
+    <!-- Title | Wishlist Button -->
     <header class="flex items-center justify-between px-5 py-3 bg-bgMain">
       <h1 class="text-2xl font-bold">{{ game.title }}</h1>
       <button
@@ -50,6 +52,7 @@
       </button>
     </header>
 
+    <!-- Main Content -->
     <article class="flex flex-col gap-5 p-5 lg:flex-row bg-bgMain/50">
       <div class="flex flex-col gap-4 lg:w-8/12">
         <img
@@ -69,7 +72,7 @@
               }
             ]"
             [value]="game.images"
-            [numVisible]="4"
+            [numVisible]="3"
             [numScroll]="1"
             [circular]="false"
           >
@@ -90,61 +93,17 @@
           [src]="game.images[0].url"
           alt=""
         />
+
         <p class="text-justify">
           {{ game.description }}
         </p>
         <div class="grid content-center gap-x-4 gap-y-5">
           <span class="col-span-5 text-sm text-dim">Reviews</span>
           <span>All Time</span>
-          <div class="flex flex-col col-span-2 gap-2">
-            <header class="flex justify-between">
-              <span class="flex items-center gap-1 text-xs text-primary">
-                {{ positiveRatio }}%
-                <svg
-                  class="opacity-50"
-                  width="13"
-                  height="11"
-                  viewBox="0 0 13 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.89337 0.282521L8.89421 3.28335C9.09462 3.48377 9.20837 3.76002 9.20837 4.0471V9.45835C9.20837 10.0542 8.72087 10.5417 8.12504 10.5417H3.25004C2.81671 10.5417 2.42671 10.2817 2.25337 9.88627L0.48754 5.76419C0.0325403 4.69169 0.817957 3.50002 1.98254 3.50002H5.04296L4.52837 1.01919C4.47421 0.748355 4.55546 0.472105 4.75046 0.277105C5.07004 -0.037062 5.57921 -0.037062 5.89337 0.282521ZM11.375 10.5417C10.7792 10.5417 10.2917 10.0542 10.2917 9.45835V5.12502C10.2917 4.52919 10.7792 4.04169 11.375 4.04169C11.9709 4.04169 12.4584 4.52919 12.4584 5.12502V9.45835C12.4584 10.0542 11.9709 10.5417 11.375 10.5417Z"
-                    fill="#66C0F4"
-                  />
-                </svg>
-              </span>
-              <span class="flex items-center gap-1 text-xs text-danger">
-                {{ 100 - positiveRatio }}%
-                <svg
-                  class="opacity-50"
-                  width="13"
-                  height="12"
-                  viewBox="0 0 13 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.89337 11.0509L8.89421 8.05002C9.09462 7.8496 9.20837 7.57335 9.20837 7.28627L9.20837 1.87502C9.20837 1.27919 8.72087 0.791685 8.12504 0.791685L3.25004 0.791684C2.81671 0.791684 2.42671 1.05168 2.25337 1.4471L0.487541 5.56918C0.0325407 6.64168 0.817957 7.83335 1.98254 7.83335L5.04296 7.83335L4.52837 10.3142C4.47421 10.585 4.55546 10.8613 4.75046 11.0563C5.07004 11.3704 5.57921 11.3704 5.89337 11.0509ZM11.375 0.791685C10.7792 0.791685 10.2917 1.27919 10.2917 1.87502L10.2917 6.20835C10.2917 6.80419 10.7792 7.29169 11.375 7.29169C11.9709 7.29169 12.4584 6.80419 12.4584 6.20835L12.4584 1.87502C12.4584 1.27919 11.9709 0.791685 11.375 0.791685Z"
-                    fill="#CD5444"
-                  />
-                </svg>
-              </span>
-            </header>
-            <div class="flex w-full gap-1">
-              <div
-                class="h-1 rounded-full bg-primary"
-                [style.width.%]="positiveRatio"
-              ></div>
-              <div
-                class="h-1 rounded-full bg-danger"
-                [style.width.%]="100 - positiveRatio"
-              ></div>
-            </div>
+          <div class="col-span-4">
+            <app-rating-bar [reviews]="game.reviews"> </app-rating-bar>
           </div>
-          <span class="col-span-2 text-secondary"
-            >{{ game.reviews.length }} Reviews</span
-          >
+
           <span class="text-sm text-dim">Release Date</span>
           <span class="col-span-4">{{
             (game.releaseDate | date : "longDate") || "Unknown"
@@ -163,5 +122,85 @@
         </div>
       </aside>
     </article>
+
+    <!-- Extra Info -->
+    <section class="flex flex-col gap-5 lg:flex-row">
+      <!-- Left Info -->
+      <div class="flex flex-col gap-5 lg:w-8/12">
+        <!-- Buy Options -->
+        <div class="flex justify-between p-5 bg-bgMain/50">
+          <div>
+            <h2 class="text-xl font-semibold">{{ game.title }}</h2>
+            <span class="text-sm text-primary">Offer ends 19 October</span>
+          </div>
+          <div class="flex items-center gap-3">
+            @if (discount) {
+            <!-- TODO: Implement discounts -->
+
+            <span
+              class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+              >-20%</span
+            >
+            <div class="relative flex flex-col justify-end">
+              <span
+                class="absolute font-semibold line-through top-2 text-dim/50"
+                >{{ game.price | currency : "USD" }}</span
+              >
+              <span class="absolute font-semibold bottom-2 text-success">{{
+                19.99 | currency : "USD"
+              }}</span>
+              <span class="text-transparent">$00.00</span>
+            </div>
+            } @else {
+            <span class="text-lg font-semibold">{{
+              game.price | currency : "USD"
+            }}</span>
+            }
+            <button
+              class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- System Requirements -->
+
+        <div class="flex flex-col gap-5 p-5 mb-20 bg-bgMain/50">
+          <h2 class="font-semibold text-dim">System Requirements</h2>
+          <span class="col-span-2 text-sm text-dim">Recomended</span>
+          <div class="grid grid-cols-1 gap-3 pl-4 md:grid-cols-2">
+            <span class="text-sm text-dim">&centerdot; OS</span>
+            <span class="text-sm">{{ game.systemRequirements.OS }}</span>
+            <span class="text-sm text-dim">&centerdot; Processor</span>
+            <span class="text-sm">{{ game.systemRequirements.Processor }}</span>
+            <span class="text-sm text-dim">&centerdot; Memory</span>
+            <span class="text-sm">{{ game.systemRequirements.Memory }}</span>
+            <span class="text-sm text-dim">&centerdot; Graphics</span>
+            <span class="text-sm">{{ game.systemRequirements.Graphics }}</span>
+            <span class="text-sm text-dim">&centerdot; Storage</span>
+            <span class="text-sm">{{ game.systemRequirements.Storage }}</span>
+          </div>
+        </div>
+
+        <h2 class="text-xl font-bold">Similar Games</h2>
+        <div
+          class="grid grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 bg-bgMain/50"
+        >
+          <ng-container *ngFor="let similarGame of similarGames">
+            <app-offers-carousel-item [game]="similarGame" [discount]="false">
+            </app-offers-carousel-item>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Right Info -->
+      <aside class="flex flex-col gap-5 lg:w-4/12">
+        <app-review-section
+          [reviews]="game.reviews.reverse()"
+          (newReview)="onReviewAdded($event)"
+        ></app-review-section>
+      </aside>
+    </section>
   </main>
 </div>
