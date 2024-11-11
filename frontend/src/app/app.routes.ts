@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomePageComponent } from './games/pages/home-page/home-page.component';
 import { GamePageComponent } from './games/pages/game-page/game-page.component';
+import { BrowsePageComponent } from './games/pages/browse-page/browse-page.component';
 
 export const routes: Routes = [
   {
@@ -15,8 +16,8 @@ export const routes: Routes = [
         component: GamePageComponent,
       },
       {
-        path: '**',
-        redirectTo: 'browse/1',
+        path: '',
+        component: BrowsePageComponent,
       },
     ],
   },

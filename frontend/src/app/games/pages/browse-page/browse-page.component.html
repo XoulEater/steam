@@ -1,0 +1,125 @@
+<div
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-bgMain to-bgTertiary"
+>
+  <img
+    class="absolute top-0 left-0 w-full h-[70svh] transparent-gradient opacity-10 blur-sm pointer-events-none"
+    src="/home_header.webp"
+    alt=""
+  />
+  <main class="w-11/12 px-[5%] mt-56 pb-48 gap-4 flex flex-col">
+    <h2 class="mb-5 text-2xl font-semibold">Browse Steam</h2>
+
+    <header class="flex items-center w-full px-5 py-2 rounded-sm bg-bgMain">
+      <section class="w-1/5">
+        <div class="flex items-center gap-3">
+          <span class="text-sm font-medium text-dim">View</span>
+          <button
+            class="w-8 h-8 bg-[#76808C]/5 rounded-sm text-dim flex justify-center items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="24"
+              height="24"
+              stroke-width="1.5"
+            >
+              <path
+                d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
+              ></path>
+              <path
+                d="M4 14m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            class="w-8 h-8 bg-[#76808C]/5 rounded-sm text-dim flex justify-center items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="24"
+              height="24"
+              stroke-width="1.5"
+            >
+              <path
+                d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+              ></path>
+              <path
+                d="M14 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+              ></path>
+              <path
+                d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+              ></path>
+              <path
+                d="M14 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </section>
+      <section class="flex items-center justify-between w-4/5 px-1">
+        <div class="relative flex w-1/2 text-dim">
+          <!-- TODO: Busqueda con sugerencias -->
+          <input
+            type="text "
+            class="w-full py-2 pl-3 pr-8 rounded-sm bg-bgHighlight"
+            placeholder="Search..."
+          />
+          <svg
+            class="absolute transform -translate-y-1/2 top-1/2 right-2"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="20"
+            height="20"
+            stroke-width="1.5"
+          >
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+            <path d="M21 21l-6 -6"></path>
+          </svg>
+        </div>
+        <div>sort by</div>
+      </section>
+    </header>
+
+    <section class="flex gap-3">
+      <section class="w-1/5 p-3 rounded-sm bg-bgMain">
+        <header class="flex items-center justify-between">
+          <span class="text-sm">FILTERS</span>
+          <button
+            class="w-8 h-8 bg-[#76808C]/5 rounded-sm text-dim items-center justify-center flex"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              width="20"
+              height="20"
+              stroke-width="2"
+            >
+              <path
+                d="M8 4h12v2.172a2 2 0 0 1 -.586 1.414l-3.914 3.914m-.5 3.5v4l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227"
+              ></path>
+              <path d="M3 3l18 18"></path>
+            </svg>
+          </button>
+        </header>
+      </section>
+      <section class="w-4/5 rounded-sm bg-bgMain">lista</section>
+    </section>
+  </main>
+</div>
