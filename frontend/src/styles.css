@@ -7,79 +7,80 @@
 @tailwind utilities;
 
 @layer tailwind-base, primeng, tailwind-utilities;
-        
+
 @layer tailwind-base {
-    @tailwind base;
+  @tailwind base;
 }
 
 @layer tailwind-utilities {
-    @tailwind components;
-    @tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 }
 
-
 :root {
-    color-scheme: dark;
-    @apply text-main;
+  color-scheme: dark;
+  @apply text-main;
 }
 
 .transparent-gradient {
-    mask-image: linear-gradient(black 70%, transparent);
+  mask-image: linear-gradient(black 70%, transparent);
 }
 
 .active {
-    @apply bg-secondary;
+  @apply bg-secondary;
 }
 
 .cat1 {
-    background-image: url('/cat1.png');
+  background-image: url("/cat1.png");
 }
 .cat2 {
-    background-image: url('/cat2.png');
+  background-image: url("/cat2.png");
 }
 .cat3 {
-    background-image: url('/cat3.png');
+  background-image: url("/cat3.png");
 }
 .cat4 {
-    background-image: url('/cat4.png');
+  background-image: url("/cat4.png");
 }
 .cat5 {
-    background-image: url('/cat5.png');
+  background-image: url("/cat5.png");
 }
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-bgHighlight;
+  @apply bg-bgHighlight;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-bgHover rounded-sm hover:bg-bgHover/70
+  @apply bg-bgHover rounded-sm hover:bg-bgHover/70;
 }
 
 .p-carousel-indicator {
-    @apply z-10 flex justify-center h-2 mx-1 mt-10 transition-all duration-200 ease-in rounded-full cursor-pointer hover:bg-secondary w-9 bg-bgMain ; 
+  @apply z-10 flex justify-center h-2 mx-1 mt-10 transition-all duration-200 ease-in rounded-full cursor-pointer hover:bg-secondary w-9 bg-bgMain;
 }
 
 .p-carousel-indicator.p-highlight {
-    @apply bg-secondary scale-110
+  @apply bg-secondary scale-110;
 }
 
-.p-carousel-next, .p-carousel-prev {
-    @apply z-10 mx-3
+.p-carousel-next,
+.p-carousel-prev {
+  @apply z-10 mx-3;
 }
 
-.carousel-prev-icon, .carousel-next-icon {
-    @apply w-6 h-6 hover:scale-125 transition-all ease-in duration-300 hover:opacity-60
+.carousel-prev-icon,
+.carousel-next-icon {
+  @apply w-6 h-6 hover:scale-125 transition-all ease-in duration-300 hover:opacity-60;
 }
 
 .fade {
-    @apply transition-all brightness-100 duration-300 ease-in-out
-  }
-  
-  .fade-out {
-    @apply brightness-0 
-  }
+  @apply transition-all brightness-100 duration-300 ease-in-out;
+}
+
+.fade-out {
+  @apply brightness-0;
+}
