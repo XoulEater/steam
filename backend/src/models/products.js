@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema(
     brand: { type: String, required: true },
     price: { type: Number, required: true },
     rating: { type: Number, default: 0, min: 0, max: 5 }, // Rating entre 0 y 5
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }], // Reseñas del producto
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ProductReview" }], // Reseñas del producto
     popularity: { type: Number, default: 0 }, // Popularidad (por ejemplo, cantidad de ventas)
     keywords: [{ type: String }], // Palabras clave para búsqueda
     specs: {
@@ -26,6 +26,7 @@ const productSchema = new mongoose.Schema(
       min: 0,
       max: 100,
     }, // Descuento en porcentaje (0 - 100)
+    stock: { type: Number, required: true }, // Cantidad en stock
   },
   { timestamps: true }
 );

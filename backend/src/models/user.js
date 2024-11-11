@@ -11,12 +11,7 @@ const userSchema = new mongoose.Schema({
       {type: mongoose.Schema.Types.ObjectId, ref: "PaymentMethod"},
     ],
     wishlist: {type: mongoose.Schema.Types.ObjectId, ref: "Wishlist"},
-    orderHistory: [
-      {
-        orderId: { type: mongoose.Schema.Types.ObjectId, ref: "Order" },
-        date: { type: Date, default: Date.now },
-        status: { type: String, default: "En curso" },
-      },
+    orderHistory: [ {type: mongoose.Schema.Types.ObjectId, ref: "Order"}
     ],
   },{ timestamps: true });
 

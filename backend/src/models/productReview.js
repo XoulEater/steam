@@ -8,4 +8,4 @@ const productReviewSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now }, // Fecha de la reseña
 }, { timestamps: true });
 
-module.exports = mongoose.model("Review", productReviewSchema);
+module.exports = mongoose.model("ProductReview", productReviewSchema);
