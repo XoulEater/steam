@@ -1,6 +1,5 @@
 const express = require("express");
 const bcrytp = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const userSchema = require("../models/user");
 const userAuthSchema = require("../models/usersAuth");
@@ -60,7 +59,7 @@ router.post("/registerUser", async (req, res) =>{
 
         //Agregar el usuario a usersAuth
         const newUserAuth = new userAuthSchema({
-            username: username,
+            email: email,
             userId: savedUser._id,
         });
 
