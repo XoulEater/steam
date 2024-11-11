@@ -8,4 +8,4 @@ const adminLogisticSchema = new mongoose.Schema({
   notifications: [{ type: String }], // Lista de notificaciones
 }, { timestamps: true });
 
-module.exports = mongoose.model("Admin", adminLogisticSchema);
+module.exports = mongoose.model("AdminLogistic", adminLogisticSchema);

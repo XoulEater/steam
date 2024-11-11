@@ -6,3 +6,5 @@ const userSchema = require("../models/user");
 const router = express.Router();
 
 //TODO: Hacer el login de usuarios (Normal user and admin-logistic)
+
+module.exports = router;
