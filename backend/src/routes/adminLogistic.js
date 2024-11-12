@@ -1,7 +1,8 @@
 const express = require('express');
-const bcrytp = require("bcrypt");
+const bcrytp = require("bcryptjs");
 const adminLogisticSchema = require('../models/adminLogistic');
 const userAuthSchema = require('../models/usersAuth');
+const auth = require("../middleware/authMiddleware");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -52,6 +53,53 @@ router.post("/registerAdminLogistic", async (req, res) => {
             message: "Error al registrar el admin-logistic",
             error: error
         })
+    }
+});
+
+//Edit admin logistic user
+router.put("/editAdminLogistic", auth(["admin", "logistic"]), async (req, res) => {
+    try {
+        const {username, email, password} = req.body;
+        const adminLogisticId = req.user.id;
+
+        const adminLogistic = await adminLogisticSchema.findById(adminLogisticId);
+        if(!adminLogistic){
+            return res.status(404).json({message: "Admin-logistic no encontrado"});
+        }
+
+        if(email) {
+            adminLogistic.email = email;
+
+            //Actualizar el email en usersAuth
+            const userAuth = await userAuthSchema.findOne({userId: adminLogisticId});
+            if(userAuth){
+                userAuth.email = email;
+                await userAuth.save();
+            }
+        }
+
+        if(username){
+            adminLogistic.username = username;
+        }
+
+        if(password){
+            const salt = await bcrytp.genSalt(10);
+            adminLogistic.password = await bcrytp.hash(password, salt);
+        }
+
+        const updatedAdminLogistic = await adminLogistic.save();
+
+        res.status(200).json({
+            message: "Admin-logistic actualizado exitosamente",
+            user: updatedAdminLogistic
+        });
+
+    }
+    catch (error) {
+        res.status(500).json({
+            message: "Error al actualizar el admin-logistic",
+            error: error
+        });
     }
 });
 
