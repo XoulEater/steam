@@ -59,6 +59,7 @@ router.post("/registerUser", async (req, res) => {
 
         // Crear un nuevo usuario en la colección `usersAuth` con el email y userId
         const newUserAuth = new userAuthSchema({
+            username: username,
             email: email,
             userId: savedUser._id.toString(),  
         });
@@ -127,6 +128,8 @@ router.put("/editUser", auth("user"), async (req, res) => {
       res.status(500).json({ message: "Error al actualizar el usuario", error });
     }
 });
+
+
   
 
 module.exports = router;

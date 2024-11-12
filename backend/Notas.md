@@ -1,4 +1,8 @@
+# NOTAS IMPORTANTES DEL BACKEND
+
+
 El token tiene los siguientes campos:
+```
 {
   id: '6732e114ef37e20ed5fe92f2',
   role: 'logistic',
@@ -6,3 +10,7 @@ El token tiene los siguientes campos:
   iat: 1731388682,
   exp: 1731392282
 }
+```
+
+
+

@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrytp = require("bcryptjs");
 const adminLogisticSchema = require('../models/adminLogistic');
+const userSchema = require('../models/user');
 const userAuthSchema = require('../models/usersAuth');
 const auth = require("../middleware/authMiddleware");
 const dotenv = require("dotenv");
@@ -33,19 +34,20 @@ router.post("/registerAdminLogistic", async (req, res) => {
         });
 
         //Guardar el usuario en la base de datos
-        const savedAdmin = await newAdminLogistic.save();
+        const savedAdminLogistic = await newAdminLogistic.save();
 
         //Agregar el usuairo a usersAuth
         const newUserAuth = new userAuthSchema({
+            username: username,
             email: email,
-            userId: savedAdmin._id,
+            userId: savedAdminLogistic._id,
         });
 
         await newUserAuth.save();
 
         res.status(201).json({
             message: "Usuario admin-logistic creado exitosamente",
-            user: savedAdmin
+            user: savedAdminLogistic
         });
 
     } catch (error) {
@@ -109,6 +111,56 @@ router.put("/editAdminLogistic", auth(["admin", "logistic"]), async (req, res) =
         });
     }
 });
+
+//TODO: Delete usuario (puede borrar usario normal, admin o logistic)
+//* Se debe hacer mediante el username, ya que, los dos son unicos *
+
+router.delete("/deleteUsers", auth("admin"), async (req, res) => {
+    try {
+        const { username } = req.body;
+
+        // Buscar el usuario por username en la tabla usersAuth
+        const userAuth = await userAuthSchema.findOne({ username: username });
+        if (!userAuth) {
+            return res.status(404).json({ message: "Usuario no encontrado en usersAuth" });
+        }
+
+        // Buscar en la colección de users
+        let user = await userSchema.findById(userAuth.userId);
+
+        // Si no se encuentra en la colección de users, buscar en adminLogistic
+        if (!user) {
+            user = await adminLogisticSchema.findById(userAuth.userId);
+        }
+
+        // Si el usuario no se encuentra en ninguna de las colecciones
+        if (!user) {
+            return res.status(404).json({ message: "Usuario no encontrado en ninguna colección" });
+        }
+
+        // Eliminar al usuario de la colección correspondiente
+        if (user instanceof userSchema) {
+            await userSchema.findByIdAndDelete(userAuth.userId);
+        } else {
+            await adminLogisticSchema.findByIdAndDelete(userAuth.userId);
+        }
+
+        // Eliminar también en la colección usersAuth
+        await userAuthSchema.findByIdAndDelete(userAuth._id);
+
+        res.status(200).json({
+            message: "Usuario eliminado exitosamente",
+            user: user || adminLogistic
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Error al eliminar el usuario",
+            error: error.message || error 
+        });
+    }
+});
+
 
 
 module.exports = router;
