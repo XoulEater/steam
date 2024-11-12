@@ -56,51 +56,59 @@ router.post("/registerAdminLogistic", async (req, res) => {
     }
 });
 
-//Edit admin logistic user
+// Edit admin/logistic user
 router.put("/editAdminLogistic", auth(["admin", "logistic"]), async (req, res) => {
     try {
-        const {username, email, password} = req.body;
+        const { username, email, password } = req.body;
         const adminLogisticId = req.user.id;
 
+        // Verificar si el usuario admin-logistic existe
         const adminLogistic = await adminLogisticSchema.findById(adminLogisticId);
-        if(!adminLogistic){
-            return res.status(404).json({message: "Admin-logistic no encontrado"});
+        if (!adminLogistic) {
+            return res.status(404).json({ message: "Admin-logistic no encontrado" });
         }
 
-        if(email) {
+        // Actualizar email si se proporciona
+        if (email) {
             adminLogistic.email = email;
 
-            //Actualizar el email en usersAuth
-            const userAuth = await userAuthSchema.findOne({userId: adminLogisticId});
-            if(userAuth){
+            // Actualizar el email en usersAuth
+            const userAuth = await userAuthSchema.findOne({ userId: adminLogisticId });
+            if (userAuth) {
                 userAuth.email = email;
                 await userAuth.save();
+            } else {
+                // Si no se encuentra el userAuth, puedes agregar una respuesta para manejo de error
+                return res.status(400).json({ message: "No se pudo actualizar el email en usersAuth" });
             }
         }
 
-        if(username){
+        // Actualizar username si se proporciona
+        if (username) {
             adminLogistic.username = username;
         }
 
-        if(password){
+        // Actualizar contraseña si se proporciona
+        if (password) {
             const salt = await bcrytp.genSalt(10);
             adminLogistic.password = await bcrytp.hash(password, salt);
         }
 
+        // Guardar los cambios en adminLogistic
         const updatedAdminLogistic = await adminLogistic.save();
 
         res.status(200).json({
             message: "Admin-logistic actualizado exitosamente",
             user: updatedAdminLogistic
         });
-
-    }
-    catch (error) {
+    } catch (error) {
+        console.error(error); 
         res.status(500).json({
             message: "Error al actualizar el admin-logistic",
-            error: error
+            error: error.message || error
         });
     }
 });
+
 
 module.exports = router;
