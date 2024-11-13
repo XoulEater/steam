@@ -30,6 +30,10 @@
   @apply bg-secondary;
 }
 
+.activePage {
+  @apply bg-bgHover;
+}
+
 .cat1 {
   background-image: url("/cat1.png");
 }

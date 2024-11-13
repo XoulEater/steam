@@ -101,7 +101,19 @@
         ></app-filter-options>
       </section>
 
-      <section class="w-4/5 rounded-sm h-fit bg-bgMain"></section>
+      <section class="w-4/5 rounded-sm h-fit">
+        <div class="flex flex-col gap-2">
+          @for (game of paginatedGames; track $index) {
+          <article class="bg-bgMain">{{ game.title }}</article>
+          }
+        </div>
+        <shared-pagination
+          *ngIf="games.length > 0"
+          [totalItems]="games.length"
+          [itemsPerPage]="itemsPerPage"
+          (pageChange)="onPageChange($event)"
+        ></shared-pagination>
+      </section>
     </section>
   </main>
 </div>

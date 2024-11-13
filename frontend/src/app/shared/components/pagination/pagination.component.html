@@ -1,0 +1,29 @@
+<div class="flex gap-4">
+  <button
+    class="px-5 py-1 transition-all duration-300 ease-in-out rounded-sm bg-bgMain disabled:opacity-25"
+    (click)="prevPage()"
+    [disabled]="currentPage === 1"
+  >
+    Prev
+  </button>
+  <section class="flex items-end gap-1">
+    @for (page of pages; track $index) { @if (page !== -1) {
+    <button
+      class="px-3 py-1 rounded-sm bg-bgMain active:bg-bgHover"
+      (click)="goToPage(page)"
+      [class.activePage]="page === currentPage"
+    >
+      {{ page }}
+    </button>
+    } @else {
+    <span class="p-1 text-dim">...</span>
+    } }
+  </section>
+  <button
+    class="px-5 py-1 transition-all duration-300 ease-in-out rounded-sm bg-bgMain disabled:opacity-25"
+    (click)="nextPage()"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+</div>
