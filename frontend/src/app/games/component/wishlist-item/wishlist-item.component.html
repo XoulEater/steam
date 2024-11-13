@@ -1,0 +1,84 @@
+<article
+  class="flex flex-row items-center w-full rounded-md bg-bgMain"
+>
+    <img
+      class="object-contain m-3 fade"
+      [src]="mainImage"
+      alt=""
+      [class.fade-out]="isChangingImage"
+      (load)="onImageLoad()"
+      style=" width: 300px"
+    />
+  <aside
+    class="flex flex-row items-center flex-grow gap-3 pt-1 lg:items-start"
+  >
+    <div>
+      <h2 class="justify-center text-2xl font-bold">{{ game.title }}</h2>
+      <div
+        class="grid grid-cols-2 grid-rows-2 gap-1 w-fit"
+        (mouseleave)="changeImage(game.images[0].url)"
+      >
+        <ng-container *ngFor="let image of game.images | slice : 1">
+        </ng-container>
+      </div>
+      <div
+        class="flex justify-center w-full gap-2 lg:flex-wrap lg:justify-start text-dim"
+      >
+        @for (category of game.categories; track $index) {
+        <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
+          category.name
+        }}</span>
+        }
+      </div>
+    </div>
+    <footer class="flex flex-col flex-wrap items-center justify-between w-full gap-3">
+      <button
+        class="flex items-center justify-center gap-2 px-5 py-2 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
+        (click)="toggleWishlist()"
+      >
+        @if (inWishlist) {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          />
+        </svg>
+        } @else {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          />
+        </svg>
+        }
+      </button>
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-semibold">{{ game.price }}</span>
+        <a
+          class="px-5 py-2 transition-colors duration-300 ease-in rounded-sm bg-secondary hover:bg-primary"
+          [routerLink]="['/browse', game.id]"
+        >
+          Buy Now
+        </a>
+      </div>
+    </footer>
+  </aside>
+</article>
