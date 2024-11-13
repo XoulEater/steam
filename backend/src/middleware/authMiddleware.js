@@ -10,14 +10,16 @@ const auth = (allowedRoles) => (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
 
-        console.log(decoded);
+        console.log("Datos decodificados:", decoded);  // Aquí deberías ver el username
 
         // Verificar que el rol del usuario esté en los roles permitidos
         if (allowedRoles && !allowedRoles.includes(decoded.role)) {
             return res.status(403).json({ message: "Acceso denegado, rol no autorizado" });
         }
 
-        req.user = { id: decoded.id, role: decoded.role };
+        req.user = { id: decoded.id, role: decoded.role, email: decoded.email, username: decoded.username };  // Aquí estamos incluyendo username
+
+        console.log("username: " + decoded.username);
         next();
     } catch (error) {
         res.status(401).json({ message: "Token inválido o expirado" });
