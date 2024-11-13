@@ -1,0 +1,101 @@
+<article
+  class="flex flex-col items-start w-full gap-3 p-3 rounded-sm lg:items-stretch lg:flex-row bg-bgMain"
+>
+  <img
+    class="object-contain fade w-72"
+    [src]="game.images[0].url"
+    alt=""
+    loading="lazy"
+  />
+  <aside
+    class="flex flex-col items-stretch justify-between flex-grow gap-3 py-1 lg:flex-row"
+  >
+    <div
+      class="flex flex-col items-center h-full gap-3 lg:items-start place-content-between"
+    >
+      <header class="flex flex-col gap-3">
+        <h2 class="justify-center text-xl font-bold">
+          {{ game.title }}
+        </h2>
+        <div class="flex justify-start w-full gap-2 text-dim">
+          @for (category of game.categories; track $index) {
+          <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
+            category.name
+          }}</span>
+          }
+        </div>
+      </header>
+      <app-rating-bar [reviews]="game.reviews"></app-rating-bar>
+    </div>
+    <div class="flex items-end gap-3 lg:flex-col place-content-between">
+      <button
+        class="flex items-center justify-center w-10 h-10 gap-2 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
+        (click)="toggleWishlist()"
+      >
+        @if (inWishlist) {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="white"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          />
+        </svg>
+        } @else {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"
+          />
+        </svg>
+        }
+      </button>
+      <div class="flex items-center gap-3">
+        @if (discount) {
+        <!-- TODO: Implement discounts -->
+        <span class="hidden mt-4 text-sm text-dim lg:block"
+          >Until October 31</span
+        >
+        <span
+          class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+          >-20%</span
+        >
+        <div class="relative flex flex-col justify-end">
+          <span class="absolute font-semibold line-through top-2 text-dim/50">{{
+            game.price | currency : "USD"
+          }}</span>
+          <span class="absolute font-semibold bottom-2 text-success">{{
+            19.99 | currency : "USD"
+          }}</span>
+          <span class="text-transparent">$00.00</span>
+        </div>
+        } @else {
+        <span class="text-lg font-semibold">{{
+          game.price | currency : "USD"
+        }}</span>
+        }
+        <button
+          class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
+        >
+          Buy now
+        </button>
+      </div>
+    </div>
+  </aside>
+</article>

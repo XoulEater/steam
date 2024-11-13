@@ -7,18 +7,16 @@ import { CarouselModule } from 'primeng/carousel';
 import { OffersCarouselItemComponent } from '../../component/offers-carousel-item/offers-carousel-item.component';
 import { ReviewSectionComponent } from '../../component/review-section/review-section.component';
 import { RatingBarComponent } from '../../component/rating-bar/rating-bar.component';
-import { WishlistItemComponent } from '../../component/wishlist-item/wishlist-item.component';
+import { GameLargeCardComponent } from '../../component/game-large-card/game-large-card.component';
 
 @Component({
   selector: 'app-wishlist-page',
   standalone: true,
   imports: [
     CommonModule,
-    CarouselModule,
-    OffersCarouselItemComponent,
     ReviewSectionComponent,
     RatingBarComponent,
-    WishlistItemComponent
+    GameLargeCardComponent,
   ],
   templateUrl: './wishlist-page.component.html',
   styles: ``,
@@ -44,10 +42,6 @@ export class WishlistPageComponent {
     this.inWishlist = !this.inWishlist;
   }
 
-  onImageLoad() {
-    this.isChangingImage = false;
-  }
-
   ngOnInit(): void {
     this.activeRoute.params.subscribe(({ id = 4 }) => {
       console.log(this.gamesService.getGameById(id));
@@ -63,10 +57,6 @@ export class WishlistPageComponent {
           // TODO: Manejar el caso en que no haya imágenes
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
         }
-      });
-      // TODO: Implementar el servicio para obtener juegos similares
-      this.gamesService.getGames().subscribe((games) => {
-        this.similarGames = games.slice(0, 3);
       });
       // FIXME: Implementar la lógica para saber si el juego está en la lista de deseos
       this.inWishlist = false;

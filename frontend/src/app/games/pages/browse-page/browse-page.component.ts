@@ -4,11 +4,17 @@ import { Component } from '@angular/core';
 import { Category, Game } from '../../interfaces/games.interfaces';
 import { FilterOptionsComponent } from '../../component/filter-options/filter-options.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { GameLargeCardComponent } from '../../component/game-large-card/game-large-card.component';
 
 @Component({
   selector: 'app-browse-page',
   standalone: true,
-  imports: [CommonModule, FilterOptionsComponent, PaginationComponent],
+  imports: [
+    CommonModule,
+    FilterOptionsComponent,
+    PaginationComponent,
+    GameLargeCardComponent,
+  ],
   templateUrl: './browse-page.component.html',
   styles: ``,
 })

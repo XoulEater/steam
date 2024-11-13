@@ -2,41 +2,29 @@ import { Component, Input } from '@angular/core';
 import { Game } from '../../interfaces/games.interfaces';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { RatingBarComponent } from '../rating-bar/rating-bar.component';
 
 @Component({
-  selector: 'app-wishlist-item',
+  selector: 'app-game-large-card',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './wishlist-item.component.html',
+  imports: [CommonModule, RouterModule, RatingBarComponent],
+  templateUrl: './game-large-card.component.html',
   styles: ``,
 })
-export class WishlistItemComponent {
+export class GameLargeCardComponent {
   @Input()
   public game!: Game;
   public mainImage!: string;
 
-  
   // TODO: Implement the wishlist feature
   // It should allow users to add and remove games from their wishlist and display the appropriate icon
-  public inWishlist = true;
+  public discount = false;
+  public inWishlist = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;
   }
 
   ngOnInit(): void {
     this.mainImage = this.game.images[0].url;
-  }
-
-  public isChangingImage: boolean = false;
-  changeImage(newImageUrl: string) {
-    if (this.mainImage === newImageUrl) return;
-    this.isChangingImage = true;
-    setTimeout(() => {
-      this.mainImage = newImageUrl;
-    }, 100); // Tiempo para la transición de salida
-  }
-
-  onImageLoad() {
-    this.isChangingImage = false;
   }
 }

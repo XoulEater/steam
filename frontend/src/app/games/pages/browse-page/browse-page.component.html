@@ -1,5 +1,5 @@
 <div
-  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-bgMain to-bgTertiary"
+  class="relative flex flex-row justify-center w-full bg-gradient-to-bl from-bgMain to-[#14344B]"
 >
   <img
     class="absolute top-0 left-0 w-full h-[70svh] transparent-gradient opacity-10 blur-sm pointer-events-none"
@@ -101,18 +101,22 @@
         ></app-filter-options>
       </section>
 
-      <section class="w-4/5 rounded-sm h-fit">
-        <div class="flex flex-col gap-2">
+      <section class="flex flex-col items-end w-4/5 gap-4 rounded-sm">
+        <div
+          class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1"
+        >
           @for (game of paginatedGames; track $index) {
-          <article class="bg-bgMain">{{ game.title }}</article>
+          <app-game-large-card [game]="game"></app-game-large-card>
           }
         </div>
-        <shared-pagination
-          *ngIf="games.length > 0"
-          [totalItems]="games.length"
-          [itemsPerPage]="itemsPerPage"
-          (pageChange)="onPageChange($event)"
-        ></shared-pagination>
+        <div>
+          <shared-pagination
+            *ngIf="games.length > 0"
+            [totalItems]="games.length"
+            [itemsPerPage]="itemsPerPage"
+            (pageChange)="onPageChange($event)"
+          ></shared-pagination>
+        </div>
       </section>
     </section>
   </main>
