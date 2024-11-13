@@ -1,0 +1,22 @@
+<div
+  *ngIf="game"
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-[#0E141B] to-[#202B3B]"
+>
+  <img
+    class="absolute top-0 left-0 w-full pointer-events-none opacity-20 aspect-video transparent-gradient blur-sm"
+    [src]="game.images[1].url"
+    alt=""
+  />
+  <main class="w-11/12 px-[5%] mt-36 pb-48 flex flex-col z-10">
+
+    <!-- Main Content -->
+    <article class="flex flex-col gap-5 p-5 lg:flex-row bg-bgMain/50">
+      <div class="flex flex-col w-full">
+        <div>
+
+          <app-wishlist-item [game]="game"></app-wishlist-item>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
