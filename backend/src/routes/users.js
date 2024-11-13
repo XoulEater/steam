@@ -5,6 +5,7 @@ const userSchema = require("../models/user");
 const userAuthSchema = require("../models/usersAuth");
 const cartSchema = require("../models/cart");
 const wishlistSchema = require("../models/wishList");
+const productSchema = require("../models/products");
 const auth = require("../middleware/authMiddleware");
 
 dotenv.config();
@@ -16,10 +17,16 @@ router.post("/registerUser", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Verificar si el usuario ya existe
+    // Verificar si el usuario ya existe en la colección `users`
     const verifyUser = await userSchema.findOne({ email: email });
     if (verifyUser) {
-      return res.status(400).json({ message: "El usuario ya existe" });
+      return res.status(400).json({ message: "El usuario ya existe en users" });
+    }
+
+    // Verificar si el email ya está registrado en la colección `usersAuth`
+    const verifyUserAuth = await userAuthSchema.findOne({ email: email });
+    if (verifyUserAuth) {
+      return res.status(400).json({ message: "El email ya está registrado en usersAuth" });
     }
 
     // Encriptar la contraseña
@@ -29,8 +36,7 @@ router.post("/registerUser", async (req, res) => {
     // Crear un carrito para el usuario
     const newCart = new cartSchema({
       products: [],
-      quantity: 0,
-      price: 0,
+      totalPrice: 0,
     });
 
     const savedCart = await newCart.save();
@@ -67,7 +73,7 @@ router.post("/registerUser", async (req, res) => {
     await newUserAuth.save();
 
     res.status(201).json({
-      message: "Usuario registrado",
+      message: "Usuario registrado correctamente",
       user: savedUser,
     });
   } catch (error) {
@@ -144,6 +150,7 @@ router.put("/editUser", auth("user"), async (req, res) => {
   }
 });
 
+// Eliminar usuario
 router.delete("/deleteUser", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
@@ -171,7 +178,7 @@ router.delete("/deleteUser", auth("user"), async (req, res) => {
   }
 });
 
-//TODO: Get historial de ordenes de un usuario
+//Obtener el historial de compras del usuario
 router.get("/orderHistory", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
@@ -188,6 +195,178 @@ router.get("/orderHistory", auth("user"), async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al obtener el historial de ordenes", error }); 
+  }
+});
+
+//Obtener el carrito del usuario
+router.get("/userCart", auth("user"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Buscar al usuario por ID en la colección `users`
+    const user = await userSchema.findById(userId);
+    if(!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    // Buscar el carrito del usuario
+    const cart = await cartSchema.findById(user.cart);
+
+    res.status(200).json({
+      message: `Carrito de ${req.user.username} obtenido correctamente`,
+      cart: cart
+    });
+    
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener el carrito del usuario", error });
+  }
+});
+
+//Agregar producto al carrito del usuario
+//!!! Falta que si se agrega un producto se reste del stock
+//??? Hay que hacer con la colección de inventario ???
+router.post("/addToCart", auth("user"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId, quantity } = req.body;
+
+    // Buscar al usuario por ID en la colección `users`
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    // Buscar el carrito del usuario
+    let cart = await cartSchema.findById(user.cart);
+    if (!cart) {
+      return res.status(400).json({ message: "Carrito no encontrado" });
+    }
+
+    // Verificar que hay producto en stock
+    const product = await productSchema.findById(productId);
+    if (!product) {
+      return res.status(400).json({ message: "Producto no encontrado" });
+    }
+
+    // Verificar si hay suficiente stock
+    if (product.stock < quantity) {
+      return res.status(400).json({
+        message: `No hay suficiente stock para agregar al carrito, solo quedan ${product.stock}`,
+      });
+    }
+
+    // Restar el stock del producto
+    product.stock -= quantity;
+    await product.save(); 
+
+    // Verificar si el producto ya está en el carrito
+    const productExisting = cart.products.findIndex(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (productExisting > -1) {
+      // Si el producto ya está en el carrito, solo aumentar la cantidad
+      cart.products[productExisting].quantity += quantity;
+    } else {
+      // Si el producto no está en el carrito, agregarlo con el precio con descuento, si corresponde
+      let finalPrice = product.price;
+      if (product.discount > 0) {
+        finalPrice = product.price - (product.price * product.discount) / 100;
+      }
+      cart.products.push({
+        productId,
+        quantity,
+        price: finalPrice,
+      });
+    }
+
+    // Calcular el precio total del carrito
+    cart.totalPrice = cart.products.reduce((total, item) => {
+      return total + item.quantity * item.price;
+    }, 0);
+
+    // Guardar los cambios en el carrito
+    await cart.save();
+
+    res.status(200).json({
+      message: `Producto agregado al carrito de ${req.user.username} correctamente`,
+      cart: cart,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al agregar el producto al carrito del usuario",
+      error: error.message || error,
+    });
+  }
+});
+
+//Eliminar producto del carrito del usuario
+//!!! Falta hacer que si elimina el producto, se sume al stock
+//??? Hay que hacer con la colección de inventario ???
+router.delete("/deleteFromCart", auth("user"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId, quantity } = req.body;
+
+    // Buscar al usuario por ID en la colección `users`
+    const user = await userSchema.findById(userId);
+    if(!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    // Buscar el carrito del usuario
+    let cart = await cartSchema.findById(user.cart);
+    if (!cart) {
+      return res.status(400).json({ message: "Carrito no encontrado" });
+    }
+
+    // Verificar si el producto está en el carrito
+    const productIndex = cart.products.findIndex(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (productIndex === -1) {
+      return res.status(400).json({ message: "Producto no encontrado en el carrito" });
+    }
+
+    // Obtener el producto para actualizar el stock
+    const product = await productSchema.findById(productId);
+    if (!product) {
+      return res.status(400).json({ message: "Producto no encontrado" });
+    }
+
+    // Si el producto tiene stock suficiente en el carrito, lo resta al carrito y agrega al stock
+    if (cart.products[productIndex].quantity > quantity) {
+      cart.products[productIndex].quantity -= quantity;
+      // Aumentar el stock del producto
+      product.stock += quantity;
+    } else {
+      // Si la cantidad en el carrito es menor o igual a la cantidad a eliminar, lo elimina completamente del carrito
+      const removedQuantity = cart.products[productIndex].quantity;
+      cart.products.splice(productIndex, 1);
+      // Aumentar el stock del producto
+      product.stock += removedQuantity;
+    }
+
+    // Recalcular el precio total del carrito
+    cart.totalPrice = cart.products.reduce((total, item) => {
+      return total + item.quantity * item.price;
+    }, 0);
+
+    // Guardar los cambios en el carrito y en el producto
+    await cart.save();
+    await product.save();
+
+    res.status(200).json({
+      message: `Producto eliminado del carrito de ${req.user.username} correctamente`,
+      cart: cart,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al eliminar el producto del carrito del usuario",
+      error: error.message || error,
+    });
   }
 });
 

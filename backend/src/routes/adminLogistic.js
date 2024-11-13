@@ -275,7 +275,7 @@ router.post("/registerUsersAdmin", auth("admin"), async (req, res) => {
     }
 });
 
-
+//Update de usuarios (el administrador puede actualizar a cualquier usuario)
 router.put("/updateUsersAdmin", auth("admin"), async (req, res) => {
     try {
         const { username, newUsername, email, password, image } = req.body;
