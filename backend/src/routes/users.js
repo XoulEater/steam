@@ -6,6 +6,7 @@ const userAuthSchema = require("../models/usersAuth");
 const cartSchema = require("../models/cart");
 const wishlistSchema = require("../models/wishList");
 const productSchema = require("../models/products");
+const inventorySchema = require("../models/inventory");
 const auth = require("../middleware/authMiddleware");
 
 dotenv.config();
@@ -223,8 +224,6 @@ router.get("/userCart", auth("user"), async (req, res) => {
 });
 
 //Agregar producto al carrito del usuario
-//!!! Falta que si se agrega un producto se reste del stock
-//??? Hay que hacer con la colección de inventario ???
 router.post("/addToCart", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
@@ -242,22 +241,22 @@ router.post("/addToCart", auth("user"), async (req, res) => {
       return res.status(400).json({ message: "Carrito no encontrado" });
     }
 
-    // Verificar que hay producto en stock
+    // Verificar si el producto existe
     const product = await productSchema.findById(productId);
     if (!product) {
       return res.status(400).json({ message: "Producto no encontrado" });
     }
 
-    // Verificar si hay suficiente stock
-    if (product.stock < quantity) {
-      return res.status(400).json({
-        message: `No hay suficiente stock para agregar al carrito, solo quedan ${product.stock}`,
-      });
+    //Buscar en el invetario 
+    const inventory = await inventorySchema.findOne({ product: productId });
+    if (!inventory) {
+      return res.status(400).json({ message: "Inventario no encontrado para este producto" });
     }
 
-    // Restar el stock del producto
-    product.stock -= quantity;
-    await product.save(); 
+    //Verificar si hay stock suficiente
+    if (inventory.quantity < quantity) {
+      return res.status(400).json({ message: `No hay suficiente stock para este producto, solo queda ${inventory.quantity}` });
+    }
 
     // Verificar si el producto ya está en el carrito
     const productExisting = cart.products.findIndex(
@@ -280,6 +279,10 @@ router.post("/addToCart", auth("user"), async (req, res) => {
       });
     }
 
+    //Actualizar el stock en el inventario
+    inventory.quantity -= quantity;
+    await inventory.save();
+
     // Calcular el precio total del carrito
     cart.totalPrice = cart.products.reduce((total, item) => {
       return total + item.quantity * item.price;
@@ -301,8 +304,6 @@ router.post("/addToCart", auth("user"), async (req, res) => {
 });
 
 //Eliminar producto del carrito del usuario
-//!!! Falta hacer que si elimina el producto, se sume al stock
-//??? Hay que hacer con la colección de inventario ???
 router.delete("/deleteFromCart", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
@@ -310,7 +311,7 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
 
     // Buscar al usuario por ID en la colección `users`
     const user = await userSchema.findById(userId);
-    if(!user) {
+    if (!user) {
       return res.status(400).json({ message: "Usuario no encontrado" });
     }
 
@@ -329,23 +330,23 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
       return res.status(400).json({ message: "Producto no encontrado en el carrito" });
     }
 
-    // Obtener el producto para actualizar el stock
-    const product = await productSchema.findById(productId);
-    if (!product) {
-      return res.status(400).json({ message: "Producto no encontrado" });
+    // Buscar el inventario del producto
+    const inventory = await inventorySchema.findOne({ product: productId });
+    if (!inventory) {
+      return res.status(400).json({ message: "Inventario no encontrado para este producto" });
     }
 
-    // Si el producto tiene stock suficiente en el carrito, lo resta al carrito y agrega al stock
+    // Si la cantidad en el carrito es mayor que la cantidad que se desea eliminar
     if (cart.products[productIndex].quantity > quantity) {
       cart.products[productIndex].quantity -= quantity;
-      // Aumentar el stock del producto
-      product.stock += quantity;
+      // Aumentar el stock en el inventario
+      inventory.quantity += quantity;
     } else {
-      // Si la cantidad en el carrito es menor o igual a la cantidad a eliminar, lo elimina completamente del carrito
+      // Si la cantidad a eliminar es igual o mayor que la cantidad en el carrito, eliminar el producto del carrito
       const removedQuantity = cart.products[productIndex].quantity;
       cart.products.splice(productIndex, 1);
-      // Aumentar el stock del producto
-      product.stock += removedQuantity;
+      // Aumentar el stock en el inventario
+      inventory.quantity += removedQuantity;
     }
 
     // Recalcular el precio total del carrito
@@ -353,9 +354,9 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
       return total + item.quantity * item.price;
     }, 0);
 
-    // Guardar los cambios en el carrito y en el producto
+    // Guardar los cambios en el carrito y en el inventario
     await cart.save();
-    await product.save();
+    await inventory.save();  
 
     res.status(200).json({
       message: `Producto eliminado del carrito de ${req.user.username} correctamente`,
