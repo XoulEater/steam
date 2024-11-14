@@ -23,7 +23,7 @@ export class MainCarouselItemComponent {
   }
 
   ngOnInit(): void {
-    this.mainImage = this.game.images[0].url;
+    this.mainImage = this.game.images[0];
   }
 
   public isChangingImage: boolean = false;

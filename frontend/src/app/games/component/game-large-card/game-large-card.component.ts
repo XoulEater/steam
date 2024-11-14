@@ -25,6 +25,6 @@ export class GameLargeCardComponent {
   }
 
   ngOnInit(): void {
-    this.mainImage = this.game.images[0].url;
+    this.mainImage = this.game.images[0];
   }
 }

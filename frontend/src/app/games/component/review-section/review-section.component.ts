@@ -36,11 +36,10 @@ export class ReviewSectionComponent {
     if (!this.validComment) return;
 
     const newReview: Review = {
-      id: this.reviews.length + 1,
-      name: 'Whiit', // FIXME: Cambiar por el nombre del usuario
+      author: 'Whiit', // FIXME: Cambiar por el nombre del usuario
       comment: this.newComment,
       rating: this.rating,
-      date: new Date().toISOString(),
+      postDate: new Date(),
     };
 
     this.newComment = '';

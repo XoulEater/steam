@@ -3,7 +3,7 @@
 >
   <img
     class="object-contain fade w-72"
-    [src]="game.images[0].url"
+    [src]="game.images[0]"
     alt=""
     loading="lazy"
   />
@@ -20,7 +20,7 @@
         <div class="flex justify-start w-full gap-2 text-dim">
           @for (category of game.categories; track $index) {
           <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
-            category.name
+            category
           }}</span>
           }
         </div>
@@ -78,20 +78,19 @@
         >
         <div class="relative flex flex-col justify-end">
           <span class="absolute font-semibold line-through top-2 text-dim/50">{{
-            game.price | currency : "USD"
+            game.price
           }}</span>
           <span class="absolute font-semibold bottom-2 text-success">{{
-            19.99 | currency : "USD"
+            19.99
           }}</span>
           <span class="text-transparent">$00.00</span>
         </div>
         } @else {
-        <span class="text-lg font-semibold">{{
-          game.price | currency : "USD"
-        }}</span>
+        <span class="text-lg font-semibold">{{ game.price }}</span>
         }
         <button
           class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
+          [routerLink]="['/browse', game.id]"
         >
           Buy now
         </button>

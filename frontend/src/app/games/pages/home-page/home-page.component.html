@@ -6,7 +6,7 @@
     src="/home_header.webp"
     alt=""
   />
-  <main class="lg:w-10/12 w-full px-[5%] mt-96 pb-48 gap-20 flex flex-col">
+  <main class="lg:w-11/12 w-full px-[5%] mt-96 pb-48 gap-20 flex flex-col">
     <article>
       <h2 class="mb-5 ml-0 text-xl font-medium lg:-ml-10">FEATURED</h2>
       <div class="relative">
@@ -23,7 +23,7 @@
         <div
           class="absolute w-[105%] h-[105%] px-10 bg-bgMain/20 backdrop-blur-sm rounded-lg translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2"
         ></div>
-        <app-offers-carousel [games]="games"></app-offers-carousel>
+        <app-offers-carousel [games]="games.slice(5, 11)"></app-offers-carousel>
       </div>
     </article>
 

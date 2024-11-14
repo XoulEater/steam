@@ -52,7 +52,7 @@ export class WishlistPageComponent {
         }
         this.game = game;
         if (game.images && game.images.length > 0) {
-          this.mainImage = game.images[0].url;
+          this.mainImage = game.images[0];
         } else {
           // TODO: Manejar el caso en que no haya imágenes
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto

@@ -78,10 +78,10 @@
             "
             alt=""
           />
-          <span class="text-sm">{{ review.name }}</span>
+          <span class="text-sm">{{ review.author }}</span>
         </div>
         <span class="text-xs text-dim">{{
-          (review.date | date : "longDate") || "Unknown"
+          (review.postDate | date : "longDate") || "Unknown"
         }}</span>
       </div>
     </header>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of, pipe } from 'rxjs';
 import { Category, Game } from '../interfaces/games.interfaces';
 
 @Injectable({
@@ -30,7 +30,22 @@ export class GamesService {
   }
 
   public getCategories(): Observable<Category[]> {
-    const url = this.apiURL + '/categories';
-    return this.http.get<Category[]>(url).pipe(catchError((err) => of([])));
+    return of([
+      'Action',
+      'Adventure',
+      'Animation & Modeling',
+      'Casual',
+      'Design & Illustration',
+      'Early Access',
+      'Free to Play',
+      'Indie',
+      'Massively Multiplayer',
+      'RPG',
+      'Racing',
+      'Simulation',
+      'Sports',
+      'Strategy',
+      'Utilities',
+    ] as Category[]);
   }
 }

@@ -77,15 +77,15 @@
       <li>
         <input
           type="checkbox"
-          [id]="category.name + $index"
+          [id]="category + $index"
           class="hidden w-4 h-4 peer"
-          (change)="onGenresChange($event, category.id)"
+          (change)="onGenresChange($event, $index)"
         />
         <label
           class="flex items-center gap-2 p-2 text-sm transition-colors duration-200 ease-in rounded-sm cursor-pointer peer-checked:bg-bgHover"
-          [for]="category.name + $index"
+          [for]="category + $index"
         >
-          <span>{{ category.name }}</span>
+          <span>{{ category }}</span>
         </label>
       </li>
       }

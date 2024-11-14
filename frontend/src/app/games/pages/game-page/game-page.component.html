@@ -4,7 +4,7 @@
 >
   <img
     class="absolute top-0 left-0 w-full pointer-events-none opacity-20 aspect-video transparent-gradient blur-sm"
-    [src]="game.images[1].url"
+    [src]="game.images[1]"
     alt=""
   />
   <main class="w-11/12 px-[5%] mt-36 pb-48 gap-6 flex flex-col z-10">
@@ -78,21 +78,17 @@
           >
             <ng-template let-image pTemplate="item">
               <img
-                [src]="image.url"
+                [src]="image"
                 class="p-1 rounded-md cursor-pointer aspect-video"
                 alt=""
-                (click)="changeImage(image.url)"
+                (click)="changeImage(image)"
               />
             </ng-template>
           </p-carousel>
         </div>
       </div>
       <aside class="flex flex-col gap-5 lg:w-4/12">
-        <img
-          class="rounded-md aspect-video"
-          [src]="game.images[0].url"
-          alt=""
-        />
+        <img class="rounded-md aspect-video" [src]="game.images[0]" alt="" />
 
         <p class="text-justify">
           {{ game.description }}
@@ -105,9 +101,7 @@
           </div>
 
           <span class="text-sm text-dim">Release Date</span>
-          <span class="col-span-4">{{
-            (game.releaseDate | date : "longDate") || "Unknown"
-          }}</span>
+          <span class="col-span-4">{{ game.releaseDate || "Unknown" }}</span>
           <span class="text-sm text-dim">Developer</span>
           <span class="col-span-4">{{ game.developer }}</span>
           <span class="col-span-5 text-sm text-dim">Popular Tags</span>
@@ -115,7 +109,7 @@
             @for (category of game.categories; track $index) {
             <span
               class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight"
-              >{{ category.name }}</span
+              >{{ category }}</span
             >
             }
           </div>
@@ -171,15 +165,15 @@
           <span class="col-span-2 text-sm text-dim">Recomended</span>
           <div class="grid grid-cols-1 gap-3 pl-4 md:grid-cols-2">
             <span class="text-sm text-dim">&centerdot; OS</span>
-            <span class="text-sm">{{ game.systemRequirements.OS }}</span>
+            <span class="text-sm">{{ game.specs.OS }}</span>
             <span class="text-sm text-dim">&centerdot; Processor</span>
-            <span class="text-sm">{{ game.systemRequirements.Processor }}</span>
+            <span class="text-sm">{{ game.specs.Processor }}</span>
             <span class="text-sm text-dim">&centerdot; Memory</span>
-            <span class="text-sm">{{ game.systemRequirements.Memory }}</span>
+            <span class="text-sm">{{ game.specs.Memory }}</span>
             <span class="text-sm text-dim">&centerdot; Graphics</span>
-            <span class="text-sm">{{ game.systemRequirements.Graphics }}</span>
+            <span class="text-sm">{{ game.specs.Graphics }}</span>
             <span class="text-sm text-dim">&centerdot; Storage</span>
-            <span class="text-sm">{{ game.systemRequirements.Storage }}</span>
+            <span class="text-sm">{{ game.specs.Storage }}</span>
           </div>
         </div>
 
