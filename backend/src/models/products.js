@@ -25,8 +25,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       min: 0,
       max: 100,
-    }, // Descuento en porcentaje (0 - 100)
-    stock: { type: Number, required: true }, // Cantidad en stock
+    } // Descuento en porcentaje (0 - 100)
   },
   { timestamps: true }
 );
