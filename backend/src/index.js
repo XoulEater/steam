@@ -7,6 +7,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
+const productsRoutes = require('./routes/products');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.use(cors()); // Para permitir peticiones de diferentes dominios
 app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
+app.use('/products', productsRoutes);
 
 
 //Routes
