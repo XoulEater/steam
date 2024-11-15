@@ -1,3 +1,12 @@
+export interface Order {
+  id: string;
+  games: Game[];
+  price: number;
+  orderAddress: string;
+  date: Date;
+  idPaymentMethod: string;
+}
+
 export interface Game {
   id: string;
   title: string;
@@ -5,7 +14,7 @@ export interface Game {
   developer: string;
   keywords: string[];
   categories: Category[];
-  price: string;
+  price: number;
   specs: Specs;
   popularity: number;
   stock: number;

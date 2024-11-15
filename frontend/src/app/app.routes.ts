@@ -3,6 +3,7 @@ import { HomePageComponent } from './games/pages/home-page/home-page.component';
 import { GamePageComponent } from './games/pages/game-page/game-page.component';
 import { BrowsePageComponent } from './games/pages/browse-page/browse-page.component';
 import { WishlistPageComponent } from './games/pages/wishlist-page/wishlist-page.component';
+import { ProfilePageComponent } from './user/pages/profile-page/profile-page.component';
 
 export const routes: Routes = [
   {
@@ -21,11 +22,10 @@ export const routes: Routes = [
         component: BrowsePageComponent,
       },
     ],
-  }
-  ,
+  },
   {
     path: 'wishlist',
-    component: WishlistPageComponent
+    component: WishlistPageComponent,
   },
   //   {
   //     path: 'cart',
@@ -34,9 +34,10 @@ export const routes: Routes = [
   //   {
   //     path: 'wishlist',
   //   },
-  //   {
-  //     path: 'profile',
-  //   },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+  },
   //   {
   //     path: 'login',
   //   },

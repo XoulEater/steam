@@ -29,7 +29,7 @@
         "Moddable"
       ],
       "categories": ["Action", "Free to Play"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Windows 7 (32/64-bit)",
         "Processor": "Pentium 4 processor (3.0GHz",
@@ -109,7 +109,7 @@
         "Early Access"
       ],
       "categories": ["Action", "Adventure", "Casual", "Free to Play", "Indie"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Windows 10 64-bit",
         "Processor": "3 GHz",
@@ -185,7 +185,7 @@
         "Adventure"
       ],
       "categories": ["Indie", "Simulation"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows 7/8/8.1/10",
         "Processor": "2.5 GHz Processor or better",
@@ -257,7 +257,7 @@
         "Casual"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7 SP1",
         "Processor": "Intel Core i5-2500K @ 3.3 GHz or better or AMD FX-8120 @ 3.1 Ghz or better",
@@ -329,7 +329,7 @@
         "Adventure"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows 10",
         "Processor": "2.3 GHz Intel Quad Core Processor",
@@ -407,7 +407,7 @@
         "Massively Multiplayer",
         "RPG"
       ],
-      "price": "$34.99",
+      "price": 34.99,
       "specs": {
         "OS": "Windows 10 64bit",
         "Processor": "Intel Core i7-4690K / AMD Ryzen 5 1600",
@@ -471,7 +471,7 @@
         "Memes"
       ],
       "categories": ["Action", "Free to Play"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Windows 8/10 64-bit (latest Service Pack)",
         "Processor": "Intel Core i5-750",
@@ -543,7 +543,7 @@
         "Family Friendly"
       ],
       "categories": ["Action", "Adventure", "Indie", "RPG"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -619,7 +619,7 @@
         "Dark"
       ],
       "categories": ["RPG"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "64-bit Windows 7",
         "Processor": "Intel CPU Core i7 3770 3.4 GHz / AMD CPU AMD FX-8350 4 GHz",
@@ -691,7 +691,7 @@
         "Indie"
       ],
       "categories": ["Action", "Indie", "Racing", "Sports"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7 or Newer",
         "Processor": "2.5+ GHz Quad core",
@@ -767,7 +767,7 @@
         "Tactical"
       ],
       "categories": ["Action"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows 7 32/64-bit / Vista 32/64 / XP",
         "Processor": "Intel core 2 duo 2.4GHz",
@@ -843,7 +843,7 @@
         "RPG"
       ],
       "categories": ["Indie", "Simulation"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 64-bit",
         "Processor": "Quad core CPU 3.0 GHz",
@@ -991,7 +991,7 @@
         "Zombies"
       ],
       "categories": ["Action", "Adventure", "Indie", "Simulation"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7",
         "Processor": "Quad Core Processor",
@@ -1063,7 +1063,7 @@
         "Atmospheric"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows XP SP3/Vista/Win 7",
         "Processor": "2.3 GHz Quad Core processor",
@@ -1135,7 +1135,7 @@
         "Adventure"
       ],
       "categories": ["Action", "Free to Play", "Indie"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -1211,7 +1211,7 @@
         "Multiplayer"
       ],
       "categories": ["Adventure", "Indie"],
-      "price": "$24.99",
+      "price": 24.99,
       "specs": {
         "OS": "Windows Vista SP2 or newer",
         "Processor": "Intel Haswell 4 cores / 4 threads @ 3.2Ghz or equivalent",
@@ -1283,7 +1283,7 @@
         "Horror"
       ],
       "categories": ["Indie", "RPG"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows XP",
         "Processor": "2GHz+",
@@ -1347,7 +1347,7 @@
         "Great Soundtrack"
       ],
       "categories": ["Strategy"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows Vista SP2/ Windows 7",
         "Processor": "1.8 GHz Quad Core CPU",
@@ -1427,7 +1427,7 @@
         "TrackIR"
       ],
       "categories": ["Action", "Simulation", "Strategy"],
-      "price": "$57.98",
+      "price": 57.98,
       "specs": {
         "OS": "Windows 7 / 8 / 10 (64bit)",
         "Processor": "Intel Core i5-4460 or AMD FX 4300 or better",
@@ -1498,7 +1498,7 @@
         "Massively Multiplayer",
         "RPG"
       ],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Windows 7 SP1/Windows 10",
         "Processor": "x64-compatible",
@@ -1570,7 +1570,7 @@
         "RPG"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows Vista",
         "Processor": "Quad core CPU: AMD Phenom II X4 955",
@@ -1642,7 +1642,7 @@
         "Horror"
       ],
       "categories": ["Action"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1 64bit",
         "Processor": "Intel Core i7-3770 / AMD FX-8350",
@@ -1714,7 +1714,7 @@
         "Adventure"
       ],
       "categories": ["Action", "Indie", "Strategy"],
-      "price": "$29.98",
+      "price": 29.98,
       "specs": {
         "OS": "Not specified",
         "Processor": "Intel Core i5 Processor (3GHz or better)",
@@ -1790,7 +1790,7 @@
         "Design & Illustration",
         "Utilities"
       ],
-      "price": "$3.99",
+      "price": 3.99,
       "specs": {
         "OS": "Windows 8.1",
         "Processor": "2.0 GHz Intel i7 or equivalent",
@@ -1858,7 +1858,7 @@
         "Co-op"
       ],
       "categories": ["Action"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows 8 / 7 / Vista / XP",
         "Processor": "2.4 GHz Quad Core 2.0 (or higher)",
@@ -1930,7 +1930,7 @@
         "Sandbox"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 7 64-bit / Windows 8 64-bit / Windows 8.1 64-bit",
         "Processor": "Intel Core i5-4670K @3.4 GHz / AMD FX-8350 @4.0 GHz",
@@ -2002,7 +2002,7 @@
         "RPG"
       ],
       "categories": ["Action"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 7 Service Pack 1 64-bit",
         "Processor": "Quad Core Processor",
@@ -2070,7 +2070,7 @@
         "Indie"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows XP or greater",
         "Processor": "Intel Core Duo 2.0 GHz or AMD Athlon 64 X2 3600+",
@@ -2134,7 +2134,7 @@
         "Great Soundtrack"
       ],
       "categories": ["Action", "Adventure", "Casual", "Indie", "RPG"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows XP or later",
         "Processor": "Core i3",
@@ -2202,7 +2202,7 @@
         "Action"
       ],
       "categories": ["Simulation", "Strategy"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Microsoft Windows 7/8 (64-bit)",
         "Processor": "Intel Core i5-3470",
@@ -2278,7 +2278,7 @@
         "Atmospheric"
       ],
       "categories": ["Action", "Indie", "Simulation", "Strategy"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Microsoft Windows 7 (latest SP) 64-bit",
         "Processor": "Intel Quad Core i7 @ 4.5 GHz or higher (or AMD equivalent)",
@@ -2350,7 +2350,7 @@
         "Indie"
       ],
       "categories": ["Action"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 10 64-bit",
         "Processor": "Core 2 Quad Q9550 2.83GHz or Phenom II X4 955",
@@ -2422,7 +2422,7 @@
         "Isometric"
       ],
       "categories": ["Strategy"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -2494,7 +2494,7 @@
         "Nudity"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -2566,7 +2566,7 @@
         "Horror"
       ],
       "categories": ["Adventure", "Indie", "Simulation", "Strategy"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 10",
         "Processor": "Intel i7 CPU @ 2.6GHz or higher",
@@ -2638,7 +2638,7 @@
         "Comedy"
       ],
       "categories": ["Indie", "Simulation"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 10 64 bit",
         "Processor": "Core i5",
@@ -2718,7 +2718,7 @@
         "RPG"
       ],
       "categories": ["Action", "Free to Play", "Massively Multiplayer"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "64-bit Windows 7 or later",
         "Processor": "Intel i7 processor or higher / AMD Phenom II X6 or higher",
@@ -2786,7 +2786,7 @@
         "Kickstarter"
       ],
       "categories": ["Indie", "RPG", "Strategy"],
-      "price": "$24.99",
+      "price": 24.99,
       "specs": {
         "OS": "Windows 7+",
         "Processor": "Not specified",
@@ -2858,7 +2858,7 @@
         "Memes"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 (64-bit versions)",
         "Processor": "Intel Core i7-3770/AMD FX-8350 or better",
@@ -2926,7 +2926,7 @@
         "Rogue-like"
       ],
       "categories": ["Adventure", "Indie", "Simulation"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7/8/10",
         "Processor": "Intel(R) Core(TM)2 Quad 2.7 Ghz",
@@ -2998,7 +2998,7 @@
         "Female Protagonist"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows 7 (x86 or x64)",
         "Processor": "Intel i3 2100T | AMD Phenom II x4 or higher",
@@ -3074,7 +3074,7 @@
         "Female Protagonist"
       ],
       "categories": ["Adventure", "RPG", "Strategy"],
-      "price": "$44.99",
+      "price": 44.99,
       "specs": {
         "OS": "Windows 7 SP1 64-bit or Windows 8.1 64-bit or Windows 10 64-bit",
         "Processor": "Intel Core i7 or equivalent",
@@ -3160,7 +3160,7 @@
         "Strategy",
         "Early Access"
       ],
-      "price": "$30.00",
+      "price": 30.0,
       "specs": {
         "OS": "Windows 10",
         "Processor": "Quad core 3Ghz+",
@@ -3236,7 +3236,7 @@
         "MMORPG"
       ],
       "categories": ["Casual", "Indie", "Simulation"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows 7 or 8",
         "Processor": "2.0 GHz Quad Core Processor",
@@ -3308,7 +3308,7 @@
         "Top-Down Shooter"
       ],
       "categories": ["Action", "Indie"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Microsoft Windows XP / Vista / 7",
         "Processor": "1.4GHz processor or faster",
@@ -3388,7 +3388,7 @@
         "Quick-Time Events"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 10 64 bit",
         "Processor": "Intel Core i7-3770K",
@@ -3460,7 +3460,7 @@
         "Side Scroller"
       ],
       "categories": ["Action", "Adventure", "Indie"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows 10",
         "Processor": "Intel Core i5",
@@ -3528,7 +3528,7 @@
         "4X"
       ],
       "categories": ["Simulation", "Strategy"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "/Windows 7/Windows 8",
         "Processor": "Intel Pentium IV 2.4 GHz or AMD 3500+",
@@ -3608,7 +3608,7 @@
         "Magic"
       ],
       "categories": ["RPG"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista/7",
         "Processor": "Intel or AMD Quad-Core",
@@ -3684,7 +3684,7 @@
         "Heist"
       ],
       "categories": ["Action", "Adventure", "RPG"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1",
         "Processor": "Intel Core i7- 3770 @ 3.5 GHz or AMD FX-8350 @ 4.0 GHz",
@@ -3752,7 +3752,7 @@
         "Violent"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 8.1 /10 64bit",
         "Processor": "Intel Core i5 4670 or AMD A10-7850K",
@@ -3828,7 +3828,7 @@
         "Indie"
       ],
       "categories": ["Action", "Adventure", "Indie"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows XP SP3/Vista/7/8/10",
         "Processor": "1.2GHz",
@@ -3904,7 +3904,7 @@
         "Adventure"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista",
         "Processor": "2.4 GHZ or Equivalent",
@@ -3972,7 +3972,7 @@
         "Shooter"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows Vista / Windows 7 (enhanced for 64-bit OS)",
         "Processor": "2.4 GHz quad core or better (enhanced for multi-core processors)",
@@ -4044,7 +4044,7 @@
         "Casual"
       ],
       "categories": ["Simulation", "Strategy"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 7 64-bit or newer",
         "Processor": "Intel Core i5 750 @ 2.66 GHz / AMD Phenom II X4 955 @ 3.20 GHz",
@@ -4116,7 +4116,7 @@
         "RPG"
       ],
       "categories": ["Action"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Microsoft Windows 7",
         "Processor": "Any Quad Core Processor (Intel Core i5 or AMD Phenom II X4) or 3.0+ Dual Core CPU",
@@ -4196,7 +4196,7 @@
         "Sports",
         "Early Access"
       ],
-      "price": "Free To Play",
+      "price": 0,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -4268,7 +4268,7 @@
         "Sci-fi"
       ],
       "categories": ["Action", "Adventure", "Indie"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows Vista / 7 / 8 - 64 bits",
         "Processor": "2.8 GHz Quad Core CPU",
@@ -4344,7 +4344,7 @@
         "Voxel"
       ],
       "categories": ["Adventure", "Indie"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 7 SP1 (64 bit only)",
         "Processor": "X64 Quad Core CPU",
@@ -4420,7 +4420,7 @@
         "Massively Multiplayer"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Microsoft Windows Vista SP1 or Windows 7",
         "Processor": "Intel Core 2 Duo 2.6 GHz or AMD Phenom X3 2.4GHz or equivalen",
@@ -4496,7 +4496,7 @@
         "Magic"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "OS X 10.8",
         "Processor": "Intel Core i5 or Core i7",
@@ -4568,7 +4568,7 @@
         "Zombies"
       ],
       "categories": ["Action", "Adventure", "RPG"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "WindowsXP SP3",
         "Processor": "Intel Core2Duo E4400 @ 2.0 GHz or AMD Athlon64 X2 4400+ @ 2.3 GHz or better",
@@ -4640,7 +4640,7 @@
         "Sci-fi"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7x64",
         "Processor": "Intel Core i7-4790 (3.60GHz) or better; Quad-core or better",
@@ -4796,7 +4796,7 @@
         "Atmospheric"
       ],
       "categories": ["Strategy"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 7",
         "Processor": "2 GHz Dual Core (Intel Core 2 Duo 2.4 GHz or Athlon X2 2.7 GHz)",
@@ -4872,7 +4872,7 @@
         "Masterpiece"
       ],
       "categories": ["Action", "Adventure", "Casual", "Indie"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "OS 10.6+",
         "Processor": "3.1 GHz Intel Core 2 Duo or better",
@@ -4952,7 +4952,7 @@
         "Great Soundtrack"
       ],
       "categories": ["Free to Play", "RPG", "Simulation"],
-      "price": "Free to Play",
+      "price": 0,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -5020,7 +5020,7 @@
         "Touch-Friendly"
       ],
       "categories": ["Casual", "Indie", "Simulation", "Strategy"],
-      "price": "$9.99",
+      "price": 9.99,
       "specs": {
         "OS": "Windows 7/8",
         "Processor": "Not specified",
@@ -5096,7 +5096,7 @@
         "Comedy"
       ],
       "categories": ["Action"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Intel Pentium 4 or AMD Athlon XP Processor",
@@ -5168,7 +5168,7 @@
         "Multiplayer"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7 or 8 (64-bit only)",
         "Processor": "Any Quad Core or 3.0+ GHz Dual Core CPU",
@@ -5388,7 +5388,7 @@
         "Funny"
       ],
       "categories": ["Action", "Free to Play", "Indie", "Strategy"],
-      "price": "Free To Play",
+      "price": 0,
       "specs": {
         "OS": "Windows 7",
         "Processor": "Any processor with 2 Cores",
@@ -5464,7 +5464,7 @@
         "Crowdfunded"
       ],
       "categories": ["Action", "Adventure", "Indie", "RPG"],
-      "price": "$24.99",
+      "price": 24.99,
       "specs": {
         "OS": "Windows 7 / Windows 10",
         "Processor": "x86 compatible 3.2GHz or faster processor (Intel 4th generation core i-series or better)",
@@ -5540,7 +5540,7 @@
         "Action RPG"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows Vista SP2 or Windows 7 SP1 or Windows 8 (both 32/64bit versions)",
         "Processor": "Intel Core i5 2400S @ 2.5 GHz or better or AMD Phenom II x4 940 @ 3.0 GHz",
@@ -5620,7 +5620,7 @@
         "RTS"
       ],
       "categories": ["Indie", "Simulation", "Strategy"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7 / Windows 8",
         "Processor": "Intel Core i5 processor (or greater)",
@@ -5684,7 +5684,7 @@
         "Survival"
       ],
       "categories": ["Adventure", "Indie"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows XP/Vista/7/8/8.1/10 x86 and x64",
         "Processor": "Intel Core2 Quad Q9300 (4 * 2500) or equivalent | AMD A10-5800K APU (4*3800) or equivalent",
@@ -5760,7 +5760,7 @@
         "Early Access"
       ],
       "categories": ["Action", "Indie"],
-      "price": "$24.99",
+      "price": 24.99,
       "specs": {
         "OS": "Windows 7+",
         "Processor": "Intel i5+",
@@ -5832,7 +5832,7 @@
         "Simulation"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows Vista or Windows 7",
         "Processor": "Intel Core 2 Quad or higher",
@@ -5908,7 +5908,7 @@
         "Co-op"
       ],
       "categories": ["Strategy"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 7",
         "Processor": "3GHz Quad Core",
@@ -5976,7 +5976,7 @@
         "First-Person"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "64 bit: Win 7 SP1",
         "Processor": "Intel Core i7-3770",
@@ -6052,7 +6052,7 @@
         "Great Soundtrack"
       ],
       "categories": ["Simulation", "Strategy"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows 7/8/10 64-bit",
         "Processor": "3.2 GHz Quad Core Processor",
@@ -6120,7 +6120,7 @@
         "Gore"
       ],
       "categories": ["Action", "Adventure", "RPG"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1",
         "Processor": "AMD FX-8350 @ 4.0 GHz",
@@ -6192,7 +6192,7 @@
         "Medieval"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1",
         "Processor": "Intel CoreTM i3 2100 3.10GHz or AMD A8 3870K 3.0GHz",
@@ -6268,7 +6268,7 @@
         "Indie"
       ],
       "categories": ["Action", "Indie", "Strategy", "Early Access"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1 (x64)",
         "Processor": "Intel Core i7 4790k CPU",
@@ -6344,7 +6344,7 @@
         "Action"
       ],
       "categories": ["Indie", "Simulation"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 64-bit",
         "Processor": "Quad core CPU 3.0 GHz",
@@ -6416,7 +6416,7 @@
         "Time Travel"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$16.99",
+      "price": 16.99,
       "specs": {
         "OS": "Windows 10 64-bit",
         "Processor": "Intel Core i3-6100 (3.7GHz) or AMD Athlon X4 845 (3.5GHz)",
@@ -6492,7 +6492,7 @@
         "Remake"
       ],
       "categories": ["Action", "RPG"],
-      "price": "$39.99",
+      "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1 64bit",
         "Processor": "AMD FX 8150 3.6 GHz or Intel Core i7 2600 3.4 GHz",
@@ -6564,7 +6564,7 @@
         "Adventure"
       ],
       "categories": ["Action", "Indie", "Strategy"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -6628,7 +6628,7 @@
         "Epic"
       ],
       "categories": ["Action"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Not specified",
         "Processor": "Not specified",
@@ -6708,7 +6708,7 @@
         "Action"
       ],
       "categories": ["Simulation", "Strategy"],
-      "price": "$44.99",
+      "price": 44.99,
       "specs": {
         "OS": "Windows 7 (SP1+)/8.1/10 64bit",
         "Processor": "Intel i7-4770/AMD FX-8350",
@@ -6776,7 +6776,7 @@
         "1990's"
       ],
       "categories": ["Action", "Indie"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Microsoft Windows Vista / 7 / 8",
         "Processor": "2.8 GHz Intel Core 2 Duo or better",
@@ -6844,7 +6844,7 @@
         "Survival"
       ],
       "categories": ["Casual", "Indie", "Simulation", "Strategy"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows 10",
         "Processor": "3.0GHz i5 Dual Core or equivalent",
@@ -6924,7 +6924,7 @@
         "Rhythm"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$59.99",
+      "price": 59.99,
       "specs": {
         "OS": "Windows 7 64-bit | Windows 8 64-bit | Windows 10 64-bit",
         "Processor": "Intel Core i5-2500K | AMD Ryzen 5 1400",
@@ -7068,7 +7068,7 @@
         "Adventure"
       ],
       "categories": ["Action"],
-      "price": "$14.99",
+      "price": 14.99,
       "specs": {
         "OS": "Windows XP",
         "Processor": "Core 2 Duo or Athlon x2",
@@ -7136,7 +7136,7 @@
         "Singleplayer"
       ],
       "categories": ["Action", "Massively Multiplayer", "Simulation"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista/7",
         "Processor": "Quad Core 2.6 GHz or better",
@@ -7212,7 +7212,7 @@
         "Singleplayer"
       ],
       "categories": ["Action", "Indie"],
-      "price": "$19.99",
+      "price": 19.99,
       "specs": {
         "OS": "Windows 7 and above",
         "Processor": "Intel Core i5-2300 or AMD Phenom II X4 940 or better",
@@ -7280,7 +7280,7 @@
         "Post-apocalyptic"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "$29.99",
+      "price": 29.99,
       "specs": {
         "OS": "Windows Vista/7",
         "Processor": "2.4 GHz Quad Core processor",
