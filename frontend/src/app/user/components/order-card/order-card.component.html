@@ -1,8 +1,85 @@
 <article
-  class="flex flex-col items-start w-full gap-3 p-3 rounded-sm bg-bgMain/50"
+  class="relative flex items-stretch w-full gap-3 p-3 rounded-sm bg-bgMain/50"
 >
-  <img class="object-contain fade w-72" alt="" loading="lazy" />
-  <aside
-    class="flex flex-col items-stretch justify-between flex-grow gap-3 py-1 lg:flex-row"
-  ></aside>
+  @if (firstGames.length === 1) {
+  <img
+    class="hidden object-contain h-24 rounded-md lg:block"
+    alt="game-image"
+    loading="lazy"
+    [src]="firstGames[0].images[0]"
+  />
+
+  } @else {
+  <div class="hidden h-24 grid-cols-2 gap-1 overflow-hidden rounded-md lg:grid">
+    @for (game of firstGames; track $index) {
+    <img
+      class="object-contain h-12 fade"
+      alt="game-image"
+      loading="lazy"
+      [src]="game.images[0]"
+    />
+    }
+  </div>
+  }
+  <aside class="flex flex-col flex-grow gap-3 py-2">
+    <header class="flex justify-between w-full">
+      <h2 class="capitalize">{{ order.id }}</h2>
+      <div class="flex items-center gap-2">
+        <span class="flex items-center gap-1 text-sm text-dim">
+          <svg
+            class=""
+            width="16"
+            height="18"
+            viewBox="0 0 16 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.8333 2.33268H13V1.49935C13 1.04102 12.625 0.666016 12.1667 0.666016C11.7083 0.666016 11.3333 1.04102 11.3333 1.49935V2.33268H4.66667V1.49935C4.66667 1.04102 4.29167 0.666016 3.83333 0.666016C3.375 0.666016 3 1.04102 3 1.49935V2.33268H2.16667C1.24167 2.33268 0.508333 3.08268 0.508333 3.99935L0.5 15.666C0.5 16.5827 1.24167 17.3327 2.16667 17.3327H13.8333C14.75 17.3327 15.5 16.5827 15.5 15.666V3.99935C15.5 3.08268 14.75 2.33268 13.8333 2.33268ZM13.8333 14.8327C13.8333 15.291 13.4583 15.666 13 15.666H3C2.54167 15.666 2.16667 15.291 2.16667 14.8327V6.49935H13.8333V14.8327ZM3.83333 8.16602H5.5V9.83268H3.83333V8.16602ZM7.16667 8.16602H8.83333V9.83268H7.16667V8.16602ZM10.5 8.16602H12.1667V9.83268H10.5V8.16602Z"
+              fill="#76808C"
+              fill-opacity="0.5"
+            />
+          </svg>
+          {{ order.date | date }}
+        </span>
+
+        @switch (order.status) { @case ('pending') {
+        <span
+          class="text-xs font-semibold me-2 px-2.5 py-0.5 rounded-md border border-indigo-300/25 bg-indigo-900 text-indigo-400"
+          >Pending</span
+        >
+        } @case ('inPreparation') {
+        <span
+          class="text-xs font-semibold me-2 px-2.5 py-0.5 rounded-md border border-yellow-300/25 bg-yellow-900 text-yellow-400"
+          >In Preparation</span
+        >
+        } @case ('sent') {
+        <span
+          class="text-xs font-semibold me-2 px-2.5 py-0.5 rounded-md border border-blue-300/25 bg-blue-900 text-blue-400"
+          >Sent</span
+        >
+        } @default {
+        <span
+          class="text-xs font-semibold me-2 px-2.5 py-0.5 rounded-md border border-green-300/25 bg-green-900 text-green-400"
+          >Delivered</span
+        >
+        } }
+      </div>
+    </header>
+    <div class="flex justify-between gap-2">
+      <div class="flex flex-wrap w-2/3 gap-1">
+        @for (game of order.games; track $index) {
+
+        <span class="px-2 py-1 text-xs bg-bgHighlight text-dim">{{
+          game.title
+        }}</span>
+        }
+      </div>
+
+      <span
+        class="absolute font-semibold text-md place-self-end right-6 bottom-2"
+        >{{ order.price > 0 ? (order.price | currency : "USD") : "Free" }}</span
+      >
+    </div>
+  </aside>
 </article>

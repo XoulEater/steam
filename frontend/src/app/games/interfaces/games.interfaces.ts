@@ -4,7 +4,15 @@ export interface Order {
   price: number;
   orderAddress: string;
   date: Date;
+  status: Status;
   idPaymentMethod: string;
+}
+
+export enum Status {
+  pending = 'pending',
+  inPreparation = 'inPreparation',
+  sent = 'sent',
+  delivered = 'delivered',
 }
 
 export interface Game {

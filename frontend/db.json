@@ -919,7 +919,7 @@
         "Masterpiece"
       ],
       "categories": ["Action", "Adventure"],
-      "price": "Free",
+      "price": 0,
       "specs": {
         "OS": "Windows 7",
         "Processor": "Dual Core 3.0GHz or equivalent",
@@ -4720,7 +4720,7 @@
         "RPG"
       ],
       "categories": ["Action", "Free to Play", "Indie"],
-      "price": "Free",
+      "price": 0,
       "specs": {
         "OS": "Windows 7/8/10",
         "Processor": "Intel Core 2 Duo 2.4GHz or equivalent",
@@ -5244,7 +5244,7 @@
         "Fantasy"
       ],
       "categories": ["Action", "Free to Play"],
-      "price": "Free",
+      "price": 0,
       "specs": {
         "OS": "Windows 7 SP 1",
         "Processor": "Core i5",
@@ -5316,7 +5316,7 @@
         "Masterpiece"
       ],
       "categories": ["Action", "Adventure", "Indie"],
-      "price": "Free",
+      "price": 0,
       "specs": {
         "OS": "Windows 7 (32/64-bit)/Vista/XP",
         "Processor": "2 ghz",
@@ -6996,7 +6996,7 @@
         "Adventure"
       ],
       "categories": ["Action"],
-      "price": "Free",
+      "price": 0,
       "specs": {
         "OS": "Windows 7 / Vista / Vista64 / XP",
         "Processor": "Intel core 2 duo 2.4GHz",
@@ -7488,6 +7488,622 @@
           "comment": "Good game, but not great"
         }
       ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "order1",
+      "games": [
+        {
+          "id": 10,
+          "title": "Rocket League",
+          "description": "Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition. Rocket League includes casual and competitive Online Matches, a fully-featured offline Season Mode, special Mutators that let you change the rules entirely, hockey and...",
+          "release_date": "Jul 7, 2015",
+          "developer": "Psyonix, Inc.",
+          "keywords": [
+            "Multiplayer",
+            "Soccer",
+            "Competitive",
+            "Sports",
+            "Racing",
+            "Team-Based",
+            "Online Co-Op",
+            "Football",
+            "Fast-Paced",
+            "Co-op",
+            "Funny",
+            "Action",
+            "Great Soundtrack",
+            "Local Multiplayer",
+            "Split Screen",
+            "Local Co-Op",
+            "Singleplayer",
+            "Casual",
+            "4 Player Local",
+            "Indie"
+          ],
+          "categories": ["Action", "Indie", "Racing", "Sports"],
+          "price": 19.99,
+          "specs": {
+            "OS": "Windows 7 or Newer",
+            "Processor": "2.5+ GHz Quad core",
+            "Memory": "4 GB RAM",
+            "Graphics": "NVIDIA GTX 660 or better",
+            "DirectX": "Version 9.0c",
+            "Storage": "7 GB available space"
+          },
+          "popularity": 4,
+          "stock": 57,
+          "images": [
+            "https://via.assets.so/game.png?id=45&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=46&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=47&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=48&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=49&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": {
+            "type": "percentage",
+            "value": 10,
+            "until": "2021-12-31"
+          },
+          "reviews": [
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            {
+              "author": "PC Gamer",
+              "rating": 5,
+              "comment": "A masterpiece of a game"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Left 4 Dead 2",
+          "description": "Set in the zombie apocalypse, Left 4 Dead 2 (L4D2) is the highly anticipated sequel to the award-winning Left 4 Dead, the #1 co-op game of 2008. This co-operative action horror FPS takes you and your friends through the cities, swamps and cemeteries of the Deep South, from Savannah to New Orleans across five expansive campaigns.",
+          "release_date": "Nov 16, 2009",
+          "developer": "Valve",
+          "keywords": [
+            "Zombies",
+            "Co-op",
+            "FPS",
+            "Multiplayer",
+            "Shooter",
+            "Action",
+            "Online Co-Op",
+            "Survival",
+            "Horror",
+            "First-Person",
+            "Gore",
+            "Team-Based",
+            "Moddable",
+            "Survival Horror",
+            "Post-apocalyptic",
+            "Singleplayer",
+            "Adventure",
+            "Replay Value",
+            "Local Co-Op",
+            "Tactical"
+          ],
+          "categories": ["Action"],
+          "price": 9.99,
+          "specs": {
+            "OS": "Windows 7 32/64-bit / Vista 32/64 / XP",
+            "Processor": "Intel core 2 duo 2.4GHz",
+            "Memory": "2 GB RAM",
+            "Graphics": "Video Card Shader model 3.0. NVidia 7600",
+            "DirectX": "Version 9.0c",
+            "Storage": "13 GB available space"
+          },
+          "popularity": 4,
+          "stock": 2,
+          "images": [
+            "https://via.assets.so/game.png?id=50&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=51&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=52&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=53&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=54&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+          "reviews": [
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "PC Gamer",
+              "rating": 5,
+              "comment": "A masterpiece of a game"
+            },
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Euro Truck Simulator 2",
+          "description": "Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances! With dozens of cities to explore from the UK, Belgium, Germany, Italy, the Netherlands, Poland, and many more, your endurance, skill and speed will all be pushed to their limits.",
+          "release_date": "Oct 12, 2012",
+          "developer": "SCS Software",
+          "keywords": [
+            "Simulation",
+            "Driving",
+            "Open World",
+            "Realistic",
+            "Relaxing",
+            "Singleplayer",
+            "Moddable",
+            "Exploration",
+            "First-Person",
+            "Economy",
+            "Atmospheric",
+            "Adventure",
+            "Management",
+            "Indie",
+            "Casual",
+            "TrackIR",
+            "Racing",
+            "Sandbox",
+            "Action",
+            "RPG"
+          ],
+          "categories": ["Indie", "Simulation"],
+          "price": 19.99,
+          "specs": {
+            "OS": "Windows 7/8.1/10 64-bit",
+            "Processor": "Quad core CPU 3.0 GHz",
+            "Memory": "6 GB RAM",
+            "Graphics": "GeForce GTX 760-class (2 GB)",
+            "DirectX": "Not specified",
+            "Storage": "Not specified"
+          },
+          "popularity": 4,
+          "stock": 53,
+          "images": [
+            "https://via.assets.so/game.png?id=55&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=56&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=57&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=58&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=59&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": { "type": "none" },
+          "reviews": [
+            {
+              "author": "PC Gamer",
+              "rating": 5,
+              "comment": "A masterpiece of a game"
+            },
+            {
+              "author": "PC Gamer",
+              "rating": 5,
+              "comment": "A masterpiece of a game"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Life is Strange - Episode 1",
+          "description": "Episode 1 now FREE! Life is Strange is an award-winning and critically acclaimed episodic adventure game that allows the player to rewind time and affect the past, present and future.",
+          "release_date": "Jan 29, 2015",
+          "developer": "DONTNOD Entertainment,Feral Interactive (Mac),Feral Interactive (Linux)",
+          "keywords": [
+            "Story Rich",
+            "Choices Matter",
+            "Great Soundtrack",
+            "Female Protagonist",
+            "Time Travel",
+            "Atmospheric",
+            "Episodic",
+            "Singleplayer",
+            "Adventure",
+            "Time Manipulation",
+            "Mystery",
+            "Multiple Endings",
+            "Third Person",
+            "Point & Click",
+            "Indie",
+            "Walking Simulator",
+            "Casual",
+            "Action",
+            "Memes",
+            "Masterpiece"
+          ],
+          "categories": ["Action", "Adventure"],
+          "price": 0,
+          "specs": {
+            "OS": "Windows 7",
+            "Processor": "Dual Core 3.0GHz or equivalent",
+            "Memory": "2 GB RAM",
+            "Graphics": "ATI or NVidia card w/ 1024 MB RAM (NVIDIA GeForce GTX 260 or ATI HD 4890)",
+            "DirectX": "Version 9.0",
+            "Storage": "14 GB available space"
+          },
+          "popularity": 4,
+          "stock": 70,
+          "images": [
+            "https://via.assets.so/game.png?id=60&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=61&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=62&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=63&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=64&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": {
+            "type": "percentage",
+            "value": 10,
+            "until": "2021-12-31"
+          },
+          "reviews": [
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "The Forest",
+          "description": "As the lone survivor of a passenger jet crash, you find yourself in a mysterious forest battling to stay alive against a society of cannibalistic mutants. Build, explore, survive in this terrifying first person survival horror simulator.",
+          "release_date": "Apr 30, 2018",
+          "developer": "Endnight Games Ltd",
+          "keywords": [
+            "Survival",
+            "Open World",
+            "Horror",
+            "Crafting",
+            "Adventure",
+            "Building",
+            "Survival Horror",
+            "First-Person",
+            "Action",
+            "Exploration",
+            "Sandbox",
+            "Atmospheric",
+            "Simulation",
+            "Singleplayer",
+            "Indie",
+            "Realistic",
+            "Gore",
+            "Early Access",
+            "Masterpiece",
+            "Zombies"
+          ],
+          "categories": ["Action", "Adventure", "Indie", "Simulation"],
+          "price": 19.99,
+          "specs": {
+            "OS": "Windows 7",
+            "Processor": "Quad Core Processor",
+            "Memory": "4 GB RAM",
+            "Graphics": "NVIDIA GeForce GTX 560",
+            "DirectX": "Version 9.0",
+            "Storage": "5 GB available space"
+          },
+          "popularity": 4,
+          "stock": 88,
+          "images": [
+            "https://via.assets.so/game.png?id=65&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=66&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=67&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=68&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=69&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+          "reviews": [
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "title": "Borderlands 2",
+          "description": "The Ultimate Vault Hunters Upgrade lets you get the most out of the Borderlands 2 experience.",
+          "release_date": "Sep 17, 2012",
+          "developer": "Gearbox Software,Aspyr (Mac),Aspyr (Linux)",
+          "keywords": [
+            "FPS",
+            "Co-op",
+            "Loot",
+            "RPG",
+            "Action",
+            "Shooter",
+            "Open World",
+            "Funny",
+            "Multiplayer",
+            "Comedy",
+            "Online Co-Op",
+            "Adventure",
+            "Action RPG",
+            "Dark Humor",
+            "Memes",
+            "Sci-fi",
+            "Singleplayer",
+            "Futuristic",
+            "Stylized",
+            "Atmospheric"
+          ],
+          "categories": ["Action", "RPG"],
+          "price": 19.99,
+          "specs": {
+            "OS": "Windows XP SP3/Vista/Win 7",
+            "Processor": "2.3 GHz Quad Core processor",
+            "Memory": "2 GB",
+            "Graphics": "Not specified",
+            "DirectX": "Not specified",
+            "Storage": "Not specified"
+          },
+          "popularity": 3,
+          "stock": 38,
+          "images": [
+            "https://via.assets.so/game.png?id=70&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=71&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=72&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=73&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=74&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": { "type": "none" },
+          "reviews": [
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "Brawlhalla",
+          "description": "Brawlhalla is an epic platform fighter for up to 8 players online or locally. And it's free! Join casual free-for-alls, queue for ranked matches, or make a custom room with your friends. Millions of players. Frequent updates. Over forty unique legends. Come fight for glory in the halls of Valhalla!",
+          "release_date": "Oct 17, 2017",
+          "developer": "Blue Mammoth Games",
+          "keywords": [
+            "Free to Play",
+            "Multiplayer",
+            "Fighting",
+            "2D",
+            "2D Fighter",
+            "Action",
+            "Local Multiplayer",
+            "Platformer",
+            "Co-op",
+            "Controller",
+            "Online Co-Op",
+            "Local Co-Op",
+            "4 Player Local",
+            "Beat 'em up",
+            "Indie",
+            "Singleplayer",
+            "Massively Multiplayer",
+            "Early Access",
+            "Survival",
+            "Adventure"
+          ],
+          "categories": ["Action", "Free to Play", "Indie"],
+          "price": 0,
+          "specs": {
+            "OS": "Not specified",
+            "Processor": "Not specified",
+            "Memory": "2 GB RAM",
+            "Graphics": "Not specified",
+            "DirectX": "Not specified",
+            "Storage": "350 MB available space"
+          },
+          "popularity": 3,
+          "stock": 43,
+          "images": [
+            "https://via.assets.so/game.png?id=75&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=76&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=77&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=78&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=79&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": {
+            "type": "percentage",
+            "value": 10,
+            "until": "2021-12-31"
+          },
+          "reviews": [
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            }
+          ]
+        }
+      ],
+      "price": 69.99,
+      "date": "2021-12-31",
+      "status": "pending",
+      "idPaymentMethod": 1
+    },
+    {
+      "id": "order2",
+      "games": [
+        {
+          "id": 16,
+          "title": "Brawlhalla",
+          "description": "Brawlhalla is an epic platform fighter for up to 8 players online or locally. And it's free! Join casual free-for-alls, queue for ranked matches, or make a custom room with your friends. Millions of players. Frequent updates. Over forty unique legends. Come fight for glory in the halls of Valhalla!",
+          "release_date": "Oct 17, 2017",
+          "developer": "Blue Mammoth Games",
+          "keywords": [
+            "Free to Play",
+            "Multiplayer",
+            "Fighting",
+            "2D",
+            "2D Fighter",
+            "Action",
+            "Local Multiplayer",
+            "Platformer",
+            "Co-op",
+            "Controller",
+            "Online Co-Op",
+            "Local Co-Op",
+            "4 Player Local",
+            "Beat 'em up",
+            "Indie",
+            "Singleplayer",
+            "Massively Multiplayer",
+            "Early Access",
+            "Survival",
+            "Adventure"
+          ],
+          "categories": ["Action", "Free to Play", "Indie"],
+          "price": 0,
+          "specs": {
+            "OS": "Not specified",
+            "Processor": "Not specified",
+            "Memory": "2 GB RAM",
+            "Graphics": "Not specified",
+            "DirectX": "Not specified",
+            "Storage": "350 MB available space"
+          },
+          "popularity": 3,
+          "stock": 43,
+          "images": [
+            "https://via.assets.so/game.png?id=75&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=76&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=77&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=78&q=90&w=700&h=400&fit=fill",
+            "https://via.assets.so/game.png?id=79&q=90&w=700&h=400&fit=fill"
+          ],
+          "discount": {
+            "type": "percentage",
+            "value": 10,
+            "until": "2021-12-31"
+          },
+          "reviews": [
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            {
+              "author": "GameInformer",
+              "rating": 2,
+              "comment": "Not a good game"
+            },
+            {
+              "author": "GameSpot",
+              "rating": 3,
+              "comment": "Good game, but not great"
+            },
+            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "IGN",
+              "rating": 4,
+              "comment": "Great game, but could be better"
+            }
+          ]
+        }
+      ],
+      "price": 0,
+      "date": "2022-02-31",
+      "status": "sent",
+      "idPaymentMethod": 1
     }
   ]
 }

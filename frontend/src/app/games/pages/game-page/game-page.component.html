@@ -101,7 +101,9 @@
           </div>
 
           <span class="text-sm text-dim">Release Date</span>
-          <span class="col-span-4">{{ game.releaseDate || "Unknown" }}</span>
+          <span class="col-span-4">{{
+            (game.releaseDate | date : "longDate") || "Unknown"
+          }}</span>
           <span class="text-sm text-dim">Developer</span>
           <span class="col-span-4">{{ game.developer }}</span>
           <span class="col-span-5 text-sm text-dim">Popular Tags</span>
