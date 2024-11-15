@@ -15,6 +15,7 @@ export class MainCarouselItemComponent {
   public game!: Game;
   public mainImage!: string;
 
+  // TODO: Implement the wishlist feature
   public inWishlist = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;

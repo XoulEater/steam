@@ -16,6 +16,8 @@ export class GameLargeCardComponent {
   public game!: Game;
   public mainImage!: string;
 
+  // TODO: Implement the wishlist feature
+  // TODO: Implement the discount feature
   public discount = false;
   public inWishlist = false;
   public toggleWishlist(): void {
