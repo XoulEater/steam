@@ -1,5 +1,5 @@
 <div
-  *ngIf="game"
+
   class="relative flex flex-row justify-center w-full bg-gradient-to-b from-[#0E141B] to-[#202B3B]"
 >
   <img
@@ -12,7 +12,7 @@
     <article class="flex flex-col gap-5 p-5 lg:flex-row bg-bgMain/50">
       <div class="flex flex-col w-full">
         <div>
-          <app-game-large-card [game]="game"></app-game-large-card>
+          <app-game-large-card-list *ngIf="games" [games]="games"></app-game-large-card-list>
         </div>
       </div>
     </article>
