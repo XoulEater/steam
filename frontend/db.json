@@ -7331,5 +7331,163 @@
         }
       ]
     }
+  ],
+  "wishlist": [
+    {
+      "id": 1,
+      "title": "Team Fortress 2",
+      "description": "Nine distinct classes provide a broad range of tactical abilities and personalities. Constantly updated with new game modes, maps, equipment and, most importantly, hats!",
+      "release_date": "Oct 10, 2007",
+      "developer": "Valve",
+      "keywords": [
+        "Free to Play",
+        "Multiplayer",
+        "FPS",
+        "Shooter",
+        "Action",
+        "Class-Based",
+        "Team-Based",
+        "Funny",
+        "First-Person",
+        "Online Co-Op",
+        "Competitive",
+        "Cartoony",
+        "Trading",
+        "Co-op",
+        "Comedy",
+        "Robots",
+        "Tactical",
+        "Cartoon",
+        "Crafting",
+        "Moddable"
+      ],
+      "categories": ["Action", "Free to Play"],
+      "price": "Free to Play",
+      "specs": {
+        "OS": "Windows 7 (32/64-bit)",
+        "Processor": "Pentium 4 processor (3.0GHz",
+        "Memory": "1 GB RAM",
+        "Graphics": "Not specified",
+        "DirectX": "Version 9.0c",
+        "Storage": "Not specified"
+      },
+      "popularity": 5,
+      "stock": 35,
+      "images": [
+        "https://via.assets.so/game.png?id=0&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=1&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=2&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=3&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=4&q=90&w=700&h=400&fit=fill"
+      ],
+      "discount": {
+        "type": "percentage",
+        "value": 10,
+        "until": "2021-12-31"
+      },
+      "reviews": [
+        {
+          "author": "PC Gamer",
+          "rating": 5,
+          "comment": "A masterpiece of a game"
+        },
+        {
+          "author": "GameInformer",
+          "rating": 2,
+          "comment": "Not a good game"
+        },
+        {
+          "author": "IGN",
+          "rating": 4,
+          "comment": "Great game, but could be better"
+        },
+        {
+          "author": "GameInformer",
+          "rating": 2,
+          "comment": "Not a good game"
+        },
+        {
+          "author": "PC Gamer",
+          "rating": 5,
+          "comment": "A masterpiece of a game"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Unturned",
+      "description": "You're a survivor in the zombie infested ruins of society, and must work with your friends and forge alliances to remain among the living.",
+      "release_date": "Jul 7, 2017",
+      "developer": "Smartly Dressed Games",
+      "keywords": [
+        "Free to Play",
+        "Survival",
+        "Zombies",
+        "Multiplayer",
+        "Open World",
+        "Adventure",
+        "Crafting",
+        "Action",
+        "First-Person",
+        "Co-op",
+        "Sandbox",
+        "Shooter",
+        "Post-apocalyptic",
+        "FPS",
+        "Singleplayer",
+        "Massively Multiplayer",
+        "Indie",
+        "Atmospheric",
+        "Casual",
+        "Early Access"
+      ],
+      "categories": ["Action", "Adventure", "Casual", "Free to Play", "Indie"],
+      "price": "Free to Play",
+      "specs": {
+        "OS": "Windows 10 64-bit",
+        "Processor": "3 GHz",
+        "Memory": "8 GB RAM",
+        "Graphics": "Not specified",
+        "DirectX": "Version 11",
+        "Storage": "6 GB available space"
+      },
+      "popularity": 5,
+      "stock": 38,
+      "images": [
+        "https://via.assets.so/game.png?id=5&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=6&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=7&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=8&q=90&w=700&h=400&fit=fill",
+        "https://via.assets.so/game.png?id=9&q=90&w=700&h=400&fit=fill"
+      ],
+      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "reviews": [
+        {
+          "author": "PC Gamer",
+          "rating": 5,
+          "comment": "A masterpiece of a game"
+        },
+        {
+          "author": "PC Gamer",
+          "rating": 5,
+          "comment": "A masterpiece of a game"
+        },
+        {
+          "author": "GameSpot",
+          "rating": 3,
+          "comment": "Good game, but not great"
+        },
+        {
+          "author": "GameSpot",
+          "rating": 3,
+          "comment": "Good game, but not great"
+        },
+        {
+          "author": "GameSpot",
+          "rating": 3,
+          "comment": "Good game, but not great"
+        }
+      ]
+    }
   ]
 }

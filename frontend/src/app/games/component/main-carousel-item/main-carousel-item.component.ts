@@ -15,8 +15,6 @@ export class MainCarouselItemComponent {
   public game!: Game;
   public mainImage!: string;
 
-  // TODO: Implement the wishlist feature
-  // It should allow users to add and remove games from their wishlist and display the appropriate icon
   public inWishlist = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;

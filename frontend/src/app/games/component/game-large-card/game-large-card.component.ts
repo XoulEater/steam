@@ -16,8 +16,6 @@ export class GameLargeCardComponent {
   public game!: Game;
   public mainImage!: string;
 
-  // TODO: Implement the wishlist feature
-  // It should allow users to add and remove games from their wishlist and display the appropriate icon
   public discount = false;
   public inWishlist = false;
   public toggleWishlist(): void {
