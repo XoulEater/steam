@@ -50,4 +50,8 @@ export class ReviewSectionComponent {
   public rate(rating: number) {
     this.rating = rating;
   }
+
+  public getRatingIcon(rating: number): string {
+    return rating >= 3 ? 'goodReview.png' : 'badReview.png';
+  }
 }

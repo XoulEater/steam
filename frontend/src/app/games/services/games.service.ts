@@ -17,6 +17,18 @@ export class GamesService {
     return this.http.get<Game[]>(url).pipe(catchError((err) => of([])));
   }
 
+  public getOffers(): Observable<Game[]> {
+    const url = this.apiURL + '/games';
+
+    // TODO: Filter in backend
+    return this.http.get<Game[]>(url).pipe(
+      map((games: Game[]) =>
+        games.filter((game) => game.discount && game.discount.type !== 'none')
+      ),
+      catchError((err) => of([]))
+    );
+  }
+
   public getWishlistGames(): Observable<Game[]> {
     const url = this.apiURL + '/wishlist';
 

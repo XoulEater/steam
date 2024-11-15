@@ -61,12 +61,13 @@
       </button>
     </div>
   </header>
+  <!-- #FIXME: ExpressionChangedAfterItHasBeenCheckedError -->
   @for (review of reviews; track $index) {
   <article class="flex flex-col gap-5 p-4 rounded-sm bg-bgMain/50">
     <header class="flex items-center gap-3 p-1 rounded-sm bg-bgMain">
       <img
         class="w-10 h-10 rounded-sm"
-        [src]="review.rating >= 3 ? 'goodReview.png' : 'badReview.png'"
+        [src]="getRatingIcon(review.rating)"
         alt=""
       />
       <div>

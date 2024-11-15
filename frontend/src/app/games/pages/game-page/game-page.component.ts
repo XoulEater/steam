@@ -36,6 +36,16 @@ export class GamePageComponent {
     private gamesService: GamesService
   ) {}
 
+  get discountValue(): number {
+    if (!this.game.discount || !this.game.discount.value) {
+      return 0;
+    }
+    if (this.game.discount.type === 'fixed') {
+      return this.game.discount.value;
+    }
+    return this.game.price * (this.game.discount.value / 100);
+  }
+
   // Método para cambiar la imagen principal con una transición
   changeImage(newImageUrl: string) {
     if (newImageUrl === this.mainImage) return;
@@ -73,7 +83,6 @@ export class GamePageComponent {
         if (game.images && game.images.length > 0) {
           this.mainImage = game.images[0];
         } else {
-          // TODO: Manejar el caso en que no haya imágenes
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
         }
       });

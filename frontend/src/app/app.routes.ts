@@ -4,6 +4,7 @@ import { GamePageComponent } from './games/pages/game-page/game-page.component';
 import { BrowsePageComponent } from './games/pages/browse-page/browse-page.component';
 import { WishlistPageComponent } from './games/pages/wishlist-page/wishlist-page.component';
 import { ProfilePageComponent } from './user/pages/profile-page/profile-page.component';
+import { ProfileSettingsPageComponent } from './user/pages/profile-settings-page/profile-settings-page.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +37,16 @@ export const routes: Routes = [
   //   },
   {
     path: 'profile',
-    component: ProfilePageComponent,
+    children: [
+      {
+        path: 'settings',
+        component: ProfileSettingsPageComponent,
+      },
+      {
+        path: '',
+        component: ProfilePageComponent,
+      },
+    ],
   },
   //   {
   //     path: 'login',

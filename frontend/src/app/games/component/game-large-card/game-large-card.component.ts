@@ -18,10 +18,19 @@ export class GameLargeCardComponent {
 
   // TODO: Implement the wishlist feature
   // TODO: Implement the discount feature
-  public discount = false;
   public inWishlist = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;
+  }
+
+  get discountValue(): number {
+    if (!this.game.discount || !this.game.discount.value) {
+      return 0;
+    }
+    if (this.game.discount.type === 'fixed') {
+      return this.game.discount.value;
+    }
+    return this.game.price * (this.game.discount.value / 100);
   }
 
   ngOnInit(): void {

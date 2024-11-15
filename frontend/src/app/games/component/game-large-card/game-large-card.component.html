@@ -18,7 +18,7 @@
           {{ game.title }}
         </h2>
         <div class="flex justify-start w-full gap-2 text-dim">
-          @for (category of game.categories; track $index) {
+          @for (category of game.categories.slice(0,3); track $index) {
           <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
             category
           }}</span>
@@ -67,27 +67,36 @@
         }
       </button>
       <div class="flex items-center gap-3">
-        @if (discount) {
-        <!-- TODO: Implement discounts -->
-        <span class="hidden mt-4 text-sm text-dim lg:block"
-          >Until October 31</span
+        @if (game.discount.type !== "none") {
+        <span class="text-sm text-dim"
+          >Until {{ game.discount.until | date : "MMM dd" }}</span
         >
+
         <span
           class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
-          >-20%</span
         >
-        <div class="relative flex flex-col justify-end">
+          {{
+            game.discount.type === "fixed"
+              ? "-" + (game.discount.value | currency : "USD")
+              : "-" + game.discount.value + "%"
+          }}</span
+        >
+
+        <div class="relative flex flex-col justify-end gap-0">
           <span class="absolute font-semibold line-through top-2 text-dim/50">{{
-            game.price
+            game.price | currency : "USD"
           }}</span>
-          <span class="absolute font-semibold bottom-2 text-success">{{
-            19.99
-          }}</span>
-          <span class="text-transparent">$00.00</span>
+          <span class="absolute font-semibold bottom-2 text-success">
+            {{ game.price - discountValue | currency : "USD" }}
+          </span>
+          <span class="text-transparent pointer-events-none">$00.00</span>
         </div>
         } @else {
-        <span class="text-lg font-semibold">{{ game.price }}</span>
+        <span class="font-semibold">
+          {{ game.price | currency : "USD" }}
+        </span>
         }
+
         <button
           class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
           [routerLink]="['/browse', game.id]"

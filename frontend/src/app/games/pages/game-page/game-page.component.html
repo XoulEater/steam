@@ -102,7 +102,7 @@
 
           <span class="text-sm text-dim">Release Date</span>
           <span class="col-span-4">{{
-            (game.releaseDate | date : "longDate") || "Unknown"
+            (game.releaseDate | date) || "Unknown"
           }}</span>
           <span class="text-sm text-dim">Developer</span>
           <span class="col-span-4">{{ game.developer }}</span>
@@ -127,15 +127,22 @@
         <div class="flex justify-between p-5 bg-bgMain/50">
           <div>
             <h2 class="text-xl font-semibold">{{ game.title }}</h2>
-            <span class="text-sm text-primary">Offer ends 19 October</span>
+            @if (game.discount.type !== "none") {
+            <span class="text-sm text-primary"
+              >Offer ends {{ game.discount.until | date : "dd MMMM" }}</span
+            >
+            }
           </div>
           <div class="flex items-center gap-3">
-            @if (discount) {
-            <!-- TODO: Implement discounts -->
-
+            @if (game.discount.type !== "none") {
             <span
               class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
-              >-20%</span
+            >
+              {{
+                game.discount.type === "fixed"
+                  ? "-" + (game.discount.value | currency : "USD")
+                  : "-" + game.discount.value + "%"
+              }}</span
             >
             <div class="relative flex flex-col justify-end">
               <span
@@ -143,7 +150,7 @@
                 >{{ game.price | currency : "USD" }}</span
               >
               <span class="absolute font-semibold bottom-2 text-success">{{
-                19.99 | currency : "USD"
+                game.price - discountValue | currency : "USD"
               }}</span>
               <span class="text-transparent">$00.00</span>
             </div>
@@ -184,13 +191,14 @@
           class="grid grid-cols-1 p-5 md:grid-cols-2 lg:grid-cols-3 bg-bgMain/50"
         >
           <ng-container *ngFor="let similarGame of similarGames">
-            <app-offers-carousel-item [game]="similarGame" [discount]="false">
+            <app-offers-carousel-item [game]="similarGame" [small]="true">
             </app-offers-carousel-item>
           </ng-container>
         </div>
       </div>
 
       <!-- Right Info -->
+
       <aside class="flex flex-col gap-5 lg:w-4/12">
         <app-review-section
           [reviews]="game.reviews.reverse()"

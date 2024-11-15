@@ -13,6 +13,17 @@ import { CommonModule } from '@angular/common';
 export class OffersCarouselItemComponent {
   @Input()
   public game!: Game;
+
   @Input()
-  public discount: boolean = true;
+  public small = false;
+
+  get discountValue(): number {
+    if (!this.game.discount || !this.game.discount.value) {
+      return 0;
+    }
+    if (this.game.discount.type === 'fixed') {
+      return this.game.discount.value;
+    }
+    return this.game.price * (this.game.discount.value / 100);
+  }
 }

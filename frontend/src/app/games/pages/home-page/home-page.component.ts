@@ -18,6 +18,7 @@ import { CategoriesCarouselComponent } from '../../component/categories-carousel
 })
 export class HomePageComponent {
   public games: Game[] = [];
+  public offers: Game[] = [];
   public categories: Category[] = [];
 
   constructor(private gamesService: GamesService) {}
@@ -25,6 +26,10 @@ export class HomePageComponent {
   ngOnInit(): void {
     this.gamesService.getGames().subscribe((games) => {
       this.games = games;
+    });
+
+    this.gamesService.getOffers().subscribe((offers) => {
+      this.offers = offers;
     });
 
     this.gamesService.getCategories().subscribe((categories) => {
