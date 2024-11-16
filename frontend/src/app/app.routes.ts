@@ -5,6 +5,11 @@ import { BrowsePageComponent } from './games/pages/browse-page/browse-page.compo
 import { WishlistPageComponent } from './games/pages/wishlist-page/wishlist-page.component';
 import { ProfilePageComponent } from './user/pages/profile-page/profile-page.component';
 import { ProfileSettingsPageComponent } from './user/pages/profile-settings-page/profile-settings-page.component';
+import { AdminPageComponent } from './admin/pages/admin-page/admin-page.component';
+import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
+import { UsersComponent } from './admin/components/users/users.component';
+import { GamesComponent } from './admin/components/games/games.component';
+import { OrdersComponent } from './admin/components/orders/orders.component';
 
 export const routes: Routes = [
   {
@@ -57,11 +62,35 @@ export const routes: Routes = [
   //   {
   //     path: 'checkout',
   //   },
-  //   {
-  //     path: 'administrate',
-  //   },
   {
-    path: '**',
-    redirectTo: 'home',
+    path: 'administration',
+    component: AdminPageComponent,
+    children: [
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'games',
+        component: GamesComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent,
+      },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
   },
+  // {
+  //   path: '**',
+  //   redirectTo: 'home',
+  // },
 ];

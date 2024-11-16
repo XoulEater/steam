@@ -1,9 +1,14 @@
 <nav class="flex items-center justify-between h-16 px-8 bg-bgTertiary">
   <div class="flex items-center gap-5">
-    <img src="/favicon.svg" alt="logo" class="w-auto h-8" />
+    <img
+      src="/favicon.svg"
+      alt="logo"
+      class="w-auto h-8 cursor-pointer"
+      routerLink="/home"
+    />
     <ul class="flex gap-2">
       <button
-        routerLink=""
+        routerLink="/home"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         class="px-8 py-3 transition-colors duration-200 ease-in rounded-sm bg-bgTertiary hover:bg-secondary active:bg-secondary"
@@ -18,11 +23,19 @@
         Browse
       </button>
       <button
-        routerLink="library"
+        routerLink="administration"
         routerLinkActive="active"
         class="px-6 py-3 transition-colors duration-200 ease-in rounded-sm bg-bgTertiary hover:bg-secondary"
       >
         Administration
+      </button>
+      <button
+        routerLink="profile"
+        routerLinkActive="active"
+        class="px-8 py-3 transition-colors duration-200 ease-in rounded-sm bg-bgTertiary hover:bg-secondary"
+      >
+        <!-- TODO: Username here -->
+        {{ "Whiit" }}
       </button>
     </ul>
   </div>
@@ -86,7 +99,7 @@
       >
         <div class="py-1" role="none">
           <a
-            routerLink="/profile"
+            routerLink="/profile/settings"
             class="block px-4 py-4 text-sm transition-colors duration-200 ease-in hover:bg-bgHover"
             role="menuitem"
             tabindex="-1"

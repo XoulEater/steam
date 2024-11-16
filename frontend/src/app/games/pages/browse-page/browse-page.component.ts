@@ -36,6 +36,7 @@ export class BrowsePageComponent {
     // TODO: Get developers from the service
   }
 
+  // TODO: Pagination in backend
   currentPage = 1;
   itemsPerPage = 5;
 

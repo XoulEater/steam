@@ -1,0 +1,45 @@
+<div
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-[#11171e] to-[#212b45]"
+>
+  <main class="z-10 flex flex-col w-full gap-4 my-40 font-medium lg:w-10/12">
+    <h1 class="text-2xl font-semibold">Administration</h1>
+
+    <section class="flex gap-4">
+      <nav class="w-1/5 p-3 rounded-md h-fit bg-bgMain">
+        <ul class="flex flex-col gap-3">
+          <button
+            class="flex items-center gap-2 p-3 text-sm transition-colors duration-200 ease-in rounded-sm cursor-pointer"
+            routerLink="dashboard"
+            routerLinkActive="activePage"
+          >
+            Dashboard
+          </button>
+          <button
+            class="flex items-center gap-2 p-3 text-sm transition-colors duration-200 ease-in rounded-sm cursor-pointer"
+            routerLink="games"
+            routerLinkActive="activePage"
+          >
+            Games
+          </button>
+          <button
+            class="flex items-center gap-2 p-3 text-sm transition-colors duration-200 ease-in rounded-sm cursor-pointer"
+            routerLink="users"
+            routerLinkActive="activePage"
+          >
+            Users
+          </button>
+          <button
+            class="flex items-center gap-2 p-3 text-sm transition-colors duration-200 ease-in rounded-sm cursor-pointer"
+            routerLink="orders"
+            routerLinkActive="activePage"
+          >
+            Orders
+          </button>
+        </ul>
+      </nav>
+      <div class="w-4/5">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </main>
+</div>

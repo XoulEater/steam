@@ -1,1 +1,123 @@
-<p>profile-settings-page works!</p>
+<div class="relative flex flex-row justify-center w-full bg-[#11171e]/80">
+  <main class="z-10 flex flex-col w-full gap-4 my-40 font-medium lg:w-10/12">
+    <header class="flex justify-between w-full">
+      <h1 class="text-2xl font-semibold">Profile Settings</h1>
+      <button
+        class="px-4 py-2 transition-colors duration-300 ease-in-out rounded-sm bg-bgHighlight hover:bg-bgHover"
+        routerLink="../"
+      >
+        Back to Profile
+      </button>
+    </header>
+
+    <section class="flex flex-col gap-4 p-5 rounded-md bg-[#313843]/35">
+      <h3 class="text-xl font-semibold text-dim">General</h3>
+      <div
+        class="grid items-start grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        <span class="mt-1 font-semibold">
+          Profile name *
+          <shared-tooltip
+            for="name"
+            text="Display name for other users"
+          ></shared-tooltip>
+        </span>
+
+        <input type="text" class="p-2 bg-transparent rounded-md text-dim" />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Email *
+          <shared-tooltip
+            for="email"
+            text="Email address for notifications"
+          ></shared-tooltip>
+        </span>
+
+        <input type="email" class="p-2 bg-transparent rounded-md text-dim" />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Bio
+          <shared-tooltip
+            for="bio"
+            text="Short description about yourself"
+          ></shared-tooltip>
+        </span>
+
+        <textarea
+          class="col-span-1 p-2 bg-transparent rounded-md lg:col-span-3 text-dim"
+        ></textarea>
+      </div>
+    </section>
+    <section class="flex flex-col gap-4 p-5 rounded-md bg-[#313843]/35">
+      <h3 class="text-xl font-semibold text-dim">Security</h3>
+      <div
+        class="grid items-start grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        <span class="mt-1 font-semibold">
+          New Password *
+          <shared-tooltip
+            for="new-password"
+            text="Password must be at least 8 characters"
+          ></shared-tooltip>
+        </span>
+        <input type="password" class="p-2 bg-transparent rounded-md text-dim" />
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+        <span class="mt-1 font-semibold">
+          Confirm Password *
+          <shared-tooltip
+            for="confirm-password"
+            text="Re-enter your new password"
+          ></shared-tooltip>
+        </span>
+        <input type="password" class="p-2 bg-transparent rounded-md text-dim" />
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+      </div>
+    </section>
+    <section class="flex flex-col gap-4 p-5 rounded-md bg-[#313843]/35">
+      <h3 class="text-xl font-semibold text-dim">Danger Zone</h3>
+      <div
+        class="grid items-start grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <span class="mt-2 font-semibold">
+          Permanently Delete Your Account
+          <shared-tooltip
+            for="delete-account"
+            text="This action cannot be undone"
+          ></shared-tooltip>
+        </span>
+
+        <button
+          class="w-1/2 col-span-1 px-2 py-2 transition-all duration-300 ease-in-out rounded-sm bg-danger hover:bg-red-900"
+        >
+          Delete Account
+        </button>
+      </div>
+    </section>
+
+    <div class="flex justify-end gap-3">
+      <button
+        class="px-8 py-2 transition-all duration-300 ease-in-out rounded-sm bg-bgHighlight hover:bg-bgHover"
+        routerLink="../"
+      >
+        Cancel
+      </button>
+      <button
+        class="px-16 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+      >
+        Save
+      </button>
+    </div>
+  </main>
+</div>

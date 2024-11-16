@@ -1,0 +1,75 @@
+<article
+  class="flex flex-col items-start w-full gap-3 p-3 rounded-sm lg:items-stretch lg:flex-row bg-bgMain"
+>
+  <img
+    class="object-contain fade w-52"
+    [src]="game.images[0]"
+    alt=""
+    loading="lazy"
+  />
+  <aside
+    class="flex flex-col items-stretch justify-between flex-grow gap-3 py-1 lg:flex-row"
+  >
+    <div
+      class="flex flex-col items-center h-full gap-3 lg:items-start place-content-between"
+    >
+      <header class="flex flex-col gap-3">
+        <h2 class="justify-center text-xl font-bold line-clamp-1">
+          {{ game.title }}
+        </h2>
+        <div class="flex justify-start w-full gap-2 text-dim">
+          @for (category of game.categories.slice(0,3); track $index) {
+          <span class="px-3 py-1 text-sm pointer-events-none bg-bgHighlight">{{
+            category
+          }}</span>
+          }
+        </div>
+      </header>
+      <app-rating-bar [reviews]="game.reviews"></app-rating-bar>
+    </div>
+    <div class="flex items-end place-content-between">
+      <div class="flex items-center gap-3">
+        @if (game.discount.type !== "none") {
+        <span class="text-sm text-dim"
+          >Until {{ game.discount.until | date : "MMM dd" }}</span
+        >
+
+        <span
+          class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+        >
+          {{
+            game.discount.type === "fixed"
+              ? "-" + (game.discount.value | currency : "USD")
+              : "-" + game.discount.value + "%"
+          }}</span
+        >
+
+        <div class="relative flex flex-col justify-end gap-0">
+          <span class="absolute font-semibold line-through top-2 text-dim/50">{{
+            game.price | currency : "USD"
+          }}</span>
+          <span class="absolute font-semibold bottom-2 text-success">
+            {{ game.price - discountValue | currency : "USD" }}
+          </span>
+          <span class="text-transparent pointer-events-none">$00.00</span>
+        </div>
+        } @else {
+        <span class="font-semibold">
+          {{ game.price | currency : "USD" }}
+        </span>
+        }
+
+        <button
+          class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
+        >
+          Modify
+        </button>
+        <button
+          class="flex items-center justify-center gap-2 px-4 py-2 transition-colors duration-300 ease-in rounded-sm w-fit bg-secondary hover:bg-primary hover:text-bgMain"
+        >
+          Discount
+        </button>
+      </div>
+    </div>
+  </aside>
+</article>
