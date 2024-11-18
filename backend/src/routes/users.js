@@ -192,6 +192,8 @@ router.get("/orderHistory", auth("user"), async (req, res) => {
 
     res.status(200).json({ message: `Historial de ordenes de ${req.user.username} obtenido correctamente`, orderHistory: user.orderHistory });
 
+    // TODO: Esto devuelve los IDs de las ordenes, falta devolver los detalles de las ordenes?
+
 
   } catch (error) {
     console.error(error);
@@ -370,5 +372,7 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
     });
   }
 });
+
+// TODO: Falta modificar la cantidad de un producto en el carrito
 
 module.exports = router;
