@@ -10,7 +10,11 @@ const userAuthRoutes = require('./routes/usersAuth');
 const productsRoutes = require('./routes/products');
 
 const app = express();
-const port = process.env.PORT || 3000;
+
+const port = process.env.PORT || 10000;  // Usa el puerto asignado por Render, si está disponible, o 10000 como fallback
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 //Middleware
 app.use(express.json());
