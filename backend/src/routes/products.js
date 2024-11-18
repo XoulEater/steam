@@ -28,6 +28,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
             specs,
             discount,
             stock,
+            sales,
         } = req.body;
 
         const newProduct = new Product({
@@ -44,18 +45,11 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
             keywords,
             specs,
             discount,
+            stock,
+            sales,
         });
 
         const savedProduct = await newProduct.save();
-
-        // Crear y guardar el inventario para el producto recién creado
-        // TODO: Por que como clase aparte y no como un campo de Product?
-        const newInventory = new Inventory({
-            product: savedProduct._id,
-            quantity: stock, // Usamos el valor de stock como la cantidad en inventario
-        });
-
-        const savedInventory = await newInventory.save();
 
         res.status(201).json(savedProduct);
     } catch (error) {
@@ -66,7 +60,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
 // Editar un producto por su id
 router.put("/editProduct/:id", auth("admin"), async (req, res) => {
     try {
-        // TODO: No se puede actualizar el stock de un producto
+        // TODO: No se puede editar el stock de un producto
         const productId = req.params.id;
         const updateData = req.body;
 
@@ -115,8 +109,6 @@ router.delete("/deleteProduct/:id", async (req, res) => {
 
         const deletedProduct = await Product.findByIdAndDelete(productId);
 
-        // TODO: No se elimina el inventario del producto
-
         if (!deletedProduct) {
             return res.status(404).json({ message: "Producto no encontrtado" });
         }
@@ -131,8 +123,8 @@ router.delete("/deleteProduct/:id", async (req, res) => {
 
 // Obtener todos los productos
 router.get("/getProducts", async (req, res) => {
-    // TODO: Agregar paginación
     try {
+        // TODO: Agregar paginacion
         const products = await Product.find();
         res.status(200).json(products);
     } catch (error) {
@@ -143,14 +135,13 @@ router.get("/getProducts", async (req, res) => {
 //Busqueda de productos con sugerencia (busca por nombre, brand o rating)
 router.get("/searchProducts", async (req, res) => {
     try {
+        // TODO: Agregar paginacion
         const { query } = req.query;
 
         // Crear una expresión regular para la búsqueda en los campos de texto
         const regex = new RegExp(query, "i");
 
         // Crear el filtro de búsqueda
-        // TODO: Agregar paginación
-        // TODO: Para que buscar en rating?
         const filter = {
             $or: [
                 { name: regex },
@@ -213,7 +204,7 @@ router.get("/getCategories", async (req, res) => {
 //Busqueda por filtros (categoria, brand, rating)
 router.get("/searchByFilter", async (req, res) => {
     try {
-        // TODO: Falta por precio 
+        // TODO: Filtrar por precio
         const { category, brand, rating } = req.query;  // Recibir los filtros desde el query
 
         // Inicializamos el objeto para los filtros
