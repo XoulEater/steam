@@ -11,10 +11,8 @@ const productsRoutes = require('./routes/products');
 
 const app = express();
 
-const port = process.env.PORT || 10000;  // Usa el puerto asignado por Render, si está disponible, o 10000 como fallback
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// Usa el puerto asignado por Render, si está disponible, o 10000 como fallback
+const port = process.env.PORT || 10000;
 
 //Middleware
 app.use(express.json());
@@ -25,7 +23,6 @@ app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
 app.use('/products', productsRoutes);
-
 
 //Routes
 app.get('/', (req, res) => {
@@ -39,9 +36,9 @@ mongoose.connect(process.env.MONGODB_URI)
     })
     .catch((error) => {
         console.log('Error connecting to MongoDB', error);
-    })
+    });
 
+// Solo una llamada a app.listen
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
-
