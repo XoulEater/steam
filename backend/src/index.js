@@ -11,6 +11,8 @@ const productsRoutes = require('./routes/products');
 
 const app = express();
 
+console.log('TOKEN_SECRET:', process.env.TOKEN_SECRET);
+
 // Usa el puerto asignado por Render, si está disponible, o 10000 como fallback
 const port = process.env.PORT || 10000;
 
@@ -24,7 +26,7 @@ app.use(cors(corsOptions));  // Aplica la configuración de CORS
 
 // Middleware
 app.use(express.json()); // Parseo de JSON
-app.use(cors()); // Para permitir peticiones de diferentes dominios
+
 
 // Import Routes
 app.use('/user', userRoutes);
