@@ -289,8 +289,8 @@ router.get('/filterCategoryIndex', async (req, res) => {
 });
 
 // Busqueda de Productos por Categoría (`categoriesPath`)
-// http://localhost:3000/products/filterByCategory?query=co-op
-router.get('/filterByCategory', async (req, res) => {
+// http://localhost:3000/products/filterProductsByCategory?query=co-op
+router.get('/filterProductsByCategory', async (req, res) => {
     const { query } = req.query;
 
     if (!query) {
