@@ -4,13 +4,14 @@ const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     images: [{ type: String }], // URLs de imágenes del producto
-    description: { type: String, required: true },
+    description: { type: String, required: true, unique: true },
     categories: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category",
       },
     ], // Categorías del producto (referencia a otra colección "Category")
+    categoriesPath: [{ type: String }],
     brand: { type: String, required: true },
     price: { type: Number, required: true },
     rating: { type: Number, default: 0, min: 0, max: 5 }, // Rating entre 0 y 5
