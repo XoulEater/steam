@@ -135,7 +135,7 @@ router.get("/getProducts", async (req, res) => {
     }
 });
 
-//Busqueda de productos con sugerencia
+//Busqueda de productos con sugerencia (busca por nombre, brand o rating)
 router.get("/searchProducts", async (req, res) => {
     try {
         const { query } = req.query;
