@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require('mongoose');
 const auth = require("../middleware/authMiddleware");
 const dotenv = require("dotenv");
 const Product = require("../models/products");
@@ -17,6 +18,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
             images,
             description,
             categories,
+            categoriesPath,
             brand,
             price,
             rating,
@@ -33,6 +35,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
             images,
             description,
             categories,
+            categoriesPath,
             brand,
             price,
             rating,
@@ -59,13 +62,12 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
     }
 });
 
-// Endpoint para editar un producto
+// Editar un producto por su id
 router.put("/editProduct/:id", auth("admin"), async (req, res) => {
     try {
         const productId = req.params.id;
         const updateData = req.body;
 
-        // Buscar y actualizar el producto
         const updatedProduct = await Product.findByIdAndUpdate(
             productId,
             updateData,
@@ -77,7 +79,6 @@ router.put("/editProduct/:id", auth("admin"), async (req, res) => {
             return res.status(404).json({ message: "Producto no encontrado" });
         }
 
-        // Responder con el producto actualizado
         res.status(200).json(updatedProduct);
     } catch (error) {
         res.status(500).json({ message: "Error al actualizar el producto", error: error.message || error });
@@ -85,8 +86,6 @@ router.put("/editProduct/:id", auth("admin"), async (req, res) => {
 });
 
 // Endpoint obtener Id del producto por nombre
-/* Duda con respecto a esto, se debe hacer el campo name del esquema product unico
-para que no hayan nombres duplicados y esto de error */
 router.get("/getIdByName", async (req, res) => {
     try {
         const productName = req.query.name;
@@ -107,6 +106,22 @@ router.get("/getIdByName", async (req, res) => {
     }
 });
 
+// Eliminar producto por id
+router.delete("/deleteProduct/:id", async (req, res) => {
+    try {
+        const productId = req.params.id;
+
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ message: "Producto no encontrtado" });
+        }
+
+        res.status(200).json({ message: "Producto eliminado correctamente", deletedProduct });
+    } catch (error) {
+        res.status(500).json({ message: "Error al eliminar el producto", error: error.message });
+    }
+});
 
 /* ENDPOINTS DE BUSQUEDA Y FILTROS*/
 
@@ -126,7 +141,7 @@ router.get("/searchProducts", async (req, res) => {
         const { query } = req.query;
 
         // Crear una expresión regular para la búsqueda en los campos de texto
-        const regex = new RegExp(query, "i"); 
+        const regex = new RegExp(query, "i");
 
         // Crear el filtro de búsqueda
         const filter = {
@@ -173,8 +188,8 @@ router.get("/getBrands", async (req, res) => {
 router.get("/getCategories", async (req, res) => {
     try {
         const categories = await Category
-            .find({ parentCategory: null }) 
-            .distinct("name"); 
+            .find({ parentCategory: null })
+            .distinct("name");
 
         res.status(200).json({
             message: "Categorías encontradas",
@@ -200,18 +215,18 @@ router.get("/searchByFilter", async (req, res) => {
         if (category) {
             // Aseguramos que el filtro de categoría sea exacto a las categorías que contienen el parentCategory
             filterConditions["categories"] = {
-                $in: await getCategoriesWithParent(category) 
+                $in: await getCategoriesWithParent(category)
             };
         }
 
         // Filtrar por marca (si se proporciona)
         if (brand) {
-            filterConditions["brand"] = new RegExp(brand, "i");  
+            filterConditions["brand"] = new RegExp(brand, "i");
         }
 
         // Filtrar por rating (si se proporciona)
         if (rating) {
-            filterConditions["rating"] = { $eq: Number(rating) };  
+            filterConditions["rating"] = { $eq: Number(rating) };
         }
 
         // Buscar productos con todas las condiciones de filtro
@@ -232,14 +247,134 @@ async function getCategoriesWithParent(category) {
     // Buscar las categorías que tengan el parentCategory igual al valor de 'category'
     const categories = await Category.find({
         $or: [
-            { parentCategory: { $regex: new RegExp(category, "i") } },  
-            { name: { $regex: new RegExp(category, "i") } }  
+            { parentCategory: { $regex: new RegExp(category, "i") } },
+            { name: { $regex: new RegExp(category, "i") } }
         ]
     });
 
-    return categories.map(cat => cat._id);  
+    return categories.map(cat => cat._id);
 }
 
+// Filtrar categorias y sub categorias, este endpoint recibe una categoria padre,
+// sub categoria (campo path en la base de datos por ejemplo action o shooter) o un nombre
+// (campo name en la base de datos por ejemplo Action-RPG, Shooter, RPG)
+// http://localhost:3000/products/filterCategoryIndex?query=action
+router.get('/filterCategoryIndex', async (req, res) => {
+    const { query } = req.query;
 
+    if (!query) {
+        return res.status(400).send({ error: 'Query parameter is required' });
+    }
+
+    try {
+        const results = await Category.aggregate([
+            {
+                $search: {
+                    index: 'subCategoriesIndex',
+                    text: {
+                        query: query,
+                        path: {
+                            wildcard: "*"
+                        }
+                    }
+                }
+            }
+        ]);
+
+        res.status(200).send(results);
+    } catch (error) {
+        console.error("Error executing search:", error);
+        res.status(500).send({ error: 'An error occurred while executing the search' });
+    }
+});
+
+// Busqueda de Productos por Categoría (`categoriesPath`)
+// http://localhost:3000/products/filterByCategory?query=co-op
+router.get('/filterByCategory', async (req, res) => {
+    const { query } = req.query;
+
+    if (!query) {
+        return res.status(400).send({ error: 'Query parameter is required' });
+    }
+
+    try {
+        // Realizar la búsqueda utilizando MongoDB Atlas Search con `$search` en el campo `categoriesPath`
+        const results = await Product.aggregate([
+            {
+                $search: {
+                    index: 'filterGamesByCategoryIndex',
+                    text: {
+                        query: query,
+                        path: 'categoriesPath',
+                        fuzzy: {
+                            maxEdits: 1
+                        },
+                    },
+                },
+            },
+        ]);
+
+        res.status(200).send(results);
+    } catch (error) {
+        console.error("Error executing search:", error);
+        res.status(500).send({ error: 'An error occurred while executing the search' });
+    }
+});
+
+// Busqueda de Productos por keywords (`keywords`)
+// http://localhost:3000/products/searchKeyWord?query=war
+router.get('/searchKeyWord', async (req, res) => {
+    const { query } = req.query;
+
+    if (!query) {
+        return res.status(400).send({ error: 'Query parameter is required' });
+    }
+
+    try {
+        // Realizar la búsqueda utilizando MongoDB Atlas Search con `$search` en el campo `keywords`
+        const results = await Product.aggregate([
+            {
+                $search: {
+                    index: 'filterGamesByCategoryIndex',
+                    text: {
+                        query: query,
+                        path: 'keywords',
+                        fuzzy: {
+                            maxEdits: 1
+                        },
+                    },
+                },
+            },
+        ]);
+
+        res.status(200).send(results);
+    } catch (error) {
+        console.error("Error executing search:", error);
+        res.status(500).send({ error: 'An error occurred while executing the search' });
+    }
+});
+
+// Buscar los 'n' productos mas populares
+// http://localhost:3000/products/searchByPopularity?limit=10
+router.get('/searchByPopularity', async (req, res) => {
+    const { limit } = req.query;
+    
+    if (!limit || isNaN(limit) || parseInt(limit) <= 0) {
+        return res.status(400).send({ error: 'Se requiere el parametro limite, este debe ser positivo'});
+    }
+
+    const n = parseInt(limit);
+
+    try {
+        const mostPopularProducts = await Product.find()
+            .sort({ popularity: -1 }) // ordenar documentos de manera descendente por popularity
+            .limit(n); // Limitar los resultados a 'n'
+        
+        res.status(200).send(mostPopularProducts);
+    } catch (error) {
+        console.error("Error obteniendo los productos mas populares:", error);
+        res.status(500).send({ error: 'Error obteniendo los productos mas populares' });
+    }
+});
 
 module.exports = router;
