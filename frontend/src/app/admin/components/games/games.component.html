@@ -1,33 +1,34 @@
-<section class="flex justify-between p-5 rounded-md bg-bgMain">
-  <h3 class="text-xl font-semibold text-dim">Games</h3>
-  <aside class="flex gap-3">
-    <button
-      class="px-6 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
-    >
-      New Discount
-    </button>
-    <button
-      class="px-6 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
-    >
-      New Game
-    </button>
-  </aside>
-</section>
-<!-- Game List -->
-
-<section class="flex flex-col items-end gap-4 mt-2">
-  <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
-    @for (game of paginatedGames; track $index) {
-    <app-admin-game-card [game]="game"></app-admin-game-card>
-    }
-  </div>
-  <div>
-    @if (games.length > 0) {
-    <shared-pagination
-      [totalItems]="games.length"
-      [itemsPerPage]="itemsPerPage"
-      (pageChange)="onPageChange($event)"
-    ></shared-pagination>
-    }
-  </div>
-</section>
+<div class="flex flex-col gap-3">
+  <section class="flex justify-between p-5 rounded-md bg-bgMain">
+    <h3 class="text-xl font-semibold text-dim">Games</h3>
+    <aside class="flex gap-3">
+      <button
+        class="px-6 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+      >
+        New Discount
+      </button>
+      <button
+        class="px-6 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+      >
+        New Game
+      </button>
+    </aside>
+  </section>
+  <!-- Game List -->
+  <section class="flex flex-col items-end gap-4">
+    <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
+      @for (game of paginatedGames; track $index) {
+      <app-admin-game-card [game]="game"></app-admin-game-card>
+      }
+    </div>
+    <div>
+      @if (games.length > 0) {
+      <shared-pagination
+        [totalItems]="games.length"
+        [itemsPerPage]="itemsPerPage"
+        (pageChange)="onPageChange($event)"
+      ></shared-pagination>
+      }
+    </div>
+  </section>
+</div>
