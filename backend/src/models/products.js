@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     images: [{ type: String }], // URLs de imágenes del producto
-    description: { type: String, required: true, unique: true }, // TODO: por que unique?
+    description: { type: String, required: true },
     categories: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,24 +18,15 @@ const productSchema = new mongoose.Schema(
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ProductReview" }], // Reseñas del producto
     popularity: { type: Number, default: 0 }, // Popularidad (por ejemplo, cantidad de ventas)
     keywords: [{ type: String }], // Palabras clave para búsqueda
-    // TODO: Los spec son fijos y pueden ser nulos
-    // OS, Processor, Memory, Graphics, DirectX, Storage
     specs: {
       type: Map,
       of: String,
-    }, // Especificaciones técnicas (por ejemplo, recursos mínimos)
-    discount: {
-      type: Number,
-      min: 0,
-      max: 100,
-    } // Descuento en porcentaje (0 - 100)
+    },
+    discount: { type: mongoose.Schema.Types.ObjectId, ref: "Discount" },
+    stock: { type: Number, required: true },
+    sales: { type: String, default: 0 },
   },
   { timestamps: true }
 );
-
-// TODO: revisar si envia ID al front
-// TODO: revisar si envia las categorias al front
-// TODO: falta release date
-// TODO: por que stock y sales esta en otro schema?
 
 module.exports = mongoose.models.Product || mongoose.model("Product", productSchema);
