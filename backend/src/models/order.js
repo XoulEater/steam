@@ -8,6 +8,7 @@ const orderSchema = new mongoose.Schema({
     }],
     price : { type: Number, required: true },
     idPaymentMethod: { type: mongoose.Schema.Types.ObjectId, ref: "PaymentMethod", required: true },
+    // TODO: Falta Estado de la orden 
 });
 
 module.exports = mongoose.model("Order", orderSchema);

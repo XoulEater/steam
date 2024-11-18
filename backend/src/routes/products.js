@@ -49,6 +49,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
         const savedProduct = await newProduct.save();
 
         // Crear y guardar el inventario para el producto recién creado
+        // TODO: Por que como clase aparte y no como un campo de Product?
         const newInventory = new Inventory({
             product: savedProduct._id,
             quantity: stock, // Usamos el valor de stock como la cantidad en inventario
@@ -65,6 +66,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
 // Editar un producto por su id
 router.put("/editProduct/:id", auth("admin"), async (req, res) => {
     try {
+        // TODO: No se puede actualizar el stock de un producto
         const productId = req.params.id;
         const updateData = req.body;
 
@@ -113,6 +115,8 @@ router.delete("/deleteProduct/:id", async (req, res) => {
 
         const deletedProduct = await Product.findByIdAndDelete(productId);
 
+        // TODO: No se elimina el inventario del producto
+
         if (!deletedProduct) {
             return res.status(404).json({ message: "Producto no encontrtado" });
         }
@@ -127,6 +131,7 @@ router.delete("/deleteProduct/:id", async (req, res) => {
 
 // Obtener todos los productos
 router.get("/getProducts", async (req, res) => {
+    // TODO: Agregar paginación
     try {
         const products = await Product.find();
         res.status(200).json(products);
@@ -144,6 +149,8 @@ router.get("/searchProducts", async (req, res) => {
         const regex = new RegExp(query, "i");
 
         // Crear el filtro de búsqueda
+        // TODO: Agregar paginación
+        // TODO: Para que buscar en rating?
         const filter = {
             $or: [
                 { name: regex },
@@ -206,6 +213,7 @@ router.get("/getCategories", async (req, res) => {
 //Busqueda por filtros (categoria, brand, rating)
 router.get("/searchByFilter", async (req, res) => {
     try {
+        // TODO: Falta por precio 
         const { category, brand, rating } = req.query;  // Recibir los filtros desde el query
 
         // Inicializamos el objeto para los filtros
@@ -376,5 +384,8 @@ router.get('/searchByPopularity', async (req, res) => {
         res.status(500).send({ error: 'Error obteniendo los productos mas populares' });
     }
 });
+
+// TODO: Agregar endpoint para obtener productos con descuento
+// TODO: Agregar endpoint para añadir reseñas a productos, debe actualizar el rating del producto
 
 module.exports = router;

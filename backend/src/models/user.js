@@ -10,9 +10,11 @@ const userSchema = new mongoose.Schema({
     paymentMethods: [
       {type: mongoose.Schema.Types.ObjectId, ref: "PaymentMethod", default: []},
     ],
-    wishlist: {type: mongoose.Schema.Types.ObjectId, ref: "Wishlist", default: null },
+    wishlist: {type: mongoose.Schema.Types.ObjectId, ref: "Wishlist", default: null }, 
     orderHistory: [ {type: mongoose.Schema.Types.ObjectId, ref: "Order", default: []}
     ],
   },{ timestamps: true });
+
+  // TODO: Hubiera sido mas simple tener campos anidados en lugar de referencias
 
 module.exports = mongoose.model("User", userSchema);
