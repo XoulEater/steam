@@ -29,6 +29,29 @@ export class GamesService {
     );
   }
 
+  public createGame(game: Game): Observable<Game | undefined> {
+    const url = this.apiURL + '/games';
+
+    return this.http
+      .post<Game>(url, game)
+      .pipe(catchError((err) => of(undefined)));
+  }
+
+  public updateGame(game: Game): Observable<Game | undefined> {
+    const url = this.apiURL + '/games/' + game.id;
+
+    return this.http
+      .put<Game>(url, game)
+      .pipe(catchError((err) => of(undefined)));
+  }
+
+  public deleteGame(id: string): Observable<Object> {
+    const url = this.apiURL + '/games/' + id;
+
+    // return this.http.delete(url).pipe(catchError((err) => of(false)));
+    return of(true);
+  }
+
   public getWishlistGames(): Observable<Game[]> {
     const url = this.apiURL + '/wishlist';
 

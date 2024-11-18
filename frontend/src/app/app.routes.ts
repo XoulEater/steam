@@ -10,6 +10,7 @@ import { DashboardComponent } from './admin/components/dashboard/dashboard.compo
 import { UsersComponent } from './admin/components/users/users.component';
 import { GamesComponent } from './admin/components/games/games.component';
 import { OrdersComponent } from './admin/components/orders/orders.component';
+import { NewGamePageComponent } from './admin/pages/new-game-page/new-game-page.component';
 
 export const routes: Routes = [
   {
@@ -72,7 +73,20 @@ export const routes: Routes = [
       },
       {
         path: 'games',
-        component: GamesComponent,
+        children: [
+          {
+            path: '',
+            component: GamesComponent,
+          },
+          {
+            path: 'new',
+            component: NewGamePageComponent,
+          },
+          {
+            path: 'edit/:id',
+            component: NewGamePageComponent,
+          },
+        ],
       },
       {
         path: 'users',

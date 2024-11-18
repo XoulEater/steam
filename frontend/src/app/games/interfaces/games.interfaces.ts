@@ -51,15 +51,9 @@ export enum Category {
 }
 
 export interface Discount {
-  type: Type;
+  type: string;
   value?: number;
   until?: Date;
-}
-
-export enum Type {
-  Fixed = 'fixed',
-  None = 'none',
-  Percentage = 'percentage',
 }
 
 export interface Review {

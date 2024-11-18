@@ -1,0 +1,236 @@
+<div class="relative flex flex-col justify-center w-full gap-2 rounded-md">
+  <main class="z-10 flex flex-col w-full gap-4 p-5 font-medium bg-[#11171e]/80">
+    <section class="flex flex-col gap-4 rounded-md">
+      <h3 class="text-xl font-semibold text-dim">
+        {{ isCreateMode ? "Create Game" : "Edit Game" }}
+      </h3>
+      <form
+        class="grid items-start grid-cols-1 gap-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4"
+        [formGroup]="gameForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <span class="mt-1 font-semibold">
+          Title *
+          <shared-tooltip for="title" text="Title of the game"></shared-tooltip>
+        </span>
+
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          [formControlName]="'title'"
+          required
+        />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Developer *
+          <shared-tooltip
+            for="developer"
+            text="Developer or studio of the game"
+          ></shared-tooltip>
+        </span>
+
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          [formControlName]="'developer'"
+          required
+        />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Price *
+          <shared-tooltip
+            for="price"
+            text="Price of the game in USD"
+          ></shared-tooltip>
+        </span>
+        <input
+          type="number"
+          class="p-2 bg-transparent rounded-md text-dim"
+          min="0"
+          step="0.50"
+          [formControlName]="'price'"
+          required
+        />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Stock *
+          <shared-tooltip for="stock" text="Stock of the game"></shared-tooltip>
+        </span>
+        <input
+          type="number"
+          class="p-2 bg-transparent rounded-md text-dim"
+          min="0"
+          step="0.50"
+          [formControlName]="'stock'"
+          required
+        />
+
+        <div class="hidden col-span-2 lg:block">
+          <!-- spacer -->
+        </div>
+
+        <span class="mt-1 font-semibold">
+          Description
+          <shared-tooltip
+            for="description"
+            text="Description of the game"
+          ></shared-tooltip>
+        </span>
+
+        <textarea
+          class="col-span-1 p-2 bg-transparent rounded-md lg:col-span-3 text-dim"
+          [formControlName]="'description'"
+        ></textarea>
+
+        <span class="mt-1 font-semibold">
+          Categories *
+          <shared-tooltip
+            for="category"
+            text="Select multiple categories for the game"
+          ></shared-tooltip>
+        </span>
+        <select
+          class="p-2 rounded-md bg-[#131923] text-dim"
+          [formControlName]="'categories'"
+          (change)="addCategory($event)"
+        >
+          <option
+            *ngFor="let category of categories"
+            class="disabled:text-dim/50"
+            [value]="category"
+            [disabled]="selectedCategories.includes(category)"
+          >
+            {{ category }}
+          </option>
+        </select>
+
+        <ul
+          class="col-span-2 p-2 overflow-y-scroll rounded-md h-36 bg-bgHighlight"
+        >
+          <li
+            class="flex items-center justify-between p-2 border-b border-dim"
+            *ngFor="let category of selectedCategories"
+          >
+            <span>{{ category }}</span>
+            <button type="button" (click)="removeCategory(category)">x</button>
+          </li>
+        </ul>
+        <span class="mt-1 font-semibold">
+          Images *
+          <shared-tooltip
+            for="images"
+            text="Insert the URL of the images for the game"
+          ></shared-tooltip>
+        </span>
+        <input
+          placeholder="https://example"
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          (keydown.enter)="addImage($event)"
+        />
+
+        <ul
+          class="col-span-2 p-2 overflow-y-scroll rounded-md h-36 bg-bgHighlight"
+        >
+          <li
+            class="flex items-center justify-between p-2 border-b border-dim"
+            *ngFor="let image of selectedImages"
+          >
+            <span>{{ image }}</span>
+            <button type="button" (click)="removeImage(image)">x</button>
+          </li>
+        </ul>
+      </form>
+      <form
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        [formGroup]="specsForm"
+      >
+        <span class="mt-1 font-semibold">
+          Specifications
+          <shared-tooltip
+            for="specifications"
+            text="Minumum and recommended specifications for the game"
+          ></shared-tooltip>
+        </span>
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="OS"
+          [formControlName]="'OS'"
+        />
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="Processor"
+          [formControlName]="'Processor'"
+        />
+
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="Memory"
+          [formControlName]="'Memory'"
+        />
+        <div class="hidden col-span-1 lg:block">
+          <!-- spacer -->
+        </div>
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="Graphics"
+          [formControlName]="'Graphics'"
+        />
+
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="DirectX"
+          [formControlName]="'DirectX'"
+        />
+
+        <input
+          type="text"
+          class="p-2 bg-transparent rounded-md text-dim"
+          placeholder="Storage"
+          [formControlName]="'Storage'"
+        />
+      </form>
+    </section>
+  </main>
+  <div class="flex justify-end gap-3">
+    @if (isCreateMode) {
+
+    <button
+      class="px-8 py-2 transition-all duration-300 ease-in-out rounded-sm bg-bgHighlight hover:bg-bgHover"
+      routerLink="../"
+    >
+      Cancel
+    </button>
+    } @else {
+    <button
+      class="px-8 py-2 transition-all duration-300 ease-in-out rounded-sm bg-danger hover:brightness-150"
+      (click)="onDelete()"
+    >
+      Delete
+    </button>
+    }
+    <button
+      class="px-16 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+      (click)="onSubmit()"
+    >
+      Save
+    </button>
+  </div>
+</div>

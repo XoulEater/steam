@@ -89,5 +89,17 @@
   @apply brightness-0;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-dialog-container {
+  height: 400px;
+  width: 1250px !important;
+  border-radius: 10px;
+}

@@ -3,18 +3,26 @@ import { GamesService } from './../../../games/services/games.service';
 import { Component } from '@angular/core';
 import { AdminGameCardComponent } from '../admin-game-card/admin-game-card.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [AdminGameCardComponent, PaginationComponent],
+  imports: [
+    AdminGameCardComponent,
+    PaginationComponent,
+    MatDialogModule,
+    RouterModule,
+  ],
   templateUrl: './games.component.html',
   styles: ``,
 })
 export class GamesComponent {
   public games: Game[] = [];
 
-  constructor(private gameService: GamesService) {}
+  constructor(private gameService: GamesService, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.gameService.getGames().subscribe((games) => {

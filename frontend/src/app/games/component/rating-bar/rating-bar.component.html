@@ -3,7 +3,7 @@
     <!-- Titulos -->
     <header class="flex justify-between">
       <span class="flex items-center gap-[2px] text-xs text-primary">
-        {{ positiveRatio }}%
+        {{ positiveRatio || 0 }}%
         <svg
           class="opacity-50"
           width="13"
@@ -19,7 +19,7 @@
         </svg>
       </span>
       <span class="flex items-center gap-1 text-xs text-danger">
-        {{ 100 - positiveRatio }}%
+        {{ 100 - positiveRatio || 0 }}%
         <svg
           class="opacity-50"
           width="13"
@@ -37,6 +37,8 @@
     </header>
     <!-- Barras -->
     <div class="flex w-full gap-1">
+      @if (positiveRatio) {
+
       <div
         class="h-1 rounded-full bg-primary"
         [style.width.%]="positiveRatio"
@@ -45,6 +47,9 @@
         class="h-1 rounded-full bg-danger"
         [style.width.%]="100 - positiveRatio"
       ></div>
+      } @else {
+      <div class="w-full h-1 rounded-full bg-dim"></div>
+      }
     </div>
   </section>
   <span class="text-secondary">{{ reviews.length | number }} Reviews</span>

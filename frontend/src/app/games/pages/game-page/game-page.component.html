@@ -71,7 +71,7 @@
                 numScroll: 1
               }
             ]"
-            [value]="game.images"
+            [value]="game.images.slice(1)"
             [numVisible]="3"
             [numScroll]="1"
             [circular]="false"
@@ -174,15 +174,23 @@
           <span class="col-span-2 text-sm text-dim">Recomended</span>
           <div class="grid grid-cols-1 gap-3 pl-4 md:grid-cols-2">
             <span class="text-sm text-dim">&centerdot; OS</span>
-            <span class="text-sm">{{ game.specs.OS }}</span>
+            <span class="text-sm">{{ game.specs.OS || "Not specified" }}</span>
             <span class="text-sm text-dim">&centerdot; Processor</span>
-            <span class="text-sm">{{ game.specs.Processor }}</span>
+            <span class="text-sm">{{
+              game.specs.Processor || "Not specified"
+            }}</span>
             <span class="text-sm text-dim">&centerdot; Memory</span>
-            <span class="text-sm">{{ game.specs.Memory }}</span>
+            <span class="text-sm">{{
+              game.specs.Memory || "Not specified"
+            }}</span>
             <span class="text-sm text-dim">&centerdot; Graphics</span>
-            <span class="text-sm">{{ game.specs.Graphics }}</span>
+            <span class="text-sm">{{
+              game.specs.Graphics || "Not specified"
+            }}</span>
             <span class="text-sm text-dim">&centerdot; Storage</span>
-            <span class="text-sm">{{ game.specs.Storage }}</span>
+            <span class="text-sm">{{
+              game.specs.Storage || "Not specified"
+            }}</span>
           </div>
         </div>
 

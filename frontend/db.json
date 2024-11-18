@@ -1,10 +1,9 @@
 {
   "games": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Team Fortress 2",
       "description": "Nine distinct classes provide a broad range of tactical abilities and personalities. Constantly updated with new game modes, maps, equipment and, most importantly, hats!",
-      "releaseDate": "Oct 10, 2007",
       "developer": "Valve",
       "keywords": [
         "Free to Play",
@@ -28,8 +27,11 @@
         "Crafting",
         "Moddable"
       ],
-      "categories": ["Action", "Free to Play"],
-      "price": 0,
+      "categories": [
+        "Action",
+        "Free to Play"
+      ],
+      "price": 10,
       "specs": {
         "OS": "Windows 7 (32/64-bit)",
         "Processor": "Pentium 4 processor (3.0GHz",
@@ -78,86 +80,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         }
-      ]
+      ],
+      "releaseDate": "Oct 10, 2007"
     },
     {
-      "id": 2,
-      "title": "Unturned",
-      "description": "You're a survivor in the zombie infested ruins of society, and must work with your friends and forge alliances to remain among the living.",
-      "releaseDate": "Jul 7, 2017",
-      "developer": "Smartly Dressed Games",
-      "keywords": [
-        "Free to Play",
-        "Survival",
-        "Zombies",
-        "Multiplayer",
-        "Open World",
-        "Adventure",
-        "Crafting",
-        "Action",
-        "First-Person",
-        "Co-op",
-        "Sandbox",
-        "Shooter",
-        "Post-apocalyptic",
-        "FPS",
-        "Singleplayer",
-        "Massively Multiplayer",
-        "Indie",
-        "Atmospheric",
-        "Casual",
-        "Early Access"
-      ],
-      "categories": ["Action", "Adventure", "Casual", "Free to Play", "Indie"],
-      "price": 0,
-      "specs": {
-        "OS": "Windows 10 64-bit",
-        "Processor": "3 GHz",
-        "Memory": "8 GB RAM",
-        "Graphics": "Not specified",
-        "DirectX": "Version 11",
-        "Storage": "6 GB available space"
-      },
-      "popularity": 5,
-      "stock": 38,
-      "images": [
-        "https://via.assets.so/game.png?id=5&q=90&w=700&h=400&fit=fill",
-        "https://via.assets.so/game.png?id=6&q=90&w=700&h=400&fit=fill",
-        "https://via.assets.so/game.png?id=7&q=90&w=700&h=400&fit=fill",
-        "https://via.assets.so/game.png?id=8&q=90&w=700&h=400&fit=fill",
-        "https://via.assets.so/game.png?id=9&q=90&w=700&h=400&fit=fill"
-      ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
-      "reviews": [
-        {
-          "author": "PC Gamer",
-          "rating": 5,
-          "comment": "A masterpiece of a game"
-        },
-        {
-          "author": "PC Gamer",
-          "rating": 5,
-          "comment": "A masterpiece of a game"
-        },
-        {
-          "author": "GameSpot",
-          "rating": 3,
-          "comment": "Good game, but not great"
-        },
-        {
-          "author": "GameSpot",
-          "rating": 3,
-          "comment": "Good game, but not great"
-        },
-        {
-          "author": "GameSpot",
-          "rating": 3,
-          "comment": "Good game, but not great"
-        }
-      ]
-    },
-    {
-      "id": 3,
+      "id": "3",
       "title": "Garry's Mod",
       "description": "Garry's Mod is a physics sandbox. There aren't any predefined aims or goals. We give you the tools and leave you to play.",
       "releaseDate": "Nov 29, 2006",
@@ -184,7 +111,10 @@
         "Massively Multiplayer",
         "Adventure"
       ],
-      "categories": ["Indie", "Simulation"],
+      "categories": [
+        "Indie",
+        "Simulation"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows 7/8/8.1/10",
@@ -203,7 +133,9 @@
         "https://via.assets.so/game.png?id=13&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=14&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -220,7 +152,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -229,7 +165,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Tom Clancy's Rainbow Six Siege",
       "description": "Tom Clancy's Rainbow Six Siege is the latest installment of the acclaimed first-person shooter franchise developed by the renowned Ubisoft Montreal studio.",
       "releaseDate": "Dec 1, 2015",
@@ -256,7 +192,9 @@
         "Simulation",
         "Casual"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7 SP1",
@@ -296,12 +234,20 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "PAYDAY 2",
       "description": "PAYDAY 2 is an action-packed, four-player co-op shooter that once again lets gamers don the masks of the original PAYDAY crew - Dallas, Hoxton, Wolf and Chains - as they descend on Washington DC for an epic crime spree.",
       "releaseDate": "Aug 13, 2013",
@@ -328,7 +274,10 @@
         "Funny",
         "Adventure"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows 10",
@@ -347,9 +296,17 @@
         "https://via.assets.so/game.png?id=23&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=24&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -373,7 +330,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Rust",
       "description": "The only aim in Rust is to survive. To do this you will need to overcome struggles such as hunger, thirst and cold. Build a fire. Build a shelter. Kill animals for meat. Protect yourself from other players, and kill them for meat. Create alliances with other players and form a town. Do whatever it takes to survive.",
       "releaseDate": "Feb 8, 2018",
@@ -425,7 +382,9 @@
         "https://via.assets.so/game.png?id=28&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=29&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -437,13 +396,25 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Paladins",
       "description": "Join 25+ million players in Paladins, the free-to-play fantasy team-based shooter sensation. Wield guns and magic as a legendary Champion of the Realm, customizing your core set of abilities to play exactly how you want to play.",
       "releaseDate": "May 8, 2018",
@@ -470,7 +441,10 @@
         "Anime",
         "Memes"
       ],
-      "categories": ["Action", "Free to Play"],
+      "categories": [
+        "Action",
+        "Free to Play"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 8/10 64-bit (latest Service Pack)",
@@ -495,13 +469,21 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -515,7 +497,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Terraria",
       "description": "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!",
       "releaseDate": "May 16, 2011",
@@ -542,7 +524,12 @@
         "Atmospheric",
         "Family Friendly"
       ],
-      "categories": ["Action", "Adventure", "Indie", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie",
+        "RPG"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Not specified",
@@ -561,7 +548,11 @@
         "https://via.assets.so/game.png?id=38&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=39&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -591,7 +582,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "The Witcher 3: Wild Hunt",
       "description": "As war rages on throughout the Northern Realms, you take on the greatest contract of your life  tracking down the Child of Prophecy, a living weapon that can alter the shape of the world.",
       "releaseDate": "May 18, 2015",
@@ -618,7 +609,9 @@
         "Magic",
         "Dark"
       ],
-      "categories": ["RPG"],
+      "categories": [
+        "RPG"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "64-bit Windows 7",
@@ -637,7 +630,9 @@
         "https://via.assets.so/game.png?id=43&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=44&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -649,7 +644,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -663,7 +662,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Rocket League",
       "description": "Rocket League is a high-powered hybrid of arcade-style soccer and vehicular mayhem with easy-to-understand controls and fluid, physics-driven competition. Rocket League includes casual and competitive Online Matches, a fully-featured offline Season Mode, special Mutators that let you change the rules entirely, hockey and...",
       "releaseDate": "Jul 7, 2015",
@@ -690,7 +689,12 @@
         "4 Player Local",
         "Indie"
       ],
-      "categories": ["Action", "Indie", "Racing", "Sports"],
+      "categories": [
+        "Action",
+        "Indie",
+        "Racing",
+        "Sports"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7 or Newer",
@@ -730,7 +734,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -739,7 +747,7 @@
       ]
     },
     {
-      "id": 11,
+      "id": "11",
       "title": "Left 4 Dead 2",
       "description": "Set in the zombie apocalypse, Left 4 Dead 2 (L4D2) is the highly anticipated sequel to the award-winning Left 4 Dead, the #1 co-op game of 2008. This co-operative action horror FPS takes you and your friends through the cities, swamps and cemeteries of the Deep South, from Savannah to New Orleans across five expansive campaigns.",
       "releaseDate": "Nov 16, 2009",
@@ -766,7 +774,9 @@
         "Local Co-Op",
         "Tactical"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows 7 32/64-bit / Vista 32/64 / XP",
@@ -785,7 +795,11 @@
         "https://via.assets.so/game.png?id=53&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=54&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -815,7 +829,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": "12",
       "title": "Euro Truck Simulator 2",
       "description": "Travel across Europe as king of the road, a trucker who delivers important cargo across impressive distances! With dozens of cities to explore from the UK, Belgium, Germany, Italy, the Netherlands, Poland, and many more, your endurance, skill and speed will all be pushed to their limits.",
       "releaseDate": "Oct 12, 2012",
@@ -842,7 +856,10 @@
         "Action",
         "RPG"
       ],
-      "categories": ["Indie", "Simulation"],
+      "categories": [
+        "Indie",
+        "Simulation"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 64-bit",
@@ -861,7 +878,9 @@
         "https://via.assets.so/game.png?id=58&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=59&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -891,7 +910,7 @@
       ]
     },
     {
-      "id": 13,
+      "id": "13",
       "title": "Life is Strange - Episode 1",
       "description": "Episode 1 now FREE! Life is Strange is an award-winning and critically acclaimed episodic adventure game that allows the player to rewind time and affect the past, present and future.",
       "releaseDate": "Jan 29, 2015",
@@ -918,7 +937,10 @@
         "Memes",
         "Masterpiece"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7",
@@ -943,13 +965,21 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -963,7 +993,7 @@
       ]
     },
     {
-      "id": 14,
+      "id": "14",
       "title": "The Forest",
       "description": "As the lone survivor of a passenger jet crash, you find yourself in a mysterious forest battling to stay alive against a society of cannibalistic mutants. Build, explore, survive in this terrifying first person survival horror simulator.",
       "releaseDate": "Apr 30, 2018",
@@ -990,7 +1020,12 @@
         "Masterpiece",
         "Zombies"
       ],
-      "categories": ["Action", "Adventure", "Indie", "Simulation"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie",
+        "Simulation"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7",
@@ -1009,7 +1044,11 @@
         "https://via.assets.so/game.png?id=68&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=69&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -1021,7 +1060,11 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -1035,7 +1078,7 @@
       ]
     },
     {
-      "id": 15,
+      "id": "15",
       "title": "Borderlands 2",
       "description": "The Ultimate Vault Hunters Upgrade lets you get the most out of the Borderlands 2 experience.",
       "releaseDate": "Sep 17, 2012",
@@ -1062,7 +1105,10 @@
         "Stylized",
         "Atmospheric"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows XP SP3/Vista/Win 7",
@@ -1081,7 +1127,9 @@
         "https://via.assets.so/game.png?id=73&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=74&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -1093,7 +1141,11 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -1107,7 +1159,7 @@
       ]
     },
     {
-      "id": 16,
+      "id": "16",
       "title": "Brawlhalla",
       "description": "Brawlhalla is an epic platform fighter for up to 8 players online or locally. And it's free! Join casual free-for-alls, queue for ranked matches, or make a custom room with your friends. Millions of players. Frequent updates. Over forty unique legends. Come fight for glory in the halls of Valhalla!",
       "releaseDate": "Oct 17, 2017",
@@ -1134,7 +1186,11 @@
         "Survival",
         "Adventure"
       ],
-      "categories": ["Action", "Free to Play", "Indie"],
+      "categories": [
+        "Action",
+        "Free to Play",
+        "Indie"
+      ],
       "price": 0,
       "specs": {
         "OS": "Not specified",
@@ -1174,7 +1230,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -1183,7 +1243,7 @@
       ]
     },
     {
-      "id": 17,
+      "id": "17",
       "title": "Subnautica",
       "description": "Descend into the depths of an alien underwater world filled with wonder and peril. Craft equipment, pilot submarines and out-smart wildlife to explore lush coral reefs, volcanoes, cave systems, and more - all while trying to survive.",
       "releaseDate": "Jan 23, 2018",
@@ -1210,7 +1270,10 @@
         "VR",
         "Multiplayer"
       ],
-      "categories": ["Adventure", "Indie"],
+      "categories": [
+        "Adventure",
+        "Indie"
+      ],
       "price": 24.99,
       "specs": {
         "OS": "Windows Vista SP2 or newer",
@@ -1229,7 +1292,11 @@
         "https://via.assets.so/game.png?id=83&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=84&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -1246,7 +1313,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -1255,7 +1326,7 @@
       ]
     },
     {
-      "id": 18,
+      "id": "18",
       "title": "Undertale",
       "description": "UNDERTALE! The RPG game where you don't have to destroy anyone.",
       "releaseDate": "Sep 15, 2015",
@@ -1282,7 +1353,10 @@
         "Dating Sim",
         "Horror"
       ],
-      "categories": ["Indie", "RPG"],
+      "categories": [
+        "Indie",
+        "RPG"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows XP",
@@ -1301,25 +1375,39 @@
         "https://via.assets.so/game.png?id=88&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=89&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 19,
+      "id": "19",
       "title": "Sid Meier's Civilization V",
       "description": "Create, discover, and download new player-created maps, scenarios, interfaces, and more!",
       "releaseDate": "Sep 21, 2010",
@@ -1346,7 +1434,9 @@
         "Classic",
         "Great Soundtrack"
       ],
-      "categories": ["Strategy"],
+      "categories": [
+        "Strategy"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows Vista SP2/ Windows 7",
@@ -1399,7 +1489,7 @@
       ]
     },
     {
-      "id": 20,
+      "id": "20",
       "title": "Arma 3",
       "description": "Experience true combat gameplay in a massive military sandbox. Deploying a wide variety of single- and multiplayer content, over 20 vehicles and 40 weapons, and limitless opportunities for content creation, this is the PCs premier military game. Authentic, diverse, open - Arma 3 sends you to war.",
       "releaseDate": "Sep 12, 2013",
@@ -1426,7 +1516,11 @@
         "Singleplayer",
         "TrackIR"
       ],
-      "categories": ["Action", "Simulation", "Strategy"],
+      "categories": [
+        "Action",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 57.98,
       "specs": {
         "OS": "Windows 7 / 8 / 10 (64bit)",
@@ -1445,25 +1539,41 @@
         "https://via.assets.so/game.png?id=98&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=99&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 21,
+      "id": "21",
       "title": "Path of Exile",
       "description": "You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Created by hardcore gamers, Path of Exile is an online Action RPG set in a dark fantasy world.",
       "releaseDate": "Oct 23, 2013",
@@ -1516,7 +1626,9 @@
         "https://via.assets.so/game.png?id=103&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=104&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -1528,7 +1640,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -1542,7 +1658,7 @@
       ]
     },
     {
-      "id": 22,
+      "id": "22",
       "title": "Tomb Raider",
       "description": "Tomb Raider explores the intense origin story of Lara Croft and her ascent from a young woman to a hardened survivor.",
       "releaseDate": "Mar 4, 2013",
@@ -1569,7 +1685,10 @@
         "Masterpiece",
         "RPG"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows Vista",
@@ -1599,22 +1718,30 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
         {
-          "author": "GameSpot",
-          "rating": 3,
-          "comment": "Good game, but not great"
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
         },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "GameSpot",
+          "rating": 3,
+          "comment": "Good game, but not great"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 23,
+      "id": "23",
       "title": "DARK SOULS III",
       "description": "Dark Souls continues to push the boundaries with the latest, ambitious chapter in the critically-acclaimed and genre-defining series. Prepare yourself and Embrace The Darkness!",
       "releaseDate": "Apr 11, 2016",
@@ -1641,7 +1768,9 @@
         "Character Customization",
         "Horror"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1 64bit",
@@ -1660,9 +1789,17 @@
         "https://via.assets.so/game.png?id=113&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=114&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -1686,7 +1823,7 @@
       ]
     },
     {
-      "id": 24,
+      "id": "24",
       "title": "Insurgency",
       "description": "Take to the streets for intense close quarters combat, where a team's survival depends upon securing crucial strongholds and destroying enemy supply in this multiplayer and cooperative Source Engine based experience.",
       "releaseDate": "Jan 22, 2014",
@@ -1713,7 +1850,11 @@
         "Singleplayer",
         "Adventure"
       ],
-      "categories": ["Action", "Indie", "Strategy"],
+      "categories": [
+        "Action",
+        "Indie",
+        "Strategy"
+      ],
       "price": 29.98,
       "specs": {
         "OS": "Not specified",
@@ -1732,9 +1873,15 @@
         "https://via.assets.so/game.png?id=118&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=119&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -1758,7 +1905,7 @@
       ]
     },
     {
-      "id": 25,
+      "id": "25",
       "title": "Wallpaper Engine",
       "description": "Use stunning live wallpapers on your desktop. Animate your own images to create new wallpapers or import videos/websites and share them on Steam Workshop!",
       "releaseDate": "Nov 16, 2018",
@@ -1814,9 +1961,21 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -1830,7 +1989,7 @@
       ]
     },
     {
-      "id": 26,
+      "id": "26",
       "title": "The Binding of Isaac: Rebirth",
       "description": "The Binding of Isaac: Rebirth is a randomly generated action RPG shooter with heavy Rogue-like elements. Following Isaac on his journey players will find bizarre treasures that change Isaacs form giving him super human abilities and enabling him to fight off droves of mysterious creatures, discover secrets and fight his way to safety.",
       "releaseDate": "Nov 4, 2014",
@@ -1857,7 +2016,9 @@
         "Twin Stick Shooter",
         "Co-op"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows 8 / 7 / Vista / XP",
@@ -1876,7 +2037,11 @@
         "https://via.assets.so/game.png?id=128&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=129&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -1893,7 +2058,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -1902,7 +2071,7 @@
       ]
     },
     {
-      "id": 27,
+      "id": "27",
       "title": "Dying Light",
       "description": "First-person action survival game set in a post-apocalyptic open world overrun by flesh-hungry zombies. Roam a city devastated by a mysterious virus epidemic. Scavenge for supplies, craft weapons, and face hordes of the infected.",
       "releaseDate": "Jan 26, 2015",
@@ -1929,7 +2098,10 @@
         "Stealth",
         "Sandbox"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 7 64-bit / Windows 8 64-bit / Windows 8.1 64-bit",
@@ -1948,7 +2120,9 @@
         "https://via.assets.so/game.png?id=133&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=134&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -1965,7 +2139,11 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -1974,7 +2152,7 @@
       ]
     },
     {
-      "id": 28,
+      "id": "28",
       "title": "BioShock Infinite",
       "description": "Indebted to the wrong people, with his life on the line, veteran of the U.S. Cavalry and now hired gun, Booker DeWitt has only one opportunity to wipe his slate clean. He must rescue Elizabeth, a mysterious girl imprisoned since childhood and locked up in the flying city of Columbia.",
       "releaseDate": "Mar 25, 2013",
@@ -2001,7 +2179,9 @@
         "Linear",
         "RPG"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 7 Service Pack 1 64-bit",
@@ -2031,18 +2211,30 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 29,
+      "id": "29",
       "title": "Mount & Blade: Warband",
       "description": "In a land torn asunder by incessant warfare, it is time to assemble your own band of hardened warriors and enter the fray. Lead your men into battle, expand your realm, and claim the ultimate prize: the throne of Calradia!",
       "releaseDate": "Mar 31, 2010",
@@ -2069,7 +2261,10 @@
         "Fantasy",
         "Indie"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows XP or greater",
@@ -2088,9 +2283,17 @@
         "https://via.assets.so/game.png?id=143&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=144&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2101,12 +2304,20 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 30,
+      "id": "30",
       "title": "Starbound",
       "description": "Youve fled your home, only to find yourself lost in space with a damaged ship. Your only option is to beam down to the planet below, repair your ship and set off to explore the universe...",
       "releaseDate": "Jul 22, 2016",
@@ -2133,7 +2344,13 @@
         "Atmospheric",
         "Great Soundtrack"
       ],
-      "categories": ["Action", "Adventure", "Casual", "Indie", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Casual",
+        "Indie",
+        "RPG"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows XP or later",
@@ -2152,20 +2369,30 @@
         "https://via.assets.so/game.png?id=148&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=149&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -2174,7 +2401,7 @@
       ]
     },
     {
-      "id": 31,
+      "id": "31",
       "title": "Cities: Skylines",
       "description": "Cities: Skylines is a modern take on the classic city simulation. The game introduces new game play elements to realize the thrill and hardships of creating and maintaining a real city whilst expanding on some well-established tropes of the city building experience.",
       "releaseDate": "Mar 10, 2015",
@@ -2201,7 +2428,10 @@
         "Funny",
         "Action"
       ],
-      "categories": ["Simulation", "Strategy"],
+      "categories": [
+        "Simulation",
+        "Strategy"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Microsoft Windows 7/8 (64-bit)",
@@ -2241,7 +2471,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2250,7 +2484,7 @@
       ]
     },
     {
-      "id": 32,
+      "id": "32",
       "title": "Space Engineers",
       "description": "Space Engineers is a sandbox game about engineering, construction, exploration and survival in space and on planets. Players build space ships, space stations, planetary outposts of various sizes and uses, pilot ships and travel through space to explore planets and gather resources to survive.",
       "releaseDate": "Feb 28, 2019",
@@ -2277,7 +2511,12 @@
         "Adventure",
         "Atmospheric"
       ],
-      "categories": ["Action", "Indie", "Simulation", "Strategy"],
+      "categories": [
+        "Action",
+        "Indie",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Microsoft Windows 7 (latest SP) 64-bit",
@@ -2296,7 +2535,11 @@
         "https://via.assets.so/game.png?id=158&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=159&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -2313,7 +2556,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2322,7 +2569,7 @@
       ]
     },
     {
-      "id": 33,
+      "id": "33",
       "title": "Killing Floor 2",
       "description": "6-player co-op Zed-slaughtering mayhem. And now, 12-player Versus Survival mode, too - now you can BE the Zeds!",
       "releaseDate": "Nov 18, 2016",
@@ -2349,7 +2596,9 @@
         "Early Access",
         "Indie"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 10 64-bit",
@@ -2368,7 +2617,9 @@
         "https://via.assets.so/game.png?id=163&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=164&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -2390,11 +2641,15 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 34,
+      "id": "34",
       "title": "Age of Empires II HD",
       "description": "Age of Empires II has been re-imagined in high definition with new features, trading cards, improved AI, workshop support, multiplayer, Steamworks integration and more!",
       "releaseDate": "Apr 9, 2013",
@@ -2421,7 +2676,9 @@
         "Action",
         "Isometric"
       ],
-      "categories": ["Strategy"],
+      "categories": [
+        "Strategy"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Not specified",
@@ -2451,7 +2708,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -2462,11 +2723,15 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 35,
+      "id": "35",
       "title": "Far Cry 3",
       "description": "Discover the dark secrets of a lawless island ruled by violence and take the fight to the enemy as you try to escape. Youll need more than luck to escape alive!",
       "releaseDate": "Dec 4, 2012",
@@ -2493,7 +2758,10 @@
         "Crafting",
         "Nudity"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Not specified",
@@ -2512,7 +2780,11 @@
         "https://via.assets.so/game.png?id=173&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=174&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -2529,7 +2801,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2538,7 +2814,7 @@
       ]
     },
     {
-      "id": 36,
+      "id": "36",
       "title": "The Long Dark",
       "description": "The Long Dark is a thoughtful, exploration-survival experience that challenges solo players to think for themselves as they explore an expansive frozen wilderness in the aftermath of a geomagnetic disaster. There are no zombies -- only you, the cold, and all the threats Mother Nature can muster. Welcome to the Quiet Apocalypse.",
       "releaseDate": "Aug 1, 2017",
@@ -2565,7 +2841,12 @@
         "Multiplayer",
         "Horror"
       ],
-      "categories": ["Adventure", "Indie", "Simulation", "Strategy"],
+      "categories": [
+        "Adventure",
+        "Indie",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 10",
@@ -2584,14 +2865,20 @@
         "https://via.assets.so/game.png?id=178&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=179&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -2610,7 +2897,7 @@
       ]
     },
     {
-      "id": 37,
+      "id": "37",
       "title": "Kerbal Space Program",
       "description": "In Kerbal Space Program, take charge of the space program for the alien race known as the Kerbals. You have access to an array of parts to assemble fully-functional spacecraft that flies (or doesnt) based on realistic aerodynamic and orbital physics.",
       "releaseDate": "Apr 27, 2015",
@@ -2637,7 +2924,10 @@
         "Strategy",
         "Comedy"
       ],
-      "categories": ["Indie", "Simulation"],
+      "categories": [
+        "Indie",
+        "Simulation"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 10 64 bit",
@@ -2690,7 +2980,7 @@
       ]
     },
     {
-      "id": 38,
+      "id": "38",
       "title": "PlanetSide 2",
       "description": "PlanetSide 2 is an all-out planetary war, where thousands of players battle as one across enormous continents. Utilize infantry, ground and air vehicles, and teamwork to destroy your enemies in this revolutionary first-person shooter on a massive scale.",
       "releaseDate": "Nov 20, 2012",
@@ -2717,7 +3007,11 @@
         "Adventure",
         "RPG"
       ],
-      "categories": ["Action", "Free to Play", "Massively Multiplayer"],
+      "categories": [
+        "Action",
+        "Free to Play",
+        "Massively Multiplayer"
+      ],
       "price": 0,
       "specs": {
         "OS": "64-bit Windows 7 or later",
@@ -2736,15 +3030,27 @@
         "https://via.assets.so/game.png?id=188&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=189&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2758,7 +3064,7 @@
       ]
     },
     {
-      "id": 39,
+      "id": "39",
       "title": "Darkest Dungeon",
       "description": "Darkest Dungeon is a challenging gothic roguelike turn-based RPG about the psychological stresses of adventuring. Recruit, train, and lead a team of flawed heroes against unimaginable horrors, stress, famine, disease, and the ever-encroaching dark. Can you keep your heroes together when all hope is lost?",
       "releaseDate": "Jan 19, 2016",
@@ -2785,7 +3091,11 @@
         "Fantasy",
         "Kickstarter"
       ],
-      "categories": ["Indie", "RPG", "Strategy"],
+      "categories": [
+        "Indie",
+        "RPG",
+        "Strategy"
+      ],
       "price": 24.99,
       "specs": {
         "OS": "Windows 7+",
@@ -2804,7 +3114,9 @@
         "https://via.assets.so/game.png?id=193&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=194&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -2821,7 +3133,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2830,7 +3146,7 @@
       ]
     },
     {
-      "id": 40,
+      "id": "40",
       "title": "DOOM",
       "description": "Now includes all three premium DLC packs (Unto the Evil, Hell Followed, and Bloodfall), maps, modes, and weapons, as well as all feature updates including Arcade Mode, Photo Mode, and the latest Update 6.66, which brings further multiplayer improvements as well as revamps multiplayer progression.",
       "releaseDate": "May 12, 2016",
@@ -2857,7 +3173,9 @@
         "Co-op",
         "Memes"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 (64-bit versions)",
@@ -2887,18 +3205,30 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 41,
+      "id": "41",
       "title": "This War of Mine",
       "description": "In This War Of Mine you do not play as an elite soldier, rather a group of civilians trying to survive in a besieged city; struggling with lack of food, medicine and constant danger from snipers and hostile scavengers. The game provides an experience of war seen from an entirely new angle.",
       "releaseDate": "Nov 14, 2014",
@@ -2925,7 +3255,11 @@
         "Platformer",
         "Rogue-like"
       ],
-      "categories": ["Adventure", "Indie", "Simulation"],
+      "categories": [
+        "Adventure",
+        "Indie",
+        "Simulation"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7/8/10",
@@ -2944,9 +3278,17 @@
         "https://via.assets.so/game.png?id=203&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=204&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -2970,7 +3312,7 @@
       ]
     },
     {
-      "id": 42,
+      "id": "42",
       "title": "Saints Row IV",
       "description": "The US President must save the Earth from alien overlord Zinyak using an arsenal of superpowers and strange weapons in the wildest open world game ever.",
       "releaseDate": "Aug 19, 2013",
@@ -2997,7 +3339,10 @@
         "Dark Humor",
         "Female Protagonist"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows 7 (x86 or x64)",
@@ -3016,7 +3361,9 @@
         "https://via.assets.so/game.png?id=208&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=209&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -3046,7 +3393,7 @@
       ]
     },
     {
-      "id": 43,
+      "id": "43",
       "title": "Divinity: Original Sin 2 - Definitive Edition",
       "description": "The eagerly anticipated sequel to the award-winning RPG. Gather your party. Master deep, tactical combat. Join up to 3 other players - but know that only one of you will have the chance to become a God.",
       "releaseDate": "Sep 14, 2017",
@@ -3073,7 +3420,11 @@
         "Indie",
         "Female Protagonist"
       ],
-      "categories": ["Adventure", "RPG", "Strategy"],
+      "categories": [
+        "Adventure",
+        "RPG",
+        "Strategy"
+      ],
       "price": 44.99,
       "specs": {
         "OS": "Windows 7 SP1 64-bit or Windows 8.1 64-bit or Windows 10 64-bit",
@@ -3126,7 +3477,7 @@
       ]
     },
     {
-      "id": 44,
+      "id": "44",
       "title": "Factorio",
       "description": "Factorio is a game about building and creating automated factories to produce items of increasing complexity, within an infinite 2D world. Use your imagination to design your factory, combine simple elements into ingenious structures, and finally protect it from the creatures who don't really like you.",
       "releaseDate": "Feb 25, 2016",
@@ -3160,7 +3511,7 @@
         "Strategy",
         "Early Access"
       ],
-      "price": 30.0,
+      "price": 30,
       "specs": {
         "OS": "Windows 10",
         "Processor": "Quad core 3Ghz+",
@@ -3178,7 +3529,11 @@
         "https://via.assets.so/game.png?id=218&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=219&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -3208,7 +3563,7 @@
       ]
     },
     {
-      "id": 45,
+      "id": "45",
       "title": "Goat Simulator",
       "description": "Goat Simulator is the latest in high-tech Goat Simulation technology.",
       "releaseDate": "Apr 1, 2014",
@@ -3235,7 +3590,11 @@
         "Family Friendly",
         "MMORPG"
       ],
-      "categories": ["Casual", "Indie", "Simulation"],
+      "categories": [
+        "Casual",
+        "Indie",
+        "Simulation"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows 7 or 8",
@@ -3254,9 +3613,15 @@
         "https://via.assets.so/game.png?id=223&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=224&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -3280,7 +3645,7 @@
       ]
     },
     {
-      "id": 46,
+      "id": "46",
       "title": "Hotline Miami",
       "description": "Hotline Miami is a high-octane action game overflowing with raw brutality, hard-boiled gunplay and skull crushing close combat.",
       "releaseDate": "Oct 23, 2012",
@@ -3307,7 +3672,10 @@
         "Music",
         "Top-Down Shooter"
       ],
-      "categories": ["Action", "Indie"],
+      "categories": [
+        "Action",
+        "Indie"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Microsoft Windows XP / Vista / 7",
@@ -3360,7 +3728,7 @@
       ]
     },
     {
-      "id": 47,
+      "id": "47",
       "title": "Rise of the Tomb Raider",
       "description": "Rise of the Tomb Raider: 20 Year Celebration includes the base game and Season Pass featuring all-new content. Explore Croft Manor in the new Blood Ties story, then defend it against a zombie invasion in Laras Nightmare.",
       "releaseDate": "Feb 9, 2016",
@@ -3387,7 +3755,10 @@
         "Great Soundtrack",
         "Quick-Time Events"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 10 64 bit",
@@ -3406,7 +3777,11 @@
         "https://via.assets.so/game.png?id=233&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=234&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -3418,7 +3793,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -3432,7 +3811,7 @@
       ]
     },
     {
-      "id": 48,
+      "id": "48",
       "title": "Hollow Knight",
       "description": "Forge your own path in Hollow Knight! An epic action adventure through a vast ruined kingdom of insects and heroes. Explore twisting caverns, battle tainted creatures and befriend bizarre bugs, all in a classic, hand-drawn 2D style.",
       "releaseDate": "Feb 24, 2017",
@@ -3459,7 +3838,11 @@
         "Controller",
         "Side Scroller"
       ],
-      "categories": ["Action", "Adventure", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows 10",
@@ -3478,10 +3861,20 @@
         "https://via.assets.so/game.png?id=238&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=239&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -3500,7 +3893,7 @@
       ]
     },
     {
-      "id": 49,
+      "id": "49",
       "title": "Europa Universalis IV",
       "description": "The empire building game Europa Universalis IV gives you control of a nation to guide through the years in order to create a dominant global empire. Rule your nation through the centuries, with unparalleled freedom, depth and historical accuracy.",
       "releaseDate": "Aug 13, 2013",
@@ -3527,7 +3920,10 @@
         "Co-op",
         "4X"
       ],
-      "categories": ["Simulation", "Strategy"],
+      "categories": [
+        "Simulation",
+        "Strategy"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "/Windows 7/Windows 8",
@@ -3580,7 +3976,7 @@
       ]
     },
     {
-      "id": 50,
+      "id": "50",
       "title": "The Witcher 2: Assassins of Kings Enhanced Edition",
       "description": "A time of untold chaos has come. Mighty forces clash behind the scenes in a struggle for power and influence. The Northern Kingdoms mobilize for war. But armies on the march are not enough to stop a bloody conspiracy...",
       "releaseDate": "May 17, 2011",
@@ -3607,7 +4003,9 @@
         "Dark",
         "Magic"
       ],
-      "categories": ["RPG"],
+      "categories": [
+        "RPG"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista/7",
@@ -3626,7 +4024,11 @@
         "https://via.assets.so/game.png?id=248&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=249&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -3656,7 +4058,7 @@
       ]
     },
     {
-      "id": 51,
+      "id": "51",
       "title": "Assassin's Creed Origins",
       "description": "ASSASSINS CREED ORIGINS IS A NEW BEGINNING *The Discovery Tour by Assassins Creed: Ancient Egypt is available now as a free update!* Ancient Egypt, a land of majesty and intrigue, is disappearing in a ruthless fight for power.",
       "releaseDate": "Oct 26, 2017",
@@ -3683,7 +4085,11 @@
         "Walking Simulator",
         "Heist"
       ],
-      "categories": ["Action", "Adventure", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1",
@@ -3702,15 +4108,25 @@
         "https://via.assets.so/game.png?id=253&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=254&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -3724,7 +4140,7 @@
       ]
     },
     {
-      "id": 52,
+      "id": "52",
       "title": "NieR:Automata",
       "description": "NieR: Automata tells the story of androids 2B, 9S and A2 and their battle to reclaim the machine-driven dystopia overrun by powerful machines.",
       "releaseDate": "Mar 17, 2017",
@@ -3751,7 +4167,10 @@
         "Nudity",
         "Violent"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 8.1 /10 64bit",
@@ -3796,11 +4215,15 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 53,
+      "id": "53",
       "title": "POSTAL 2",
       "description": "Live a week in the life of Postal Dudehapless everyman just trying to check off some chores. Buying milk, returning an overdue library book, getting Gary Coleman's autograph, what could possibly go wrong?",
       "releaseDate": "Apr 13, 2003",
@@ -3827,7 +4250,11 @@
         "Moddable",
         "Indie"
       ],
-      "categories": ["Action", "Adventure", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows XP SP3/Vista/7/8/10",
@@ -3846,7 +4273,11 @@
         "https://via.assets.so/game.png?id=263&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=264&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -3876,7 +4307,7 @@
       ]
     },
     {
-      "id": 54,
+      "id": "54",
       "title": "Killing Floor",
       "description": "6-player co-op survival horror at its finest! Free updates, free special events and a ridiculous amount of fun!",
       "releaseDate": "May 14, 2009",
@@ -3903,7 +4334,9 @@
         "Comedy",
         "Adventure"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista",
@@ -3922,9 +4355,15 @@
         "https://via.assets.so/game.png?id=268&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=269&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -3935,7 +4374,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -3944,7 +4387,7 @@
       ]
     },
     {
-      "id": 55,
+      "id": "55",
       "title": "Dishonored",
       "description": "Dishonored is an immersive first-person action game that casts you as a supernatural assassin driven by revenge. With Dishonoreds flexible combat system, creatively eliminate your targets as you combine the supernatural abilities, weapons and unusual gadgets at your disposal.",
       "releaseDate": "Oct 8, 2012",
@@ -3971,7 +4414,10 @@
         "Open World",
         "Shooter"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows Vista / Windows 7 (enhanced for 64-bit OS)",
@@ -4001,8 +4447,16 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -4016,7 +4470,7 @@
       ]
     },
     {
-      "id": 56,
+      "id": "56",
       "title": "Hearts of Iron IV",
       "description": "Victory is at your fingertips! Your ability to lead your nation is your supreme weapon, the strategy game Hearts of Iron IV lets you take command of any nation in World War II; the most engaging conflict in world history.",
       "releaseDate": "Jun 6, 2016",
@@ -4043,7 +4497,10 @@
         "Action",
         "Casual"
       ],
-      "categories": ["Simulation", "Strategy"],
+      "categories": [
+        "Simulation",
+        "Strategy"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 7 64-bit or newer",
@@ -4062,14 +4519,22 @@
         "https://via.assets.so/game.png?id=278&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=279&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -4088,7 +4553,7 @@
       ]
     },
     {
-      "id": 57,
+      "id": "57",
       "title": "Saints Row: The Third",
       "description": "Get ready for the most out-landish gameplay scenarios ever seen as the Third Street Saints take on the Syndicate!",
       "releaseDate": "Nov 14, 2011",
@@ -4115,7 +4580,9 @@
         "Zombies",
         "RPG"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Microsoft Windows 7",
@@ -4134,7 +4601,9 @@
         "https://via.assets.so/game.png?id=283&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=284&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -4156,11 +4625,15 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 58,
+      "id": "58",
       "title": "VRChat",
       "description": "Join our growing community as you explore, play, and help craft the future of social VR. Create worlds and custom avatars. Welcome to VRChat.",
       "releaseDate": "Feb 1, 2017",
@@ -4220,7 +4693,11 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -4231,7 +4708,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -4240,7 +4721,7 @@
       ]
     },
     {
-      "id": 59,
+      "id": "59",
       "title": "Outlast",
       "description": "Hell is an experiment you can't survive in Outlast, a first-person survival horror game developed by veterans of some of the biggest game franchises in history. As investigative journalist Miles Upshur, explore Mount Massive Asylum and try to survive long enough to discover its terrible secret... if you dare.",
       "releaseDate": "Sep 4, 2013",
@@ -4267,7 +4748,11 @@
         "Walking Simulator",
         "Sci-fi"
       ],
-      "categories": ["Action", "Adventure", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows Vista / 7 / 8 - 64 bits",
@@ -4286,7 +4771,11 @@
         "https://via.assets.so/game.png?id=293&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=294&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -4316,7 +4805,7 @@
       ]
     },
     {
-      "id": 60,
+      "id": "60",
       "title": "ASTRONEER",
       "description": "A game of aerospace industry and interplanetary exploration.",
       "releaseDate": "Dec 16, 2016",
@@ -4343,7 +4832,10 @@
         "Indie",
         "Voxel"
       ],
-      "categories": ["Adventure", "Indie"],
+      "categories": [
+        "Adventure",
+        "Indie"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 7 SP1 (64 bit only)",
@@ -4362,7 +4854,9 @@
         "https://via.assets.so/game.png?id=298&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=299&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -4392,7 +4886,7 @@
       ]
     },
     {
-      "id": 61,
+      "id": "61",
       "title": "Just Cause 2",
       "description": "Dive into an adrenaline-fuelled free-roaming adventure with 400 square miles of rugged terrain and hundreds of weapons and vehicles.",
       "releaseDate": "Mar 23, 2010",
@@ -4419,7 +4913,10 @@
         "Comedy",
         "Massively Multiplayer"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Microsoft Windows Vista SP1 or Windows 7",
@@ -4459,7 +4956,11 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -4468,7 +4969,7 @@
       ]
     },
     {
-      "id": 62,
+      "id": "62",
       "title": "The Witcher: Enhanced Edition Director's Cut",
       "description": "Become The Witcher, Geralt of Rivia, a legendary monster slayer caught in a web of intrigue woven by forces vying for control of the world. Make difficult decisions and live with the consequences in a game that will immerse you in an extraordinary tale like no other.",
       "releaseDate": "Sep 16, 2008",
@@ -4495,7 +4996,10 @@
         "Action RPG",
         "Magic"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "OS X 10.8",
@@ -4514,7 +5018,11 @@
         "https://via.assets.so/game.png?id=308&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=309&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -4531,7 +5039,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -4540,7 +5052,7 @@
       ]
     },
     {
-      "id": 63,
+      "id": "63",
       "title": "South Park: The Stick of Truth",
       "description": "From the perilous battlefields of the fourth-grade playground, a young hero will rise, destined to be South Parks savior. From the creators of South Park, Trey Parker and Matt Stone, comes an epic quest to become cool. Introducing South Park: The Stick of Truth.For a thousand years, the battle has been waged.",
       "releaseDate": "Mar 3, 2014",
@@ -4567,7 +5079,11 @@
         "Turn-Based Strategy",
         "Zombies"
       ],
-      "categories": ["Action", "Adventure", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "WindowsXP SP3",
@@ -4586,14 +5102,20 @@
         "https://via.assets.so/game.png?id=313&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=314&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -4612,7 +5134,7 @@
       ]
     },
     {
-      "id": 64,
+      "id": "64",
       "title": "METAL GEAR SOLID V: THE PHANTOM PAIN",
       "description": "Ushering in a new era for the METAL GEAR franchise with cutting-edge technology powered by the Fox Engine, METAL GEAR SOLID V: The Phantom Pain, will provide players a first-rate gaming experience as they are offered tactical freedom to carry out open-world missions.",
       "releaseDate": "Sep 1, 2015",
@@ -4639,7 +5161,10 @@
         "Dark",
         "Sci-fi"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7x64",
@@ -4692,7 +5217,7 @@
       ]
     },
     {
-      "id": 65,
+      "id": "65",
       "title": "Fistful of Frags",
       "description": "Multiplayer based, first person enabled, action packed and skill demanding shooter set in the Wild West times. A unique combination of non stop action and slow but powerful weaponry.",
       "releaseDate": "May 9, 2014",
@@ -4719,7 +5244,11 @@
         "Adventure",
         "RPG"
       ],
-      "categories": ["Action", "Free to Play", "Indie"],
+      "categories": [
+        "Action",
+        "Free to Play",
+        "Indie"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7/8/10",
@@ -4738,7 +5267,11 @@
         "https://via.assets.so/game.png?id=323&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=324&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -4768,7 +5301,7 @@
       ]
     },
     {
-      "id": 66,
+      "id": "66",
       "title": "XCOM: Enemy Unknown",
       "description": "The XCOM: Enemy Unknown - Slingshot Pack is Now Available!",
       "releaseDate": "Oct 8, 2012",
@@ -4795,7 +5328,9 @@
         "Masterpiece",
         "Atmospheric"
       ],
-      "categories": ["Strategy"],
+      "categories": [
+        "Strategy"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 7",
@@ -4814,7 +5349,9 @@
         "https://via.assets.so/game.png?id=328&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=329&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -4844,7 +5381,7 @@
       ]
     },
     {
-      "id": 67,
+      "id": "67",
       "title": "Broforce",
       "description": "When evil threatens the world, the world calls on Broforce - an under-funded, over-powered paramilitary organization dealing exclusively in excessive force. Brace your loins with up to four players to run n gun as dozens of different bros and eliminate the opposing terrorist forces that threaten our way of life.",
       "releaseDate": "Oct 15, 2015",
@@ -4871,7 +5408,12 @@
         "Casual",
         "Masterpiece"
       ],
-      "categories": ["Action", "Adventure", "Casual", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Casual",
+        "Indie"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "OS 10.6+",
@@ -4924,7 +5466,7 @@
       ]
     },
     {
-      "id": 68,
+      "id": "68",
       "title": "Fallout Shelter",
       "description": "Fallout Shelter puts you in control of a state-of-the-art underground Vault from Vault-Tec. Build the perfect Vault, keep your Dwellers happy, and protect them from the dangers of the Wasteland.",
       "releaseDate": "Mar 29, 2017",
@@ -4951,7 +5493,11 @@
         "Action",
         "Great Soundtrack"
       ],
-      "categories": ["Free to Play", "RPG", "Simulation"],
+      "categories": [
+        "Free to Play",
+        "RPG",
+        "Simulation"
+      ],
       "price": 0,
       "specs": {
         "OS": "Not specified",
@@ -4970,7 +5516,11 @@
         "https://via.assets.so/game.png?id=338&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=339&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -4982,8 +5532,16 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -4992,7 +5550,7 @@
       ]
     },
     {
-      "id": 69,
+      "id": "69",
       "title": "Game Dev Tycoon",
       "description": "In Game Dev Tycoon you replay the history of the gaming industry by starting your own video game development company in the 80s. Create best selling games. Research new technologies and invent new game types. Become the leader of the market and gain worldwide fans.",
       "releaseDate": "Aug 29, 2013",
@@ -5019,7 +5577,12 @@
         "Comedy",
         "Touch-Friendly"
       ],
-      "categories": ["Casual", "Indie", "Simulation", "Strategy"],
+      "categories": [
+        "Casual",
+        "Indie",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 9.99,
       "specs": {
         "OS": "Windows 7/8",
@@ -5038,7 +5601,9 @@
         "https://via.assets.so/game.png?id=343&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=344&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -5068,7 +5633,7 @@
       ]
     },
     {
-      "id": 70,
+      "id": "70",
       "title": "Grand Theft Auto: San Andreas",
       "description": "Five years ago Carl Johnson escaped from the pressures of life in Los Santos, San Andreas... a city tearing itself apart with gang trouble, drugs and corruption. Where filmstars and millionaires do their best to avoid the dealers and gangbangers. Now, it's the early 90s. Carl's got to go home.",
       "releaseDate": "Jun 6, 2005",
@@ -5095,7 +5660,9 @@
         "Masterpiece",
         "Comedy"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Not specified",
@@ -5125,13 +5692,21 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -5140,7 +5715,7 @@
       ]
     },
     {
-      "id": 71,
+      "id": "71",
       "title": "Metro: Last Light Redux",
       "description": "It is the year 2034. Beneath the ruins of post-apocalyptic Moscow, in the tunnels of the Metro, the remnants of mankind are besieged by deadly threats from outside  and within. Mutants stalk the catacombs beneath the desolate surface, and hunt amidst the poisoned skies above.",
       "releaseDate": "Aug 25, 2014",
@@ -5167,7 +5742,9 @@
         "Difficult",
         "Multiplayer"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7 or 8 (64-bit only)",
@@ -5186,7 +5763,11 @@
         "https://via.assets.so/game.png?id=353&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=354&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -5216,7 +5797,7 @@
       ]
     },
     {
-      "id": 72,
+      "id": "72",
       "title": "SCP: Secret Laboratory",
       "description": "Deep within the SCP Foundation during a containment breach, many of the anomalies have bypassed security and escaped from their chambers - without peaceful intentions. Become site personnel, a re-containment agent, or an anomalous entity and fight to take control of or escape the facility!",
       "releaseDate": "Dec 29, 2017",
@@ -5243,7 +5824,10 @@
         "Adventure",
         "Fantasy"
       ],
-      "categories": ["Action", "Free to Play"],
+      "categories": [
+        "Action",
+        "Free to Play"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7 SP 1",
@@ -5262,7 +5846,9 @@
         "https://via.assets.so/game.png?id=358&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=359&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -5279,7 +5865,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -5288,7 +5878,7 @@
       ]
     },
     {
-      "id": 73,
+      "id": "73",
       "title": "Cry of Fear",
       "description": "Cry of Fear is a psychological single-player and co-op horror game set in a deserted town filled with horrific creatures and nightmarish delusions. You play as a young man desperately searching for answers in the cold Scandinavian night, finding his way through the city as he slowly descends into madness.",
       "releaseDate": "Apr 25, 2013",
@@ -5315,7 +5905,11 @@
         "Mod",
         "Masterpiece"
       ],
-      "categories": ["Action", "Adventure", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7 (32/64-bit)/Vista/XP",
@@ -5340,7 +5934,11 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -5351,7 +5949,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -5360,7 +5962,7 @@
       ]
     },
     {
-      "id": 74,
+      "id": "74",
       "title": "Awesomenauts - the 2D moba",
       "description": "Use your power, show your might! Play this Multiplayer Online Battle Arena (MOBA) game for FREE now! AWESOMENAUTS combines 2D platforming with team-based strategy and hero based action. Whether you are a new recruit or an intergalactic legend, play AWESOMENAUTS!",
       "releaseDate": "Aug 1, 2012",
@@ -5387,7 +5989,12 @@
         "Cartoon",
         "Funny"
       ],
-      "categories": ["Action", "Free to Play", "Indie", "Strategy"],
+      "categories": [
+        "Action",
+        "Free to Play",
+        "Indie",
+        "Strategy"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7",
@@ -5406,7 +6013,11 @@
         "https://via.assets.so/game.png?id=368&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=369&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -5436,7 +6047,7 @@
       ]
     },
     {
-      "id": 75,
+      "id": "75",
       "title": "Grim Dawn",
       "description": "Enter an apocalyptic fantasy world where humanity is on the brink of extinction, iron is valued above gold and trust is hard earned. This ARPG features complex character development, hundreds of unique items, crafting and quests with choice & consequence.",
       "releaseDate": "Feb 25, 2016",
@@ -5463,7 +6074,12 @@
         "Kickstarter",
         "Crowdfunded"
       ],
-      "categories": ["Action", "Adventure", "Indie", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Indie",
+        "RPG"
+      ],
       "price": 24.99,
       "specs": {
         "OS": "Windows 7 / Windows 10",
@@ -5482,7 +6098,9 @@
         "https://via.assets.so/game.png?id=373&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=374&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -5512,7 +6130,7 @@
       ]
     },
     {
-      "id": 76,
+      "id": "76",
       "title": "Assassins Creed IV Black Flag",
       "description": "The year is 1715. Pirates rule the Caribbean and have established their own lawless Republic where corruption, greediness and cruelty are commonplace.Among these outlaws is a brash young captain named Edward Kenway.",
       "releaseDate": "Nov 19, 2013",
@@ -5539,7 +6157,10 @@
         "Mature",
         "Action RPG"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows Vista SP2 or Windows 7 SP1 or Windows 8 (both 32/64bit versions)",
@@ -5592,7 +6213,7 @@
       ]
     },
     {
-      "id": 77,
+      "id": "77",
       "title": "Banished",
       "description": "In this city-building strategy game, you control a group of exiled travelers who decide to restart their lives in a new land. They have only the clothes on their backs and a cart filled with supplies from their homeland. The townspeople of Banished are your primary resource.",
       "releaseDate": "Feb 18, 2014",
@@ -5619,7 +6240,11 @@
         "Historical",
         "RTS"
       ],
-      "categories": ["Indie", "Simulation", "Strategy"],
+      "categories": [
+        "Indie",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7 / Windows 8",
@@ -5638,25 +6263,41 @@
         "https://via.assets.so/game.png?id=383&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=384&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 78,
+      "id": "78",
       "title": "Human: Fall Flat",
       "description": "Human: Fall Flat is a quirky open-ended physics-based puzzle platformer set in floating dreamscapes. Your goal is to find the exit of these surreal levels by solving puzzles with nothing but your wits. Local co-op for 2 players and up to 8 online for even more mayhem!",
       "releaseDate": "Jul 22, 2016",
@@ -5683,7 +6324,10 @@
         "Simulation",
         "Survival"
       ],
-      "categories": ["Adventure", "Indie"],
+      "categories": [
+        "Adventure",
+        "Indie"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows XP/Vista/7/8/8.1/10 x86 and x64",
@@ -5702,7 +6346,9 @@
         "https://via.assets.so/game.png?id=388&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=389&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -5732,7 +6378,7 @@
       ]
     },
     {
-      "id": 79,
+      "id": "79",
       "title": "Dead Cells",
       "description": "Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. You'll explore a sprawling, ever-changing castle... assuming youre able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.",
       "releaseDate": "Aug 6, 2018",
@@ -5759,7 +6405,10 @@
         "Atmospheric",
         "Early Access"
       ],
-      "categories": ["Action", "Indie"],
+      "categories": [
+        "Action",
+        "Indie"
+      ],
       "price": 24.99,
       "specs": {
         "OS": "Windows 7+",
@@ -5784,7 +6433,11 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -5795,7 +6448,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -5804,7 +6461,7 @@
       ]
     },
     {
-      "id": 80,
+      "id": "80",
       "title": "Battlefield: Bad Company 2",
       "description": "Battlefield: Bad Company 2 brings the award-winning Battlefield gameplay to the forefront of PC gaming with best-in-class vehicular combat and unexpected lefield moments. vehicles like the ATV and a transport helicopter allow for all-new multiplayer tactics on the Battlefield. With the Frostbite-enabled Destruction 2.",
       "releaseDate": "Mar 2, 2010",
@@ -5831,7 +6488,9 @@
         "Adventure",
         "Simulation"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows Vista or Windows 7",
@@ -5850,7 +6509,11 @@
         "https://via.assets.so/game.png?id=398&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=399&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -5880,7 +6543,7 @@
       ]
     },
     {
-      "id": 81,
+      "id": "81",
       "title": "XCOM 2",
       "description": "XCOM 2 is the sequel to XCOM: Enemy Unknown, the 2012 award-winning strategy game of the year. Earth has changed and is now under alien rule. Facing impossible odds you must rebuild XCOM, and ignite a global resistance to reclaim our world and save humanity.",
       "releaseDate": "Feb 4, 2016",
@@ -5907,7 +6570,9 @@
         "Masterpiece",
         "Co-op"
       ],
-      "categories": ["Strategy"],
+      "categories": [
+        "Strategy"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 7",
@@ -5926,9 +6591,15 @@
         "https://via.assets.so/game.png?id=403&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=404&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -5944,11 +6615,15 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 82,
+      "id": "82",
       "title": "Mad Max",
       "description": "Play as Mad Max, a reluctant hero and survivor who wants nothing more than to leave the madness behind and find solace.",
       "releaseDate": "Sep 1, 2015",
@@ -5975,7 +6650,10 @@
         "Sci-fi",
         "First-Person"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "64 bit: Win 7 SP1",
@@ -6010,7 +6688,11 @@
           "rating": 4,
           "comment": "Great game, but could be better"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -6024,7 +6706,7 @@
       ]
     },
     {
-      "id": 83,
+      "id": "83",
       "title": "Frostpunk",
       "description": "Frostpunk is the first society survival game. As the ruler of the last city on Earth, it is your duty to manage both its citizens and its infrastructure. What decisions will you make to ensure your society's survival? What will you do when pushed to breaking point? Who will you become in the process?",
       "releaseDate": "Apr 24, 2018",
@@ -6051,7 +6733,10 @@
         "Indie",
         "Great Soundtrack"
       ],
-      "categories": ["Simulation", "Strategy"],
+      "categories": [
+        "Simulation",
+        "Strategy"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows 7/8/10 64-bit",
@@ -6070,20 +6755,32 @@
         "https://via.assets.so/game.png?id=413&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=414&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
         {
-          "author": "GameSpot",
-          "rating": 3,
-          "comment": "Good game, but not great"
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
         },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "GameSpot",
+          "rating": 3,
+          "comment": "Good game, but not great"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -6092,7 +6789,7 @@
       ]
     },
     {
-      "id": 84,
+      "id": "84",
       "title": "Assassin's Creed Odyssey",
       "description": "Choose your fate in Assassin's Creed Odyssey. From outcast to living legend, embark on an odyssey to uncover the secrets of your past and change the fate of Ancient Greece.",
       "releaseDate": "Oct 5, 2018",
@@ -6119,7 +6816,11 @@
         "Multiplayer",
         "Gore"
       ],
-      "categories": ["Action", "Adventure", "RPG"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 7 SP1",
@@ -6138,7 +6839,9 @@
         "https://via.assets.so/game.png?id=418&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=419&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -6150,7 +6853,11 @@
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -6164,7 +6871,7 @@
       ]
     },
     {
-      "id": 85,
+      "id": "85",
       "title": "DARK SOULS II",
       "description": "Developed by FROM SOFTWARE, DARK SOULS II is the highly anticipated sequel to the gruelling 2011 breakout hit Dark Souls. The unique old-school action RPG experience captivated imaginations of gamers worldwide with incredible challenge and intense emotional reward.",
       "releaseDate": "Apr 25, 2014",
@@ -6191,7 +6898,10 @@
         "Dark",
         "Medieval"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1",
@@ -6236,11 +6946,15 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 86,
+      "id": "86",
       "title": "Squad",
       "description": "Squad is a tactical FPS that provides authentic combat experiences through teamwork, communication, and gameplay. It seeks to bridge the large gap between arcade shooter and military simulation. Large scale, combined arms combat, base building, and a great integrated VoIP system.",
       "releaseDate": "Dec 14, 2015",
@@ -6267,7 +6981,12 @@
         "Walking Simulator",
         "Indie"
       ],
-      "categories": ["Action", "Indie", "Strategy", "Early Access"],
+      "categories": [
+        "Action",
+        "Indie",
+        "Strategy",
+        "Early Access"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1 (x64)",
@@ -6286,7 +7005,11 @@
         "https://via.assets.so/game.png?id=428&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=429&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -6316,7 +7039,7 @@
       ]
     },
     {
-      "id": 87,
+      "id": "87",
       "title": "American Truck Simulator",
       "description": "Experience legendary American trucks and deliver various cargoes across sunny California, sandy Nevada, and the Grand Canyon State of Arizona. American Truck Simulator takes you on a journey through the breathtaking landscapes and widely recognized landmarks around the States.",
       "releaseDate": "Feb 2, 2016",
@@ -6343,7 +7066,10 @@
         "Third Person",
         "Action"
       ],
-      "categories": ["Indie", "Simulation"],
+      "categories": [
+        "Indie",
+        "Simulation"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7/8.1/10 64-bit",
@@ -6362,7 +7088,9 @@
         "https://via.assets.so/game.png?id=433&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=434&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -6384,11 +7112,15 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 88,
+      "id": "88",
       "title": "Life is Strange: Before the Storm",
       "description": "Life is Strange: Before the Storm is a new three part standalone story adventure set three years before the events of the first game. This time play as Chloe Price, a rebel who forms an unlikely friendship with Rachel Amber in a dramatic new story in the BAFTA award winning franchise.",
       "releaseDate": "Aug 31, 2017",
@@ -6415,7 +7147,10 @@
         "Memes",
         "Time Travel"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 16.99,
       "specs": {
         "OS": "Windows 10 64-bit",
@@ -6440,7 +7175,11 @@
         "until": "2021-12-31"
       },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
@@ -6464,7 +7203,7 @@
       ]
     },
     {
-      "id": 89,
+      "id": "89",
       "title": "DARK SOULS II: Scholar of the First Sin",
       "description": "DARK SOULS II: Scholar of the First Sin brings the franchises renowned obscurity & gripping gameplay to a new level. Join the dark journey and experience overwhelming enemy encounters, diabolical hazards, and unrelenting challenge.",
       "releaseDate": "Apr 1, 2015",
@@ -6491,7 +7230,10 @@
         "Story Rich",
         "Remake"
       ],
-      "categories": ["Action", "RPG"],
+      "categories": [
+        "Action",
+        "RPG"
+      ],
       "price": 39.99,
       "specs": {
         "OS": "Windows 7 SP1 64bit",
@@ -6510,7 +7252,11 @@
         "https://via.assets.so/game.png?id=443&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=444&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "GameSpot",
@@ -6527,7 +7273,11 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -6536,7 +7286,7 @@
       ]
     },
     {
-      "id": 90,
+      "id": "90",
       "title": "Verdun",
       "description": "Merciless trench warfare immerses you and your squad in intense battles of attack and defense. Verdun is the first multiplayer FPS set in an authentic World War One setting offering a rarely seen battlefield experience.",
       "releaseDate": "Apr 28, 2015",
@@ -6563,7 +7313,11 @@
         "Gore",
         "Adventure"
       ],
-      "categories": ["Action", "Indie", "Strategy"],
+      "categories": [
+        "Action",
+        "Indie",
+        "Strategy"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Not specified",
@@ -6582,25 +7336,39 @@
         "https://via.assets.so/game.png?id=448&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=449&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 91,
+      "id": "91",
       "title": "Wolfenstein: The New Order",
       "description": "Wolfenstein: The New Order reignites the series that created the first-person shooter genre. Under development at Machine Games, a studio comprised of a seasoned group of developers recognized for their work creating story-driven games, Wolfenstein offers a deep game narrative packed with action, adventure and first-person combat.",
       "releaseDate": "May 19, 2014",
@@ -6627,7 +7395,9 @@
         "Dystopian",
         "Epic"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Not specified",
@@ -6680,7 +7450,7 @@
       ]
     },
     {
-      "id": 92,
+      "id": "92",
       "title": "Planet Coaster",
       "description": "Planet Coaster - the future of coaster park simulation games has arrived! Surprise, delight and thrill incredible crowds as you build your coaster park empire - let your imagination run wild, and share your success with the world.",
       "releaseDate": "Nov 17, 2016",
@@ -6707,7 +7477,10 @@
         "First-Person",
         "Action"
       ],
-      "categories": ["Simulation", "Strategy"],
+      "categories": [
+        "Simulation",
+        "Strategy"
+      ],
       "price": 44.99,
       "specs": {
         "OS": "Windows 7 (SP1+)/8.1/10 64bit",
@@ -6726,7 +7499,11 @@
         "https://via.assets.so/game.png?id=458&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=459&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -6738,17 +7515,25 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 93,
+      "id": "93",
       "title": "Hotline Miami 2: Wrong Number",
       "description": "Hotline Miami 2: Wrong Number is the brutal conclusion to the Hotline Miami saga, set against a backdrop of escalating violence and retribution over spilled blood in the original game.",
       "releaseDate": "Mar 10, 2015",
@@ -6775,7 +7560,10 @@
         "Arcade",
         "1990's"
       ],
-      "categories": ["Action", "Indie"],
+      "categories": [
+        "Action",
+        "Indie"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Microsoft Windows Vista / 7 / 8",
@@ -6794,7 +7582,9 @@
         "https://via.assets.so/game.png?id=463&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=464&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
         {
           "author": "GameInformer",
@@ -6806,17 +7596,25 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameSpot",
           "rating": 3,
           "comment": "Good game, but not great"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 94,
+      "id": "94",
       "title": "Plague Inc: Evolved",
       "description": "Plague Inc: Evolved is a unique mix of high strategy and terrifyingly realistic simulation. Your pathogen has just infected 'Patient Zero' - now you must bring about the end of human history by evolving a deadly, global Plague whilst adapting against everything humanity can do to defend itself.",
       "releaseDate": "Feb 18, 2016",
@@ -6843,7 +7641,12 @@
         "Co-op",
         "Survival"
       ],
-      "categories": ["Casual", "Indie", "Simulation", "Strategy"],
+      "categories": [
+        "Casual",
+        "Indie",
+        "Simulation",
+        "Strategy"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows 10",
@@ -6896,7 +7699,7 @@
       ]
     },
     {
-      "id": 95,
+      "id": "95",
       "title": "Sekiro: Shadows Die Twice",
       "description": "Carve your own clever path to vengeance in an all-new adventure from developer FromSoftware, creators of Bloodborne and the Dark Souls series. Take Revenge. Restore your honor. Kill Ingeniously.",
       "releaseDate": "Mar 21, 2019",
@@ -6923,7 +7726,10 @@
         "Dark",
         "Rhythm"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 59.99,
       "specs": {
         "OS": "Windows 7 64-bit | Windows 8 64-bit | Windows 10 64-bit",
@@ -6942,7 +7748,11 @@
         "https://via.assets.so/game.png?id=473&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=474&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -6959,7 +7769,11 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "PC Gamer",
           "rating": 5,
@@ -6968,7 +7782,7 @@
       ]
     },
     {
-      "id": 96,
+      "id": "96",
       "title": "Alien Swarm",
       "description": "Co-operative multiplayer game and complete code base available for free.",
       "releaseDate": "Jul 19, 2010",
@@ -6995,7 +7809,9 @@
         "Strategy",
         "Adventure"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 0,
       "specs": {
         "OS": "Windows 7 / Vista / Vista64 / XP",
@@ -7014,9 +7830,15 @@
         "https://via.assets.so/game.png?id=478&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=479&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "GameInformer",
           "rating": 2,
@@ -7040,7 +7862,7 @@
       ]
     },
     {
-      "id": 97,
+      "id": "97",
       "title": "PAYDAY The Heist",
       "description": "Take on the role of a hardened career criminal executing intense, dynamic heists in constant pursuit of the next big score",
       "releaseDate": "Oct 20, 2011",
@@ -7067,7 +7889,9 @@
         "Indie",
         "Adventure"
       ],
-      "categories": ["Action"],
+      "categories": [
+        "Action"
+      ],
       "price": 14.99,
       "specs": {
         "OS": "Windows XP",
@@ -7097,9 +7921,21 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -7108,7 +7944,7 @@
       ]
     },
     {
-      "id": 98,
+      "id": "98",
       "title": "Red Orchestra 2: Heroes of Stalingrad with Rising Storm",
       "description": "Contains full Rising Storm content as well!",
       "releaseDate": "Sep 13, 2011",
@@ -7135,7 +7971,11 @@
         "Strategy",
         "Singleplayer"
       ],
-      "categories": ["Action", "Massively Multiplayer", "Simulation"],
+      "categories": [
+        "Action",
+        "Massively Multiplayer",
+        "Simulation"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows XP/Vista/7",
@@ -7154,7 +7994,11 @@
         "https://via.assets.so/game.png?id=488&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=489&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "IGN",
@@ -7184,7 +8028,7 @@
       ]
     },
     {
-      "id": 99,
+      "id": "99",
       "title": "Depth",
       "description": "Play as a shark or a diver in a dark aquatic world and overcome your enemies by employing cunning, teamwork, and stealth. Depth blends tension and visceral action as you team up against AI or be matched with other players in heart pounding combat.",
       "releaseDate": "Nov 3, 2014",
@@ -7211,7 +8055,10 @@
         "Indie",
         "Singleplayer"
       ],
-      "categories": ["Action", "Indie"],
+      "categories": [
+        "Action",
+        "Indie"
+      ],
       "price": 19.99,
       "specs": {
         "OS": "Windows 7 and above",
@@ -7230,9 +8077,15 @@
         "https://via.assets.so/game.png?id=493&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=494&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "none" },
+      "discount": {
+        "type": "none"
+      },
       "reviews": [
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        },
         {
           "author": "IGN",
           "rating": 4,
@@ -7248,11 +8101,15 @@
           "rating": 2,
           "comment": "Not a good game"
         },
-        { "author": "Polygon", "rating": 1, "comment": "A terrible game" }
+        {
+          "author": "Polygon",
+          "rating": 1,
+          "comment": "A terrible game"
+        }
       ]
     },
     {
-      "id": 100,
+      "id": "100",
       "title": "Spec Ops: The Line",
       "description": "A Third-Person modern military Shooter designed to challenge players' morality by putting them in the middle of unspeakable situations.",
       "releaseDate": "Jun 25, 2012",
@@ -7279,7 +8136,10 @@
         "Based On A Novel",
         "Post-apocalyptic"
       ],
-      "categories": ["Action", "Adventure"],
+      "categories": [
+        "Action",
+        "Adventure"
+      ],
       "price": 29.99,
       "specs": {
         "OS": "Windows Vista/7",
@@ -7330,11 +8190,46 @@
           "comment": "Great game, but could be better"
         }
       ]
+    },
+    {
+      "id": "101",
+      "title": "Hades",
+      "description": "Desafía al dios de los muertos y protagoniza una salvaje fuga del Inframundo en este juego de exploración de mazmorras de los creadores de Bastion, Transistor y Pyre.",
+      "developer": " Supergiant Games",
+      "keywords": [],
+      "categories": [
+        "Action",
+        "Adventure",
+        "RPG"
+      ],
+      "price": 19.99,
+      "specs": {
+        "OS": "",
+        "Processor": "",
+        "Memory": "",
+        "Graphics": "",
+        "DirectX": "",
+        "Storage": ""
+      },
+      "popularity": 0,
+      "stock": 23,
+      "images": [
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/header.jpg?t=1715722799",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/ss_c0fed447426b69981cf1721756acf75369801b31.116x65.jpg?t=1715722799",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/ss_71b831acfddfa631e59e57405b347fb04e9ce8d5.600x338.jpg?t=1715722799",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/ss_68300459a8c3daacb2ec687adcdbf4442fcc4f47.116x65.jpg?t=1715722799",
+        "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1145360/ss_bcb499a0dd001f4101823f99ec5094d2872ba6ee.116x65.jpg?t=1715722799"
+      ],
+      "discount": {
+        "type": "none"
+      },
+      "reviews": [],
+      "releaseDate": ""
     }
   ],
   "wishlist": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Team Fortress 2",
       "description": "Nine distinct classes provide a broad range of tactical abilities and personalities. Constantly updated with new game modes, maps, equipment and, most importantly, hats!",
       "releaseDate": "Oct 10, 2007",
@@ -7361,7 +8256,10 @@
         "Crafting",
         "Moddable"
       ],
-      "categories": ["Action", "Free to Play"],
+      "categories": [
+        "Action",
+        "Free to Play"
+      ],
       "price": "Free to Play",
       "specs": {
         "OS": "Windows 7 (32/64-bit)",
@@ -7414,7 +8312,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Unturned",
       "description": "You're a survivor in the zombie infested ruins of society, and must work with your friends and forge alliances to remain among the living.",
       "releaseDate": "Jul 7, 2017",
@@ -7441,7 +8339,13 @@
         "Casual",
         "Early Access"
       ],
-      "categories": ["Action", "Adventure", "Casual", "Free to Play", "Indie"],
+      "categories": [
+        "Action",
+        "Adventure",
+        "Casual",
+        "Free to Play",
+        "Indie"
+      ],
       "price": "Free to Play",
       "specs": {
         "OS": "Windows 10 64-bit",
@@ -7460,7 +8364,11 @@
         "https://via.assets.so/game.png?id=8&q=90&w=700&h=400&fit=fill",
         "https://via.assets.so/game.png?id=9&q=90&w=700&h=400&fit=fill"
       ],
-      "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+      "discount": {
+        "type": "fixed",
+        "value": 5,
+        "until": "2021-12-31"
+      },
       "reviews": [
         {
           "author": "PC Gamer",
@@ -7522,7 +8430,12 @@
             "4 Player Local",
             "Indie"
           ],
-          "categories": ["Action", "Indie", "Racing", "Sports"],
+          "categories": [
+            "Action",
+            "Indie",
+            "Racing",
+            "Sports"
+          ],
           "price": 19.99,
           "specs": {
             "OS": "Windows 7 or Newer",
@@ -7562,7 +8475,11 @@
               "rating": 2,
               "comment": "Not a good game"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "GameSpot",
               "rating": 3,
@@ -7598,7 +8515,9 @@
             "Local Co-Op",
             "Tactical"
           ],
-          "categories": ["Action"],
+          "categories": [
+            "Action"
+          ],
           "price": 9.99,
           "specs": {
             "OS": "Windows 7 32/64-bit / Vista 32/64 / XP",
@@ -7617,7 +8536,11 @@
             "https://via.assets.so/game.png?id=53&q=90&w=700&h=400&fit=fill",
             "https://via.assets.so/game.png?id=54&q=90&w=700&h=400&fit=fill"
           ],
-          "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+          "discount": {
+            "type": "fixed",
+            "value": 5,
+            "until": "2021-12-31"
+          },
           "reviews": [
             {
               "author": "GameInformer",
@@ -7674,7 +8597,10 @@
             "Action",
             "RPG"
           ],
-          "categories": ["Indie", "Simulation"],
+          "categories": [
+            "Indie",
+            "Simulation"
+          ],
           "price": 19.99,
           "specs": {
             "OS": "Windows 7/8.1/10 64-bit",
@@ -7693,7 +8619,9 @@
             "https://via.assets.so/game.png?id=58&q=90&w=700&h=400&fit=fill",
             "https://via.assets.so/game.png?id=59&q=90&w=700&h=400&fit=fill"
           ],
-          "discount": { "type": "none" },
+          "discount": {
+            "type": "none"
+          },
           "reviews": [
             {
               "author": "PC Gamer",
@@ -7750,7 +8678,10 @@
             "Memes",
             "Masterpiece"
           ],
-          "categories": ["Action", "Adventure"],
+          "categories": [
+            "Action",
+            "Adventure"
+          ],
           "price": 0,
           "specs": {
             "OS": "Windows 7",
@@ -7775,13 +8706,21 @@
             "until": "2021-12-31"
           },
           "reviews": [
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "GameInformer",
               "rating": 2,
               "comment": "Not a good game"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "GameInformer",
               "rating": 2,
@@ -7822,7 +8761,12 @@
             "Masterpiece",
             "Zombies"
           ],
-          "categories": ["Action", "Adventure", "Indie", "Simulation"],
+          "categories": [
+            "Action",
+            "Adventure",
+            "Indie",
+            "Simulation"
+          ],
           "price": 19.99,
           "specs": {
             "OS": "Windows 7",
@@ -7841,7 +8785,11 @@
             "https://via.assets.so/game.png?id=68&q=90&w=700&h=400&fit=fill",
             "https://via.assets.so/game.png?id=69&q=90&w=700&h=400&fit=fill"
           ],
-          "discount": { "type": "fixed", "value": 5, "until": "2021-12-31" },
+          "discount": {
+            "type": "fixed",
+            "value": 5,
+            "until": "2021-12-31"
+          },
           "reviews": [
             {
               "author": "GameSpot",
@@ -7853,7 +8801,11 @@
               "rating": 4,
               "comment": "Great game, but could be better"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "IGN",
               "rating": 4,
@@ -7894,7 +8846,10 @@
             "Stylized",
             "Atmospheric"
           ],
-          "categories": ["Action", "RPG"],
+          "categories": [
+            "Action",
+            "RPG"
+          ],
           "price": 19.99,
           "specs": {
             "OS": "Windows XP SP3/Vista/Win 7",
@@ -7913,7 +8868,9 @@
             "https://via.assets.so/game.png?id=73&q=90&w=700&h=400&fit=fill",
             "https://via.assets.so/game.png?id=74&q=90&w=700&h=400&fit=fill"
           ],
-          "discount": { "type": "none" },
+          "discount": {
+            "type": "none"
+          },
           "reviews": [
             {
               "author": "GameInformer",
@@ -7925,7 +8882,11 @@
               "rating": 4,
               "comment": "Great game, but could be better"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "GameInformer",
               "rating": 2,
@@ -7966,7 +8927,11 @@
             "Survival",
             "Adventure"
           ],
-          "categories": ["Action", "Free to Play", "Indie"],
+          "categories": [
+            "Action",
+            "Free to Play",
+            "Indie"
+          ],
           "price": 0,
           "specs": {
             "OS": "Not specified",
@@ -8006,7 +8971,11 @@
               "rating": 3,
               "comment": "Good game, but not great"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "IGN",
               "rating": 4,
@@ -8051,7 +9020,11 @@
             "Survival",
             "Adventure"
           ],
-          "categories": ["Action", "Free to Play", "Indie"],
+          "categories": [
+            "Action",
+            "Free to Play",
+            "Indie"
+          ],
           "price": 0,
           "specs": {
             "OS": "Not specified",
@@ -8091,7 +9064,11 @@
               "rating": 3,
               "comment": "Good game, but not great"
             },
-            { "author": "Polygon", "rating": 1, "comment": "A terrible game" },
+            {
+              "author": "Polygon",
+              "rating": 1,
+              "comment": "A terrible game"
+            },
             {
               "author": "IGN",
               "rating": 4,

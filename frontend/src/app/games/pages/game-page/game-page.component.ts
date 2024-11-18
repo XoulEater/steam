@@ -81,7 +81,7 @@ export class GamePageComponent {
         }
         this.game = game;
         if (game.images && game.images.length > 0) {
-          this.mainImage = game.images[0];
+          this.mainImage = game.images[1];
         } else {
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
         }
