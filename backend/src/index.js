@@ -7,14 +7,14 @@ require('dotenv').config();
 const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
-const productsRoutes = require('./routes/products');
+// const productsRoutes = require('./routes/products');
 
 const app = express();
 
 console.log('TOKEN_SECRET:', process.env.TOKEN_SECRET);
 
 // Usa el puerto asignado por Render, si está disponible, o 10000 como fallback
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 3000;
 
 // Configurar CORS con opciones específicas
 const corsOptions = {
@@ -32,7 +32,7 @@ app.use(express.json()); // Parseo de JSON
 app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
-app.use('/products', productsRoutes);
+// app.use('/products', productsRoutes);
 
 // Routes
 app.get('/', (req, res) => {
