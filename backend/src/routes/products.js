@@ -5,13 +5,15 @@ const dotenv = require("dotenv");
 const Product = require("../models/products");
 const Category = require("../models/category");
 const Discount = require("../models/discount");
+const User = require('../models/user');
+const ProductReview = require('../models/productReview');
 
 dotenv.config();
 
 const router = express.Router();
 
 // Agregar Productos como administrador
-router.post("/addProduct", auth("admin"), async (req, res) => {
+router.post("/addProduct", async (req, res) => {
     try {
         const {
             name,
@@ -262,7 +264,7 @@ router.get('/filterCategoryIndex', async (req, res) => {
     const { query } = req.query;
 
     if (!query) {
-        return res.status(400).send({ error: 'Query parameter is required' });
+        return res.status(400).json({ error: 'Query parameter is required' });
     }
 
     try {
@@ -280,10 +282,10 @@ router.get('/filterCategoryIndex', async (req, res) => {
             }
         ]);
 
-        res.status(200).send(results);
+        res.status(200).json({ success: true, data: results });
     } catch (error) {
         console.error("Error executing search:", error);
-        res.status(500).send({ error: 'An error occurred while executing the search' });
+        res.status(500).json({ success: false, error: 'An error occurred while executing the search' });
     }
 });
 
@@ -293,7 +295,7 @@ router.get('/filterProductsByCategory', async (req, res) => {
     const { query } = req.query;
 
     if (!query) {
-        return res.status(400).send({ error: 'Query parameter is required' });
+        return res.status(400).json({ error: 'Query parameter is required' });
     }
 
     try {
@@ -313,10 +315,10 @@ router.get('/filterProductsByCategory', async (req, res) => {
             },
         ]);
 
-        res.status(200).send(results);
+        res.status(200).json({ success: true, data: results });
     } catch (error) {
         console.error("Error executing search:", error);
-        res.status(500).send({ error: 'An error occurred while executing the search' });
+        res.status(500).json({ success: false, error: 'An error occurred while executing the search' });
     }
 });
 
@@ -326,7 +328,7 @@ router.get('/searchKeyWord', async (req, res) => {
     const { query } = req.query;
 
     if (!query) {
-        return res.status(400).send({ error: 'Query parameter is required' });
+        return res.status(400).json({ error: 'Query parameter is required' });
     }
 
     try {
@@ -346,10 +348,10 @@ router.get('/searchKeyWord', async (req, res) => {
             },
         ]);
 
-        res.status(200).send(results);
+        res.status(200).json({ success: true, data: results });
     } catch (error) {
         console.error("Error executing search:", error);
-        res.status(500).send({ error: 'An error occurred while executing the search' });
+        res.status(500).json({ error: 'An error occurred while executing the search' });
     }
 });
 
@@ -359,7 +361,7 @@ router.get('/searchByPopularity', async (req, res) => {
     const { limit } = req.query;
 
     if (!limit || isNaN(limit) || parseInt(limit) <= 0) {
-        return res.status(400).send({ error: 'Se requiere el parametro limite, este debe ser positivo' });
+        return res.status(400).json({ error: 'Se requiere el parametro limite, este debe ser positivo' });
     }
 
     const n = parseInt(limit);
@@ -369,23 +371,24 @@ router.get('/searchByPopularity', async (req, res) => {
             .sort({ popularity: -1 }) // ordenar documentos de manera descendente por popularity
             .limit(n); // Limitar los resultados a 'n'
 
-        res.status(200).send(mostPopularProducts);
+        res.status(200).json({ success: true, data: mostPopularProducts });
     } catch (error) {
         console.error("Error obteniendo los productos mas populares:", error);
-        res.status(500).send({ error: 'Error obteniendo los productos mas populares' });
+        res.status(500).json({ error: 'Error obteniendo los productos mas populares' });
     }
 });
 
+// Aplica descuento a un solo producto
 router.put('/applyDiscountProduct', async (req, res) => {
     const {
-        productName, 
+        productName,
         type,
         value,
         validDate,
     } = req.body;
 
     if (!validDate || !value || !type || !productName) {
-        return res.status(400).send({
+        return res.status(400).json({
             error: 'Se requiere el nombre del producto, la fecha, el descuento y el tipo de descuento',
         });
     }
@@ -402,7 +405,7 @@ router.put('/applyDiscountProduct', async (req, res) => {
         const product = await Product.findOne({ name: productName });
 
         if (!product) {
-            return res.status(404).send({ error: 'Producto no encontrado' });
+            return res.status(404).json({ error: 'Producto no encontrado' });
         }
 
         product.discount = savedDiscount._id;
@@ -421,7 +424,142 @@ router.put('/applyDiscountProduct', async (req, res) => {
         });
     }
 });
-// TODO: Agregar endpoint para obtener productos con descuento
-// TODO: Agregar endpoint para añadir reseñas a productos, debe actualizar el rating del producto
+
+// Aplica descuento a todos los elementos de una categoria o sub categoria
+router.put('/applyDiscountCategory', async (req, res) => {
+    const {
+        category,
+        type,
+        value,
+        validDate,
+    } = req.body;
+
+    if (!validDate || !value || !type || !category) {
+        return res.status(400).json({
+            error: 'Se requiere la categoria, la fecha, el descuento y el tipo de descuento',
+        });
+    }
+
+    try {
+        const newDiscount = new Discount({
+            type,
+            value,
+            validDate,
+        });
+
+        const savedDiscount = await newDiscount.save();
+
+        const productsToUpdate = await Product.aggregate([
+            {
+                $search: {
+                    index: 'filterGamesByCategoryIndex',
+                    text: {
+                        query: category,
+                        path: 'categoriesPath',
+                        fuzzy: {
+                            maxEdits: 1,
+                        },
+                    },
+                },
+            },
+        ]);
+
+        if (productsToUpdate.length === 0) {
+            return res.status(400).json({ message: 'No se encontraron productos de la categoria especificada' });
+        }
+
+        const updateResults = await Product.updateMany(
+            { _id: { $in: productsToUpdate.map((product) => product._id) } },
+            { $set: { discount: savedDiscount._id } }
+        );
+
+        res.status(200).json({
+            message: 'Descuento aplicado exitosamente a los productos de la categoría',
+            discount: savedDiscount,
+            updatedProducts: updateResults.modifiedCount, // Cantidad de productos actualizados
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error al aplicar el descuento a la categoría',
+            error: error.message || error,
+        });
+    }
+});
+
+// TODO: Este metodo puede optimizarse con indice en base de datos
+// Obtiene todos los productos con descuento
+router.get('/discountedProducts', async (req, res) => {
+    try {
+        const discountedProducts = await Product.find({ discount: { $ne: null } }).populate('discount');
+
+        res.status(200).json({ success: true, data: discountedProducts });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error al obtener los productos con descuento',
+            error: error.message || error,
+        });
+    }
+});
+
+// TODO: Este endpoint crea el review con el rating esppecificado, sin embargo
+// TODO: no actualiza el rating deL producto en si, supongo que se promedia con el resto?
+// Agregar review de un producto
+router.post('/addReview', async (req, res) => {
+    const { userName, productName, review, rating } = req.body;
+
+    if (!userName || !productName || !review || !rating) {
+        return res.status(400).json({
+            error: 'Se requiere todos los datos: userName, productName, review, rating'
+        });
+    }
+
+    if (typeof userName !== 'string' || typeof productName !== 'string' || typeof review !== 'string') {
+        return res.status(400).json({
+            error: 'Datos userName, productName y review deben ser de tipo string'
+        });
+    }
+
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+        return res.status(400).json({ error: 'Dato rating debe ser de tipo Number' });
+    }
+
+    try {
+        const user = await User.findOne({ username: userName }, { _id: 1 });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'Usuario no encontrado' });
+        }
+
+        const product = await Product.findOne({ name: productName }, { _id: 1 });
+        if (!product) {
+            return res.status(404).json({ success: false, message: 'Producto no encontrado' });
+        }
+
+        const newProductReview = new ProductReview({
+            userId: user._id,
+            productId: product._id,
+            review,
+            rating,
+        });
+
+        const productReviewSaved = await newProductReview.save();
+
+        await Product.updateOne(
+            { _id: product._id },
+            { $push: { reviews: productReviewSaved._id } }
+        );
+
+        res.status(201).json({
+            success: true,
+            message: 'Rating añadido exitosamente',
+            productReview: productReviewSaved,
+        });
+    } catch (error) {
+        console.error('Error al agregar el rating:', error);
+        res.status(500).json({
+            error: 'Error al agregar product review',
+            details: error.message,
+        });
+    }
+});
 
 module.exports = router;

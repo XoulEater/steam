@@ -7,7 +7,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
-// const productsRoutes = require('./routes/products');
+ const productsRoutes = require('./routes/products');
 
 const app = express();
 
@@ -32,7 +32,7 @@ app.use(express.json()); // Parseo de JSON
 app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
-// app.use('/products', productsRoutes);
+app.use('/products', productsRoutes);
 
 // Routes
 app.get('/', (req, res) => {
