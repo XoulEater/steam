@@ -33,14 +33,18 @@ export class AdminGameCardComponent {
   onDiscount(game: Game) {
     const dialogRef = this.dialog.open(DiscountDialogComponent, {
       data: game.discount,
+      width: '100%',
+      maxWidth: '40vw',
+      height: '100%',
+      maxHeight: '50vh',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // this.gameService.updateDiscount(game.id, result).subscribe((game) => {
-        //   const index = this.games.findIndex((g) => g.id === game.id);
-        //   this.games[index] = game;
-        // });
+        this.game.discount = result.data;
+        this.gameService.updateGame(this.game).subscribe((game) => {
+          console.log('Discount updated', game);
+        });
         console.log('Discount updated', result);
       }
     });

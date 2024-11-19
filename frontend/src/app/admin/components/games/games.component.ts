@@ -6,6 +6,7 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { RouterModule } from '@angular/router';
+import { DiscountDialogComponent } from '../discount-dialog/discount-dialog.component';
 
 @Component({
   selector: 'app-games',
@@ -42,5 +43,26 @@ export class GamesComponent {
 
   onPageChange(page: number) {
     this.currentPage = page;
+  }
+
+  onDiscount() {
+    const dialogRef = this.dialog.open(DiscountDialogComponent, {
+      data: null,
+      width: '100%',
+      maxWidth: '40vw',
+      height: '100%',
+      maxHeight: '50vh',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // TODO: Update discount in backend for a category
+        // this.gameService.updateDiscount(game.id, result).subscribe((game) => {
+        //   const index = this.games.findIndex((g) => g.id === game.id);
+        //   this.games[index] = game;
+        // });
+        console.log('Discount updated', result);
+      }
+    });
   }
 }

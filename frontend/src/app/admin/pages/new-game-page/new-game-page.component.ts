@@ -180,6 +180,7 @@ export class NewGamePageComponent {
     } else {
       this.gamesService.updateGame(this.currentGame).subscribe((game) => {
         this.router.navigate(['/administration/games']);
+        // TODO: snackbar
       });
     }
   }

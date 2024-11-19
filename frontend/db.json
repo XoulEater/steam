@@ -50,9 +50,10 @@
         "https://via.assets.so/game.png?id=4&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "percentage",
-        "value": 10,
-        "until": "2021-12-31"
+        "category": null,
+        "value": 5,
+        "type": "fixed",
+        "until": "2024-11-20"
       },
       "reviews": [
         {
@@ -87,7 +88,6 @@
       "id": "3",
       "title": "Garry's Mod",
       "description": "Garry's Mod is a physics sandbox. There aren't any predefined aims or goals. We give you the tools and leave you to play.",
-      "releaseDate": "Nov 29, 2006",
       "developer": "Facepunch Studios",
       "keywords": [
         "Sandbox",
@@ -113,7 +113,8 @@
       ],
       "categories": [
         "Indie",
-        "Simulation"
+        "Simulation",
+        "Action"
       ],
       "price": 9.99,
       "specs": {
@@ -134,7 +135,10 @@
         "https://via.assets.so/game.png?id=14&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "none"
+        "category": null,
+        "value": 0,
+        "type": "none",
+        "until": "2024-11-19T00:24:03.353Z"
       },
       "reviews": [
         {
@@ -162,7 +166,8 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         }
-      ]
+      ],
+      "releaseDate": "Nov 29, 2006"
     },
     {
       "id": "4",
@@ -214,8 +219,9 @@
         "https://via.assets.so/game.png?id=19&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
+        "category": null,
+        "value": 15,
         "type": "percentage",
-        "value": 10,
         "until": "2021-12-31"
       },
       "reviews": [
@@ -464,9 +470,7 @@
         "https://via.assets.so/game.png?id=34&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "percentage",
-        "value": 10,
-        "until": "2021-12-31"
+        "type": "none"
       },
       "reviews": [
         {
@@ -631,7 +635,10 @@
         "https://via.assets.so/game.png?id=44&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "none"
+        "category": null,
+        "value": 10,
+        "type": "percentage",
+        "until": "2024-12-06"
       },
       "reviews": [
         {
@@ -960,9 +967,7 @@
         "https://via.assets.so/game.png?id=64&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "percentage",
-        "value": 10,
-        "until": "2021-12-31"
+        "type": "none"
       },
       "reviews": [
         {
@@ -1210,9 +1215,7 @@
         "https://via.assets.so/game.png?id=79&q=90&w=700&h=400&fit=fill"
       ],
       "discount": {
-        "type": "percentage",
-        "value": 10,
-        "until": "2021-12-31"
+        "type": "none"
       },
       "reviews": [
         {
@@ -1908,7 +1911,6 @@
       "id": "25",
       "title": "Wallpaper Engine",
       "description": "Use stunning live wallpapers on your desktop. Animate your own images to create new wallpapers or import videos/websites and share them on Steam Workshop!",
-      "releaseDate": "Nov 16, 2018",
       "developer": "Kristjan Skutta",
       "keywords": [
         "Utilities",
@@ -1933,7 +1935,6 @@
         "Action"
       ],
       "categories": [
-        "Animation & Modeling",
         "Design & Illustration",
         "Utilities"
       ],
@@ -1986,7 +1987,8 @@
           "rating": 5,
           "comment": "A masterpiece of a game"
         }
-      ]
+      ],
+      "releaseDate": "Nov 16, 2018"
     },
     {
       "id": "26",

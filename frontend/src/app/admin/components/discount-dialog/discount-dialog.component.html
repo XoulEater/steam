@@ -1,1 +1,111 @@
-<p>discount-dialog works!</p>
+<div class="flex flex-col h-full gap-5 p-5 bg-bgTertiary">
+  <h3 class="text-xl font-semibold text-dim">
+    {{ isCreateMode ? "Create Game" : "Edit Game" }}
+  </h3>
+  <section class="flex flex-col items-end h-full place-content-between">
+    <form
+      class="grid items-start w-full grid-cols-3 gap-4 gap-y-6"
+      [formGroup]="discountForm"
+      (ngSubmit)="onSubmit()"
+    >
+      @if (isCreateMode) {
+      <span class="mt-1 font-semibold">
+        Category *
+        <shared-tooltip
+          for="category"
+          text="Select a game category to apply the discount"
+        ></shared-tooltip>
+      </span>
+      <select
+        class="col-span-2 p-2 rounded-md bg-bgTertiary text-dim"
+        [formControlName]="'category'"
+        required
+      >
+        <option value="" disabled selected>Select a Category</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
+      }
+      <span class="mt-1 font-semibold">
+        Available until *
+        <shared-tooltip
+          for="availableUntil"
+          text="Date until the discount is available"
+        ></shared-tooltip>
+      </span>
+
+      <input
+        type="date"
+        class="p-2 bg-transparent rounded-md text-dim"
+        [formControlName]="'until'"
+        required
+      />
+
+      <span class="col-start-1 mt-1 font-semibold">
+        Discount *
+        <shared-tooltip
+          for="discount"
+          text="Discount to apply to the game"
+        ></shared-tooltip>
+      </span>
+      <input
+        type="number"
+        class="p-2 bg-transparent rounded-md text-dim"
+        min="0"
+        [formControlName]="'value'"
+        required
+      />
+      <span class="text-sm text-dim"> </span>
+      <div class="flex w-full col-span-2 col-start-2 gap-4">
+        <!-- Radio for porcentage or fixed -->
+        <div class="flex items-center gap-1">
+          <input
+            type="radio"
+            id="fixed"
+            name="type"
+            value="fixed"
+            checked
+            [formControlName]="'type'"
+            required
+          />
+
+          <label for="fixed">Fixed</label>
+        </div>
+        <div class="flex items-center gap-1">
+          <input
+            type="radio"
+            id="percentage"
+            name="type"
+            value="percentage"
+            [formControlName]="'type'"
+            required
+          />
+          <label for="percentage">Percentage</label>
+        </div>
+      </div>
+    </form>
+    <footer class="flex gap-3">
+      @if (hasDiscount) {
+      <button
+        class="px-12 py-2 transition-all duration-300 ease-in-out rounded-sm bg-danger hover:brightness-150"
+        (click)="onRemove()"
+      >
+        Remove
+      </button>
+      }
+      <button
+        class="px-12 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+        (click)="onSubmit()"
+      >
+        Cancel
+      </button>
+      <button
+        class="px-12 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+        (click)="onSubmit()"
+      >
+        Save
+      </button>
+    </footer>
+  </section>
+</div>
