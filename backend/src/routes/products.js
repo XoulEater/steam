@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const auth = require("../middleware/authMiddleware");
 const dotenv = require("dotenv");
 const Product = require("../models/products");
-const Inventory = require("../models/inventory");
 const Category = require("../models/category");
+const Discount = require("../models/discount");
 
 dotenv.config();
 
@@ -53,7 +53,7 @@ router.post("/addProduct", auth("admin"), async (req, res) => {
 
         res.status(201).json(savedProduct);
     } catch (error) {
-        res.status(500).json({ message: "Error al agregar prodducto", error: error.message || error });
+        res.status(500).json({ message: "Error al agregar producto", error: error.message || error });
     }
 });
 
@@ -357,9 +357,9 @@ router.get('/searchKeyWord', async (req, res) => {
 // http://localhost:3000/products/searchByPopularity?limit=10
 router.get('/searchByPopularity', async (req, res) => {
     const { limit } = req.query;
-    
+
     if (!limit || isNaN(limit) || parseInt(limit) <= 0) {
-        return res.status(400).send({ error: 'Se requiere el parametro limite, este debe ser positivo'});
+        return res.status(400).send({ error: 'Se requiere el parametro limite, este debe ser positivo' });
     }
 
     const n = parseInt(limit);
@@ -368,7 +368,7 @@ router.get('/searchByPopularity', async (req, res) => {
         const mostPopularProducts = await Product.find()
             .sort({ popularity: -1 }) // ordenar documentos de manera descendente por popularity
             .limit(n); // Limitar los resultados a 'n'
-        
+
         res.status(200).send(mostPopularProducts);
     } catch (error) {
         console.error("Error obteniendo los productos mas populares:", error);
@@ -376,6 +376,51 @@ router.get('/searchByPopularity', async (req, res) => {
     }
 });
 
+router.put('/applyDiscountProduct', async (req, res) => {
+    const {
+        productName, 
+        type,
+        value,
+        validDate,
+    } = req.body;
+
+    if (!validDate || !value || !type || !productName) {
+        return res.status(400).send({
+            error: 'Se requiere el nombre del producto, la fecha, el descuento y el tipo de descuento',
+        });
+    }
+
+    try {
+        const newDiscount = new Discount({
+            type,
+            value,
+            validDate,
+        });
+
+        const savedDiscount = await newDiscount.save();
+
+        const product = await Product.findOne({ name: productName });
+
+        if (!product) {
+            return res.status(404).send({ error: 'Producto no encontrado' });
+        }
+
+        product.discount = savedDiscount._id;
+
+        const updatedProduct = await product.save();
+
+        res.status(200).json({
+            message: 'Descuento aplicado exitosamente al producto',
+            product: updatedProduct,
+            discount: savedDiscount,
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error al aplicar el descuento al producto',
+            error: error.message || error,
+        });
+    }
+});
 // TODO: Agregar endpoint para obtener productos con descuento
 // TODO: Agregar endpoint para añadir reseñas a productos, debe actualizar el rating del producto
 

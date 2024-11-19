@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 //Routes constants
-const userRoutes = require('./routes/users');
+//const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
 const productsRoutes = require('./routes/products');
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors()); // Para permitir peticiones de diferentes dominios
 
 //Import Routes
-app.use('/user', userRoutes);
+//app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
 app.use('/products', productsRoutes);
