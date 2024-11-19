@@ -22,9 +22,9 @@ const productSchema = new mongoose.Schema(
       type: Map,
       of: String,
     },
-    discount: { type: mongoose.Schema.Types.ObjectId, ref: "Discount" },
+    discount: { type: mongoose.Schema.Types.ObjectId, ref: "Discount", default: null },
     stock: { type: Number, required: true },
-    sales: { type: String, default: 0 },
+    sales: { type: Number, default: 0 },
   },
   { timestamps: true }
 );
