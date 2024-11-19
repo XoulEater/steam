@@ -19,8 +19,7 @@ router.post("/addProduct", async (req, res) => {
             name,
             images,
             description,
-            categories,
-            categoriesPath,
+            categoriesPath, // formato: categoria || categoria/sub-categoria || categoria/sub-categoria/sub-categoria ...
             brand,
             price,
             rating,
@@ -33,12 +32,42 @@ router.post("/addProduct", async (req, res) => {
             sales,
         } = req.body;
 
+        if (!categoriesPath || !Array.isArray(categoriesPath) || categoriesPath.length === 0) {
+            return res.status(400).json({ message: "categoriesPath es requerido y debe ser un array no vacío." });
+        }
+
+        // Buscar los IDs de las categorías en base a cada elemento de categoriesPath
+        const categories = [];
+        for (const path of categoriesPath) {
+            const category = await Category.aggregate([
+                {
+                    $search: {
+                        index: "subCategoriesIndex", // Usar el índice creado
+                        text: {
+                            query: path,
+                            path: "path", // Campo que almacena el path completo en la colección de categorías
+                            fuzzy: { maxEdits: 1 },
+                        },
+                    },
+                },
+                { $limit: 1 }, // Tomar solo el primer resultado más relevante
+                { $project: { _id: 1 } }, // Solo necesitamos el _id
+            ]);
+
+            if (category.length === 0) {
+                return res.status(404).json({ message: `No se encontró una categoría para el path: ${path}` });
+            }
+
+            categories.push(category[0]._id);
+        }
+
+        // Crear el nuevo producto con los IDs de categorías asignados
         const newProduct = new Product({
             name,
             images,
             description,
-            categories,
-            categoriesPath,
+            categories, // IDs de las categorías
+            categoriesPath, 
             brand,
             price,
             rating,
@@ -59,10 +88,9 @@ router.post("/addProduct", async (req, res) => {
     }
 });
 
-// Editar un producto por su id
-router.put("/editProduct/:id", auth("admin"), async (req, res) => {
+// Editar un producto por su id. Se le debe pasar un JSON con los campos a modificar
+router.put("/editProduct/:id", auth('admin'), async (req, res) => {
     try {
-        // TODO: No se puede editar el stock de un producto
         const productId = req.params.id;
         const updateData = req.body;
 
@@ -105,7 +133,7 @@ router.get("/getIdByName", async (req, res) => {
 });
 
 // Eliminar producto por id
-router.delete("/deleteProduct/:id", async (req, res) => {
+router.delete("/deleteProduct/:id", auth('admin'), async (req, res) => {
     try {
         const productId = req.params.id;
 
@@ -348,6 +376,13 @@ router.get('/searchKeyWord', async (req, res) => {
             },
         ]);
 
+        if (!results || results.length === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                message: `No se encontraron productos con la palabra clave: "${query}"` 
+            });
+        }
+
         res.status(200).json({ success: true, data: results });
     } catch (error) {
         console.error("Error executing search:", error);
@@ -379,7 +414,7 @@ router.get('/searchByPopularity', async (req, res) => {
 });
 
 // Aplica descuento a un solo producto
-router.put('/applyDiscountProduct', async (req, res) => {
+router.put('/applyDiscountProduct', auth('admin'), async (req, res) => {
     const {
         productName,
         type,
@@ -426,7 +461,7 @@ router.put('/applyDiscountProduct', async (req, res) => {
 });
 
 // Aplica descuento a todos los elementos de una categoria o sub categoria
-router.put('/applyDiscountCategory', async (req, res) => {
+router.put('/applyDiscountCategory', auth('admin'), async (req, res) => {
     const {
         category,
         type,
