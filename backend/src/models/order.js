@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
     }],
     price : { type: Number, required: true },
     idPaymentMethod: { type: mongoose.Schema.Types.ObjectId, ref: "PaymentMethod", required: true },
-    orderStatus: { type: String, required: true },
+    orderStatus: { type: String, enum: ["pending", "inPreparation", "sent", "delivered"], required: true },
 });
 
 module.exports = mongoose.model("Order", orderSchema);

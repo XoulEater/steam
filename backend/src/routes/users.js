@@ -420,7 +420,137 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
   }
 });
 
+// Obtener la wishlist del usuario
+router.get("/userWishlist", auth("user"), async (req, res) => {
+  try {
+    const userId = req.user.id;
 
-// TODO: Falta modificar la cantidad de un producto en el carrito
+    // Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    // Buscar la wishlist del usuario y poblar los productos
+    const wishlist = await wishlistSchema
+      .findById(user.wishlist)
+      .populate("wishProducts"); 
+
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    res.status(200).json({
+      message: `Wishlist de ${req.user.username} obtenida correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener la wishlist del usuario",
+      error: error.message || error,
+    });
+  }
+});
+
+
+//Agregar producto a la wishlist del usuario
+router.post("/addToWishlist", auth("user"), async(req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId } = req.body;
+
+    //Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    //Buscar el producto
+    const product = await productSchema.findById(productId);
+    if (!product) {
+      return res.status(400).json({ message: "Producto no encontrado" });
+    }
+
+    //Buscar la wishlist del usuario
+    const wishlist = await wishlistSchema.findById(user.wishlist);
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    //Verificar si el producto ya está en la wishlist
+    const productExisting = wishlist.wishProducts.findIndex(
+      (item) => item.toString() === productId
+    );
+
+    if (productExisting !== -1) {
+      return res.status(400).json({ message: "Producto ya está en la wishlist" });
+    }
+
+    //Agregar el ID del producto a la wishlist
+    wishlist.wishProducts.push(productId); 
+
+    //Guardar los cambios en la wishlist
+    await wishlist.save();
+
+    res.status(200).json({
+      message: `Producto agregado a la wishlist de ${req.user.username} correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({ 
+      message: "Error al agregar producto a la wishlist del usuario", 
+      error: error.message || error,
+    });
+  }
+});
+
+//Eliminar producto de la wishlist del usuario
+router.delete("/deleteFromWishlist", auth("user"), async(req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId } = req.body;
+
+    //Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    //Buscar la wishlist del usuario
+    const wishlist = await wishlistSchema.findById(user.wishlist);
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    //Verificar si el producto está en la wishlist
+    const productIndex = wishlist.wishProducts.findIndex(
+      (item) => item.toString() === productId
+    );
+
+    if (productIndex === -1) {
+      return res.status(400).json({ message: "Producto no encontrado en la wishlist" });
+    }
+
+    //Eliminar el producto de la wishlist
+    wishlist.wishProducts.splice(productIndex, 1);
+
+    //Guardar los cambios en la wishlist
+    await wishlist.save();
+
+    res.status(200).json({
+      message: `Producto eliminado de la wishlist de ${req.user.username} correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({ 
+      message: "Error al eliminar producto de la wishlist del usuario", 
+      error: error.message || error,
+    });
+  }
+});
+
 
 module.exports = router;
