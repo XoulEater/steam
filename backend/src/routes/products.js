@@ -539,55 +539,57 @@ router.get('/discountedProducts', async (req, res) => {
 // TODO: Este endpoint crea el review con el rating esppecificado, sin embargo
 // TODO: no actualiza el rating deL producto en si, supongo que se promedia con el resto?
 // Agregar review de un producto
-router.post('/addReview', async (req, res) => {
-    const { userName, productName, review, rating } = req.body;
-
-    if (!userName || !productName || !review || !rating) {
-        return res.status(400).json({
-            error: 'Se requiere todos los datos: userName, productName, review, rating'
-        });
-    }
-
-    if (typeof userName !== 'string' || typeof productName !== 'string' || typeof review !== 'string') {
-        return res.status(400).json({
-            error: 'Datos userName, productName y review deben ser de tipo string'
-        });
-    }
-
-    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
-        return res.status(400).json({ error: 'Dato rating debe ser de tipo Number' });
-    }
-
+router.post('/addReview', auth("user"), async (req, res) => {
     try {
-        const user = await User.findOne({ username: userName }, { _id: 1 });
-        if (!user) {
-            return res.status(404).json({ success: false, message: 'Usuario no encontrado' });
-        }
+        const { productId, review, rating } = req.body;
+        const userId = req.user.id;
 
-        const product = await Product.findOne({ name: productName }, { _id: 1 });
+        // Verificar si el producto existe
+        const product = await Product.findById(productId);
         if (!product) {
-            return res.status(404).json({ success: false, message: 'Producto no encontrado' });
+            return res.status(404).json({ message: "Producto no encontrado" });
         }
 
-        const newProductReview = new ProductReview({
-            userId: user._id,
-            productId: product._id,
+        // Verificar si el usuario existe
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+
+        //Verificar si el rating es valido (entre 0 y 5)
+        if (rating < 0 || rating > 5) {
+            return res.status(400).json({ message: "El rating debe estar entre 0 y 5" });
+        }
+
+        // Crear la nueva review
+        const newReview = new ProductReview({
+            userId,
+            productId,
             review,
             rating,
         });
 
-        const productReviewSaved = await newProductReview.save();
+        // Guardar la review en la colección de productReviews
+        await newReview.save();
 
-        await Product.updateOne(
-            { _id: product._id },
-            { $push: { reviews: productReviewSaved._id } }
-        );
+        // Agregar la review al producto
+        product.reviews.push(newReview._id);
+        await product.save();
+
+        //Calcular el nuevo rating del producto
+        const allRatings = await ProductReview.find({ productId });
+        const averageRating = allRatings.reduce((acc, review) => acc + review.rating, 0) / allRatings.length;
+
+        // Actualizar el rating del producto
+        product.rating = averageRating;
+        await product.save();
 
         res.status(201).json({
-            success: true,
-            message: 'Rating añadido exitosamente',
-            productReview: productReviewSaved,
+            message: "Reseña agregada correctamente",
+            productId: productId,
+            review: newReview,
         });
+    
     } catch (error) {
         console.error('Error al agregar el rating:', error);
         res.status(500).json({
