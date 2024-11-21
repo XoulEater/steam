@@ -154,18 +154,23 @@ router.delete("/deleteProduct/:id", auth('admin'), async (req, res) => {
 // Obtener todos los productos
 router.get("/getProducts", async (req, res) => {
     try {
-        // TODO: Agregar paginacion
-        const products = await Product.find();
+        // Consulta los productos y rellena los campos referenciados
+        const products = await Product.find()
+            .populate("categories")  
+            .populate("reviews")     
+            .populate("discount");   
+
         res.status(200).json(products);
     } catch (error) {
         res.status(500).json({ message: "Error al obtener productos", error: error.message || error });
     }
 });
 
+
 //Busqueda de productos con sugerencia (busca por nombre, brand o rating)
+// Búsqueda de productos con sugerencia (busca por nombre, brand o rating)
 router.get("/searchProducts", async (req, res) => {
     try {
-        // TODO: Agregar paginacion
         const { query } = req.query;
 
         // Crear una expresión regular para la búsqueda en los campos de texto
@@ -180,8 +185,18 @@ router.get("/searchProducts", async (req, res) => {
             ].filter(Boolean) // Filtrar para omitir campos no aplicables
         };
 
-        // Buscar los productos
-        const products = await Product.find(filter);
+        // Buscar los productos con populate
+        const products = await Product.find(filter)
+            .populate("categories", "name path") // Poblar categorías con los campos necesarios
+            .populate({
+                path: "reviews",
+                select: "review rating",
+                populate: {
+                    path: "userId",
+                    select: "username"
+                }
+            }) 
+            .populate("discount", "type value validDate"); // Poblar descuento con los campos necesarios
 
         res.status(200).json({
             message: "Productos encontrados",
@@ -234,15 +249,14 @@ router.get("/getCategories", async (req, res) => {
 //Busqueda por filtros (categoria, brand, rating)
 router.get("/searchByFilter", async (req, res) => {
     try {
-        // TODO: Filtrar por precio
-        const { category, brand, rating } = req.query;  // Recibir los filtros desde el query
+        const { category, brand, rating } = req.query; // Recibir los filtros desde el query
 
         // Inicializamos el objeto para los filtros
         let filterConditions = {};
 
         // Filtrar por categoría (si se proporciona)
         if (category) {
-            // Aseguramos que el filtro de categoría sea exacto a las categorías que contienen el parentCategory
+            // Aseguramos que el filtro de categoría incluya subcategorías relacionadas
             filterConditions["categories"] = {
                 $in: await getCategoriesWithParent(category)
             };
@@ -250,7 +264,7 @@ router.get("/searchByFilter", async (req, res) => {
 
         // Filtrar por marca (si se proporciona)
         if (brand) {
-            filterConditions["brand"] = new RegExp(brand, "i");
+            filterConditions["brand"] = new RegExp(brand, "i"); // Búsqueda insensible a mayúsculas
         }
 
         // Filtrar por rating (si se proporciona)
@@ -258,18 +272,29 @@ router.get("/searchByFilter", async (req, res) => {
             filterConditions["rating"] = { $eq: Number(rating) };
         }
 
-        // Buscar productos con todas las condiciones de filtro
-        const filteredProducts = await Product.find(filterConditions);
+        // Buscar productos con todas las condiciones de filtro y poblar referencias
+        const filteredProducts = await Product.find(filterConditions)
+            .populate("categories", "name") 
+            .populate({
+                path: "reviews",
+                select: "review rating",
+                populate: {
+                    path: "userId",
+                    select: "username" 
+                }
+            })
+            .populate("discount", "type value validDate"); 
 
         res.status(200).json({
             message: "Productos encontrados",
-            products: filteredProducts
+            products: filteredProducts,
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error al buscar productos", error });
     }
 });
+
 
 // Función que obtiene las categorías con un parentCategory específico o con el nombre directamente
 async function getCategoriesWithParent(category) {
@@ -525,12 +550,26 @@ router.put('/applyDiscountCategory', auth('admin'), async (req, res) => {
 // Obtiene todos los productos con descuento
 router.get('/discountedProducts', async (req, res) => {
     try {
-        const discountedProducts = await Product.find({ discount: { $ne: null } }).populate('discount');
+        // Filtrar productos con descuento no nulo
+        const discountedProducts = await Product.find({ discount: { $ne: null } })
+            .populate("categories", "name") 
+            .populate({
+                path: "reviews",
+                select: "review rating",
+                populate: {
+                    path: "userId",
+                    select: "username" 
+                }
+            })
+            .populate("discount", "type value validDate"); 
 
-        res.status(200).json({ success: true, data: discountedProducts });
+        res.status(200).json({
+            success: true,
+            data: discountedProducts,
+        });
     } catch (error) {
         res.status(500).json({
-            message: 'Error al obtener los productos con descuento',
+            message: "Error al obtener los productos con descuento",
             error: error.message || error,
         });
     }
@@ -602,17 +641,23 @@ router.post('/addReview', auth("user"), async (req, res) => {
 // Obtener reviews de un producto, (se le tiene que pasar el id del producto en un body)
 router.get("/getReviewsByProduct", async (req, res) => {
     try {
-        const productId = req.body.productId;
+        const { productId } = req.body; 
 
-        // Verificar si el producto existe
+        // Verificar si el producto existe y poblar las reseñas
         const product = await Product.findById(productId)
             .populate({
-                path: 'reviews',
-                populate: {
-                    path: 'userId',
-                    select: 'username -_id'  
-                }
-        });
+                path: "reviews",
+                populate: [
+                    {
+                        path: "userId",
+                        select: "username -_id", 
+                    },
+                    {
+                        path: "productId",
+                        select: "name _id", 
+                    }
+                ]
+            });
 
         if (!product) {
             return res.status(404).json({ message: "Producto no encontrado" });
@@ -623,16 +668,12 @@ router.get("/getReviewsByProduct", async (req, res) => {
             message: "Reseñas encontradas",
             reviews: product.reviews
         });
-
     } catch (error) {
         res.status(500).json({
             message: "Error al obtener reviews",
-            error: error.message || error
+            error: error.message || error,
         });
     }
 });
-
-
-
 
 module.exports = router;

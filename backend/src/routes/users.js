@@ -209,20 +209,30 @@ router.get("/userCart", auth("user"), async (req, res) => {
 
     // Buscar al usuario por ID en la colección `users`
     const user = await userSchema.findById(userId);
-    if(!user) {
+    if (!user) {
       return res.status(400).json({ message: "Usuario no encontrado" });
     }
 
-    // Buscar el carrito del usuario
-    const cart = await cartSchema.findById(user.cart);
+    // Buscar el carrito del usuario y poblar los productos
+    const cart = await cartSchema.findById(user.cart).populate({
+      path: "products.productId", 
+      select: "-__v -createdAt -updatedAt", 
+    });
+
+    if (!cart) {
+      return res.status(404).json({ message: "Carrito no encontrado" });
+    }
 
     res.status(200).json({
       message: `Carrito de ${req.user.username} obtenido correctamente`,
-      cart: cart
+      cart: cart,
     });
-    
+
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener el carrito del usuario", error });
+    res.status(500).json({
+      message: "Error al obtener el carrito del usuario",
+      error: error.message || error,
+    });
   }
 });
 
