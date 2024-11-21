@@ -6,7 +6,8 @@ const userAuthSchema = require("../models/usersAuth");
 const cartSchema = require("../models/cart");
 const wishlistSchema = require("../models/wishList");
 const productSchema = require("../models/products");
-const inventorySchema = require("../models/inventory");
+const adminLogisticSchema = require("../models/adminLogistic");
+const discountSchema = require("../models/discount");
 const auth = require("../middleware/authMiddleware");
 
 dotenv.config();
@@ -231,75 +232,102 @@ router.post("/addToCart", auth("user"), async (req, res) => {
     const userId = req.user.id;
     const { productId, quantity } = req.body;
 
-    // Buscar al usuario por ID en la colección `users`
+    //Verificar usuario
     const user = await userSchema.findById(userId);
     if (!user) {
       return res.status(400).json({ message: "Usuario no encontrado" });
     }
 
-    // Buscar el carrito del usuario
+    //Buscar el carrito del usuario
     let cart = await cartSchema.findById(user.cart);
     if (!cart) {
       return res.status(400).json({ message: "Carrito no encontrado" });
     }
 
-    // Verificar si el producto existe
-    const product = await productSchema.findById(productId);
+    //Verificar si el producto existe
+    const product = await productSchema.findById(productId).populate("discount");
     if (!product) {
       return res.status(400).json({ message: "Producto no encontrado" });
     }
 
-    //Buscar en el invetario 
-    const inventory = await inventorySchema.findOne({ product: productId });
-    if (!inventory) {
-      return res.status(400).json({ message: "Inventario no encontrado para este producto" });
+    //Verificar si el producto está en stock
+    if (product.stock < quantity) {
+      return res.status(400).json({ message: `Producto sin stock suficiente, solo quedan ${product.stock}` });
     }
 
-    //Verificar si hay stock suficiente
-    if (inventory.quantity < quantity) {
-      return res.status(400).json({ message: `No hay suficiente stock para este producto, solo queda ${inventory.quantity}` });
+    //Calcular el precio del producto
+    let price = product.price;
+
+    //Verificar si el producto tiene descuento
+    
+    if (product.discount) {
+      const {type, value, validDate} = product.discount;
+
+      //Verificar si el descuento es vigente
+      const untilDate = new Date(validDate);
+      const today = new Date();
+
+      console.log("Fecha de vencimiento del descuento: ", untilDate);
+      console.log("Fecha de hoy: ", today);
+
+      if(today <= untilDate) {
+        if(type === "percentage") {
+          price = price - (price * value / 100);
+        } else if (type === "fixed") {
+          price = Math.max(0, product.price - value);
+        }
+      }
     }
 
-    // Verificar si el producto ya está en el carrito
+    //Verificar si el producto ya está en el carrito
     const productExisting = cart.products.findIndex(
       (item) => item.productId.toString() === productId
     );
 
-    if (productExisting > -1) {
-      // Si el producto ya está en el carrito, solo aumentar la cantidad
+    if (productExisting !== -1) {
       cart.products[productExisting].quantity += quantity;
     } else {
-      // Si el producto no está en el carrito, agregarlo con el precio con descuento, si corresponde
-      let finalPrice = product.price;
-      if (product.discount > 0) {
-        finalPrice = product.price - (product.price * product.discount) / 100;
-      }
+      //Agregar el producto al carrito
       cart.products.push({
         productId,
         quantity,
-        price: finalPrice,
+        price: price,
       });
     }
 
-    //Actualizar el stock en el inventario
-    inventory.quantity -= quantity;
-    await inventory.save();
+    //Actualizar el stock del producto
+    product.stock -= quantity;
 
-    // Calcular el precio total del carrito
+    //Notificar a los admins que ya casi no hay stock
+    if (product.stock > 0 && product.stock <= 5) {
+      const admins = await adminLogisticSchema.find({ role: "admin" });
+      const notification = `¡Alerta! El producto ${product.name} tiene poco stock, solo quedan ${product.stock} unidades`;
+
+      //Notificar a cada admin
+      for (const admin of admins) {
+        admin.notifications.push(notification);
+        await admin.save();
+      }
+    }
+
+    await product.save();
+
+    //Recalcular el precio total del carrito
     cart.totalPrice = cart.products.reduce((total, item) => {
-      return total + item.quantity * item.price;
-    }, 0);
+      return total + (item.quantity * item.price);
+    }, 0); 
 
-    // Guardar los cambios en el carrito
+    //Guardar los cambios en el carrito
     await cart.save();
 
     res.status(200).json({
       message: `Producto agregado al carrito de ${req.user.username} correctamente`,
       cart: cart,
     });
+
   } catch (error) {
-    res.status(500).json({
-      message: "Error al agregar el producto al carrito del usuario",
+    res.status(500).json({ 
+      message: "Error al agregar producto al carrito del usuario", 
       error: error.message || error,
     });
   }
@@ -332,23 +360,43 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
       return res.status(400).json({ message: "Producto no encontrado en el carrito" });
     }
 
-    // Buscar el inventario del producto
-    const inventory = await inventorySchema.findOne({ product: productId });
-    if (!inventory) {
-      return res.status(400).json({ message: "Inventario no encontrado para este producto" });
+    // Verificar si la cantidad a eliminar es válida
+    if (cart.products[productIndex].quantity < quantity) {
+      return res.status(400).json({ message: `No puedes eliminar más de lo que hay en el carrito. Solo tienes ${cart.products[productIndex].quantity} unidades de este producto.` });
+    }
+
+    // Buscar el producto
+    const product = await productSchema.findById(productId).populate("discount");
+    if (!product) {
+      return res.status(400).json({ message: "Producto no encontrado" });
     }
 
     // Si la cantidad en el carrito es mayor que la cantidad que se desea eliminar
     if (cart.products[productIndex].quantity > quantity) {
       cart.products[productIndex].quantity -= quantity;
-      // Aumentar el stock en el inventario
-      inventory.quantity += quantity;
+      // Aumentar el stock en el producto
+      product.stock += quantity;
     } else {
       // Si la cantidad a eliminar es igual o mayor que la cantidad en el carrito, eliminar el producto del carrito
       const removedQuantity = cart.products[productIndex].quantity;
       cart.products.splice(productIndex, 1);
-      // Aumentar el stock en el inventario
-      inventory.quantity += removedQuantity;
+      // Aumentar el stock en el producto
+      product.stock += removedQuantity;
+    }
+
+    // Calcular el precio con descuento si lo tiene
+    let price = product.price;
+    if (product.discount) {
+      const { type, value, validDate } = product.discount;
+
+      // Verificar si el descuento es vigente
+      if (new Date(validDate) >= new Date()) {
+        if (type === "percentage") {
+          price = price - (price * value / 100);
+        } else if (type === "fixed") {
+          price = Math.max(0, product.price - value);
+        }
+      }
     }
 
     // Recalcular el precio total del carrito
@@ -356,15 +404,14 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
       return total + item.quantity * item.price;
     }, 0);
 
-    // Guardar los cambios en el carrito y en el inventario
+    // Guardar los cambios en el carrito y el producto
     await cart.save();
-    await inventory.save();  
+    await product.save();
 
     res.status(200).json({
       message: `Producto eliminado del carrito de ${req.user.username} correctamente`,
       cart: cart,
     });
-
   } catch (error) {
     res.status(500).json({
       message: "Error al eliminar el producto del carrito del usuario",
@@ -373,6 +420,137 @@ router.delete("/deleteFromCart", auth("user"), async (req, res) => {
   }
 });
 
-// TODO: Falta modificar la cantidad de un producto en el carrito
+// Obtener la wishlist del usuario
+router.get("/userWishlist", auth("user"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    // Buscar la wishlist del usuario y poblar los productos
+    const wishlist = await wishlistSchema
+      .findById(user.wishlist)
+      .populate("wishProducts"); 
+
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    res.status(200).json({
+      message: `Wishlist de ${req.user.username} obtenida correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al obtener la wishlist del usuario",
+      error: error.message || error,
+    });
+  }
+});
+
+
+//Agregar producto a la wishlist del usuario
+router.post("/addToWishlist", auth("user"), async(req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId } = req.body;
+
+    //Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    //Buscar el producto
+    const product = await productSchema.findById(productId);
+    if (!product) {
+      return res.status(400).json({ message: "Producto no encontrado" });
+    }
+
+    //Buscar la wishlist del usuario
+    const wishlist = await wishlistSchema.findById(user.wishlist);
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    //Verificar si el producto ya está en la wishlist
+    const productExisting = wishlist.wishProducts.findIndex(
+      (item) => item.toString() === productId
+    );
+
+    if (productExisting !== -1) {
+      return res.status(400).json({ message: "Producto ya está en la wishlist" });
+    }
+
+    //Agregar el ID del producto a la wishlist
+    wishlist.wishProducts.push(productId); 
+
+    //Guardar los cambios en la wishlist
+    await wishlist.save();
+
+    res.status(200).json({
+      message: `Producto agregado a la wishlist de ${req.user.username} correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({ 
+      message: "Error al agregar producto a la wishlist del usuario", 
+      error: error.message || error,
+    });
+  }
+});
+
+//Eliminar producto de la wishlist del usuario
+router.delete("/deleteFromWishlist", auth("user"), async(req, res) => {
+  try {
+    const userId = req.user.id;
+    const { productId } = req.body;
+
+    //Buscar el usuario
+    const user = await userSchema.findById(userId);
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    //Buscar la wishlist del usuario
+    const wishlist = await wishlistSchema.findById(user.wishlist);
+    if (!wishlist) {
+      return res.status(400).json({ message: "Wishlist no encontrada" });
+    }
+
+    //Verificar si el producto está en la wishlist
+    const productIndex = wishlist.wishProducts.findIndex(
+      (item) => item.toString() === productId
+    );
+
+    if (productIndex === -1) {
+      return res.status(400).json({ message: "Producto no encontrado en la wishlist" });
+    }
+
+    //Eliminar el producto de la wishlist
+    wishlist.wishProducts.splice(productIndex, 1);
+
+    //Guardar los cambios en la wishlist
+    await wishlist.save();
+
+    res.status(200).json({
+      message: `Producto eliminado de la wishlist de ${req.user.username} correctamente`,
+      wishlist: wishlist,
+    });
+    
+  } catch (error) {
+    res.status(500).json({ 
+      message: "Error al eliminar producto de la wishlist del usuario", 
+      error: error.message || error,
+    });
+  }
+});
+
 
 module.exports = router;
