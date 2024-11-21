@@ -597,4 +597,40 @@ router.post('/addReview', async (req, res) => {
     }
 });
 
+// Obtener reviews de un producto, (se le tiene que pasar el id del producto en un body)
+router.get("/getReviewsByProduct", async (req, res) => {
+    try {
+        const productId = req.body.productId;
+
+        // Verificar si el producto existe
+        const product = await Product.findById(productId)
+            .populate({
+                path: 'reviews',
+                populate: {
+                    path: 'userId',
+                    select: 'username -_id'  
+                }
+        });
+
+        if (!product) {
+            return res.status(404).json({ message: "Producto no encontrado" });
+        }
+
+        // Retornar las reseñas con la información completa
+        res.status(200).json({
+            message: "Reseñas encontradas",
+            reviews: product.reviews
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: "Error al obtener reviews",
+            error: error.message || error
+        });
+    }
+});
+
+
+
+
 module.exports = router;
