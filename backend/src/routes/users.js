@@ -183,28 +183,6 @@ router.delete("/deleteUser", auth("user"), async (req, res) => {
   }
 });
 
-//Obtener el historial de compras del usuario
-router.get("/orderHistory", auth("user"), async (req, res) => {
-  try {
-    const userId = req.user.id;
-
-    // Buscar al usuario por ID en la colección `users`
-    const user = await userSchema.findById(userId)
-    if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
-    }
-
-    res.status(200).json({ message: `Historial de ordenes de ${req.user.username} obtenido correctamente`, orderHistory: user.orderHistory });
-
-    // TODO: Esto devuelve los IDs de las ordenes, falta devolver los detalles de las ordenes?
-
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error al obtener el historial de ordenes", error });
-  }
-});
-
 //Obtener el carrito del usuario
 router.get("/userCart", auth("user"), async (req, res) => {
   try {
