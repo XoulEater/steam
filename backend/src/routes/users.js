@@ -544,21 +544,16 @@ router.delete("/deleteFromWishlist", auth("user"), async (req, res) => {
 });
 
 // Transforma lo que esta en el carrito del usuario a la orden de compra
-router.post('/addOrder', async (req, res) => {
+// Necesita el header Authorization "Bearer Token"
+router.post('/addOrder', auth("user"), async (req, res) => {
   try {
-    const token = req.header("Authorization")?.replace("Bearer ", "");
-    if (!token) {
-      return res.status(401).json({ message: "Acceso denegado, token no proporcionado" });
-    }
-
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    const username = decoded.username;
-    if (!username) {
-      return res.status(400).json({ message: "No se encontro el nombre del usuario en el token" });
+    const userId = req.user.id;
+    if (!userId) {
+      return res.status(401).json({ message: "Token no encontrado" });
     }
 
     // Encontrar el user
-    const user = await userSchema.findOne({ username: username });
+    const user = await userSchema.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
@@ -589,7 +584,7 @@ router.post('/addOrder', async (req, res) => {
     cart.totalPrice = 0;
     await cart.save();
 
-    res.status(200).json({ message: `Orden añadida por el usuario: ${username}`, order: savedOrder });
+    res.status(200).json({ message: `Orden añadida por el usuario: ${req.user.username}`, order: savedOrder });
   } catch (error) {
     console.error(error);
     res.status(401).json({ message: "Error al insertar orden" });
@@ -599,21 +594,15 @@ router.post('/addOrder', async (req, res) => {
 // TODO: Este endpoint trae toda la informacion de un producto, limitar a solamente lo que 
 // TODO: necesitan desde el frontend para mejor rendimiento.
 // Obtiene todas las ordenes de un usuario
-router.get('/getOrders', async (req, res) => {
+router.get('/getOrders', auth("user"), async (req, res) => {
   try {
-    const token = req.header("Authorization")?.replace("Bearer ", "");
-    if (!token) {
-      return res.status(401).json({ message: "Acceso denegado, token no proporcionado" });
-    }
-
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-    const username = decoded.username;
-    if (!username) {
-      return res.status(400).json({ message: "No se encontro el nombre del usuario en el token" });
+    const userId = req.user.id;
+    if (!userId) {
+      return res.status(401).json({ message: "Token no encontrado" });
     }
 
     // Encontrar el user
-    const user = await userSchema.findOne({ username: username });
+    const user = await userSchema.findById(userId);
     if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
@@ -624,33 +613,6 @@ router.get('/getOrders', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(401).json({ message: "Error al obtener las órdenes" });
-  }
-});
-
-// Modifica el estado de una orden
-router.put('/editOrderStatus/:id', async (req, res) => {
-  try {
-    const orderId = req.params.id;
-    const { orderStatus } = req.body;
-
-    // Verificar que el nuevo estado de la orden es válido
-    const validStatuses = ["pending", "inPreparation", "sent", "delivered"];
-    if (!validStatuses.includes(orderStatus)) {
-      return res.status(400).json({ message: "Estado de la orden no válido" });
-    }
-
-    const order = await Order.findById(orderId);
-    if (!order) {
-      return res.status(404).json({ message: "Orden no encontrada" });
-    }
-
-    order.orderStatus = orderStatus;
-    await order.save();
-
-    res.status(200).json({ message: "Estado de la orden actualizado", order });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error al actualizar el estado de la orden" });
   }
 });
 

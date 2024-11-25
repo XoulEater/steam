@@ -13,7 +13,7 @@ dotenv.config();
 const router = express.Router();
 
 // Agregar Productos como administrador
-router.post("/addProduct", async (req, res) => {
+router.post("/addProduct", auth("admin"), async (req, res) => {
     try {
         const {
             name,

@@ -6,6 +6,7 @@ const userAuthSchema = require("../models/usersAuth");
 const cartSchema = require("../models/cart");
 const wishlistSchema = require("../models/wishList");
 const auth = require("../middleware/authMiddleware");
+const Order = require("../models/order");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -412,9 +413,32 @@ router.put("/updateUsersAdmin", auth("admin"), async (req, res) => {
     }
 });
 
-//??? Get all orders o get orders by user ???
-
-//Cambiar estado de las ordenes realizadas
+// Modifica el estado de una orden
+router.put('/editOrderStatus/:id', auth([ "admin", "logistic" ]), async (req, res) => {
+    try {
+      const orderId = req.params.id;
+      const { orderStatus } = req.body;
+  
+      // Verificar que el nuevo estado de la orden es válido
+      const validStatuses = ["pending", "inPreparation", "sent", "delivered"];
+      if (!validStatuses.includes(orderStatus)) {
+        return res.status(400).json({ message: "Estado de la orden no válido" });
+      }
+  
+      const order = await Order.findById(orderId);
+      if (!order) {
+        return res.status(404).json({ message: "Orden no encontrada" });
+      }
+  
+      order.orderStatus = orderStatus;
+      await order.save();
+  
+      res.status(200).json({ message: "Estado de la orden actualizado", order });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error al actualizar el estado de la orden" });
+    }
+  });
 
 
 module.exports = router;
