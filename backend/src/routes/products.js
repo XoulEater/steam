@@ -575,7 +575,7 @@ router.get('/discountedProducts', async (req, res) => {
     }
 });
 
-// TODO: Este endpoint crea el review con el rating esppecificado, sin embargo
+// TODO: Este endpoint crea el review con el rating especificado, sin embargo
 // TODO: no actualiza el rating deL producto en si, supongo que se promedia con el resto?
 // Agregar review de un producto
 router.post('/addReview', auth("user"), async (req, res) => {
