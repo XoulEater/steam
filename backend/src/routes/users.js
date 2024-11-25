@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
 const userSchema = require("../models/user");
@@ -9,6 +10,8 @@ const productSchema = require("../models/products");
 const adminLogisticSchema = require("../models/adminLogistic");
 const discountSchema = require("../models/discount");
 const auth = require("../middleware/authMiddleware");
+const Order = require("../models/order");
+const products = require("../models/products");
 
 dotenv.config();
 
@@ -91,7 +94,7 @@ router.post("/registerUser", async (req, res) => {
 router.put("/editUser", auth("user"), async (req, res) => {
   try {
     const { email, password, username, image } = req.body;
-    const userId = req.user.id; 
+    const userId = req.user.id;
 
     // Buscar al usuario por ID
     const user = await userSchema.findById(userId);
@@ -107,7 +110,7 @@ router.put("/editUser", auth("user"), async (req, res) => {
       const userAuth = await userAuthSchema.findOne({ userId: userId });
       if (userAuth) {
         userAuth.email = email;
-        await userAuth.save(); 
+        await userAuth.save();
       }
     }
 
@@ -187,7 +190,7 @@ router.get("/orderHistory", auth("user"), async (req, res) => {
 
     // Buscar al usuario por ID en la colección `users`
     const user = await userSchema.findById(userId)
-    if(!user) {
+    if (!user) {
       return res.status(404).json({ message: "Usuario no encontrado" });
     }
 
@@ -198,7 +201,7 @@ router.get("/orderHistory", auth("user"), async (req, res) => {
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error al obtener el historial de ordenes", error }); 
+    res.status(500).json({ message: "Error al obtener el historial de ordenes", error });
   }
 });
 
@@ -215,8 +218,8 @@ router.get("/userCart", auth("user"), async (req, res) => {
 
     // Buscar el carrito del usuario y poblar los productos
     const cart = await cartSchema.findById(user.cart).populate({
-      path: "products.productId", 
-      select: "-__v -createdAt -updatedAt", 
+      path: "products.productId",
+      select: "-__v -createdAt -updatedAt",
     });
 
     if (!cart) {
@@ -269,9 +272,9 @@ router.post("/addToCart", auth("user"), async (req, res) => {
     let price = product.price;
 
     //Verificar si el producto tiene descuento
-    
+
     if (product.discount) {
-      const {type, value, validDate} = product.discount;
+      const { type, value, validDate } = product.discount;
 
       //Verificar si el descuento es vigente
       const untilDate = new Date(validDate);
@@ -280,8 +283,8 @@ router.post("/addToCart", auth("user"), async (req, res) => {
       console.log("Fecha de vencimiento del descuento: ", untilDate);
       console.log("Fecha de hoy: ", today);
 
-      if(today <= untilDate) {
-        if(type === "percentage") {
+      if (today <= untilDate) {
+        if (type === "percentage") {
           price = price - (price * value / 100);
         } else if (type === "fixed") {
           price = Math.max(0, product.price - value);
@@ -325,7 +328,7 @@ router.post("/addToCart", auth("user"), async (req, res) => {
     //Recalcular el precio total del carrito
     cart.totalPrice = cart.products.reduce((total, item) => {
       return total + (item.quantity * item.price);
-    }, 0); 
+    }, 0);
 
     //Guardar los cambios en el carrito
     await cart.save();
@@ -336,8 +339,8 @@ router.post("/addToCart", auth("user"), async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).json({ 
-      message: "Error al agregar producto al carrito del usuario", 
+    res.status(500).json({
+      message: "Error al agregar producto al carrito del usuario",
       error: error.message || error,
     });
   }
@@ -444,7 +447,7 @@ router.get("/userWishlist", auth("user"), async (req, res) => {
     // Buscar la wishlist del usuario y poblar los productos
     const wishlist = await wishlistSchema
       .findById(user.wishlist)
-      .populate("wishProducts"); 
+      .populate("wishProducts");
 
     if (!wishlist) {
       return res.status(400).json({ message: "Wishlist no encontrada" });
@@ -454,7 +457,7 @@ router.get("/userWishlist", auth("user"), async (req, res) => {
       message: `Wishlist de ${req.user.username} obtenida correctamente`,
       wishlist: wishlist,
     });
-    
+
   } catch (error) {
     res.status(500).json({
       message: "Error al obtener la wishlist del usuario",
@@ -465,7 +468,7 @@ router.get("/userWishlist", auth("user"), async (req, res) => {
 
 
 //Agregar producto a la wishlist del usuario
-router.post("/addToWishlist", auth("user"), async(req, res) => {
+router.post("/addToWishlist", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
     const { productId } = req.body;
@@ -498,7 +501,7 @@ router.post("/addToWishlist", auth("user"), async(req, res) => {
     }
 
     //Agregar el ID del producto a la wishlist
-    wishlist.wishProducts.push(productId); 
+    wishlist.wishProducts.push(productId);
 
     //Guardar los cambios en la wishlist
     await wishlist.save();
@@ -507,17 +510,17 @@ router.post("/addToWishlist", auth("user"), async(req, res) => {
       message: `Producto agregado a la wishlist de ${req.user.username} correctamente`,
       wishlist: wishlist,
     });
-    
+
   } catch (error) {
-    res.status(500).json({ 
-      message: "Error al agregar producto a la wishlist del usuario", 
+    res.status(500).json({
+      message: "Error al agregar producto a la wishlist del usuario",
       error: error.message || error,
     });
   }
 });
 
 //Eliminar producto de la wishlist del usuario
-router.delete("/deleteFromWishlist", auth("user"), async(req, res) => {
+router.delete("/deleteFromWishlist", auth("user"), async (req, res) => {
   try {
     const userId = req.user.id;
     const { productId } = req.body;
@@ -553,14 +556,124 @@ router.delete("/deleteFromWishlist", auth("user"), async(req, res) => {
       message: `Producto eliminado de la wishlist de ${req.user.username} correctamente`,
       wishlist: wishlist,
     });
-    
+
   } catch (error) {
-    res.status(500).json({ 
-      message: "Error al eliminar producto de la wishlist del usuario", 
+    res.status(500).json({
+      message: "Error al eliminar producto de la wishlist del usuario",
       error: error.message || error,
     });
   }
 });
 
+// Transforma lo que esta en el carrito del usuario a la orden de compra
+router.post('/addOrder', async (req, res) => {
+  try {
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+    if (!token) {
+      return res.status(401).json({ message: "Acceso denegado, token no proporcionado" });
+    }
+
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    const username = decoded.username;
+    if (!username) {
+      return res.status(400).json({ message: "No se encontro el nombre del usuario en el token" });
+    }
+
+    // Encontrar el user
+    const user = await userSchema.findOne({ username: username });
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    const cart = await cartSchema.findOne({ _id: user.cart });
+    if (!cart) {
+      return res.status(404).json({ message: "Carrito no encontrado" });
+    }
+
+    // Tomar los productos del carrito y su precio para concretar la orden
+    purchasedProducts = cart.products.map(item => ({ product: item.productId }));
+    price = cart.totalPrice;
+
+    const order = new Order({
+      purchasedProducts,
+      price,
+      orderStatus: "pending",
+    });
+
+    const savedOrder = await order.save();
+
+    // Actualizar el historial de órdenes del usuario
+    user.orderHistory.push(savedOrder._id);
+    await user.save();
+
+    // Limpiar el carrito del usuario
+    cart.products = [];
+    cart.totalPrice = 0;
+    await cart.save();
+
+    res.status(200).json({ message: `Orden añadida por el usuario: ${username}`, order: savedOrder });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ message: "Error al insertar orden" });
+  }
+});
+
+// TODO: Este endpoint trae toda la informacion de un producto, limitar a solamente lo que 
+// TODO: necesitan desde el frontend para mejor rendimiento.
+// Obtiene todas las ordenes de un usuario
+router.get('/getOrders', async (req, res) => {
+  try {
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+    if (!token) {
+      return res.status(401).json({ message: "Acceso denegado, token no proporcionado" });
+    }
+
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
+    const username = decoded.username;
+    if (!username) {
+      return res.status(400).json({ message: "No se encontro el nombre del usuario en el token" });
+    }
+
+    // Encontrar el user
+    const user = await userSchema.findOne({ username: username });
+    if (!user) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    const orders = await Order.find({ _id: { $in: user.orderHistory } }).populate('purchasedProducts.product');
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ message: "Error al obtener las órdenes" });
+  }
+});
+
+// Modifica el estado de una orden
+router.put('/editOrderStatus/:id', async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    const { orderStatus } = req.body;
+
+    // Verificar que el nuevo estado de la orden es válido
+    const validStatuses = ["pending", "inPreparation", "sent", "delivered"];
+    if (!validStatuses.includes(orderStatus)) {
+      return res.status(400).json({ message: "Estado de la orden no válido" });
+    }
+
+    const order = await Order.findById(orderId);
+    if (!order) {
+      return res.status(404).json({ message: "Orden no encontrada" });
+    }
+
+    order.orderStatus = orderStatus;
+    await order.save();
+
+    res.status(200).json({ message: "Estado de la orden actualizado", order });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar el estado de la orden" });
+  }
+});
 
 module.exports = router;
