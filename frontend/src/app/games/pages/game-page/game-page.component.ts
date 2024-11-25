@@ -64,7 +64,7 @@ export class GamePageComponent {
   }
 
   onReviewAdded(review: Review) {
-    this.gamesService.addReview(this.game.id, review).subscribe((response) => {
+    this.gamesService.addReview(this.game._id, review).subscribe((response) => {
       if (response) {
         console.log('Review added successfully');
         this.game.reviews.push(review);
@@ -86,9 +86,8 @@ export class GamePageComponent {
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
         }
       });
-      // TODO: Implementar el servicio para obtener juegos similares
-      this.gamesService.getGames().subscribe((games) => {
-        this.similarGames = games.slice(0, 3);
+      this.gamesService.getSimilarGames(id).subscribe((games) => {
+        this.similarGames = games;
       });
       // FIXME: Implementar la lógica para saber si el juego está en la lista de deseos
       this.inWishlist = false;

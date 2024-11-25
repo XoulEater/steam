@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Category } from '../../interfaces/games.interfaces';
+
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CategoriesCarouselItemComponent {
   @Input()
-  public category!: Category;
+  public category!: string;
 
   @Input()
   public index!: number;

@@ -42,10 +42,7 @@ export class AdminGameCardComponent {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.game.discount = result.data;
-        this.gameService.updateGame(this.game).subscribe((game) => {
-          console.log('Discount updated', game);
-        });
-        console.log('Discount updated', result);
+        this.gameService.addDiscount(game._id, result.data).subscribe();
       }
     });
   }

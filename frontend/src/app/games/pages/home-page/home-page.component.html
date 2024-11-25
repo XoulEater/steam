@@ -13,7 +13,7 @@
         <div
           class="absolute w-[105%] h-[105%] px-10 bg-bgMain/20 backdrop-blur-sm rounded-lg translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2"
         ></div>
-        <app-main-carousel [games]="games.slice(0, 5)"></app-main-carousel>
+        <app-main-carousel [games]="games"></app-main-carousel>
       </div>
     </article>
 
@@ -23,9 +23,7 @@
         <div
           class="absolute w-[105%] h-[105%] px-10 bg-bgMain/20 backdrop-blur-sm rounded-lg translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2"
         ></div>
-        <app-offers-carousel
-          [games]="offers.slice(0, 12)"
-        ></app-offers-carousel>
+        <app-offers-carousel [games]="offers"></app-offers-carousel>
       </div>
     </article>
 

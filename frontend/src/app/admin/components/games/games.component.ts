@@ -25,24 +25,26 @@ export class GamesComponent {
 
   constructor(private gameService: GamesService, private dialog: MatDialog) {}
 
-  ngOnInit() {
-    this.gameService.getGames().subscribe((games) => {
-      this.games = games;
-    });
-  }
-
   currentPage = 1;
   itemsPerPage = 10;
+  total!: number;
 
-  // TODO: Pagination in backend
-  get paginatedGames() {
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return this.games.slice(startIndex, endIndex);
+  ngOnInit() {
+    this.gameService
+      .getPaginated(this.currentPage, this.itemsPerPage)
+      .subscribe((res) => {
+        this.total = res.totalPages;
+        this.games = res.games;
+      });
   }
 
   onPageChange(page: number) {
     this.currentPage = page;
+    this.gameService
+      .getPaginated(this.currentPage, this.itemsPerPage)
+      .subscribe((res) => {
+        this.games = res.games;
+      });
   }
 
   onDiscount() {
@@ -56,12 +58,11 @@ export class GamesComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // TODO: Update discount in backend for a category
-        // this.gameService.updateDiscount(game.id, result).subscribe((game) => {
-        //   const index = this.games.findIndex((g) => g.id === game.id);
-        //   this.games[index] = game;
-        // });
-        console.log('Discount updated', result);
+        this.gameService
+          .addDiscountToCategory(result.category, result.data)
+          .subscribe((res) => {
+            console.log(res);
+          });
       }
     });
   }

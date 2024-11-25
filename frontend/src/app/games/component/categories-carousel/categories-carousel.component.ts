@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CategoriesCarouselItemComponent } from '../categories-carousel-item/categories-carousel-item.component';
 import { CommonModule } from '@angular/common';
-import { Category } from '../../interfaces/games.interfaces';
+
 import { CarouselModule } from 'primeng/carousel';
 
 @Component({
@@ -13,5 +13,5 @@ import { CarouselModule } from 'primeng/carousel';
 })
 export class CategoriesCarouselComponent {
   @Input()
-  public categories!: Category[];
+  public categories!: string[];
 }

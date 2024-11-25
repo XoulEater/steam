@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { Category } from '../../interfaces/games.interfaces';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
+import { GamesService } from '../../services/games.service';
 
 @Component({
   selector: 'app-filter-options',
@@ -10,13 +11,15 @@ import { CommonModule } from '@angular/common';
   styles: ``,
 })
 export class FilterOptionsComponent {
-  public selectedCategories: number[] = [];
+  public selectedCategories: string[] = [];
   public selectedPrice: number = -1;
   public selectedDeveloper: string = '';
   public selectedPopularity: number = -1;
 
-  @Input() public categories: Category[] = [];
+  @Input() public categories: string[] = [];
   @Input() public developers: string[] = [];
+
+  @Output() filtersChanged = new EventEmitter<any>();
 
   clearFilters() {
     this.selectedCategories = [];
@@ -31,28 +34,45 @@ export class FilterOptionsComponent {
         ? ((radiobox as HTMLInputElement).checked = false)
         : null;
     });
+    this.applyFilters();
   }
 
-  onGenresChange(event: any, categoryId: number) {
+  onGenresChange(event: any, category: string) {
     if (event.target.checked) {
-      this.selectedCategories.push(categoryId);
+      this.selectedCategories.push(category);
     } else {
-      const index = this.selectedCategories.indexOf(categoryId);
+      const index = this.selectedCategories.indexOf(category);
       if (index > -1) {
         this.selectedCategories.splice(index, 1);
       }
     }
+    this.applyFilters();
   }
 
   onDeveloperChange(value: string) {
     this.selectedDeveloper = value;
+    this.applyFilters();
   }
 
   onPriceChange(value: number) {
     this.selectedPrice = value;
+    this.applyFilters();
   }
 
   onPopularityChange(value: number) {
     this.selectedPopularity = value;
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    const filters = {
+      categories: this.selectedCategories,
+      price: this.selectedPrice === -1 ? null : this.selectedPrice,
+      developer: this.selectedDeveloper === '' ? null : this.selectedDeveloper,
+      popularity:
+        this.selectedPopularity === -1 ? null : this.selectedPopularity,
+    };
+    console.log(filters);
+    this.filtersChanged.emit(filters);
   }
 }

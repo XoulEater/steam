@@ -15,41 +15,6 @@ export enum Status {
   delivered = 'delivered',
 }
 
-export interface Game {
-  id: string;
-  title: string;
-  description: string;
-  developer: string;
-  keywords: string[];
-  categories: Category[];
-  price: number;
-  specs: Specs;
-  popularity: number;
-  stock: number;
-  images: string[];
-  discount: Discount;
-  reviews: Review[];
-  releaseDate: string;
-}
-
-export enum Category {
-  Action = 'Action',
-  Adventure = 'Adventure',
-  AnimationModeling = 'Animation & Modeling',
-  Casual = 'Casual',
-  DesignIllustration = 'Design & Illustration',
-  EarlyAccess = 'Early Access',
-  FreeToPlay = 'Free to Play',
-  Indie = 'Indie',
-  MassivelyMultiplayer = 'Massively Multiplayer',
-  RPG = 'RPG',
-  Racing = 'Racing',
-  Simulation = 'Simulation',
-  Sports = 'Sports',
-  Strategy = 'Strategy',
-  Utilities = 'Utilities',
-}
-
 export interface Discount {
   type: string;
   value?: number;
@@ -70,4 +35,36 @@ export interface Specs {
   Graphics: string;
   DirectX: string;
   Storage: string;
+}
+
+// API RESPONSES
+
+export interface PaginatedGames {
+  games: Game[];
+  totalPages: number;
+  currentPage: number;
+}
+
+export interface Game {
+  _id: string;
+  title: string;
+  description: string;
+  developer: string;
+  keywords: string[];
+  categories: string[];
+  price: number;
+  specs: Specs;
+  popularity: number;
+  stock: number;
+  images: string[];
+  discount: Discount;
+  reviews: Review[];
+  releaseDate: string;
+}
+
+export interface Filters {
+  categories: string[];
+  price: number | null;
+  developer: string | null;
+  popularity: number | null;
 }

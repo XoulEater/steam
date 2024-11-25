@@ -2,7 +2,6 @@ import { GamesService } from './../../../games/services/games.service';
 import { Component } from '@angular/core';
 
 import {
-  Category,
   Discount,
   Game,
   Specs,
@@ -47,13 +46,13 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   styles: ``,
 })
 export class NewGamePageComponent {
-  public categories: Category[] = [];
+  public categories: string[] = [];
 
-  public selectedCategories: Category[] = [];
+  public selectedCategories: string[] = [];
 
   public selectedImages: string[] = [];
 
-  public removeCategory(category: Category) {
+  public removeCategory(category: string) {
     this.selectedCategories = this.selectedCategories.filter(
       (c) => c !== category
     );
@@ -78,23 +77,23 @@ export class NewGamePageComponent {
 
     if (
       selectedCategory &&
-      !this.selectedCategories.includes(selectedCategory as Category)
+      !this.selectedCategories.includes(selectedCategory)
     ) {
-      this.selectedCategories.push(selectedCategory as Category);
+      this.selectedCategories.push(selectedCategory);
     }
   }
 
   get isCreateMode(): boolean {
-    return this.gameForm.controls.id.value === '';
+    return this.gameForm.controls._id.value === '';
   }
 
   public gameForm = new FormGroup({
-    id: new FormControl<string>(''),
+    _id: new FormControl<string>(''),
     title: new FormControl<string>('', Validators.required),
     description: new FormControl<string>(''),
     developer: new FormControl<string>('', Validators.required),
     keywords: new FormControl<string[]>([]),
-    categories: new FormControl<Category[]>([], Validators.required),
+    categories: new FormControl<string[]>([], Validators.required),
     price: new FormControl<number>(0, Validators.required),
     specs: new FormControl<Specs>(
       {
@@ -174,7 +173,7 @@ export class NewGamePageComponent {
       this.gamesService.createGame(this.currentGame).subscribe((game) => {
         this.router.navigate([
           '/administration/games/edit',
-          this.currentGame.id,
+          this.currentGame._id,
         ]);
       });
     } else {
@@ -186,7 +185,7 @@ export class NewGamePageComponent {
   }
 
   onDelete() {
-    this.gamesService.deleteGame(this.currentGame.id).subscribe(() => {
+    this.gamesService.deleteGame(this.currentGame._id).subscribe(() => {
       this.router.navigate(['/administration/games']);
     });
   }

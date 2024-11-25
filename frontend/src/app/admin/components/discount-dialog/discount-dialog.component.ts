@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Category, Discount } from '../../../games/interfaces/games.interfaces';
+import { Discount } from '../../../games/interfaces/games.interfaces';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {
   FormControl,
@@ -28,18 +28,22 @@ export class DiscountDialogComponent {
 
   public isCreateMode = false;
   public hasDiscount = false;
-  public categories: Category[] = [];
+  public categories: string[] = [];
 
   closeDialog(): void {
     this.dialogRef.close();
   }
 
   get newDiscount() {
-    return this.discountForm.value as Discount;
+    return {
+      type: this.discountForm.value.type,
+      value: this.discountForm.value.value,
+      until: this.discountForm.value.until,
+    };
   }
 
   public discountForm = new FormGroup({
-    category: new FormControl<Category | null>(null),
+    category: new FormControl<string | null>(null),
     value: new FormControl<number>(0, Validators.required),
     type: new FormControl<string>('fixed', Validators.required),
     until: new FormControl<Date>(new Date(), Validators.required),

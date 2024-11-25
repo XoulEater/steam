@@ -19,14 +19,14 @@
   <!-- Game List -->
   <section class="flex flex-col items-end gap-4">
     <div class="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
-      @for (game of paginatedGames; track $index) {
+      @for (game of games; track $index) {
       <app-admin-game-card [game]="game"></app-admin-game-card>
       }
     </div>
     <div>
       @if (games.length > 0) {
       <shared-pagination
-        [totalItems]="games.length"
+        [totalItems]="total"
         [itemsPerPage]="itemsPerPage"
         (pageChange)="onPageChange($event)"
       ></shared-pagination>
