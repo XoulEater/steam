@@ -1,0 +1,59 @@
+<article
+  class="flex flex-col items-start w-full gap-3 p-3 rounded-sm lg:items-stretch lg:flex-row bg-bgMain"
+>
+  <img
+    class="object-contain fade w-72"
+    [src]="game.images[0]"
+    alt=""
+    loading="lazy"
+  />
+  <aside
+    class="flex flex-col items-stretch justify-between flex-grow gap-3 py-1 lg:flex-row"
+  >
+    <header class="flex items-center gap-3">
+      <h2 class="text-xl font-bold">
+        {{ game.title }}
+      </h2>
+    </header>
+    <div class="flex items-end gap-3 lg:flex-col place-content-between">
+      <button
+        class="flex items-center justify-center w-10 h-10 gap-2 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+      </svg>
+        
+      </button>
+      @if (game.discount.type !== "none") {
+        <span class="text-sm text-dim"
+          >Until {{ game.discount.until | date : "MMM dd" }}</span
+        >
+
+        <span
+          class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+        >
+          {{
+            game.discount.type === "fixed"
+              ? "-" + (game.discount.value | currency : "USD")
+              : "-" + game.discount.value + "%"
+          }}</span
+        >
+
+        <div class="relative flex flex-col justify-end gap-0">
+          <span class="absolute font-semibold line-through top-2 text-dim/50">{{
+            game.price | currency : "USD"
+          }}</span>
+          <span class="absolute font-semibold bottom-2 text-success">
+            {{ game.price - discountValue | currency : "USD" }}
+          </span>
+          <span class="text-transparent pointer-events-none">$00.00</span>
+        </div>
+        } @else {
+        <span class="font-semibold">
+          {{ game.price | currency : "USD" }}
+        </span>
+        }
+    </div>
+  </aside>
+</article>

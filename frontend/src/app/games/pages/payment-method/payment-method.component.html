@@ -1,0 +1,160 @@
+<div class="flex flex-col items-center justify-center min-h-screen text-white bg-gray-900">
+  <div class="w-full max-w-xl p-8 bg-gray-800 rounded-md shadow-lg">
+    <h2 class="pb-2 mb-6 text-xl font-semibold border-b border-gray-700">Payment Info</h2>
+
+    <form (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Payment Method Section -->
+      <div>
+        <h3 class="mb-4 text-lg font-medium">Payment Method</h3>
+        <label for="paymentType" class="block mb-1 text-sm font-medium">Please select a payment method</label>
+        <select
+          id="paymentType"
+          name="paymentType"
+          class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+          required
+        >
+          <option value="Visa">Visa</option>
+          <option value="MasterCard">MasterCard</option>
+          <option value="AmericanExpress">American Express</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="cardNumber" class="block mb-1 text-sm font-medium">Card number</label>
+        <input
+          id="cardNumber"
+          type="text"
+          name="cardNumber"
+          class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+          required
+        />
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex-1">
+          <label for="expirationDate" class="block mb-1 text-sm font-medium">Expiration date</label>
+          <input
+            id="expirationDate"
+            type="month"
+            name="expirationDate"
+            class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+            required
+          />
+        </div>
+        <div class="flex-1">
+          <label for="securityCode" class="block mb-1 text-sm font-medium">Security code</label>
+          <input
+            id="securityCode"
+            type="text"
+            name="securityCode"
+            class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Billing Information Section -->
+      <div>
+        <h3 class="mb-4 text-lg font-medium">Billing Information</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block mb-1 text-sm font-medium">First name</label>
+            <input
+              id="firstName"
+              type="text"
+              name="firstName"
+              class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label for="lastName" class="block mb-1 text-sm font-medium">Last name</label>
+            <input
+              id="lastName"
+              type="text"
+              name="lastName"
+              class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="billingAddress" class="block mb-1 text-sm font-medium">Billing address</label>
+          <input
+            id="billingAddress"
+            type="text"
+            name="billingAddress"
+            class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+            required
+          />
+        </div>
+
+        <div class="mt-4">
+          <label for="billingAddress2" class="block mb-1 text-sm font-medium">Billing address, line 2</label>
+          <input
+            id="billingAddress2"
+            type="text"
+            name="billingAddress2"
+            class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <div>
+            <label for="zipCode" class="block mb-1 text-sm font-medium">Zip or postal code</label>
+            <input
+              id="zipCode"
+              type="text"
+              name="zipCode"
+              class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+              required
+            />
+          </div>
+          <div>
+            <label for="country" class="block mb-1 text-sm font-medium">Country</label>
+            <select
+              id="country"
+              name="country"
+              class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+              required
+            >
+              <option value="Costa Rica">Costa Rica</option>
+              <option value="USA">USA</option>
+              <option value="Canada">Canada</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <label for="phoneNumber" class="block mb-1 text-sm font-medium">Phone number</label>
+          <input
+            id="phoneNumber"
+            type="text"
+            name="phoneNumber"
+            class="w-full p-2 text-white bg-gray-700 border border-gray-600 rounded-md"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Save Info -->
+      <div class="flex items-center gap-2 mt-4">
+        <input
+          type="checkbox"
+          id="saveInfo"
+          name="saveInfo"
+          class="text-blue-500 border-gray-600 rounded focus:ring focus:ring-blue-500"
+        />
+        <label for="saveInfo" class="text-sm">Save my payment information so checkout is easy next time</label>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full px-4 py-2 mt-6 font-medium bg-secondary hover:bg-primary hover:text-bgMain"
+      >
+        Continue
+      </button>
+    </form>
+  </div>
+</div>

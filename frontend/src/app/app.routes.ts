@@ -3,6 +3,7 @@ import { HomePageComponent } from './games/pages/home-page/home-page.component';
 import { GamePageComponent } from './games/pages/game-page/game-page.component';
 import { BrowsePageComponent } from './games/pages/browse-page/browse-page.component';
 import { WishlistPageComponent } from './games/pages/wishlist-page/wishlist-page.component';
+import { CartPageComponent } from './games/pages/cart-page/cart-page.component';
 import { ProfilePageComponent } from './user/pages/profile-page/profile-page.component';
 import { ProfileSettingsPageComponent } from './user/pages/profile-settings-page/profile-settings-page.component';
 import { AdminPageComponent } from './admin/pages/admin-page/admin-page.component';
@@ -11,6 +12,7 @@ import { UsersComponent } from './admin/components/users/users.component';
 import { GamesComponent } from './admin/components/games/games.component';
 import { OrdersComponent } from './admin/components/orders/orders.component';
 import { NewGamePageComponent } from './admin/pages/new-game-page/new-game-page.component';
+import { PaymentMethodPageComponent } from './games/pages/payment-method/payment-method.component';
 
 export const routes: Routes = [
   {
@@ -34,10 +36,16 @@ export const routes: Routes = [
     path: 'wishlist',
     component: WishlistPageComponent,
   },
-  //   {
-  //     path: 'cart',
-  //     // TODO:
-  //   },
+  {
+    path: 'cart',
+    component: CartPageComponent,
+    children: [
+      {
+        path: 'payment',
+        component: PaymentMethodPageComponent
+      }
+    ]
+  },
   //   {
   //     path: 'wishlist',
   //   },

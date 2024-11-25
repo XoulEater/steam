@@ -5,23 +5,19 @@ import { RouterModule } from '@angular/router';
 import { RatingBarComponent } from '../rating-bar/rating-bar.component';
 
 @Component({
-  selector: 'app-game-large-card',
+  selector: 'app-game-large-card-cart',
   standalone: true,
   imports: [CommonModule, RouterModule, RatingBarComponent],
-  templateUrl: './game-large-card.component.html',
+  templateUrl: './game-large-card-cart.component.html',
   styles: ``,
 })
-export class GameLargeCardComponent {
+export class GameLargeCardCartComponent {
   @Input()
   public game!: Game;
   public mainImage!: string;
 
   // TODO: Implement the wishlist feature
   // TODO: Implement the discount feature
-  public inWishlist = false;
-  public toggleWishlist(): void {
-    this.inWishlist = !this.inWishlist;
-  }
 
   get discountValue(): number {
     if (!this.game.discount || !this.game.discount.value) {
@@ -35,6 +31,5 @@ export class GameLargeCardComponent {
 
   ngOnInit(): void {
     this.mainImage = this.game.images[0];
-    console.log(this.game)
   }
 }
