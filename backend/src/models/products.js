@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { productReviewSchema } = require("../models/productReview");
+const { discountSchema } = require("../models/discount");
 
 const productSchema = new mongoose.Schema(
   {
@@ -15,14 +17,14 @@ const productSchema = new mongoose.Schema(
     brand: { type: String, required: true },
     price: { type: Number, required: true },
     rating: { type: Number, default: 0, min: 0, max: 5 }, // Rating entre 0 y 5
-    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "ProductReview" }], // Reseñas del producto
+    reviews: [productReviewSchema], // Reseñas del producto
     popularity: { type: Number, default: 0 }, // Popularidad (por ejemplo, cantidad de ventas)
     keywords: [{ type: String }], // Palabras clave para búsqueda
     specs: {
       type: Map,
       of: String,
     },
-    discount: { type: mongoose.Schema.Types.ObjectId, ref: "Discount", default: null },
+    discount: discountSchema,
     stock: { type: Number, required: true },
     sales: { type: Number, default: 0 },
   },

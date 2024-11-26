@@ -12,6 +12,8 @@ dotenv.config();
 
 const router = express.Router();
 
+// TODO: Cambiar endpoint para que reciba el producto como objeto, y siguiendo 
+// TODO: las modificaciones hechas en el modelo products
 // Agregar Productos como administrador
 router.post("/addProduct", auth("admin"), async (req, res) => {
     try {
@@ -111,27 +113,6 @@ router.put("/editProduct/:id", auth('admin'), async (req, res) => {
     }
 });
 
-// Endpoint obtener Id del producto por nombre
-router.get("/getIdByName", async (req, res) => {
-    try {
-        const productName = req.query.name;
-
-        if (!productName) {
-            return res.status(400).json({ message: "El nombre del producto es requerido" });
-        }
-
-        const product = await Product.findOne({ name: new RegExp(`^${productName}$`) });
-
-        if (!product) {
-            return res.status(404).json({ message: "Producto no encontrado" });
-        }
-
-        res.status(200).json({ id: product._id });
-    } catch (error) {
-        res.status(500).json({ message: "Error al buscar el producto", error: error.message || error });
-    }
-});
-
 // Eliminar producto por id
 router.delete("/deleteProduct/:id", auth('admin'), async (req, res) => {
     try {
@@ -151,14 +132,13 @@ router.delete("/deleteProduct/:id", auth('admin'), async (req, res) => {
 
 /* ENDPOINTS DE BUSQUEDA Y FILTROS*/
 
+// TODO: Agregar paginacion
 // Obtener todos los productos
 router.get("/getProducts", async (req, res) => {
     try {
         // Consulta los productos y rellena los campos referenciados
         const products = await Product.find()
-            .populate("categories")  
-            .populate("reviews")     
-            .populate("discount");   
+            .populate("categories");   
 
         res.status(200).json(products);
     } catch (error) {
@@ -167,6 +147,8 @@ router.get("/getProducts", async (req, res) => {
 });
 
 
+// TODO: Agregar paginacion y agregar indice en base de datos
+// TODO: Seguir endpoint hecho por Jose Pablo, combinacion de diferentes busquedas
 //Busqueda de productos con sugerencia (busca por nombre, brand o rating)
 // Búsqueda de productos con sugerencia (busca por nombre, brand o rating)
 router.get("/searchProducts", async (req, res) => {
@@ -180,8 +162,7 @@ router.get("/searchProducts", async (req, res) => {
         const filter = {
             $or: [
                 { name: regex },
-                { brand: regex },
-                { rating: isNaN(query) ? undefined : Number(query) } // Solo busca en rating si es un número
+                { brand: regex }
             ].filter(Boolean) // Filtrar para omitir campos no aplicables
         };
 
@@ -243,55 +224,6 @@ router.get("/getCategories", async (req, res) => {
             message: "Error al obtener categorías ",
             error: error.message,
         });
-    }
-});
-
-//Busqueda por filtros (categoria, brand, rating)
-router.get("/searchByFilter", async (req, res) => {
-    try {
-        const { category, brand, rating } = req.query; // Recibir los filtros desde el query
-
-        // Inicializamos el objeto para los filtros
-        let filterConditions = {};
-
-        // Filtrar por categoría (si se proporciona)
-        if (category) {
-            // Aseguramos que el filtro de categoría incluya subcategorías relacionadas
-            filterConditions["categories"] = {
-                $in: await getCategoriesWithParent(category)
-            };
-        }
-
-        // Filtrar por marca (si se proporciona)
-        if (brand) {
-            filterConditions["brand"] = new RegExp(brand, "i"); // Búsqueda insensible a mayúsculas
-        }
-
-        // Filtrar por rating (si se proporciona)
-        if (rating) {
-            filterConditions["rating"] = { $eq: Number(rating) };
-        }
-
-        // Buscar productos con todas las condiciones de filtro y poblar referencias
-        const filteredProducts = await Product.find(filterConditions)
-            .populate("categories", "name") 
-            .populate({
-                path: "reviews",
-                select: "review rating",
-                populate: {
-                    path: "userId",
-                    select: "username" 
-                }
-            })
-            .populate("discount", "type value validDate"); 
-
-        res.status(200).json({
-            message: "Productos encontrados",
-            products: filteredProducts,
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Error al buscar productos", error });
     }
 });
 
@@ -438,6 +370,8 @@ router.get('/searchByPopularity', async (req, res) => {
     }
 });
 
+// TODO: Se cambio el esquema de product, el campo discount ahora es un schema
+// TODO: hacer las modificaciones respectivas
 // Aplica descuento a un solo producto
 router.put('/applyDiscountProduct', auth('admin'), async (req, res) => {
     const {
@@ -485,6 +419,8 @@ router.put('/applyDiscountProduct', auth('admin'), async (req, res) => {
     }
 });
 
+// TODO: Se cambio el esquema de product, el campo discount ahora es un schema
+// TODO: hacer las modificaciones respectivas
 // Aplica descuento a todos los elementos de una categoria o sub categoria
 router.put('/applyDiscountCategory', auth('admin'), async (req, res) => {
     const {
@@ -547,6 +483,7 @@ router.put('/applyDiscountCategory', auth('admin'), async (req, res) => {
 });
 
 // TODO: Este metodo puede optimizarse con indice en base de datos
+// TODO: Este endppoint tambien cambia segun los cambios del modelo product
 // Obtiene todos los productos con descuento
 router.get('/discountedProducts', async (req, res) => {
     try {
@@ -575,8 +512,8 @@ router.get('/discountedProducts', async (req, res) => {
     }
 });
 
-// TODO: Este endpoint crea el review con el rating especificado, sin embargo
-// TODO: no actualiza el rating deL producto en si, supongo que se promedia con el resto?
+// TODO: Este endppoint tambien cambia segun los cambios del modelo product
+// TODO: Verificar si el parametro que le llega a este es un objeto completo como addProduct
 // Agregar review de un producto
 router.post('/addReview', auth("user"), async (req, res) => {
     try {
@@ -638,6 +575,7 @@ router.post('/addReview', auth("user"), async (req, res) => {
     }
 });
 
+// TODO: Este endppoint tambien cambia segun los cambios del modelo product
 // Obtener reviews de un producto, (se le tiene que pasar el id del producto en un body)
 router.get("/getReviewsByProduct", async (req, res) => {
     try {
