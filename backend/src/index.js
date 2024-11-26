@@ -7,7 +7,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
- const productsRoutes = require('./routes/products');
+const productsRoutes = require('./routes/products');
 
 const app = express();
 
