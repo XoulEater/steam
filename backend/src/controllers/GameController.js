@@ -10,8 +10,6 @@ const ProductReview = require('../models/productReview');
 
 dotenv.config();
 
-const router = express.Router();
-
 class GameController {
     /**
      * Add a new product

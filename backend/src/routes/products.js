@@ -22,3 +22,5 @@ router.put("/applyDiscountCategory", gameController.applyDiscountCategory);
 router.get("/discountedProducts", gameController.discountedProducts);
 router.post("/addReview", gameController.addReview);
 router.get("/getReviewsByProduct", gameController.getReviewsByProduct);
+
+module.exports = router;
