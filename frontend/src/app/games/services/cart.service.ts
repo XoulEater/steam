@@ -24,8 +24,8 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   // Add a game to the cart
-  public addGameToCart(game: Game): Observable<any> {
-    const url = this.apiURL + '/' + this.userId + '/add/' + game._id;
+  public addGameToCart(gameId: string): Observable<any> {
+    const url = this.apiURL + '/' + this.userId + '/add/' + gameId;
     return this.http.post(url, {}).pipe(catchError((err) => of(undefined)));
   }
 
