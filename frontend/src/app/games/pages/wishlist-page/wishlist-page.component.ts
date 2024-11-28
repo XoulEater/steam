@@ -1,3 +1,4 @@
+import { WishlistService } from './../../services/wishlist.service';
 import { GamesService } from '../../services/games.service';
 import { Component } from '@angular/core';
 import { Game } from '../../interfaces/games.interfaces';
@@ -18,13 +19,13 @@ export class WishlistPageComponent {
   constructor(
     private activeRoute: ActivatedRoute,
     private route: Router,
-    private gamesService: GamesService
+    private wishlistService: WishlistService
   ) {}
 
   // Método para cambiar la imagen principal con una transición
 
   ngOnInit(): void {
-    this.gamesService.getWishlistGames().subscribe((games) => {
+    this.wishlistService.getWishlist().subscribe((games) => {
       this.games = games;
     });
   }

@@ -25,14 +25,14 @@ export class CartService {
 
   // Add a game to the cart
   public addGameToCart(game: Game): Observable<any> {
-    const url = `${this.apiURL}/${this.userId}/add`;
-
-    return this.http.post(url, game).pipe(catchError((err) => of(undefined)));
+    const url = this.apiURL + '/' + this.userId + '/add/' + game._id;
+    return this.http.post(url, {}).pipe(catchError((err) => of(undefined)));
   }
 
   // Remove a game from the cart
   public removeGameFromCart(gameId: string): Observable<any> {
-    const url = this.apiURL + '/' + gameId + '/remove';
+    const url = this.apiURL + '/' + gameId + '/remove/' + gameId;
+
     return this.http.post(url, {}).pipe(catchError((err) => of(undefined)));
   }
 

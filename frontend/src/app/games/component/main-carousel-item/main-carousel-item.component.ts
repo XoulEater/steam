@@ -1,3 +1,4 @@
+import { WishlistService } from './../../services/wishlist.service';
 import { Component, Input } from '@angular/core';
 import { Game } from '../../interfaces/games.interfaces';
 import { CommonModule } from '@angular/common';
@@ -15,14 +16,25 @@ export class MainCarouselItemComponent {
   public game!: Game;
   public mainImage!: string;
 
+  constructor(public wishlistService: WishlistService) {}
+
   // TODO: Implement the wishlist feature
-  public inWishlist = false;
+  public inWishlist: boolean = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;
+
+    if (this.inWishlist) {
+      this.wishlistService.addGameToWishlist(this.game._id).subscribe();
+    } else {
+      this.wishlistService.removeGameFromWishlist(this.game._id).subscribe();
+    }
   }
 
   ngOnInit(): void {
     this.mainImage = this.game.images[0];
+
+    this.inWishlist = this.wishlistService.isInWishlist(this.game._id);
+    console.log(this.wishlistService.isInWishlist(this.game._id));
   }
 
   public isChangingImage: boolean = false;
