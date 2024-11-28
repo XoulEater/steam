@@ -1,4 +1,4 @@
-import { GamesService } from '../../services/games.service';
+import { CartService } from '../../services/cart.service';
 import { Component } from '@angular/core';
 import { Game } from '../../interfaces/games.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,13 +19,13 @@ export class CartPageComponent {
   constructor(
     private activeRoute: ActivatedRoute,
     private router: Router,
-    private gamesService: GamesService
+    private cartService: CartService
   ) {}
 
   // Método para cambiar la imagen principal con una transición
 
   ngOnInit(): void {
-    this.gamesService.getWishlistGames().subscribe((games) => {
+    this.cartService.getCart().subscribe((games) => {
       this.games = games;
     });
   }

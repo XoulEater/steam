@@ -1,4 +1,5 @@
 import { GamesService } from './../../services/games.service';
+import { CartService } from '../../services/cart.service';
 import { Component } from '@angular/core';
 import { Game, Review } from '../../interfaces/games.interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,7 +34,8 @@ export class GamePageComponent {
   constructor(
     private activeRoute: ActivatedRoute,
     private route: Router,
-    private gamesService: GamesService
+    private gamesService: GamesService,
+    private cartService: CartService
   ) {}
 
   get discountValue(): number {
@@ -72,6 +74,9 @@ export class GamePageComponent {
     });
   }
 
+  addToCart(): void {
+    this.cartService.addGameToCart(this.game);
+  }
   ngOnInit(): void {
     this.activeRoute.params.subscribe(({ id }) => {
       this.gamesService.getGameById(id).subscribe((game) => {
