@@ -68,3 +68,14 @@ export interface Filters {
   developer: string | null;
   popularity: number | null;
 }
+
+export interface CartRes {
+  games:  GameInfo[];
+  total:  number;
+}
+
+export interface GameInfo {
+  game:     Game;
+  quantity: number;
+  price:    number;
+}
