@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of } from 'rxjs';
-import { Game } from '../interfaces/games.interfaces';
+import { Game, CartRes } from '../interfaces/games.interfaces';
 import { environment } from '../../../enviroments/enviroment';
 
 /*
@@ -37,14 +37,19 @@ export class CartService {
   }
 
   // Get the cart
-  public getCart(): Observable<any> {
-    const url = this.apiURL + '/' + this.userId; // Assuming you have userId to identify the cart
-    return this.http.get(url).pipe(catchError((err) => of(undefined)));
+  public getCart(): Observable<CartRes | null> {
+    const url = `${this.apiURL}/${this.userId}`;
+    return this.http.get<CartRes>(url).pipe(
+      catchError(err => {
+        console.error('Error fetching cart:', err); // Log del error
+        return of(null); // Devuelve null en caso de error
+      })
+    );
   }
 
   // Update the cart (e.g., change quantities)
-  public updateCart(userId: string, cartItems: Game[]): Observable<any> {
-    const url = this.apiURL + '/' + userId;
+  public updateCart(cartItems: CartRes): Observable<any> {
+    const url = this.apiURL + '/' + this.userId;
     return this.http
       .put(url, cartItems)
       .pipe(catchError((err) => of(undefined)));
