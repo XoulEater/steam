@@ -1,12 +1,12 @@
 const express = require("express");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const auth = require("../middleware/authMiddleware");
 const dotenv = require("dotenv");
 const Product = require("../models/products");
 const Category = require("../models/category");
 const Discount = require("../models/discount");
-const User = require('../models/user');
-const ProductReview = require('../models/productReview');
+const User = require("../models/user");
+const ProductReview = require("../models/productReview");
 const category = require("../models/category");
 
 dotenv.config();
@@ -23,8 +23,18 @@ class GameController {
         try {
             const { game } = req.body;
 
-            if (!game || !game.categoriesPath || !Array.isArray(game.categoriesPath) || game.categoriesPath.length === 0) {
-                return res.status(400).json({ message: "categoriesPath es requerido y debe ser un array no vacío." });
+            if (
+                !game ||
+                !game.categoriesPath ||
+                !Array.isArray(game.categoriesPath) ||
+                game.categoriesPath.length === 0
+            ) {
+                return res
+                    .status(400)
+                    .json({
+                        message:
+                            "categoriesPath es requerido y debe ser un array no vacío.",
+                    });
             }
 
             // Buscar los IDs de las categorías en base a cada elemento de categoriesPath
@@ -46,7 +56,11 @@ class GameController {
                 ]);
 
                 if (category.length === 0) {
-                    return res.status(404).json({ message: `No se encontró una categoría para el path: ${path}` });
+                    return res
+                        .status(404)
+                        .json({
+                            message: `No se encontró una categoría para el path: ${path}`,
+                        });
                 }
 
                 categoriesId.push(category[0]._id);
@@ -60,7 +74,12 @@ class GameController {
 
             res.status(201).json(savedProduct);
         } catch (error) {
-            res.status(500).json({ message: "Error al agregar producto", error: error.message || error });
+            res
+                .status(500)
+                .json({
+                    message: "Error al agregar producto",
+                    error: error.message || error,
+                });
         }
     }
 
@@ -70,7 +89,10 @@ class GameController {
             const productId = req.params.id;
             const updateData = req.body;
 
-            const updatedProduct = await Product.updateOne({ _id: productId }, updateData);
+            const updatedProduct = await Product.updateOne(
+                { _id: productId },
+                updateData
+            );
 
             // Si el producto no existe
             if (!updatedProduct) {
@@ -79,7 +101,12 @@ class GameController {
 
             res.status(200).json({ message: "Producto modificado correctamente" });
         } catch (error) {
-            res.status(500).json({ message: "Error al actualizar el producto", error: error.message || error });
+            res
+                .status(500)
+                .json({
+                    message: "Error al actualizar el producto",
+                    error: error.message || error,
+                });
         }
     }
 
@@ -94,9 +121,16 @@ class GameController {
                 return res.status(404).json({ message: "Producto no encontrtado" });
             }
 
-            res.status(200).json({ message: "Producto eliminado correctamente", deletedProduct });
+            res
+                .status(200)
+                .json({ message: "Producto eliminado correctamente", deletedProduct });
         } catch (error) {
-            res.status(500).json({ message: "Error al eliminar el producto", error: error.message });
+            res
+                .status(500)
+                .json({
+                    message: "Error al eliminar el producto",
+                    error: error.message,
+                });
         }
     }
 
@@ -124,7 +158,12 @@ class GameController {
 
             res.status(200).json(response);
         } catch (error) {
-            res.status(500).json({ message: "Error al obtener productos", error: error.message || error });
+            res
+                .status(500)
+                .json({
+                    message: "Error al obtener productos",
+                    error: error.message || error,
+                });
         }
     }
 
@@ -158,30 +197,30 @@ class GameController {
                                     autocomplete: {
                                         query: searchQuery,
                                         path: "name",
-                                        fuzzy: { maxEdits: 1 }
-                                    }
+                                        fuzzy: { maxEdits: 1 },
+                                    },
                                 },
                                 {
                                     autocomplete: {
                                         query: searchQuery,
                                         path: "brand",
-                                        fuzzy: { maxEdits: 1 }
-                                    }
+                                        fuzzy: { maxEdits: 1 },
+                                    },
                                 },
                                 {
                                     autocomplete: {
                                         query: searchQuery,
                                         path: "keywords",
-                                        fuzzy: { maxEdits: 1 }
-                                    }
-                                }
-                            ]
+                                        fuzzy: { maxEdits: 1 },
+                                    },
+                                },
+                            ],
                         },
-                    }
+                    },
                 },
                 {
-                    $limit: 5
-                }
+                    $limit: 5,
+                },
             ]);
 
             res.status(200).json({
@@ -216,9 +255,9 @@ class GameController {
     //Obtener todas las categorías padre de los productos
     static async getCategories(req, res) {
         try {
-            const categories = await Category
-                .find({ parentCategory: null })
-                .distinct("name");
+            const categories = await Category.find({ parentCategory: null }).distinct(
+                "name"
+            );
 
             res.status(200).json({
                 message: "Categorías encontradas",
@@ -236,6 +275,11 @@ class GameController {
         try {
             const { query } = req;
 
+            // Parámetros de paginación
+            const page = parseInt(query.page) || 1;
+            const limit = parseInt(query.limit) || 10;
+            const skip = (page - 1) * limit;
+
             if (query.categories) {
                 const categoryPath = query.categories;
                 const categoryLevels = categoryPath.split("/");
@@ -247,23 +291,140 @@ class GameController {
                             index: "filterGamesByCategoryIndex",
                             text: {
                                 query: categoryPath,
-                                path: "categoriesPath"
-                            }
-                        }
+                                path: "categoriesPath",
+                            },
+                        },
                     },
                     {
                         $match: {
-                            categoriesPath: { $regex: `^${categoryLevels.join("/")}.*`, $options: "i" }
-                        }
-                    }
+                            categoriesPath: {
+                                $regex: `^${categoryLevels.join("/")}.*`,
+                                $options: "i",
+                            },
+                        },
+                    },
+                    {
+                        $skip: skip,
+                    },
+                    {
+                        $limit: limit,
+                    },
                 ]);
 
-                return res.status(200).json(games);
+                if (!games || games.length === 0) {
+                    return res
+                        .status(404)
+                        .json({ message: "No games found for the specified category." });
+                }
+
+                return res.status(200).json({
+                    page,
+                    limit,
+                    totalResults: games.length,
+                    games,
+                });
             }
 
             if (query.brand) {
-                return res.status(200).json({ message: "Brand aceptada " });
+                const brandQuery = query.brand;
+
+                const games = await Product.aggregate([
+                    {
+                        $search: {
+                            index: "filterGamesByCategoryIndex", // Índice existente
+                            text: {
+                                query: brandQuery,
+                                path: "brand", // Campo que estamos filtrando
+                            },
+                        },
+                    },
+                    { $skip: skip }, // Paginación: saltar documentos
+                    { $limit: limit }, // Paginación: limitar resultados
+                ]);
+
+                if (!games || games.length === 0) {
+                    return res
+                        .status(404)
+                        .json({ message: "No games found for the specified brand." });
+                }
+
+                return res.status(200).json({
+                    page,
+                    limit,
+                    totalResults: games.length,
+                    games,
+                });
             }
+
+            if (query.popularity){
+                const popularity = parseInt(query.popularity);
+
+                if (isNaN(popularity)) {
+                    return res.status(400).json({ message: "Popularity must be a number" });
+                }
+
+                const games = await Product.aggregate([
+                    {
+                        $match: {
+                            popularity: popularity 
+                        }
+                    },
+                    { $skip: skip }, // Paginación: saltar documentos
+                    { $limit: limit } // Paginación: limitar resultados
+                ]);
+    
+
+                // Buscar juegos con la popularidad especificada
+                const totalResults = await Product.countDocuments({ 
+                    popularity: popularity
+                 });
+
+                 const totalPages = Math.ceil(totalResults / limit);
+
+                 return res.status(200).json({
+                        page,
+                        limit,
+                        totalResults,
+                        games,
+                        totalPages
+                    });
+            }
+
+            if (query.price) {
+                const price = parseFloat(query.price); 
+            
+                if (isNaN(price)) {
+                    return res.status(400).json({ message: "Price must be a valid number." });
+                }
+            
+                // Filtrar juegos por precio exacto
+                const games = await Product.aggregate([
+                    {
+                        $match: {
+                            price: price 
+                        }
+                    },
+                    { $skip: skip }, // Paginación: saltar documentos
+                    { $limit: limit } // Paginación: limitar resultados
+                ]);
+            
+                if (!games || games.length === 0) {
+                    return res.status(404).json({ message: "No games found for the specified price." });
+                }
+            
+                // Calcular el total de documentos para el filtro de precio
+                const totalResults = await Product.countDocuments({
+                    price: price
+                });
+            
+                return res.status(200).json({
+                    page,
+                    limit,
+                    totalResults,
+                    games
+                });
+            }
+
         } catch (error) {
             res.status(500).json({ message: "Error al filtrar juego", error: error });
         }
@@ -277,28 +438,33 @@ class GameController {
         const { query } = req.query;
 
         if (!query) {
-            return res.status(400).json({ error: 'Query parameter is required' });
+            return res.status(400).json({ error: "Query parameter is required" });
         }
 
         try {
             const results = await Category.aggregate([
                 {
                     $search: {
-                        index: 'subCategoriesIndex',
+                        index: "subCategoriesIndex",
                         text: {
                             query: query,
                             path: {
-                                wildcard: "*"
-                            }
-                        }
-                    }
-                }
+                                wildcard: "*",
+                            },
+                        },
+                    },
+                },
             ]);
 
             res.status(200).json({ success: true, data: results });
         } catch (error) {
             console.error("Error executing search:", error);
-            res.status(500).json({ success: false, error: 'An error occurred while executing the search' });
+            res
+                .status(500)
+                .json({
+                    success: false,
+                    error: "An error occurred while executing the search",
+                });
         }
     }
 
@@ -308,7 +474,7 @@ class GameController {
         const { query } = req.query;
 
         if (!query) {
-            return res.status(400).json({ error: 'Query parameter is required' });
+            return res.status(400).json({ error: "Query parameter is required" });
         }
 
         try {
@@ -316,12 +482,12 @@ class GameController {
             const results = await Product.aggregate([
                 {
                     $search: {
-                        index: 'filterGamesByCategoryIndex',
+                        index: "filterGamesByCategoryIndex",
                         text: {
                             query: query,
-                            path: 'categoriesPath',
+                            path: "categoriesPath",
                             fuzzy: {
-                                maxEdits: 1
+                                maxEdits: 1,
                             },
                         },
                     },
@@ -331,7 +497,12 @@ class GameController {
             res.status(200).json({ success: true, data: results });
         } catch (error) {
             console.error("Error executing search:", error);
-            res.status(500).json({ success: false, error: 'An error occurred while executing the search' });
+            res
+                .status(500)
+                .json({
+                    success: false,
+                    error: "An error occurred while executing the search",
+                });
         }
     }
 
@@ -341,7 +512,7 @@ class GameController {
         const { query } = req.query;
 
         if (!query) {
-            return res.status(400).json({ error: 'Query parameter is required' });
+            return res.status(400).json({ error: "Query parameter is required" });
         }
 
         try {
@@ -349,12 +520,12 @@ class GameController {
             const results = await Product.aggregate([
                 {
                     $search: {
-                        index: 'filterGamesByCategoryIndex',
+                        index: "filterGamesByCategoryIndex",
                         text: {
                             query: query,
-                            path: 'keywords',
+                            path: "keywords",
                             fuzzy: {
-                                maxEdits: 1
+                                maxEdits: 1,
                             },
                         },
                     },
@@ -364,14 +535,16 @@ class GameController {
             if (!results || results.length === 0) {
                 return res.status(404).json({
                     success: false,
-                    message: `No se encontraron productos con la palabra clave: "${query}"`
+                    message: `No se encontraron productos con la palabra clave: "${query}"`,
                 });
             }
 
             res.status(200).json({ success: true, data: results });
         } catch (error) {
             console.error("Error executing search:", error);
-            res.status(500).json({ error: 'An error occurred while executing the search' });
+            res
+                .status(500)
+                .json({ error: "An error occurred while executing the search" });
         }
     }
 
@@ -381,7 +554,11 @@ class GameController {
         const { limit } = req.query;
 
         if (!limit || isNaN(limit) || parseInt(limit) <= 0) {
-            return res.status(400).json({ error: 'Se requiere el parametro limite, este debe ser positivo' });
+            return res
+                .status(400)
+                .json({
+                    error: "Se requiere el parametro limite, este debe ser positivo",
+                });
         }
 
         const n = parseInt(limit);
@@ -394,7 +571,9 @@ class GameController {
             res.status(200).json({ success: true, data: mostPopularProducts });
         } catch (error) {
             console.error("Error obteniendo los productos mas populares:", error);
-            res.status(500).json({ error: 'Error obteniendo los productos mas populares' });
+            res
+                .status(500)
+                .json({ error: "Error obteniendo los productos mas populares" });
         }
     }
 
@@ -402,16 +581,12 @@ class GameController {
     // TODO: hacer las modificaciones respectivas
     // Aplica descuento a un solo producto
     static async applyDiscountProduct(req, res) {
-        const {
-            productName,
-            type,
-            value,
-            validDate,
-        } = req.body;
+        const { productName, type, value, validDate } = req.body;
 
         if (!validDate || !value || !type || !productName) {
             return res.status(400).json({
-                error: 'Se requiere el nombre del producto, la fecha, el descuento y el tipo de descuento',
+                error:
+                    "Se requiere el nombre del producto, la fecha, el descuento y el tipo de descuento",
             });
         }
 
@@ -427,7 +602,7 @@ class GameController {
             const product = await Product.findOne({ name: productName });
 
             if (!product) {
-                return res.status(404).json({ error: 'Producto no encontrado' });
+                return res.status(404).json({ error: "Producto no encontrado" });
             }
 
             product.discount = savedDiscount._id;
@@ -435,13 +610,13 @@ class GameController {
             const updatedProduct = await product.save();
 
             res.status(200).json({
-                message: 'Descuento aplicado exitosamente al producto',
+                message: "Descuento aplicado exitosamente al producto",
                 product: updatedProduct,
                 discount: savedDiscount,
             });
         } catch (error) {
             res.status(500).json({
-                message: 'Error al aplicar el descuento al producto',
+                message: "Error al aplicar el descuento al producto",
                 error: error.message || error,
             });
         }
@@ -451,16 +626,12 @@ class GameController {
     // TODO: hacer las modificaciones respectivas
     // Aplica descuento a todos los elementos de una categoria o sub categoria
     static async applyDiscountCategory(req, res) {
-        const {
-            category,
-            type,
-            value,
-            validDate,
-        } = req.body;
+        const { category, type, value, validDate } = req.body;
 
         if (!validDate || !value || !type || !category) {
             return res.status(400).json({
-                error: 'Se requiere la categoria, la fecha, el descuento y el tipo de descuento',
+                error:
+                    "Se requiere la categoria, la fecha, el descuento y el tipo de descuento",
             });
         }
 
@@ -476,10 +647,10 @@ class GameController {
             const productsToUpdate = await Product.aggregate([
                 {
                     $search: {
-                        index: 'filterGamesByCategoryIndex',
+                        index: "filterGamesByCategoryIndex",
                         text: {
                             query: category,
-                            path: 'categoriesPath',
+                            path: "categoriesPath",
                             fuzzy: {
                                 maxEdits: 1,
                             },
@@ -489,7 +660,11 @@ class GameController {
             ]);
 
             if (productsToUpdate.length === 0) {
-                return res.status(400).json({ message: 'No se encontraron productos de la categoria especificada' });
+                return res
+                    .status(400)
+                    .json({
+                        message: "No se encontraron productos de la categoria especificada",
+                    });
             }
 
             const updateResults = await Product.updateMany(
@@ -498,13 +673,14 @@ class GameController {
             );
 
             res.status(200).json({
-                message: 'Descuento aplicado exitosamente a los productos de la categoría',
+                message:
+                    "Descuento aplicado exitosamente a los productos de la categoría",
                 discount: savedDiscount,
                 updatedProducts: updateResults.modifiedCount, // Cantidad de productos actualizados
             });
         } catch (error) {
             res.status(500).json({
-                message: 'Error al aplicar el descuento a la categoría',
+                message: "Error al aplicar el descuento a la categoría",
                 error: error.message || error,
             });
         }
@@ -515,22 +691,33 @@ class GameController {
     // Obtiene todos los productos con descuento
     static async discountedProducts(req, res) {
         try {
-            // Filtrar productos con descuento no nulo
+            // Obtener parámetros de la consulta para la paginación
+            const page = parseInt(req.query.page) || 1; 
+            const limit = parseInt(req.query.limit) || 10; 
+    
+            // Calcular el número de productos a omitir
+            const skip = (page - 1) * limit;
+    
+            // Filtrar productos con descuento no nulo y aplicar paginación
             const discountedProducts = await Product.find({ discount: { $ne: null } })
-                .populate("categories", "name")
-                .populate({
-                    path: "reviews",
-                    select: "review rating",
-                    populate: {
-                        path: "userId",
-                        select: "username"
-                    }
-                })
-                .populate("discount", "type value validDate");
-
+                .populate("categories", "name") // Población de categorías
+                .skip(skip) // Saltar los resultados
+                .limit(limit); // Limitar los resultados
+    
+            // Obtener el total de productos con descuento para calcular el total de páginas
+            const totalResults = await Product.countDocuments({ discount: { $ne: null } });
+            const totalPages = Math.ceil(totalResults / limit); // Calcular el total de páginas
+    
+            // Responder con los productos y la información de paginación
             res.status(200).json({
                 success: true,
                 data: discountedProducts,
+                pagination: {
+                    page: page, // Página actual
+                    limit: limit, // Límite de productos por página
+                    totalResults: totalResults, // Total de productos con descuento
+                    totalPages: totalPages, // Total de páginas
+                },
             });
         } catch (error) {
             res.status(500).json({
@@ -539,6 +726,7 @@ class GameController {
             });
         }
     }
+    
 
     // TODO: Este endppoint tambien cambia segun los cambios del modelo product
     // TODO: Verificar si el parametro que le llega a este es un objeto completo como addProduct
@@ -562,7 +750,9 @@ class GameController {
 
             //Verificar si el rating es valido (entre 0 y 5)
             if (rating < 0 || rating > 5) {
-                return res.status(400).json({ message: "El rating debe estar entre 0 y 5" });
+                return res
+                    .status(400)
+                    .json({ message: "El rating debe estar entre 0 y 5" });
             }
 
             // Crear la nueva review
@@ -582,7 +772,9 @@ class GameController {
 
             //Calcular el nuevo rating del producto
             const allRatings = await ProductReview.find({ productId });
-            const averageRating = allRatings.reduce((acc, review) => acc + review.rating, 0) / allRatings.length;
+            const averageRating =
+                allRatings.reduce((acc, review) => acc + review.rating, 0) /
+                allRatings.length;
 
             // Actualizar el rating del producto
             product.rating = averageRating;
@@ -593,11 +785,10 @@ class GameController {
                 productId: productId,
                 review: newReview,
             });
-
         } catch (error) {
-            console.error('Error al agregar el rating:', error);
+            console.error("Error al agregar el rating:", error);
             res.status(500).json({
-                error: 'Error al agregar product review',
+                error: "Error al agregar product review",
                 details: error.message,
             });
         }
@@ -608,64 +799,18 @@ class GameController {
     static async getReviewsByProduct(req, res) {
         try {
             const { productId } = req.body;
-
-            // Verificar si el producto existe y poblar las reseñas
-            const product = await Product.findById(productId)
-                .populate({
-                    path: "reviews",
-                    populate: [
-                        {
-                            path: "userId",
-                            select: "username -_id",
-                        },
-                        {
-                            path: "productId",
-                            select: "name _id",
-                        }
-                    ]
-                });
-
+    
+            // Buscar el producto por ID
+            const product = await Product.findById(productId);
+    
             if (!product) {
                 return res.status(404).json({ message: "Producto no encontrado" });
             }
-
-            // Retornar las reseñas con la información completa
+    
+            // Retornar las reseñas del producto
             res.status(200).json({
                 message: "Reseñas encontradas",
-                reviews: product.reviews
-            });
-        } catch (error) {
-            res.status(500).json({
-                message: "Error al obtener reviews",
-                error: error.message || error,
-            });
-        } try {
-            const { productId } = req.body;
-
-            // Verificar si el producto existe y poblar las reseñas
-            const product = await Product.findById(productId)
-                .populate({
-                    path: "reviews",
-                    populate: [
-                        {
-                            path: "userId",
-                            select: "username -_id",
-                        },
-                        {
-                            path: "productId",
-                            select: "name _id",
-                        }
-                    ]
-                });
-
-            if (!product) {
-                return res.status(404).json({ message: "Producto no encontrado" });
-            }
-
-            // Retornar las reseñas con la información completa
-            res.status(200).json({
-                message: "Reseñas encontradas",
-                reviews: product.reviews
+                reviews: product.reviews, // Las reseñas ya están como subdocumentos
             });
         } catch (error) {
             res.status(500).json({

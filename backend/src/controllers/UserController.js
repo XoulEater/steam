@@ -213,104 +213,111 @@ class UserController {
     }
 
     //Agregar producto al carrito del usuario
+    //TODO: Revisar con los descuentos
     static async addToCart(req, res) {
         try {
-            const userId = req.user.id;
-            const { productId, quantity } = req.body;
-
-            //Verificar usuario
-            const user = await userSchema.findById(userId);
+            const { username, productId, quantity } = req.body;
+    
+            // Verificar si el usuario existe
+            const user = await userSchema.findOne({ username: username });
             if (!user) {
                 return res.status(400).json({ message: "Usuario no encontrado" });
             }
-
-            //Buscar el carrito del usuario
+    
+            // Buscar el carrito del usuario
             let cart = await cartSchema.findById(user.cart);
             if (!cart) {
                 return res.status(400).json({ message: "Carrito no encontrado" });
             }
-
-            //Verificar si el producto existe
-            const product = await productSchema.findById(productId).populate("discount");
+    
+            // Verificar si el producto existe
+            const product = await productSchema.findById(productId);
             if (!product) {
                 return res.status(400).json({ message: "Producto no encontrado" });
             }
-
-            //Verificar si el producto está en stock
+    
+            // Verificar si el producto está en stock
             if (product.stock < quantity) {
                 return res.status(400).json({ message: `Producto sin stock suficiente, solo quedan ${product.stock}` });
             }
-
-            //Calcular el precio del producto
+    
+            // Calcular el precio del producto con descuento, si es que tiene uno
             let price = product.price;
-
-            //Verificar si el producto tiene descuento
-
+    
+            console.log(`Precio original del producto: ${price}`);
+    
+            // Verificar si el producto tiene un descuento
             if (product.discount) {
                 const { type, value, validDate } = product.discount;
-
-                //Verificar si el descuento es vigente
+    
+                console.log("Descuento encontrado:", product.discount);
+                
+                // Verificar si el descuento es vigente
                 const untilDate = new Date(validDate);
                 const today = new Date();
-
-                console.log("Fecha de vencimiento del descuento: ", untilDate);
-                console.log("Fecha de hoy: ", today);
-
+                console.log("Fecha de vencimiento del descuento:", untilDate);
+                console.log("Fecha actual:", today);
+    
                 if (today <= untilDate) {
                     if (type === "percentage") {
                         price = price - (price * value / 100);
+                        console.log(`Descuento por porcentaje: ${value}% aplicado. Nuevo precio: ${price}`);
                     } else if (type === "fixed") {
-                        price = Math.max(0, product.price - value);
+                        price = Math.max(0, price - value);
+                        console.log(`Descuento fijo: ${value} aplicado. Nuevo precio: ${price}`);
                     }
+                } else {
+                    console.log("El descuento ha vencido y no se aplica.");
                 }
             }
-
-            //Verificar si el producto ya está en el carrito
+    
+            // Verificar si el producto ya está en el carrito
             const productExisting = cart.products.findIndex(
                 (item) => item.productId.toString() === productId
             );
-
+    
             if (productExisting !== -1) {
                 cart.products[productExisting].quantity += quantity;
             } else {
-                //Agregar el producto al carrito
                 cart.products.push({
                     productId,
                     quantity,
                     price: price,
                 });
             }
-
-            //Actualizar el stock del producto
+    
+            // Actualizar el stock del producto
             product.stock -= quantity;
-
-            //Notificar a los admins que ya casi no hay stock
+    
+            // Notificar a los admins si el stock del producto está bajo
             if (product.stock > 0 && product.stock <= 5) {
                 const admins = await adminLogisticSchema.find({ role: "admin" });
                 const notification = `¡Alerta! El producto ${product.name} tiene poco stock, solo quedan ${product.stock} unidades`;
-
-                //Notificar a cada admin
+    
+                // Enviar notificaciones a cada admin
                 for (const admin of admins) {
                     admin.notifications.push(notification);
                     await admin.save();
                 }
             }
-
+    
+            // Guardar los cambios del producto
             await product.save();
-
-            //Recalcular el precio total del carrito
+    
+            // Recalcular el precio total del carrito
             cart.totalPrice = cart.products.reduce((total, item) => {
                 return total + (item.quantity * item.price);
             }, 0);
-
-            //Guardar los cambios en el carrito
+    
+            // Guardar los cambios en el carrito
             await cart.save();
-
+    
+            // Responder con éxito
             res.status(200).json({
-                message: `Producto agregado al carrito de ${req.user.username} correctamente`,
+                message: `Producto agregado al carrito de ${username} correctamente`,
                 cart: cart,
             });
-
+    
         } catch (error) {
             res.status(500).json({
                 message: "Error al agregar producto al carrito del usuario",
@@ -318,45 +325,48 @@ class UserController {
             });
         }
     }
+    
+    
 
     //Eliminar producto del carrito del usuario
+    //TODO: Revisar con los descuentos
     static async deleteFromCart(req, res) {
         try {
-            const userId = req.user.id;
-            const { productId, quantity } = req.body;
-
+            
+            const { username, productId, quantity } = req.body;
+    
             // Buscar al usuario por ID en la colección `users`
-            const user = await userSchema.findById(userId);
+            const user = await userSchema.findOne({ username : username });
             if (!user) {
                 return res.status(400).json({ message: "Usuario no encontrado" });
             }
-
+    
             // Buscar el carrito del usuario
             let cart = await cartSchema.findById(user.cart);
             if (!cart) {
                 return res.status(400).json({ message: "Carrito no encontrado" });
             }
-
+    
             // Verificar si el producto está en el carrito
             const productIndex = cart.products.findIndex(
                 (item) => item.productId.toString() === productId
             );
-
+    
             if (productIndex === -1) {
                 return res.status(400).json({ message: "Producto no encontrado en el carrito" });
             }
-
+    
             // Verificar si la cantidad a eliminar es válida
             if (cart.products[productIndex].quantity < quantity) {
                 return res.status(400).json({ message: `No puedes eliminar más de lo que hay en el carrito. Solo tienes ${cart.products[productIndex].quantity} unidades de este producto.` });
             }
-
+    
             // Buscar el producto
-            const product = await productSchema.findById(productId).populate("discount");
+            const product = await productSchema.findById(productId);
             if (!product) {
                 return res.status(400).json({ message: "Producto no encontrado" });
             }
-
+    
             // Si la cantidad en el carrito es mayor que la cantidad que se desea eliminar
             if (cart.products[productIndex].quantity > quantity) {
                 cart.products[productIndex].quantity -= quantity;
@@ -369,12 +379,12 @@ class UserController {
                 // Aumentar el stock en el producto
                 product.stock += removedQuantity;
             }
-
+    
             // Calcular el precio con descuento si lo tiene
             let price = product.price;
             if (product.discount) {
                 const { type, value, validDate } = product.discount;
-
+    
                 // Verificar si el descuento es vigente
                 if (new Date(validDate) >= new Date()) {
                     if (type === "percentage") {
@@ -384,16 +394,16 @@ class UserController {
                     }
                 }
             }
-
+    
             // Recalcular el precio total del carrito
             cart.totalPrice = cart.products.reduce((total, item) => {
                 return total + item.quantity * item.price;
             }, 0);
-
+    
             // Guardar los cambios en el carrito y el producto
             await cart.save();
             await product.save();
-
+    
             res.status(200).json({
                 message: `Producto eliminado del carrito de ${req.user.username} correctamente`,
                 cart: cart,
@@ -405,6 +415,7 @@ class UserController {
             });
         }
     }
+    
 
     // Obtener la wishlist del usuario
     static async userWishlist(req, res) {
