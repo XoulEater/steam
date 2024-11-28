@@ -1,5 +1,7 @@
 const bcrypt = require("bcryptjs");
 const dotenv = require("dotenv");
+const express = require("express");
+const mongoose = require('mongoose');
 const userSchema = require("../models/user");
 const userAuthSchema = require("../models/usersAuth");
 const cartSchema = require("../models/cart");
@@ -7,6 +9,7 @@ const wishlistSchema = require("../models/wishList");
 const productSchema = require("../models/products");
 const adminLogisticSchema = require("../models/adminLogistic");
 const Order = require("../models/order");
+const Product = require("../models/products");
 
 dotenv.config();
 
@@ -536,18 +539,18 @@ class UserController {
             });
         }
     }
-
+ 
     // Transforma lo que esta en el carrito del usuario a la orden de compra
     // Necesita el header Authorization "Bearer Token"
     static async addOrder(req, res) {
         try {
-            const userId = req.user.id;
-            if (!userId) {
-                return res.status(401).json({ message: "Token no encontrado" });
+            const { username } = req.body;
+            if (!username) {
+                return res.status(401).json({ message: "Debe proporcionar el username" });
             }
 
             // Encontrar el user
-            const user = await userSchema.findById(userId);
+            const user = await userSchema.findOne({ username: username });
             if (!user) {
                 return res.status(404).json({ message: "Usuario no encontrado" });
             }
@@ -558,8 +561,8 @@ class UserController {
             }
 
             // Tomar los productos del carrito y su precio para concretar la orden
-            purchasedProducts = cart.products.map(item => ({ product: item.productId }));
-            price = cart.totalPrice;
+            const purchasedProducts = cart.products.map(item => ({ product: item.productId, quantity: item.quantity }));
+            const price = cart.totalPrice;
 
             const order = new Order({
                 purchasedProducts,
@@ -573,12 +576,20 @@ class UserController {
             user.orderHistory.push(savedOrder._id);
             await user.save();
 
+            // Actualizar las ventas de cada producto basado en el carrito
+            for (const item of cart.products) {
+                await Product.updateOne(
+                    { _id: item.productId },
+                    { $inc: { sales: item.quantity } }
+                );
+            }
+
             // Limpiar el carrito del usuario
             cart.products = [];
             cart.totalPrice = 0;
             await cart.save();
 
-            res.status(200).json({ message: `Orden añadida por el usuario: ${req.user.username}`, order: savedOrder });
+            res.status(200).json({ message: `Orden añadida por el usuario: ${username}`, order: savedOrder });
         } catch (error) {
             console.error(error);
             res.status(401).json({ message: "Error al insertar orden" });
