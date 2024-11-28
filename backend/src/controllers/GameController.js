@@ -577,13 +577,11 @@ class GameController {
         }
     }
 
-    // TODO: Se cambio el esquema de product, el campo discount ahora es un schema
-    // TODO: hacer las modificaciones respectivas
     // Aplica descuento a un solo producto
     static async applyDiscountProduct(req, res) {
-        const { productName, type, value, validDate } = req.body;
+        const { productName, discount } = req.body;
 
-        if (!validDate || !value || !type || !productName) {
+        if (!discount || !discount.validDate || !discount.value || !discount.type || !productName) {
             return res.status(400).json({
                 error:
                     "Se requiere el nombre del producto, la fecha, el descuento y el tipo de descuento",
@@ -591,13 +589,11 @@ class GameController {
         }
 
         try {
-            const newDiscount = new Discount({
-                type,
-                value,
-                validDate,
-            });
-
-            const savedDiscount = await newDiscount.save();
+            const newDiscount = {
+                type: discount.type,
+                value: discount.value,
+                validDate: discount.validDate,
+            };
 
             const product = await Product.findOne({ name: productName });
 
@@ -605,14 +601,14 @@ class GameController {
                 return res.status(404).json({ error: "Producto no encontrado" });
             }
 
-            product.discount = savedDiscount._id;
+            product.discount = newDiscount;
 
             const updatedProduct = await product.save();
 
             res.status(200).json({
                 message: "Descuento aplicado exitosamente al producto",
                 product: updatedProduct,
-                discount: savedDiscount,
+                discount: newDiscount,
             });
         } catch (error) {
             res.status(500).json({
@@ -622,27 +618,22 @@ class GameController {
         }
     }
 
-    // TODO: Se cambio el esquema de product, el campo discount ahora es un schema
-    // TODO: hacer las modificaciones respectivas
     // Aplica descuento a todos los elementos de una categoria o sub categoria
     static async applyDiscountCategory(req, res) {
-        const { category, type, value, validDate } = req.body;
+        const { category, discount } = req.body;
 
-        if (!validDate || !value || !type || !category) {
+        if (!discount || !discount.validDate || !discount.value || !discount.type || !category) {
             return res.status(400).json({
-                error:
-                    "Se requiere la categoria, la fecha, el descuento y el tipo de descuento",
+              error: 'Se requiere la categoría, la fecha, el descuento y el tipo de descuento',
             });
-        }
+          }
 
         try {
-            const newDiscount = new Discount({
-                type,
-                value,
-                validDate,
-            });
-
-            const savedDiscount = await newDiscount.save();
+            const newDiscount = {
+                type: discount.type,
+                value: discount.value,
+                validDate: discount.validDate,
+              };
 
             const productsToUpdate = await Product.aggregate([
                 {
@@ -669,13 +660,12 @@ class GameController {
 
             const updateResults = await Product.updateMany(
                 { _id: { $in: productsToUpdate.map((product) => product._id) } },
-                { $set: { discount: savedDiscount._id } }
+                { $set: { discount: newDiscount } }
             );
 
             res.status(200).json({
-                message:
-                    "Descuento aplicado exitosamente a los productos de la categoría",
-                discount: savedDiscount,
+                message: 'Descuento aplicado exitosamente a los productos de la categoría',
+                discount: newDiscount,
                 updatedProducts: updateResults.modifiedCount, // Cantidad de productos actualizados
             });
         } catch (error) {
@@ -686,8 +676,6 @@ class GameController {
         }
     }
 
-    // TODO: Este metodo puede optimizarse con indice en base de datos
-    // TODO: Este endppoint tambien cambia segun los cambios del modelo product
     // Obtiene todos los productos con descuento
     static async discountedProducts(req, res) {
         try {
@@ -728,13 +716,10 @@ class GameController {
     }
     
 
-    // TODO: Este endppoint tambien cambia segun los cambios del modelo product
-    // TODO: Verificar si el parametro que le llega a este es un objeto completo como addProduct
     // Agregar review de un producto
     static async addReview(req, res) {
         try {
-            const { productId, review, rating } = req.body;
-            const userId = req.user.id;
+            const { username, productId, review } = req.body;
 
             // Verificar si el producto existe
             const product = await Product.findById(productId);
@@ -743,38 +728,28 @@ class GameController {
             }
 
             // Verificar si el usuario existe
-            const user = await User.findById(userId);
+            const user = await User.findOne({ username: username});
             if (!user) {
                 return res.status(404).json({ message: "Usuario no encontrado" });
             }
 
             //Verificar si el rating es valido (entre 0 y 5)
-            if (rating < 0 || rating > 5) {
-                return res
-                    .status(400)
-                    .json({ message: "El rating debe estar entre 0 y 5" });
+            if (review.rating < 0 || review.rating > 5) {
+                return res.status(400).json({ message: "El rating debe estar entre 0 y 5" });
             }
 
-            // Crear la nueva review
-            const newReview = new ProductReview({
-                userId,
-                productId,
-                review,
-                rating,
-            });
+            const newReview = {
+                username: username,
+                review: review.review,
+                rating: review.rating,
+              };
 
-            // Guardar la review en la colección de productReviews
-            await newReview.save();
-
-            // Agregar la review al producto
-            product.reviews.push(newReview._id);
+            product.reviews.push(newReview);
             await product.save();
 
             //Calcular el nuevo rating del producto
-            const allRatings = await ProductReview.find({ productId });
-            const averageRating =
-                allRatings.reduce((acc, review) => acc + review.rating, 0) /
-                allRatings.length;
+            const allRatings = product.reviews;
+            const averageRating = allRatings.reduce((acc, review) => acc + review.rating, 0) / allRatings.length;
 
             // Actualizar el rating del producto
             product.rating = averageRating;
