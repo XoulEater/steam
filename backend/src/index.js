@@ -8,6 +8,7 @@ const userRoutes = require('./routes/users');
 const adminRoutes = require('./routes/adminLogistic');
 const userAuthRoutes = require('./routes/usersAuth');
 const productsRoutes = require('./routes/products');
+const dashboard = require('./routes/dashboard');
 
 const app = express();
 
@@ -33,6 +34,8 @@ app.use('/user', userRoutes);
 app.use('/admin-logistic', adminRoutes);
 app.use('/auth', userAuthRoutes);
 app.use('/products', productsRoutes);
+app.use('/dashboard', dashboard);
+
 
 // Routes
 app.get('/', (req, res) => {
