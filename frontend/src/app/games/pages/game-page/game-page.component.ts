@@ -75,8 +75,13 @@ export class GamePageComponent {
   }
 
   addToCart(): void {
-    this.cartService.addGameToCart(this.game);
+    this.cartService.addGameToCart(this.game).subscribe((response) => {
+      if (response) {
+        console.log('Game added to cart successfully');
+      }
+    });
   }
+
   ngOnInit(): void {
     this.activeRoute.params.subscribe(({ id }) => {
       this.gamesService.getGameById(id).subscribe((game) => {
