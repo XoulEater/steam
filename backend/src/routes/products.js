@@ -8,11 +8,12 @@ const router = express.Router();
 
 router.get("/", gameController.getProducts);
 router.post("/addProduct", gameController.addProduct);
-router.put("/editProduct", gameController.editProduct);
+router.put("/editProduct/:id", gameController.editProduct);
 router.delete("/deleteProduct/:id", gameController.deleteProduct);
 router.get("/searchProduct", gameController.searchProducts);
 router.get("/getBrands", gameController.getBrands);
 router.get("/getCategories", gameController.getCategories);
+router.get("/filterGames", gameController.filterGames);
 router.get("/filterCategoryIndex", gameController.filterCategoryIndex);
 router.get("/filterProductsByCategory", gameController.filterProductsByCategory);
 router.get("/searchKeyWord", gameController.searchKeyWord);

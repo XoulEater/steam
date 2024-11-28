@@ -7,6 +7,7 @@ const Category = require("../models/category");
 const Discount = require("../models/discount");
 const User = require('../models/user');
 const ProductReview = require('../models/productReview');
+const category = require("../models/category");
 
 dotenv.config();
 
@@ -17,78 +18,45 @@ class GameController {
      * @param {Object} res - HTTP response object
      * @returns {Promise<void>}
      */
-
-    // TODO: Cambiar endpoint para que reciba el producto como objeto, y siguiendo 
-    // TODO: las modificaciones hechas en el modelo products
     // Agregar Productos como administrador
     static async addProduct(req, res) {
         try {
-            const {
-                name,
-                images,
-                description,
-                categoriesPath, // formato: categoria || categoria/sub-categoria || categoria/sub-categoria/sub-categoria ...
-                brand,
-                price,
-                rating,
-                reviews,
-                popularity,
-                keywords,
-                specs,
-                discount,
-                stock,
-                sales,
-            } = req.body;
+            const { game } = req.body;
 
-            if (!categoriesPath || !Array.isArray(categoriesPath) || categoriesPath.length === 0) {
+            if (!game || !game.categoriesPath || !Array.isArray(game.categoriesPath) || game.categoriesPath.length === 0) {
                 return res.status(400).json({ message: "categoriesPath es requerido y debe ser un array no vacío." });
             }
 
             // Buscar los IDs de las categorías en base a cada elemento de categoriesPath
-            const categories = [];
-            for (const path of categoriesPath) {
+            const categoriesId = [];
+            for (const path of game.categoriesPath) {
                 const category = await Category.aggregate([
                     {
                         $search: {
-                            index: "subCategoriesIndex", // Usar el índice creado
+                            index: "subCategoriesIndex",
                             text: {
                                 query: path,
-                                path: "path", // Campo que almacena el path completo en la colección de categorías
+                                path: "path",
                                 fuzzy: { maxEdits: 1 },
                             },
                         },
                     },
-                    { $limit: 1 }, // Tomar solo el primer resultado más relevante
-                    { $project: { _id: 1 } }, // Solo necesitamos el _id
+                    { $limit: 1 },
+                    { $project: { _id: 1 } },
                 ]);
 
                 if (category.length === 0) {
                     return res.status(404).json({ message: `No se encontró una categoría para el path: ${path}` });
                 }
 
-                categories.push(category[0]._id);
+                categoriesId.push(category[0]._id);
             }
 
-            // Crear el nuevo producto con los IDs de categorías asignados
-            const newProduct = new Product({
-                name,
-                images,
-                description,
-                categories, // IDs de las categorías
-                categoriesPath,
-                brand,
-                price,
-                rating,
-                reviews,
-                popularity,
-                keywords,
-                specs,
-                discount,
-                stock,
-                sales,
-            });
-
+            const newProduct = new Product({ ...game });
             const savedProduct = await newProduct.save();
+
+            savedProduct.categories = categoriesId;
+            const updatedProduct = await savedProduct.save();
 
             res.status(201).json(savedProduct);
         } catch (error) {
@@ -102,18 +70,14 @@ class GameController {
             const productId = req.params.id;
             const updateData = req.body;
 
-            const updatedProduct = await Product.findByIdAndUpdate(
-                productId,
-                updateData,
-                { new: true, runValidators: true }
-            );
+            const updatedProduct = await Product.updateOne({ _id: productId }, updateData);
 
             // Si el producto no existe
             if (!updatedProduct) {
                 return res.status(404).json({ message: "Producto no encontrado" });
             }
 
-            res.status(200).json(updatedProduct);
+            res.status(200).json({ message: "Producto modificado correctamente" });
         } catch (error) {
             res.status(500).json({ message: "Error al actualizar el producto", error: error.message || error });
         }
@@ -136,51 +100,89 @@ class GameController {
         }
     }
 
-    // TODO: Agregar paginacion
     // Obtener todos los productos
     static async getProducts(req, res) {
         try {
-            // Consulta los productos y rellena los campos referenciados
-            const products = await Product.find()
-                .populate("categories");
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 10;
+            const skip = (page - 1) * limit;
 
-            res.status(200).json(products);
+            const totalProducts = await Product.countDocuments();
+
+            const products = await Product.find()
+                .populate("categories")
+                .skip(skip)
+                .limit(limit);
+
+            const response = {
+                totalProducts,
+                currentPage: page,
+                totalPages: Math.ceil(totalProducts / limit),
+                pageSize: limit,
+                products,
+            };
+
+            res.status(200).json(response);
         } catch (error) {
             res.status(500).json({ message: "Error al obtener productos", error: error.message || error });
         }
     }
 
-    // TODO: Agregar paginacion y agregar indice en base de datos
-    // TODO: Seguir endpoint hecho por Jose Pablo, combinacion de diferentes busquedas
-    //Busqueda de productos con sugerencia (busca por nombre, brand o rating)
-    // Búsqueda de productos con sugerencia (busca por nombre, brand o rating)
+    //Busqueda de productos con sugerencia (busca por nombre o brand)
     static async searchProducts(req, res) {
         try {
             const { query } = req.query;
 
-            // Crear una expresión regular para la búsqueda en los campos de texto
-            const regex = new RegExp(query, "i");
+            if (!query || query.trim() === "") {
+                return res.status(400).json({
+                    message: "El parámetro 'query' es requerido para buscar productos",
+                });
+            }
 
-            // Crear el filtro de búsqueda
-            const filter = {
-                $or: [
-                    { name: regex },
-                    { brand: regex }
-                ].filter(Boolean) // Filtrar para omitir campos no aplicables
-            };
+            if (query.length < 2) {
+                return res.status(400).json({
+                    message: "La consulta debe tener al menos 2 caracteres.",
+                });
+            }
 
-            // Buscar los productos con populate
-            const products = await Product.find(filter)
-                .populate("categories", "name path") // Poblar categorías con los campos necesarios
-                .populate({
-                    path: "reviews",
-                    select: "review rating",
-                    populate: {
-                        path: "userId",
-                        select: "username"
+            const searchQuery = query.trim();
+
+            // Usar Atlas Search para realizar la búsqueda
+            const products = await Product.aggregate([
+                {
+                    $search: {
+                        index: "SearchIndex", // Nombre de tu índice
+                        compound: {
+                            should: [
+                                {
+                                    autocomplete: {
+                                        query: searchQuery,
+                                        path: "name",
+                                        fuzzy: { maxEdits: 1 }
+                                    }
+                                },
+                                {
+                                    autocomplete: {
+                                        query: searchQuery,
+                                        path: "brand",
+                                        fuzzy: { maxEdits: 1 }
+                                    }
+                                },
+                                {
+                                    autocomplete: {
+                                        query: searchQuery,
+                                        path: "keywords",
+                                        fuzzy: { maxEdits: 1 }
+                                    }
+                                }
+                            ]
+                        },
                     }
-                })
-                .populate("discount", "type value validDate"); // Poblar descuento con los campos necesarios
+                },
+                {
+                    $limit: 5
+                }
+            ]);
 
             res.status(200).json({
                 message: "Productos encontrados",
@@ -227,6 +229,43 @@ class GameController {
                 message: "Error al obtener categorías ",
                 error: error.message,
             });
+        }
+    }
+
+    static async filterGames(req, res) {
+        try {
+            const { query } = req;
+
+            if (query.categories) {
+                const categoryPath = query.categories;
+                const categoryLevels = categoryPath.split("/");
+
+                // Buscar juegos con la ruta jerárquica especificada utilizando una agregación
+                const games = await Product.aggregate([
+                    {
+                        $search: {
+                            index: "filterGamesByCategoryIndex",
+                            text: {
+                                query: categoryPath,
+                                path: "categoriesPath"
+                            }
+                        }
+                    },
+                    {
+                        $match: {
+                            categoriesPath: { $regex: `^${categoryLevels.join("/")}.*`, $options: "i" }
+                        }
+                    }
+                ]);
+
+                return res.status(200).json(games);
+            }
+
+            if (query.brand) {
+                return res.status(200).json({ message: "Brand aceptada " });
+            }
+        } catch (error) {
+            res.status(500).json({ message: "Error al filtrar juego", error: error });
         }
     }
 
@@ -637,4 +676,4 @@ class GameController {
     }
 }
 
-export default GameController;
+module.exports = GameController;

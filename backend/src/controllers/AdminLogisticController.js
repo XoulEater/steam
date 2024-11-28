@@ -446,4 +446,4 @@ class AdminLogisticController {
     }
 }
 
-export default AdminLogisticController
+module.exports = AdminLogisticController;
