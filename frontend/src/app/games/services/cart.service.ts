@@ -31,7 +31,7 @@ export class CartService {
 
   // Remove a game from the cart
   public removeGameFromCart(gameId: string): Observable<any> {
-    const url = this.apiURL + '/' + gameId + '/remove/' + gameId;
+    const url = this.apiURL + '/' + this.userId + '/remove/' + gameId;
 
     return this.http.post(url, {}).pipe(catchError((err) => of(undefined)));
   }

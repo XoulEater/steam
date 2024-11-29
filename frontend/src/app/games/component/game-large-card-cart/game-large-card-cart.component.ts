@@ -3,6 +3,7 @@ import { GameInfo } from '../../interfaces/games.interfaces';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RatingBarComponent } from '../rating-bar/rating-bar.component';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-game-large-card-cart',
@@ -15,9 +16,12 @@ export class GameLargeCardCartComponent {
   @Input()
   public game!: GameInfo;
   public mainImage!: string;
+  public cartId = '';
 
-  // TODO: Implement the wishlist feature
-  // TODO: Implement the discount feature
+  constructor(
+    private cartService: CartService
+  ) {}
+
 
   get discountValue(): number {
     if (!this.game.game.discount || !this.game.game.discount.value) {
@@ -30,7 +34,10 @@ export class GameLargeCardCartComponent {
   }
 
   increment(): void {
-    this.game.quantity++;
+    if (this.game.game.stock != this.game.quantity) {
+      console.log(this.game.game.stock)
+      this.game.quantity++;
+    }
   }
 
   decrement(): void{
@@ -38,6 +45,14 @@ export class GameLargeCardCartComponent {
       this.game.quantity--;
     }
   }
+
+  deleteGame(): void{
+      this.cartService.removeGameFromCart(this.game.game._id).subscribe(() => {
+      console.log("Game " + this.game.game._id + " deleted correctly")
+    });
+    
+  }
+
 
 
   ngOnInit(): void {
