@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, pipe } from 'rxjs';
 import { environment } from '../../../enviroments/enviroment';
-import { Game } from '../../games/interfaces/games.interfaces';
+import { Game } from '../interfaces/dashboard.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,12 @@ export class DashboardService {
 
   public getOrdersPerDay(): Observable<any> {
     const url = this.apiURL + '/orders-per-day';
+
+    return this.http.get<any>(url).pipe(catchError((err) => of([])));
+  }
+
+  public getNotifications(): Observable<any> {
+    const url = this.apiURL + '/notifications';
 
     return this.http.get<any>(url).pipe(catchError((err) => of([])));
   }

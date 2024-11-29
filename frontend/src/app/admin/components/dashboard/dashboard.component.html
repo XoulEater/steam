@@ -4,12 +4,15 @@
   </section>
   <section class="p-5 rounded-md bg-bgMain">
     <h3 class="font-semibold text-dim">Estadísticas de ventas</h3>
+    @for (order of orders; track $index) {
+      {{order._id +' numero de ventas: ' + order.total}}
+      }
   </section>
   <section class="p-5 rounded-md bg-bgMain">
     <h3 class="font-semibold text-dim">Productos mas vendidos</h3>
-  </section>
-  <section class="p-5 rounded-md bg-bgMain">
-    <h3 class="font-semibold text-dim">Usuarios en linea</h3>
+    @for (game of topSales; track $index) {
+      <app-bar-chart [game]="game"></app-bar-chart>
+      }
   </section>
   <section class="p-5 rounded-md bg-bgMain">
     <h3 class="font-semibold text-dim">Notificaciones de productos</h3>
