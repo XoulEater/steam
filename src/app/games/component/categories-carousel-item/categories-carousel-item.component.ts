@@ -16,13 +16,4 @@ export class CategoriesCarouselItemComponent {
 
   @Input()
   public index!: number;
-
-  getCategoryColor(): string {
-    let hash = 0;
-    for (let i = 0; i < this.category.length; i++) {
-      hash = this.category.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    const color = (hash & 0x22ffffff).toString(16).toUpperCase();
-    return '#' + '00000'.substring(0, 6 - color.length) + color;
-  }
 }

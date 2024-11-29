@@ -34,22 +34,6 @@
   @apply bg-bgHover;
 }
 
-.cat1 {
-  background-image: url("/cat1.png");
-}
-.cat2 {
-  background-image: url("/cat2.png");
-}
-.cat3 {
-  background-image: url("/cat3.png");
-}
-.cat4 {
-  background-image: url("/cat4.png");
-}
-.cat5 {
-  background-image: url("/cat5.png");
-}
-
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 12px;
