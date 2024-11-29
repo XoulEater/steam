@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of, pipe } from 'rxjs';
 import { environment } from '../../../enviroments/enviroment';
-import { Game } from '../../games/interfaces/games.interfaces';
+import { Order } from '../../games/interfaces/games.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,16 @@ export class OrdersService {
 
   constructor(private http: HttpClient) {}
 
-  public getOrders(): Observable<any> {
+  public getOrders(): Observable<Order[]> {
     const url = `${this.apiURL}/user/${this.userId}`;
 
-    return this.http.get<any>(url).pipe(catchError((err) => of([])));
+    return this.http.get<Order[]>(url).pipe(catchError((err) => of([])));
   }
 
-  public getOrderByUser(): Observable<any> {
+  public getOrderByUser(): Observable<Order[]> {
     const url = `${this.apiURL}/user/${this.userId}`;
 
-    // TODO: add the correct return type
-    return this.http.get(url).pipe(catchError((err) => of([])));
+    return this.http.get<Order[]>(url).pipe(catchError((err) => of([])));
   }
 
   public createOrder(paymentMethod: string, address: string): Observable<any> {
@@ -35,5 +34,11 @@ export class OrdersService {
     };
 
     return this.http.post(url, body).pipe(catchError((err) => of([])));
+  }
+
+  public updateOrderStatus(status: string, orderID: string): Observable<any> {
+    const url = `${this.apiURL}/${orderID}/status`;
+
+    return this.http.put(url, { status }).pipe(catchError((err) => of([])));
   }
 }

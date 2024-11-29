@@ -92,17 +92,7 @@ export class GamesService {
     return this.http.get<string[]>(url).pipe(catchError((err) => of([])));
   }
 
-  // WISHLIST
-
-  public getWishlistGames(): Observable<Game[]> {
-    // TODO: Falta implementar
-    const url = this.apiURL + '/wishlist';
-
-    return this.http.get<Game[]>(url).pipe(catchError((err) => of([])));
-  }
-
   // OFERTAS
-
   public getOffers(): Observable<Game[]> {
     const url = this.apiURL + '/discounts';
 

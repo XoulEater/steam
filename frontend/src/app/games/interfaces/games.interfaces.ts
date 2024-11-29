@@ -1,11 +1,12 @@
 export interface Order {
-  id: string;
-  games: Game[];
-  price: number;
-  orderAddress: string;
-  date: Date;
+  _id: string;
+  userId: string;
+  games: GameInfo[];
+  total: number;
+  address: string;
+  paymentMethod: string;
   status: Status;
-  idPaymentMethod: string;
+  createdAt: Date;
 }
 
 export enum Status {
@@ -71,12 +72,12 @@ export interface Filters {
 
 export interface CartRes {
   _id: string;
-  games:  GameInfo[];
-  total:  number;
+  games: GameInfo[];
+  total: number;
 }
 
 export interface GameInfo {
-  game:     Game;
+  game: Game;
   quantity: number;
-  price:    number;
+  price: number;
 }

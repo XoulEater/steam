@@ -14,6 +14,6 @@ export class OrderCardComponent {
   public order!: Order;
 
   get firstGames(): Game[] {
-    return this.order.games.slice(0, 4);
+    return this.order.games.slice(0, 4).map((game) => game.game);
   }
 }

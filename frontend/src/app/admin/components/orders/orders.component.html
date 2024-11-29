@@ -4,7 +4,9 @@
   </section>
   <!-- Game List -->
 
-  <section class="p-5 rounded-md bg-bgMain">
-    <h3 class="font-semibold text-dim">Lista de Ordenes</h3>
+  @for (order of orders; track $index) {
+  <section class="rounded-md bg-bgMain">
+    <app-admin-order-card [order]="order"></app-admin-order-card>
   </section>
+  }
 </div>

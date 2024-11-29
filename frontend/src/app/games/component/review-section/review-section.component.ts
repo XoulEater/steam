@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { Review } from '../../interfaces/games.interfaces';
 import { FormsModule } from '@angular/forms';
+import { ReviewComponent } from '../review/review.component';
 
 @Component({
   selector: 'app-review-section',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReviewComponent],
   templateUrl: './review-section.component.html',
   styles: ``,
 })
@@ -49,9 +50,5 @@ export class ReviewSectionComponent {
 
   public rate(rating: number) {
     this.rating = rating;
-  }
-
-  public getRatingIcon(rating: number): string {
-    return rating >= 3 ? 'goodReview.png' : 'badReview.png';
   }
 }

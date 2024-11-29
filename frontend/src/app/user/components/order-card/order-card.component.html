@@ -23,7 +23,7 @@
   }
   <aside class="flex flex-col flex-grow gap-3 py-2">
     <header class="flex justify-between w-full">
-      <h2 class="capitalize">{{ order.id }}</h2>
+      <h2 class="capitalize">{{ order._id }}</h2>
       <div class="flex items-center gap-2">
         <span class="flex items-center gap-1 text-sm text-dim">
           <svg
@@ -40,7 +40,7 @@
               fill-opacity="0.5"
             />
           </svg>
-          {{ order.date | date }}
+          {{ order.createdAt | date }}
         </span>
 
         @switch (order.status) { @case ('pending') {
@@ -68,17 +68,17 @@
     </header>
     <div class="flex justify-between gap-2">
       <div class="flex flex-wrap w-2/3 gap-1">
-        @for (game of order.games; track $index) {
+        @for (gameInfo of order.games; track $index) {
 
         <span class="px-2 py-1 text-xs bg-bgHighlight text-dim">{{
-          game.title
+          gameInfo.quantity + " - " + gameInfo.game.title
         }}</span>
         }
       </div>
 
       <span
         class="absolute font-semibold text-md place-self-end right-6 bottom-2"
-        >{{ order.price > 0 ? (order.price | currency : "USD") : "Free" }}</span
+        >{{ order.total > 0 ? (order.total | currency : "USD") : "Free" }}</span
       >
     </div>
   </aside>

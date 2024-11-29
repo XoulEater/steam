@@ -34,6 +34,7 @@ export class CartPageComponent {
     this.cartService.updateCart(this.cart).subscribe(() => {
       window.location.reload();
     });
-    
   }
+
+  // TODO: Save the cart before going to the checkout page
 }

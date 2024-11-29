@@ -21,4 +21,21 @@ export class ProfilePageComponent {
       this.orders = orders;
     });
   }
+
+  get countPendingOrders(): number {
+    return this.orders.filter((order) => order.status === 'pending').length;
+  }
+
+  get countDeliveredOrders(): number {
+    return this.orders.filter((order) => order.status === 'delivered').length;
+  }
+
+  get countSentOrders(): number {
+    return this.orders.filter((order) => order.status === 'sent').length;
+  }
+
+  get countInPreparationOrders(): number {
+    return this.orders.filter((order) => order.status === 'inPreparation')
+      .length;
+  }
 }
