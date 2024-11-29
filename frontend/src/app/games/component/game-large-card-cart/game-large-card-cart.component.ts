@@ -49,13 +49,14 @@ export class GameLargeCardCartComponent {
   deleteGame(): void{
       this.cartService.removeGameFromCart(this.game.game._id).subscribe(() => {
       console.log("Game " + this.game.game._id + " deleted correctly")
+      window.location.reload();
     });
     
   }
 
 
   get total(): number {
-    return this.game.game.price * this.game.quantity;
+    return (this.game.game.price - this.discountValue) * this.game.quantity ;
   }
 
   ngOnInit(): void {

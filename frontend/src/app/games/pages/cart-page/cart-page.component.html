@@ -21,9 +21,11 @@
           >
             Purchase for myself
           </button>
-        <span class="self-center ml-4 font-semibold">
+          @if (cart){
+          <span class="self-center ml-4 font-semibold">
           Total: {{ cart.total | currency : "USD" }}
         </span>
+      }
       </div>
 
       <button

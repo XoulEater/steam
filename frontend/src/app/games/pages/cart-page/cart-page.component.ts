@@ -31,6 +31,9 @@ export class CartPageComponent {
   }
 
   updateCart(): void {
-    this.cartService.updateCart(this.cart).subscribe(() => {});
+    this.cartService.updateCart(this.cart).subscribe(() => {
+      window.location.reload();
+    });
+    
   }
 }
