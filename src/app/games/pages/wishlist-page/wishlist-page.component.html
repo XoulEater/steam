@@ -1,0 +1,18 @@
+<div
+  class="relative flex flex-row justify-center w-full bg-gradient-to-b from-[#0E141B] to-[#202B3B]"
+>
+  <main class="w-11/12 px-[5%] mt-36 pb-48 flex flex-col z-10">
+    <!-- Main Content -->
+    <article class="flex flex-col gap-5 p-5 lg:flex-row bg-bgMain/50">
+      <div class="flex flex-col w-full gap-3">
+        @for (game of games; track $index) {
+        <app-game-large-card [game]="game"></app-game-large-card>
+        } @if (games.length === 0) {
+        <div class="flex items-center justify-center w-full h-full">
+          <h2 class="text-2xl font-semibold text-dim">No games in wishlist</h2>
+        </div>
+        }
+      </div>
+    </article>
+  </main>
+</div>

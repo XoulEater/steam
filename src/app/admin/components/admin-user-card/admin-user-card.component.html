@@ -1,0 +1,29 @@
+<div
+  class="grid items-center grid-cols-4 gap-3 p-5 rounded-md bg-bgMain min-h-20"
+>
+  <img
+    class="w-12 h-12 bg-contain rounded-md"
+    [src]="
+      user.image ||
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTugu0kegXOT1Gh1sgDVHvYjkGW29w19Hl9gQ&s'
+    "
+    alt="User avatar"
+  />
+  <span class="font-semibold text-dim">{{ user.username }}</span>
+  <span class="text-dim">Email: {{ user.email }}</span>
+
+  <div class="flex justify-end w-full gap-3">
+    <button
+      class="px-3 py-1 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+      (click)="onEditUser()"
+    >
+      Edit
+    </button>
+    <button
+      class="px-3 py-1 transition-all duration-300 ease-in-out bg-red-500 rounded-sm hover:brightness-150"
+      (click)="onDeleteUser()"
+    >
+      Delete
+    </button>
+  </div>
+</div>

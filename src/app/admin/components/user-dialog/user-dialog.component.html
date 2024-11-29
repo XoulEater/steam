@@ -1,0 +1,48 @@
+<div class="flex flex-col h-full gap-5 p-5 bg-bgTertiary">
+  <h3 class="text-xl font-semibold text-dim">User Dialog</h3>
+  <section class="flex flex-col items-end h-full place-content-between">
+    <form
+      class="grid items-start w-full grid-cols-3 gap-4 gap-y-6"
+      [formGroup]="userForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <span class="mt-1 font-semibold">Username *</span>
+      <input
+        type="text"
+        class="col-span-2 p-2 rounded-md bg-bgTertiary text-dim"
+        [formControlName]="'username'"
+        required
+      />
+
+      <span class="mt-1 font-semibold">Email *</span>
+      <input
+        type="email"
+        class="col-span-2 p-2 rounded-md bg-bgTertiary text-dim"
+        [formControlName]="'email'"
+        required
+      />
+
+      <span class="mt-1 font-semibold">Password *</span>
+      <input
+        type="password"
+        class="col-span-2 p-2 rounded-md bg-bgTertiary text-dim"
+        [formControlName]="'password'"
+        required
+      />
+    </form>
+    <footer class="flex gap-3">
+      <button
+        class="px-12 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        class="px-12 py-2 transition-all duration-300 ease-in-out rounded-sm bg-secondary hover:brightness-150"
+        (click)="onSubmit()"
+      >
+        Save
+      </button>
+    </footer>
+  </section>
+</div>
