@@ -70,6 +70,7 @@ export interface Filters {
 }
 
 export interface CartRes {
+  _id: string;
   games:  GameInfo[];
   total:  number;
 }
