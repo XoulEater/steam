@@ -1,18 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
-import { Game, CartRes } from '../interfaces/games.interfaces';
+import { catchError, Observable, of } from 'rxjs';
+import { CartRes } from '../interfaces/games.interfaces';
 import { environment } from '../../../enviroments/enviroment';
-
-/*
-
-/cart
-router.post("/:id/add", cartController.addToCart);
-router.post("/:id/remove", cartController.removeFromCart);
-router.get("/:id", cartController.getCart);
-router.put("/:id", cartController.updateCart);
-
-*/
 
 @Injectable({
   providedIn: 'root',

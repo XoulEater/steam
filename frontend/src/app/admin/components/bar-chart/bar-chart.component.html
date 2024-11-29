@@ -1,0 +1,14 @@
+<!-- Título del juego -->
+@if (game) {
+<div class="flex items-center m-3 space-x-4 ">
+    <span class="w-1/4 font-medium text-right">{{ game.title }}</span>
+    <div class="w-3/4 h-6 bg-gray-200 rounded-full">
+        <div
+            class="flex items-center justify-center h-6 p-3 text-xs rounded-full bg-secondary"
+            [style.width]="getSalesPercentage(game.sales) + '%'"
+        >
+            {{ game.sales }}
+        </div>
+    </div>
+</div>
+}
