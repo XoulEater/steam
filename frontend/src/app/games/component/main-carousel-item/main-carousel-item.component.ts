@@ -18,11 +18,9 @@ export class MainCarouselItemComponent {
 
   constructor(public wishlistService: WishlistService) {}
 
-  // TODO: Implement the wishlist feature
   public inWishlist: boolean = false;
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;
-
     if (this.inWishlist) {
       this.wishlistService.addGameToWishlist(this.game._id).subscribe();
     } else {

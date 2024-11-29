@@ -38,13 +38,16 @@ export const routes: Routes = [
   },
   {
     path: 'cart',
-    component: CartPageComponent,
     children: [
       {
+        path: '',
+        component: CartPageComponent,
+      },
+      {
         path: 'payment',
-        component: PaymentMethodPageComponent
-      }
-    ]
+        component: PaymentMethodPageComponent,
+      },
+    ],
   },
   //   {
   //     path: 'wishlist',

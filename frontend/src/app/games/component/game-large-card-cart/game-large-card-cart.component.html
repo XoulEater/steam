@@ -17,16 +17,18 @@
     </header>
     <div class="flex items-end gap-3 lg:flex-col place-content-between">
       <div class="flex">
-        <div class="flex items-center justify-between p-2 rounded-full bg-secondary hover:text-bgMain w-28">
-          <button 
-            (click)="decrement()" 
+        <div
+          class="flex items-center justify-between p-2 rounded-full bg-secondary hover:text-bgMain w-28"
+        >
+          <button
+            (click)="decrement()"
             class="text-lg font-bold bg-secondary hover:text-bgMain"
           >
             -
           </button>
           <span class="font-mediu">{{ this.game.quantity }}</span>
-          <button 
-            (click)="increment()" 
+          <button
+            (click)="increment()"
             class="text-lg font-bold bg-secondary hover:text-bgMain"
           >
             +
@@ -36,42 +38,41 @@
           class="flex items-center justify-center w-10 h-10 gap-2 ml-3 transition-colors duration-300 ease-in rounded-sm bg-bgHighlight hover:bg-bgHover"
           (click)="deleteGame()" 
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trash"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+            />
+            <path
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+            />
           </svg>
         </button>
-
       </div>
       @if (game.game.discount.type !== "none") {
-        <span class="text-sm text-dim"
-          >Until {{ game.game.discount.until | date : "MMM dd" }}</span
-        >
+      <span class="text-sm text-dim"
+        >Until {{ game.game.discount.until | date : "MMM dd" }}</span
+      >
 
-        <span
-          class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
-        >
-          {{
-            game.game.discount.type === "fixed"
-              ? "-" + (game.game.discount.value | currency : "USD")
-              : "-" + game.game.discount.value + "%"
-          }}</span
-        >
-
-        <div class="relative flex flex-col justify-end gap-0">
-          <span class="absolute font-semibold line-through top-2 text-dim/50">{{
-            game.game.price | currency : "USD"
-          }}</span>
-          <span class="absolute font-semibold bottom-2 text-success">
-            {{ game.game.price - discountValue | currency : "USD" }}
-          </span>
-          <span class="text-transparent pointer-events-none">$00.00</span>
-        </div>
-        } @else {
-        <span class="font-semibold">
-          {{ game.game.price | currency : "USD" }}
-        </span>
-        }
+      <span
+        class="px-3 py-1 text-lg font-bold rounded-sm bg-success text-bgMain"
+      >
+        {{
+          game.game.discount.type === "fixed"
+            ? "-" + (game.game.discount.value | currency : "USD")
+            : "-" + game.game.discount.value + "%"
+        }}</span
+      >
+      }
+      <span class="font-semibold">
+        {{ total | currency : "USD" }}
+      </span>
     </div>
   </aside>
 </article>

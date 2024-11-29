@@ -8,6 +8,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { OffersCarouselItemComponent } from '../../component/offers-carousel-item/offers-carousel-item.component';
 import { ReviewSectionComponent } from '../../component/review-section/review-section.component';
 import { RatingBarComponent } from '../../component/rating-bar/rating-bar.component';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-game-page',
@@ -35,6 +36,7 @@ export class GamePageComponent {
     private activeRoute: ActivatedRoute,
     private route: Router,
     private gamesService: GamesService,
+    private wishlistService: WishlistService,
     private cartService: CartService
   ) {}
 
@@ -59,6 +61,11 @@ export class GamePageComponent {
 
   public toggleWishlist(): void {
     this.inWishlist = !this.inWishlist;
+    if (this.inWishlist) {
+      this.wishlistService.addGameToWishlist(this.game._id).subscribe();
+    } else {
+      this.wishlistService.removeGameFromWishlist(this.game._id).subscribe();
+    }
   }
 
   onImageLoad() {
@@ -75,7 +82,7 @@ export class GamePageComponent {
   }
 
   addToCart(): void {
-    this.cartService.addGameToCart(this.game).subscribe((response) => {
+    this.cartService.addGameToCart(this.game._id).subscribe((response) => {
       if (response) {
         console.log('Game added to cart successfully');
       }
@@ -95,12 +102,11 @@ export class GamePageComponent {
         } else {
           this.mainImage = 'default-image-url.jpg'; // URL de una imagen por defecto
         }
+        this.inWishlist = this.wishlistService.isInWishlist(this.game._id);
       });
       this.gamesService.getSimilarGames(id).subscribe((games) => {
         this.similarGames = games;
       });
-      // FIXME: Implementar la lógica para saber si el juego está en la lista de deseos
-      this.inWishlist = false;
     });
   }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { OrderCardComponent } from '../../components/order-card/order-card.component';
 import { Order } from '../../../games/interfaces/games.interfaces';
-import { OrdersService } from '../../services/orders.service';
 import { RouterModule } from '@angular/router';
+import { OrdersService } from '../../../admin/services/orders.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -17,7 +17,7 @@ export class ProfilePageComponent {
   constructor(private ordersService: OrdersService) {}
 
   ngOnInit() {
-    this.ordersService.getOrders().subscribe((orders) => {
+    this.ordersService.getOrderByUser().subscribe((orders) => {
       this.orders = orders;
     });
   }

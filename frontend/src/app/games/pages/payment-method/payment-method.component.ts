@@ -1,36 +1,47 @@
+import { OrdersService } from './../../../admin/services/orders.service';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-payment-method-page',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './payment-method.component.html',
   styles: ``,
 })
 export class PaymentMethodPageComponent {
-  paymentData = {
-    paymentType: '',
-    cardNumber: '',
-    expirationDate: '',
-    securityCode: '',
-    saveInfo: false,
-  };
+  paymentForm: FormGroup;
 
-  billingData = {
-    firstName: '',
-    lastName: '',
-    city: '',
-    billingAddress: '',
-    billingAddress2: '',
-    zipCode: '',
-    country: 'Costa Rica',
-    phoneNumber: '',
-  };
+  constructor(
+    private ordersService: OrdersService,
+    private fb: FormBuilder,
+    private router: RouterModule
+  ) {
+    this.paymentForm = this.fb.group({
+      paymentType: [''],
+      cardNumber: [''],
+      expirationDate: [''],
+      securityCode: [''],
+      firstName: [''],
+      lastName: [''],
+      billingAddress: [''],
+      billingAddress2: [''],
+      zipCode: [''],
+      country: [''],
+      phoneNumber: [''],
+      saveInfo: [false],
+    });
+  }
 
   onSubmit() {
-    console.log('Payment Data:', this.paymentData);
-    console.log('Billing Data:', this.billingData);
-    alert('Form submitted successfully!');
+    this.ordersService
+      .createOrder(
+        this.paymentForm.value.cardNumber,
+        this.paymentForm.value.billingAddress
+      )
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 }

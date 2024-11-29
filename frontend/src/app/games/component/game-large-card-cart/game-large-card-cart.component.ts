@@ -2,13 +2,12 @@ import { Component, Input } from '@angular/core';
 import { GameInfo } from '../../interfaces/games.interfaces';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { RatingBarComponent } from '../rating-bar/rating-bar.component';
 import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-game-large-card-cart',
   standalone: true,
-  imports: [CommonModule, RouterModule, RatingBarComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './game-large-card-cart.component.html',
   styles: ``,
 })
@@ -40,8 +39,9 @@ export class GameLargeCardCartComponent {
     }
   }
 
-  decrement(): void{
-    if (this.game.quantity != 1) { // Evitar valores negativos (opcional)
+  decrement(): void {
+    if (this.game.quantity != 1) {
+      // Evitar valores negativos (opcional)
       this.game.quantity--;
     }
   }
@@ -54,6 +54,9 @@ export class GameLargeCardCartComponent {
   }
 
 
+  get total(): number {
+    return this.game.game.price * this.game.quantity;
+  }
 
   ngOnInit(): void {
     this.mainImage = this.game.game.images[0];
